@@ -43,10 +43,11 @@ h1{font-family:Creepster,'Bebas Neue',Impact,sans-serif;font-weight:400;font-siz
 .statline{font-size:1.1rem;margin:2px 0;text-align:center}
 .statline b{color:#ff4455}
 
-#heroGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));grid-auto-flow:column;gap:8px;width:min(980px,96vw);margin-bottom:10px}
+#heroScreen{overflow:hidden;justify-content:center;gap:0}#heroScreen h1{font-size:clamp(1.2rem,6.5vh,2.4rem)!important;margin:0}#heroScreen .sub{margin:1px 0 5px;font-size:clamp(.55rem,2.6vh,.8rem)}
+#heroGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));grid-auto-flow:column;gap:6px;width:min(980px,97vw);margin-bottom:6px}.hcard .tap{font-size:.5rem;color:#666;margin-top:auto;padding-top:2px;letter-spacing:1px;text-transform:uppercase}.hcard.sel .tap{color:#ff6680}
 .hcard{background:rgba(20,3,8,.92);border:2px solid #552;border-radius:10px;padding:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;font-family:Barlow,'Segoe UI',Roboto,sans-serif}
 .hcard.sel{border-color:#ff0033;box-shadow:0 0 22px rgba(255,0,51,.6)}
-.hcard canvas{width:100%;max-width:120px;aspect-ratio:280/300;height:auto}
+.hcard canvas{height:min(25vh,120px);width:auto;aspect-ratio:280/300}
 .hcard h3{font-family:'Bebas Neue','Bebas Neue',Impact,sans-serif;font-size:1.15rem;letter-spacing:1px}
 .hcard .role{color:#ff8800;font-size:.68rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
 .stat{display:flex;align-items:center;gap:5px;width:100%;font-size:.6rem;color:#bbb;margin:1px 0}
@@ -57,9 +58,9 @@ h1{font-family:Creepster,'Bebas Neue',Impact,sans-serif;font-weight:400;font-siz
 .hcard .ab{font-size:.62rem;color:#ddd;margin-top:4px;line-height:1.25;width:100%}
 .hcard .ab em{color:#ffcc33;font-style:normal;font-weight:bold}
 .hcard .ab u{color:#ff6688;text-decoration:none;font-weight:bold}
-@media (max-height:430px){.hcard canvas{max-width:60px}.hcard .ab{font-size:.54rem}.hcard .stat,.hcard .tr{display:none}.hcard h3{font-size:1rem}#survCv{width:min(110px,22vw)}.lcard{min-height:58px}}
+@media (max-height:430px){.hcard .ab{font-size:.56rem}.hcard .stat,.hcard .tr{display:none}.hcard h3{font-size:1rem}.hcard .role{font-size:.55rem;margin-bottom:1px}#compRow .cb{padding:3px 10px;font-size:.72rem}#heroScreen .btns{padding-top:2px;padding-bottom:8px}#heroScreen .btn{padding:5px 18px}#survCv{width:min(110px,22vw)}.lcard{min-height:58px}}
 
-#compRow{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:center;margin-bottom:10px;font-family:Barlow,'Segoe UI',Roboto,sans-serif;font-size:.8rem;color:#ccc}
+#compRow{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:center;margin-bottom:4px;font-family:Barlow,'Segoe UI',Roboto,sans-serif;font-size:.8rem;color:#ccc}
 #compRow .cb{padding:5px 12px;border-radius:14px;border:2px solid #555;background:rgba(0,0,0,.6);color:#ddd;cursor:pointer;font-family:inherit;font-size:.8rem}
 #compRow .cb.on{border-color:#33ff77;color:#33ff77;box-shadow:0 0 10px rgba(50,255,120,.4)}
 #compRow .cb:disabled{opacity:.3}
@@ -83,6 +84,7 @@ h1{font-family:Creepster,'Bebas Neue',Impact,sans-serif;font-weight:400;font-siz
 #dailyRow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;width:min(760px,96vw);margin:6px 0}.dd{background:rgba(20,3,8,.92);border:2px solid #442;border-radius:10px;padding:8px 4px;text-align:center;font-family:Barlow,sans-serif;position:relative}.dd small{display:block;color:#888;font-size:.6rem;letter-spacing:1px}.dd span{display:block;font-size:1.6rem;margin:4px 0}.dd b{color:#ffcc33;font:1rem Bebas Neue,Impact,sans-serif;letter-spacing:1px}.dd.got{opacity:.45}.dd.got:after{content:'✓';position:absolute;top:4px;right:6px;color:#3f7}.dd.now{border-color:#ffcc33;box-shadow:0 0 18px rgba(255,200,50,.5);animation:pulse 1.2s infinite}.dd.big{border-color:#ff0033}@keyframes pulse{50%{transform:scale(1.05)}}
 #startScreen{background:radial-gradient(ellipse at 50% 45%,rgba(10,0,4,.72) 0%,rgba(10,0,4,.35) 45%,rgba(0,0,0,.05) 80%)}#startScreen .panel{background:rgba(15,2,6,.78)}
 #trophyGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;width:min(760px,96vw)}.tro{background:rgba(20,3,8,.92);border:1px solid #333;border-radius:9px;padding:5px 6px;font-family:Barlow,sans-serif;display:flex;gap:6px;align-items:center;opacity:.6}.tro>span{font-size:1.4rem}.tro h4{font:.9rem Bebas Neue,Impact,sans-serif;letter-spacing:1px;color:#ddd}.tro p{font-size:.55rem;color:#aaa;line-height:1.15}.tro i{display:block;height:4px;background:#222;border-radius:2px;margin-top:3px}.tro i b{display:block;height:100%;background:#ffcc33;border-radius:2px}.tro.ready{opacity:1;border-color:#ffcc33;box-shadow:0 0 12px rgba(255,200,50,.35);cursor:pointer}.tro.done{opacity:1;border-color:#2a5}.tro .rw{font:600 .55rem Barlow,sans-serif;color:#ffcc33}
+#diffRow{display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;margin:2px 0 6px;width:min(760px,96vw)}#diffRow .df{font:1rem Bebas Neue,Impact,sans-serif;letter-spacing:2px;padding:4px 14px;border-radius:14px;border:2px solid #444;background:rgba(0,0,0,.6);color:#888;cursor:pointer}#diffRow .df.on{border-color:var(--c);color:var(--c);box-shadow:0 0 12px var(--c)}#diffRow span{font:600 .62rem Barlow,sans-serif;color:#bbb;flex-basis:100%;text-align:center}.ldiff{position:absolute;left:64px;top:9px;font:700 .5rem Barlow,sans-serif;letter-spacing:1px}
 .lcard h3{font-family:'Bebas Neue','Bebas Neue',Impact,sans-serif;font-size:1.2rem;letter-spacing:1px;text-shadow:2px 2px 0 #000}
 .lcard p{font-size:.7rem;color:#ddd;text-shadow:1px 1px 0 #000}
 .lcard .tag{position:absolute;top:7px;right:9px;font-size:.68rem;background:rgba(0,0,0,.6);padding:2px 8px;border-radius:10px}
@@ -210,6 +212,7 @@ h1{font-family:Creepster,'Bebas Neue',Impact,sans-serif;font-weight:400;font-siz
     <div id="bSpc" class="abtn"><div class="fill"></div>⚡</div>
     <div id="bRoll" class="abtn">🌀</div>
     <div id="bSwap" class="abtn hidden" style="width:48px;height:48px;font-size:1.2rem">🔁</div>
+    <div id="bBud" class="abtn hidden" style="width:48px;height:48px;font-size:1.2rem"><div class="fill"></div>🤝<small id="bBudTxt"></small></div>
   </div>
 </div>
 
@@ -240,7 +243,7 @@ h1{font-family:Creepster,'Bebas Neue',Impact,sans-serif;font-weight:400;font-siz
 
 <div id="levelScreen" class="overlay hidden">
   <h1 style="font-size:clamp(1.5rem,8vh,3rem)">CHOOSE LEVEL</h1>
-  <div class="sub">Clear the streets · Kill the boss · Go deeper</div>
+  <div id="diffRow"></div>
   <div id="levelGrid"></div>
   <div class="btns"><button class="btn sec" id="levelBack">BACK</button></div>
 </div>
@@ -489,6 +492,7 @@ const Music = {
   play(name) { if (!A.ctx) return; this.track = TRACKS[name] || TRACKS.menu; if (!this.on) { this.on = true; this.step = 0; this.next = A.ctx.currentTime + 0.05; this.tick(); } },
   stop() { this.on = false; clearTimeout(this.timer); },
   tick() {
+    if (G.sleeping || document.hidden) { this.timer = setTimeout(() => this.tick(), 250); return; }
     if (!this.on) return; const tempo = this.track.tempo * (this.boss ? 1.28 : 1);
     while (this.next < A.ctx.currentTime + 0.12) { if (Cfg.music) this.note(this.step, this.next); this.next += 15 / tempo; this.step = (this.step + 1) % 16; }
     this.timer = setTimeout(() => this.tick(), 25);
@@ -523,6 +527,13 @@ const HEROES = {
     stats: [3, 4, 2], atk: 'Nail gun · rapid nails', spcName: 'POWER CHORD', spc: 'a sonic blast knocks back and stuns everything around you', ultName: 'ENCORE', ult: 'drops a giant speaker that pulls zombies in and blasts them' }
 };
 const HERO_ORDER = ['maya', 'ben', 'aris', 'chloe'];
+const DIFFS = [
+  { id: 'easy', name: 'EASY', col: '#33ff77', hp: 1, dmg: 1, blood: 1, desc: 'Companion always with you · special charges up' },
+  { id: 'medium', name: 'MEDIUM', col: '#ffcc33', hp: 1.3, dmg: 1.2, blood: 1.5, desc: 'Tougher zombies · call your companion for 20s (30s cooldown) · special every 30s · +50% 🩸' },
+  { id: 'hard', name: 'HARD', col: '#ff3344', hp: 1.6, dmg: 1.4, blood: 2, desc: 'Brutal zombies · ONE companion call · ONE special per level · double 🩸' }
+];
+const diffOn = () => G.mode === 'campaign' || G.mode === 'bonus';
+const DF = () => DIFFS[diffOn() ? (Save.diff || 0) : 0];
 const SKIN_DEFS = [
   { id: 'classic', name: 'Classic', col: null },
   { id: 'streets', name: 'Night Owl', lvl: 0, col: '#2a3048', look: { shirt: '#1e2230', shirt2: '#3a4058', pants: '#15161c', boots: '#0c0c0e' } },
@@ -571,6 +582,7 @@ const BONUS = [
   { id: 'rescue', name: 'RESCUE LEO', icon: '🎸', desc: 'Guard the cage while Leo picks the lock', lvl: 1, need: 1, reward: 300, time: 100, story: true },
   { id: 'onehit', name: 'ONE HIT WONDER', icon: '💀', desc: 'Kill 50 zombies · one hit and you\'re dead', lvl: 1, need: 1, reward: 200, time: 120, goal: 50 },
   { id: 'bloodrush', name: 'BLOOD RUSH', icon: '🩸', desc: 'Collect 200 blood in 75 seconds', lvl: 2, need: 2, reward: 250, time: 75, goal: 200 },
+  { id: 'endless', name: 'ENDLESS HORDE', icon: '♾️', desc: 'No timer. No mercy. How long can you last?', lvl: 0, need: 3, reward: 0, time: 3600, endless: true },
   { id: 'hordenight', name: 'HORDE NIGHT', icon: '🌙', desc: 'Survive 2 minutes of endless horde', lvl: 3, need: 3, reward: 350, time: 120 }
 ];
 Save.bonusDone = Save.bonusDone || {}; syncLeo();
@@ -758,9 +770,9 @@ function explosion(x, y, r, dmgE, dmgP) {
 // ----- run setup -----
 function startRun(heroId, mode = 'campaign', levelIdx) {
   A.init(); Save.st.runs++;
-  G.hero = heroId; G.mode = mode; G.levelIdx = levelIdx !== undefined ? levelIdx : (G.levelIdx || 0); G.bonus = mode === 'bonus' ? BONUS.find(b => b.id === pendingBonus) : null; if (G.bonus) G.levelIdx = G.bonus.lvl; G.L = mode === 'campaign' || mode === 'bonus' ? LEVELS[G.levelIdx] : BASE_LEVEL;
+  G.hero = heroId; G.mode = mode; G.levelIdx = levelIdx !== undefined ? levelIdx : (G.levelIdx || 0); G.bonus = mode === 'bonus' ? BONUS.find(b => b.id === pendingBonus) : null; if (G.bonus) G.levelIdx = G.bonus.endless ? randi(0, 3) : G.bonus.lvl; G.L = mode === 'campaign' || mode === 'bonus' ? LEVELS[G.levelIdx] : BASE_LEVEL;
   const L0 = G.L;
-  Object.assign(G, { safeTalk: null, speaker: null, cage: null, rescueP: 0, bloodMul: 1, timeUp: false, bonusT: 0, overrun: false, wave: 0, breakT: 300, waveTotal: 0, waveSpawned: 0, trainT: 45 * 60, score: 0, xpGain: {}, core: null, relievedT: 0, time: 0, kills: 0, bloodRun: 0, banked: 0, combo: 0, comboT: 0, shake: 0, hitStop: 0, flash: 0, revived: false, arena: false, phase: mode === 'campaign' ? 'street' : mode === 'raid' ? 'raidBreak' : 'train', lockKills: 0, holdT: 0, doorOpen: 0, minX: 10, maxX: L0.W - 10, camL: 0, camR: L0.W, spawnMaxX: L0.plan.roadblock ? L0.plan.roadblock - 60 : 1e9, bolt: 0, nextBolt: 900, thunderT: 0, boss: null, bossDone: false, endT: 0, spawnT: 120, hordes: 0, rain: null, runStart: performance.now(), hintT: 420 });
+  Object.assign(G, { endPaid: 0, endWave: 1, safeTalk: null, speaker: null, cage: null, rescueP: 0, bloodMul: 1, timeUp: false, bonusT: 0, overrun: false, wave: 0, breakT: 300, waveTotal: 0, waveSpawned: 0, trainT: 45 * 60, score: 0, xpGain: {}, core: null, relievedT: 0, time: 0, kills: 0, bloodRun: 0, banked: 0, combo: 0, comboT: 0, shake: 0, hitStop: 0, flash: 0, revived: false, arena: false, phase: mode === 'campaign' ? 'street' : mode === 'raid' ? 'raidBreak' : 'train', lockKills: 0, holdT: 0, doorOpen: 0, minX: 10, maxX: L0.W - 10, camL: 0, camR: L0.W, spawnMaxX: L0.plan.roadblock ? L0.plan.roadblock - 60 : 1e9, bolt: 0, nextBolt: 900, thunderT: 0, boss: null, bossDone: false, endT: 0, spawnT: 120, hordes: 0, rain: null, runStart: performance.now(), hintT: 420 });
   enemies = []; allies = []; shots = []; eshots = []; parts = []; texts = []; pickups = []; fires = []; acids = []; rings = []; teles = []; decals = []; flashes = []; skybolts = []; corpses = [];
   buildLevel();
   G.downs = 0; G.tags = []; Save.tags = Save.tags || {}; Save.stars = Save.stars || {};
@@ -775,6 +787,8 @@ function startRun(heroId, mode = 'campaign', levelIdx) {
   if (Save.relieved) { Save.relieved = false; Save.washed = false; saveGame(); G.relievedT = 3600; }
   if (Save.companion && Save.companion !== heroId && mode !== 'training') buddy = makeBuddy(Save.companion);
   if (Save.mealReady && mode !== 'training') { Save.mealReady = false; player.max = Math.round(player.max * 1.25); player.hp = player.max; saveGame(); setTimeout(() => player && addText('WELL FED +25% HP', player.x, player.y - 80, '#ffcc66', 18, 90), 400); }
+  G.diffIdx = diffOn() ? (Save.diff || 0) : 0; G.bloodMul = (G.bloodMul || 1) * DF().blood;
+  if (G.diffIdx > 0) { G.budStash = buddy ? Save.companion : null; buddy = null; G.budT = 0; G.budCd = 0; G.budUses = 0; player.spc = player.spcMax; player.spcLock = 0; }
   if (mode === 'bonus') setupBonus();
   G.cam.x = clamp(player.x - VW / 2, 0, L0.W - VW); G.cam.y = player.y - VIEW_H * 0.58;
   showOnly(null); $('hud').classList.remove('hidden'); $('bossHud').classList.add('hidden'); $('progBar').classList.remove('hidden');
@@ -784,7 +798,8 @@ function startRun(heroId, mode = 'campaign', levelIdx) {
   if (isTouch) $('touch').classList.remove('hidden');
   drawPortrait();
   G.state = 'play'; Music.boss = false; Music.stop(); Music.play(trackFor()); Amb.stop(); Amb.start();
-  if (mode === 'raid') { banner('RAID ' + (Save.raids + 1), 'Protect the generator · 3 waves'); $('bossHud').classList.remove('hidden'); $('bossName').textContent = 'GENERATOR'; }
+  G.siege = mode === 'raid' && (Save.raids + 1) % 5 === 0; G.siegeBrutes = false;
+  if (mode === 'raid') { banner(G.siege ? 'SIEGE RAID ' + (Save.raids + 1) : 'RAID ' + (Save.raids + 1), G.siege ? 'Brutes incoming · double reward' : 'Protect the generator · 3 waves'); $('bossHud').classList.remove('hidden'); $('bossName').textContent = 'GENERATOR'; }
   else if (mode === 'training') banner('TRAINING RANGE', 'Hit as many targets as you can');
   else banner(G.L.name, G.L.sub);
   if (G.washedRun) player.spcMul *= 1.1;
@@ -805,7 +820,7 @@ function makePlayer(id) {
 function hurtPlayer(dmg, sx, sy, kb = 6) {
   const p = player; if (!p || G.state !== 'play') return false;
   if (p.iframes > 0 || p.rollT > 0 || p.dashT > 0) return false;
-  let d = dmg * (1 - p.H.armor);
+  let d = dmg * (1 - p.H.armor) * DF().dmg;
   const a = Math.atan2(p.y - sy, p.x - sx);
   if (p.shieldT > 0) { d *= 0.1; SFX.block(); sparks(p.x + Math.cos(p.aim) * 14, p.y + Math.sin(p.aim) * 14, 8); p.iframes = 18; }
   else { p.lastHurt = G.time; p.iframes = 50; p.vx += Math.cos(a) * kb; p.vy += Math.sin(a) * kb; SFX.hurt(); vibrate(35); G.flash = 10; G.flashCol = '255,0,0'; addShake(10); G.combo = 0; G.comboT = 0; }
@@ -840,6 +855,11 @@ function weaponAttack(p, w, a, dm, mx, my) {
   else if (w === 'flamer') { for (let i = 0; i < 2; i++) shoot('flame', mx, my, a + rand(-0.22, 0.22), { spd: rand(6, 8), dmg: 0.4 * dm, life: 20, pierce: 99, fire: true, noZone: true, r: 9 }); sfx('flamer', () => A.noise(0.14, 0.12, 'lowpass', 800), 110); }
   else if (w === 'machete') meleeSwing(p, a, 4.6 * dm, 76, 1.2, 5);
 }
+function callBuddy() {
+  const p = player; if (!p || G.diffIdx === 0 || !G.budStash) { SFX.buzz(); return; }
+  if (buddy || G.budCd > 0) { SFX.buzz(); if (G.budCd === Infinity && !buddy) addText('NO MORE CALLS ON HARD', p.x, p.y - 74, '#ff6666', 13, 50); return; }
+  buddy = makeBuddy(G.budStash); buddy.x = p.x - 40; buddy.y = p.y + 20; G.budT = 1200; G.budUses++; ringFx(buddy.x, buddy.y, '#55ff88', 90); SFX.heal(); addText(buddy.H.name.toUpperCase() + ': ' + pick(['On my way!', 'Here I am!', 'Who called?', 'Let\'s go!']), buddy.x, buddy.y - 74, '#88ffaa', 14, 80);
+}
 function swapWeapon() { const p = player; if (!p || !p.alt) { SFX.buzz(); return; } p.wpn = p.wpn === 'sig' ? p.alt : 'sig'; p.atkCd = 8; SFX.click(); addText(p.wpn === 'sig' ? p.H.atk.split(' ·')[0].split(':')[0].toUpperCase() : WEAPONS[p.wpn].name.toUpperCase(), p.x, p.y - 74, '#ffffff', 14, 40); updateSwapBtn(); }
 function updateSwapBtn() { const b = $('bSwap'); if (!b) return; const p = player; b.classList.toggle('hidden', !(p && p.alt)); if (p && p.alt) b.firstChild.textContent = p.wpn === 'sig' ? WEAPONS[p.alt].icon : '🔁'; }
 function meleeSwing(p, a, dmg, range, half, kb) {
@@ -851,6 +871,7 @@ function meleeSwing(p, a, dmg, range, half, kb) {
   if (any) { G.hitStop = Math.max(G.hitStop, 3); addShake(5); }
 }
 function useSpecial(p) {
+  if (p === player && G.diffIdx > 0) p.spcLock = G.diffIdx === 1 ? 1800 : Infinity;
   p.spc = 0; SFX.special(); addShake(8); G.flash = 8; G.flashCol = '255,210,60';
   addText(p.H.spcName + '!', p.x, p.y - 70, '#ffcc33', 20, 60);
   const dm = p.dmgMul * (p.enraged ? 1.25 : 1);
@@ -918,12 +939,15 @@ function updatePlayer() {
   if (In.spcQ) { In.spcQ = false; if (p.spc >= p.spcMax) useSpecial(p); else SFX.buzz(); }
   if (In.ultQ) { In.ultQ = false; useUlt(p); }
   if (In.swapQ) { In.swapQ = false; swapWeapon(); }
+  if (In.budQ) { In.budQ = false; callBuddy(); }
+  if (G.diffIdx > 0) { if (G.budT > 0 && buddy && --G.budT <= 0) { addText(buddy.H.name.toUpperCase() + ': ' + pick(['Gotta go! Call me!', 'Be right back!', 'Out of breath!', 'Covering the rear!']), buddy.x, buddy.y - 74, '#88ffaa', 14, 90); ringFx(buddy.x, buddy.y, '#55ff88', 60); buddy = null; G.budCd = G.diffIdx === 1 ? 1800 : Infinity; } else if (G.budCd > 0 && G.budCd !== Infinity) { G.budCd--; if (G.budCd === 0) addText('🤝 COMPANION READY', p.x, p.y - 84, '#55ff88', 14, 60); } }
   if (p.storm > 0 && --p.stormT <= 0) {
     const n = 16, off = (3 - p.storm) * (Math.PI / n), dm = p.dmgMul * wMul('chloe') * (p.enraged ? 1.25 : 1);
     for (let i = 0; i < n; i++) shoot('knife', p.x, p.y, off + i * Math.PI * 2 / n, { spd: 15, dmg: 2.4 * dm, life: 34, pierce: 1, rot: 0 });
     p.storm--; p.stormT = 7; p.atkAnim = 12; sfx('storm', () => { A.noise(0.12, 0.25, 'highpass', 3500); A.tone(1500, 'sine', 0.08, 0.04, 700); });
   }
   p.spc = Math.min(p.spcMax, p.spc + 0.11 * p.spcMul);
+  if (G.diffIdx > 0 && p.spcLock > 0) { p.spcLock--; p.spc = G.diffIdx === 1 ? p.spcMax * (1 - p.spcLock / 1800) * 0.999 : 0; }
   for (const k of ['atkCd', 'atkAnim', 'iframes', 'tick', 'shieldT', 'rollCd', 'muzzle']) if (p[k] > 0) p[k]--;
   if (p.swing && --p.swing.t <= 0) p.swing = null;
   if (p.regenT > 0) { p.regenT--; p.hp = Math.min(p.max, p.hp + 0.12); if (G.time % 10 === 0) part({ x: p.x + rand(-12, 12), y: p.y, z: rand(10, 45), vz: 1.2, g: 0, life: 30, size: 3, color: '#55ff88', kind: 'plus' }); }
@@ -954,7 +978,7 @@ function playerDie() {
 
 // ----- enemies -----
 function spawnEnemy(type, x, y, opts = {}) {
-  const d = ZT[type], prog = clamp(player.x / G.L.ARENA, 0, 1), mul = (1 + prog * 0.35) * (G.mode === 'campaign' || G.mode === 'bonus' ? (G.L.diff || 1) : 1);
+  const d = ZT[type], prog = clamp(player.x / G.L.ARENA, 0, 1), mul = (1 + prog * 0.35) * (G.mode === 'campaign' || G.mode === 'bonus' ? (G.L.diff || 1) * DF().hp : 1);
   const z = { type, d, x, y, r: d.r, vx: 0, vy: 0, hp: d.hp * mul, max: d.hp * mul, spd: d.spd * rand(0.88, 1.12), face: -1, flash: 0, stun: 0, burn: 0, walk: rand(0, 10), t: randi(0, 200),
     atkT: randi(20, 60), state: 'walk', st: 0, emerge: opts.emerge || 0, dead: false, minion: !!opts.minion, buffT: 0 };
   if (d.look && (type === 'shambler' || type === 'sprinter' || type === 'puker')) {
@@ -1085,7 +1109,8 @@ function updateSpawns() {
     if (G.phase !== 'wave' || --G.spawnT > 0) return;
     G.spawnT = Math.max(12, 40 - G.wave * 7 - Save.raids * 2) * rand(0.7, 1.3);
     if (G.waveSpawned >= G.waveTotal || enemies.length >= 30) return;
-    const mix = G.wave === 1 ? { shambler: 6, sprinter: 3 } : G.wave === 2 ? { shambler: 5, sprinter: 3, puker: 2, armored: 1 } : { shambler: 4, sprinter: 4, puker: 2, armored: 3, dog: 2 };
+    const mix = Object.assign({}, G.wave === 1 ? { shambler: 6, sprinter: 3 } : G.wave === 2 ? { shambler: 5, sprinter: 3, puker: 2, armored: 1 } : { shambler: 4, sprinter: 4, puker: 2, armored: 3, dog: 2 }, Save.raids >= 4 ? { scrambler: 2, bloater: 1, riot: 1 } : {}, Save.raids >= 6 ? { spiker: 1.5, ghoul: 1.5, brute: 0.6 } : {});
+    if (G.siege && G.wave === 3 && !G.siegeBrutes) { G.siegeBrutes = true; for (let k = 0; k < 2 + Math.floor(Save.raids / 10); k++) { const s2 = baseSpawn(); if (s2) spawnEnemy('brute', s2.x, s2.y, { emerge: s2.emerge }); } banner('SIEGE!', 'Brutes at the walls'); SFX.roar(); }
     const s = baseSpawn(); if (s) { spawnEnemy(pickW(mix), s.x, s.y, { emerge: s.emerge }); G.waveSpawned++; }
     return;
   }
@@ -1105,8 +1130,9 @@ function updateSpawns() {
     if (--G.spawnT > 0) return;
     const hk = ph === 'hold' && !G.bonus ? 1 - G.holdT / (L.plan.safe.hold * 60) : 0;
     const bk = G.bonus ? 1 - G.bonusT / (G.bonus.time * 60) : 0;
-    G.spawnT = (ph === 'bonus' ? (G.bonus.id === 'hordenight' ? lerp(16, 7, bk) : lerp(26, 14, bk)) : ph === 'lockdown' ? 34 : ph === 'enter' ? 50 : lerp(30, 17, G.bonus ? bk : hk)) * rand(0.7, 1.3);
-    if (enemies.length >= (ph === 'bonus' && G.bonus.id === 'hordenight' ? 40 : ph === 'hold' ? 32 : 28)) return;
+    const ek = G.bonus && G.bonus.endless ? clamp((G.bonus.time * 60 - G.bonusT) / (60 * 300), 0, 1) : 0;
+    G.spawnT = (ph === 'bonus' ? (G.bonus.endless ? lerp(26, 6, ek) : G.bonus.id === 'hordenight' ? lerp(16, 7, bk) : lerp(26, 14, bk)) : ph === 'lockdown' ? 34 : ph === 'enter' ? 50 : lerp(30, 17, G.bonus ? bk : hk)) * rand(0.7, 1.3);
+    if (enemies.length >= (ph === 'bonus' && (G.bonus.id === 'hordenight' || G.bonus.endless) ? (G.bonus.endless ? 30 + Math.floor(ek * 15) : 40) : ph === 'hold' ? 32 : 28)) return;
     const mix = ph === 'hold' ? Object.assign({}, L.mix, { armored: 2.5, sprinter: 4 }) : L.mix;
     for (let k = 0; k < (ph === 'hold' && Math.random() < 0.5 ? 2 : 1); k++) { const s = spawnSpot(); if (s) spawnEnemy(pickW(mix), s.x, s.y, { emerge: s.emerge }); }
     return;
@@ -1386,8 +1412,18 @@ function buddySpecial(b) {
   else if (b.id === 'leo') powerChord(b, dm);
   else { b.storm = 3; b.stormT = 0; }
 }
+const CHAT = {
+  maya: ['Leo would love this.', 'Left side! LEFT!', 'Dad taught me this one.', 'Stay close, I\'ve got you.', 'Bolts are free. Use them.'],
+  ben: ['Batter up!', 'Coach says: hydrate!', 'That one\'s mine!', 'I need a bigger bat.', 'Team on three!'],
+  aris: ['Don\'t make me patch you up again.', 'Fascinating. Disgusting, but fascinating.', 'I\'ve seen worse. Not much worse.', 'Wash your hands after this.', 'That smell is... medically concerning.'],
+  chloe: ['Too slow!', 'Race you to the next one!', 'Did you see that? Tell me you saw that.', 'Rooftops were easier.', 'Pizza after this. My treat.'],
+  leo: ['This one\'s called RUN.', 'Turn it UP!', 'Sis would\'ve hit that.', 'Encore? ENCORE!', 'Worst. Gig. Ever.']
+};
 function updateBuddy() {
   const b = buddy, p = player; if (!b) return;
+  if (b.down <= 0 && G.state === 'play') { G.chatT = (G.chatT || 900) - 1; G.lowT = Math.max(0, (G.lowT || 0) - 1);
+    if (p.hp < p.max * 0.25 && !G.lowT) { G.lowT = 900; addText(pick(['You\'re bleeding! Fall back!', 'Grab a medkit, quick!', 'Hang in there!']), b.x, b.y - 74, '#ffaaaa', 13, 110); }
+    else if (G.chatT <= 0) { G.chatT = randi(1500, 2700); addText(pick(CHAT[b.id] || CHAT.maya), b.x, b.y - 74, '#ffffff', 13, 110); } }
   for (const k of ['atkCd', 'atkAnim', 'iframes', 'tick', 'shieldT', 'muzzle']) if (b[k] > 0) b[k]--;
   if (b.swing && --b.swing.t <= 0) b.swing = null;
   if (b.down > 0) {
@@ -1435,7 +1471,7 @@ function startBoss() {
   const L = G.L; G.arena = true; G.phase = 'boss'; G.minX = L.ARENA; G.maxX = L.ARENA_R; G.camL = L.ARENA - 40; G.camR = L.ARENA_R + 40;
   obstacles.push({ type: 'gate', x: L.ARENA - 26, y: L.TOP, w: 26, d: L.BOT - L.TOP, h: 70 });
   for (const z of enemies) if (z.x < L.ARENA) z.dead = true;
-  const key = L.boss || 'ironhide', def = BOSSES[key], hp = def.hp * (1 + Save.up.dmg * 0.06);
+  const key = L.boss || 'ironhide', def = BOSSES[key], hp = def.hp * (1 + Save.up.dmg * 0.06) * DF().hp;
   G.boss = { type: key, def, name: def.name, x: L.ARENA_R - 160, y: (L.TOP + L.BOT) / 2, r: def.r, vx: 0, vy: 0, z: 0, hp, max: hp, ang: Math.PI, face: -1,
     state: 'intro', t: 0, flash: 0, phase2: false, atk: 0, walk: 0, burn: 0, stunT: 0, lastBlock: 0, fade: key === 'necromancer' ? 1 : 0, inVat: key === 'subjectzero', linked: false };
   Music.boss = true; SFX.roar(); addShake(22);
@@ -1595,7 +1631,7 @@ function drawHero(p, preview) {
   const moving = clamp(sp / 2.5, 0, 1);
   for (const t of p.trail || []) { ctx.save(); ctx.globalAlpha = t.life / 30; drawHuman({ x: t.x, y: t.y, s: 0.9, facing: t.f, walk: p.walk, moving: 1, look: { skin: '#8060ff', shirt: '#6040dd', pants: '#4020aa', boots: '#4020aa', hair: '#6040dd', hairStyle: 'short' }, noFace: true }); ctx.restore(); }
   let alpha = 1; if (p.iframes > 0 && p.iframes < 48 && p.shieldT <= 0 && Math.floor(p.iframes / 4) % 2 === 0) alpha = 0.4;
-  const aiming = preview ? false : (G.time - p.lastFire < 30 || p.atkAnim > 0);
+  const aiming = preview && !p.forceAim ? false : (G.time - p.lastFire < 30 || p.atkAnim > 0);
   let fa = aiming ? aimArm(p.aim) : undefined;
   if (aiming && p.id === 'ben' && p.atkAnim > 0) fa += lerp(1.2, -1.4, p.atkAnim / 12);
   if (aiming && p.id === 'chloe' && p.atkAnim > 0) fa += lerp(0.3, -0.9, p.atkAnim / 12);
@@ -2626,7 +2662,7 @@ function openRoom(id) {
   } else if (id === 'defense') {
     T.textContent = '🛡 DEFENSES';
     const next = WPN_ORDER.find(w => WEAPONS[w].raid === Save.raids + 1);
-    const r0 = row(`<div><h3>Raid ${Save.raids + 1}</h3><p>Three waves attack the Hideout. Protect the generator.${next ? ` Survive to unlock the <b style="color:#ffcc33">${WEAPONS[next].name}</b>.` : ' Big blood reward.'}</p></div>`, 'special'); const b0 = document.createElement('div'); b0.className = 'bb'; b0.appendChild(btn('🛡 DEFEND', 'gold', () => { pendingMode = 'raid'; $('baseScreen').classList.add('hidden'); openHeroes(); })); r0.appendChild(b0);
+    const sg = (Save.raids + 1) % 5 === 0; const r0 = row(`<div><h3>${sg ? '⚔️ SIEGE ' : ''}Raid ${Save.raids + 1}</h3><p>Three waves attack the Hideout. Protect the generator.${next ? ` Survive to unlock the <b style="color:#ffcc33">${WEAPONS[next].name}</b>.` : ` Reward: 🩸 ${(80 + (Save.raids + 1) * 40) * (sg ? 2 : 1)}${sg ? ' (double · brutes attack!)' : ''}.`}${Save.raids >= 3 && Save.raids < 6 ? ' New zombies join from raid 5.' : ''}</p></div>`, 'special'); const b0 = document.createElement('div'); b0.className = 'bb'; b0.appendChild(btn('🛡 DEFEND', 'gold', () => { pendingMode = 'raid'; $('baseScreen').classList.add('hidden'); openHeroes(); })); r0.appendChild(b0);
     for (const u of BASE_UP) {
       const lv = Save.base[u.id], maxed = lv >= u.max, cost = baseCost(u), r = row(`<div><h3>${u.icon} ${u.name} <span style="color:#888;font-size:.75rem">Lv ${lv}/${u.max}</span></h3><p>${u.desc}</p><div class="pips">${Array.from({ length: u.max }, (_, i) => `<i class="${i < lv ? 'on' : ''}"></i>`).join('')}</div></div>`);
       const bb = document.createElement('div'); bb.className = 'bb'; bb.appendChild(btn(maxed ? 'MAX' : cost + ' 🩸', '', () => { if (Save.blood >= cost && !maxed) { Save.blood -= cost; Save.base[u.id]++; saveGame(); SFX.heal(); refreshBaseTop(); openRoom('defense'); } }, maxed || Save.blood < cost)); r.appendChild(bb);
@@ -3086,7 +3122,8 @@ function updateHUD() {
   const p = player;
   $('budBar').classList.toggle('hidden', !buddy); if (buddy) { $('budFill').style.width = (buddy.down > 0 ? (1 - buddy.down / 480) * 100 : buddy.hp / buddy.max * 100) + '%'; $('budFill').style.background = buddy.down > 0 ? '#aa3333' : ''; $('budTxt').textContent = buddy.down > 0 ? buddy.H.name.toUpperCase() + ' DOWN · HELP THEM UP' : buddy.H.name.toUpperCase() + (buddy.revUsed ? '' : ' · ❤ 1 REVIVE'); }
   $('hpFill').style.width = (p.hp / p.max * 100) + '%'; $('hpTxt').textContent = Math.ceil(p.hp) + ' / ' + p.max;
-  const spR = p.spc / p.spcMax; $('spFill').style.width = spR * 100 + '%'; $('spTxt').textContent = p.H.spcName + (spR >= 1 ? ' READY' : '');
+  { const bb = $('bBud'); const show = G.diffIdx > 0 && !!G.budStash; bb.classList.toggle('hidden', !show); if (show) { const act = !!buddy, rdy = !buddy && !G.budCd; bb.classList.toggle('ready', rdy); bb.classList.toggle('used', G.budCd === Infinity && !buddy); bb.querySelector('.fill').style.height = (act ? G.budT / 1200 : G.budCd === Infinity ? 0 : G.budCd ? 1 - G.budCd / 1800 : 1) * 100 + '%'; $('bBudTxt').textContent = act ? Math.ceil(G.budT / 60) + 's' : G.budCd === Infinity ? '' : G.budCd ? Math.ceil(G.budCd / 60) + 's' : 'CALL'; } }
+  const spR = p.spc / p.spcMax; $('spFill').style.width = spR * 100 + '%'; $('spTxt').textContent = p.H.spcName + (G.diffIdx === 2 && p.spcLock > 0 ? ' USED' : G.diffIdx === 1 && p.spcLock > 0 ? ' · ' + Math.ceil(p.spcLock / 60) + 's' : spR >= 1 ? ' READY' : '');
   const ultR = p.ultUsed ? 0 : p.ultKills / p.ultNeed; $('ultFill').style.width = ultR * 100 + '%';
   $('ultTxt').textContent = p.ultUsed ? p.H.ultName + ' USED' : ultR >= 1 ? p.H.ultName + ' READY' : `${p.H.ultName} ${p.ultKills}/${p.ultNeed}`;
   $('bSpc').classList.toggle('ready', spR >= 1); $('bSpc').querySelector('.fill').style.height = spR * 100 + '%';
@@ -3101,7 +3138,7 @@ function updateHUD() {
   else if (ph === 'lockdown') { obj = `🚧 ROADBLOCK · KILL ${Math.min(G.lockKills, P.lockKills)}/${P.lockKills}`; prog = G.lockKills / P.lockKills; }
   else if (ph === 'street2') obj = '▶ REACH THE PLAZA';
   else if (ph === 'toSafe') obj = G.endT > 0 ? '' : '🏠 REACH THE SAFE HOUSE';
-  else if (G.mode === 'bonus') { const B = G.bonus, s2 = Math.max(0, Math.ceil(G.bonusT / 60)); obj = B.id === 'rescue' ? `🔓 FREEING LEO ${Math.floor(G.rescueP * 100)}% · ${s2}s` : B.id === 'onehit' ? `💀 KILLS ${G.kills}/${B.goal} · ${s2}s` : B.id === 'bloodrush' ? `🩸 BLOOD ${G.bonusBlood}/${B.goal} · ${s2}s` : `${B.icon} SURVIVE · ${s2}s`; prog = B.id === 'rescue' ? G.rescueP : B.id === 'onehit' ? G.kills / B.goal : B.id === 'bloodrush' ? G.bonusBlood / B.goal : 1 - G.bonusT / (B.time * 60); }
+  else if (G.mode === 'bonus') { const B = G.bonus, s2 = Math.max(0, Math.ceil(G.bonusT / 60)); obj = B.endless ? (() => { const el = Math.floor((B.time * 60 - G.bonusT) / 60), bs = (Save.endlessBest || {}).t || 0; return `♾️ ${Math.floor(el / 60)}:${String(el % 60).padStart(2, '0')} · WAVE ${G.endWave || 1} · BEST ${Math.floor(bs / 60)}:${String(bs % 60).padStart(2, '0')}`; })() : B.id === 'rescue' ? `🔓 FREEING LEO ${Math.floor(G.rescueP * 100)}% · ${s2}s` : B.id === 'onehit' ? `💀 KILLS ${G.kills}/${B.goal} · ${s2}s` : B.id === 'bloodrush' ? `🩸 BLOOD ${G.bonusBlood}/${B.goal} · ${s2}s` : `${B.icon} SURVIVE · ${s2}s`; prog = B.endless ? ((B.time * 60 - G.bonusT) % 3600) / 3600 : B.id === 'rescue' ? G.rescueP : B.id === 'onehit' ? G.kills / B.goal : B.id === 'bloodrush' ? G.bonusBlood / B.goal : 1 - G.bonusT / (B.time * 60); }
   else if (ph === 'hold') { obj = `🏠 HOLD OUT · ${Math.ceil(G.holdT / 60)}s`; prog = 1 - G.holdT / (P.safe.hold * 60); }
   else if (ph === 'enter') obj = '🚪 GET INSIDE!';
   $('objTxt').textContent = obj; $('progFill').style.width = clamp(prog * 100, 0, 100) + '%';
@@ -3119,7 +3156,7 @@ function drawPortrait() {
   withCtx(pc, () => { pc.setTransform(1, 0, 0, 1, 0, 0); pc.fillStyle = '#1a0408'; pc.fillRect(0, 0, 88, 88); pc.setTransform(3, 0, 0, 3, 40, 196); drawHero(fakeHero(G.hero), true); });
   $('heroName').textContent = HEROES[G.hero].name.toUpperCase();
 }
-const DEATH_QUIPS = ['The zombies send their regards. And their appetite.', 'You were delicious. 5 stars. — the horde', 'Pro tip: the pointy end goes towards the zombies.', 'Ben says he would have survived. Ben is lying.', 'Mittens the cat is disappointed in you.', 'Respawning is free. Dignity is not.', 'Even the shamblers are laughing. Slowly.', 'Somewhere, a zombie is telling its friends about you.'];
+const DEATH_QUIPS = ['The zombies send their regards. And their appetite.', 'You were delicious. 5 stars. — the horde', 'Pro tip: the pointy end goes towards the zombies.', 'Ben says he would have survived. Ben is lying.', 'Mittens the cat is disappointed in you.', 'Respawning is free. Dignity is not.', 'Even the shamblers are laughing. Slowly.', 'Somewhere, a zombie is telling its friends about you.', 'Leo wrote a sad song about this.', 'Dr. Aris says: that\'s not a wound, that\'s a buffet.', 'Chloe made it look easy. Just saying.', 'The cat would have survived. Cats always survive.', 'You were the snack all along.', 'Pro tip: zombies are bad at dodging. You were worse.'];
 const PAUSE_TIPS = ['Tip: zombies can\'t climb. They also can\'t read this. You\'re welcome.', 'Tip: barrels go boom. Zombies near barrels go boom-er.', 'Tip: the toilet buff is real. Science.', 'Tip: hit armoured zombies from behind. They hate that.', 'Tip: Riot zombies block bullets from the front. Melee breaks their guard.', 'Tip: Ghouls go see-through. Wait for them to come back, then unload.', 'Tip: the Hideout cat accepts head scratches and fish.', 'Tip: if you\'re reading this, a zombie is waiting. Patiently.'];
 const KILL_QUIPS = ['BONK!', 'NOT TODAY!', 'STAY DOWN!', 'NEXT!', 'TOO SLOW!', 'BYE BYE!', 'GROSS!', 'SPLAT!'];
 const pick = a => a[Math.floor(Math.random() * a.length)];
@@ -3227,7 +3264,8 @@ const TROPHIES = [
   ['leo', '🎸', 'Full Band', 'Rescue Leo', () => [Save.leo ? 1 : 0, 1], 200],
   ['stars', '⭐', 'Star Collector', 'Earn all 12 level stars', () => [Object.values(Save.stars || {}).flat().filter(Boolean).length, 12], 500],
   ['tags', '🎨', 'Graffiti Hunter', 'Find all 12 Leo tags', () => [Object.keys(Save.tags || {}).filter(k => !k.startsWith('all')).length, 12], 300],
-  ['bonus', '🏅', 'Challenge Accepted', 'Finish every bonus challenge', () => [Object.keys(Save.bonusDone || {}).length, BONUS.length], 400],
+  ['bonus', '🏅', 'Challenge Accepted', 'Finish every bonus challenge', () => [Object.keys(Save.bonusDone || {}).length, BONUS.filter(b => !b.endless).length], 400],
+  ['endless', '♾️', 'Unkillable', 'Survive 5 minutes in Endless Horde', () => [(Save.endlessBest || {}).t || 0, 300], 300],
   ['skins', '👕', 'Fashionista', 'Own 10 skins', () => [HERO_ORDER.reduce((n, h) => n + SKIN_DEFS.filter(k => k.id !== 'classic' && skinOwned(h, k)).length, 0), 10], 300],
   ['gear', '🎒', 'Fully Geared', 'Get all 4 gear for one survivor', () => [Math.max(...Object.keys(HEROES).map(h => [0, 1, 2, 3].filter(i => (Save.gear || {})[h + '_' + i]).length)), 4], 250],
   ['combo', '🔥', 'Combo King', 'Reach a 30x combo', () => [Save.st.combo, 30], 150],
@@ -3256,40 +3294,44 @@ function openDex() {
   for (const k of ['ironhide', 'matriarch', 'subjectzero', 'necromancer']) { const B = BOSSES[k], n = S.bosses[k] || 0, el = document.createElement('div'); el.className = 'zc boss' + (n ? '' : ' lock'); el.innerHTML = `<div style="font-size:2rem;width:46px;text-align:center;${n ? '' : 'filter:brightness(0.15)'}">${BOSS_ICON[k]}</div><div><h4>${n ? B.name.replace('THE ', '') : '???'}</h4><p>${n ? B.title : 'Waiting below…'}</p><div class="k">${n ? '👑 beaten ' + n + 'x' : '🔒 not beaten'}</div></div>`; bg.appendChild(el); }
   showOnly('dexScreen');
 }
+function drawDiffRow() {
+  const r = $('diffRow'); const d = Save.diff || 0; r.innerHTML = DIFFS.map((D, i) => `<button class="df${i === d ? ' on' : ''}" data-i="${i}" style="--c:${D.col}">${D.name}</button>`).join('') + `<span>${DIFFS[d].desc}</span>`;
+  r.querySelectorAll('.df').forEach(b => b.onclick = () => { SFX.click(); Save.diff = +b.dataset.i; saveGame(); openLevels(); });
+}
 function openLevels() {
-  const g = $('levelGrid'); g.innerHTML = '';
+  drawDiffRow(); const g = $('levelGrid'); g.innerHTML = '';
   LEVELS.forEach((L, i) => {
     const open = L.ready && (i === 0 || Save.cleared[i - 1]);
     const el = document.createElement('div'); el.className = 'lcard' + (open ? '' : ' locked'); el.style.background = L.grad;
-    el.innerHTML = `<span class="tag">${!open ? '🔒 CLEAR LEVEL ' + i + ' FIRST' : Save.cleared[i] ? '✓ CLEARED' : 'BOSS: ' + L.bossName.replace('THE ', '')}</span><h3>${i + 1}. ${L.name}</h3><p>${L.sub}${open ? ` · 🎸 ${[0, 1, 2].filter(k => (Save.tags || {})[i + '_' + k]).length}/3 tags` : ''}</p>${open ? `<span class="lstars">${((Save.stars || {})[i] || [0, 0, 0]).map(v => v ? '★' : '☆').join('')}</span>` : ''}`;
+    el.innerHTML = `<span class="tag">${!open ? '🔒 CLEAR LEVEL ' + i + ' FIRST' : Save.cleared[i] ? '✓ CLEARED' : 'BOSS: ' + L.bossName.replace('THE ', '')}</span><h3>${i + 1}. ${L.name}</h3><p>${L.sub}${open ? ` · 🎸 ${[0, 1, 2].filter(k => (Save.tags || {})[i + '_' + k]).length}/3 tags` : ''}</p>${open && Save.clearedDiff && Save.clearedDiff[i] !== undefined && Save.cleared[i] ? `<span class="ldiff" style="color:${DIFFS[Save.clearedDiff[i]].col}">BEST: ${DIFFS[Save.clearedDiff[i]].name}</span>` : ''}${open ? `<span class="lstars">${((Save.stars || {})[i] || [0, 0, 0]).map(v => v ? '★' : '☆').join('')}</span>` : ''}`;
     if (open) el.onclick = () => { SFX.click(); pendingMode = 'campaign'; pendingLevel = i; openHeroes(); };
     g.appendChild(el);
   });
   BONUS.forEach(B => {
     const open = !!Save.cleared[B.need], done = Save.bonusDone[B.id];
     const el = document.createElement('div'); el.className = 'lcard bcard' + (open ? '' : ' locked'); el.style.background = B.id === 'rescue' ? 'linear-gradient(160deg,#061a18,#107a6a)' : 'linear-gradient(160deg,#1a1206,#6a4a10)';
-    el.innerHTML = `<span class="tag">${!open ? '🔒 CLEAR ' + LEVELS[B.need].name.toUpperCase() : B.id === 'rescue' && !done ? '🎸 STORY · UNLOCKS A SURVIVOR' : done ? '✓ DONE · 🩸 ' + Math.round(B.reward / 3) : '★ BONUS · 🩸 ' + B.reward}</span><h3>${B.icon} ${B.name}</h3><p>${B.desc}</p>`;
+    el.innerHTML = `<span class="tag">${!open ? '🔒 CLEAR ' + LEVELS[B.need].name.toUpperCase() : B.endless ? '♾️ BEST ' + (() => { const t2 = (Save.endlessBest || {}).t || 0; return Math.floor(t2 / 60) + ':' + String(t2 % 60).padStart(2, '0'); })() : B.id === 'rescue' && !done ? '🎸 STORY · UNLOCKS A SURVIVOR' : done ? '✓ DONE · 🩸 ' + Math.round(B.reward / 3) : '★ BONUS · 🩸 ' + B.reward}</span><h3>${B.icon} ${B.name}</h3><p>${B.desc}</p>`;
     if (open) el.onclick = () => { SFX.click(); pendingMode = 'bonus'; pendingBonus = B.id; pendingLevel = B.lvl; openHeroes(); };
     g.appendChild(el);
   });
   showOnly('levelScreen');
 }
-const heroCanvases = {};
+const heroCanvases = {}, heroAct = {};
 const HERO_TRAIT = { leo: 'Fast nail gun · sound attacks stun the horde', maya: 'Bolts go through 2 zombies · good at everything', ben: 'Takes 20% less damage · smash hits a wide arc', aris: 'Flares set zombies and oil on fire', chloe: 'Fastest runner · throws knives like crazy' };
 function openHeroes() {
   const g = $('heroGrid'); g.innerHTML = '';
   for (const id of HERO_ORDER) {
     const H = HEROES[id], el = document.createElement('div'); el.className = 'hcard' + (G.hero === id ? ' sel' : '');
     const bar = n => `<i><b style="width:${n * 20}%"></b></i>`;
+    const gl = [0, 1, 2, 3].filter(k => (Save.gear || {})[id + '_' + k]).length;
     el.innerHTML = `<canvas width="280" height="300"></canvas><h3>${H.name}</h3><div class="role">${H.role}</div>
-      <div class="stat"><span>HEALTH</span>${bar(H.stats[0])}</div><div class="stat"><span>SPEED</span>${bar(H.stats[1])}</div><div class="stat"><span>POWER</span>${bar(H.stats[2])}</div>
-      <div class="tr">${HERO_TRAIT[id]}</div><div class="tr2">❤ ${Math.round(H.hp * (1 + (Save.up.hp || 0) * 0.08))} HP${H.armor ? ' · 🛡 ' + Math.round(H.armor * 100) + '% armor' : ''} · 🎯 Lv ${wLevel(id)}/${WMAX} (+${wLevel(id) * 20}%) · ☠ ${Save.st.heroK[id] || 0}</div>
-      <div class="ab">⚔ ${H.atk}<br><em>⚡ ${H.spcName}</em> · ${H.spc}<br><u>☠ ${H.ultName}</u> · ${H.ult}</div>`;
-    el.onclick = () => { SFX.click(); G.hero = id; Save.lastHero = id; if (Save.companion === id) Save.companion = HERO_ORDER.find(h => h !== id); saveGame(); drawCompRow(); g.querySelectorAll('.hcard').forEach(c => c.classList.remove('sel')); el.classList.add('sel'); };
+      <div class="tr2">❤ ${Math.round(H.hp * (1 + (Save.up.hp || 0) * 0.08) * ((Save.gear || {})[id + '_1'] ? 1.1 : 1))}${H.armor ? ' · 🛡' + Math.round(H.armor * 100) + '%' : ''} · 🎯Lv${wLevel(id)} · 🎒${gl}/4</div>
+      <div class="ab">⚔ ${H.atk.split(' · ')[0]}<br><em>⚡ ${H.spcName}</em><br><u>☠ ${H.ultName}</u></div><div class="tap">tap to see the move</div>`;
+    el.onclick = () => { heroAct[id] = performance.now(); ({ maya: () => SFX.bolt(), ben: () => SFX.swing(), aris: () => SFX.heal(), chloe: () => SFX.knife(), leo: () => sfx('chord', () => { [0, 7, 12].forEach((k, i) => A.tone(82 * Math.pow(2, k / 12), 'sawtooth', 0.7, 0.07, null, i * 0.01)); }) }[id] || (() => SFX.click()))(); G.hero = id; Save.lastHero = id; if (Save.companion === id) Save.companion = HERO_ORDER.find(h => h !== id); saveGame(); drawCompRow(); g.querySelectorAll('.hcard').forEach(c => c.classList.remove('sel')); el.classList.add('sel'); };
     heroCanvases[id] = el.querySelector('canvas'); g.appendChild(el);
   }
   const eq = Save.equip && Save.weapons[Save.equip] ? ` · 2nd weapon: ${WEAPONS[Save.equip].icon} ${WEAPONS[Save.equip].name}` : '';
-  $('heroSub').textContent = (pendingMode === 'raid' ? `Raid ${Save.raids + 1} · defend the Hideout` : pendingMode === 'training' ? 'Training Range · +20% damage per level, max 2' : (pendingMode === 'bonus' ? `★ ${BONUS.find(b => b.id === pendingBonus).name} · ${BONUS.find(b => b.id === pendingBonus).desc}` : `Level ${pendingLevel + 1} · ${LEVELS[pendingLevel].name} · Ultimate after ${ULT_KILLS} kills`)) + eq;
+  $('heroSub').textContent = (pendingMode === 'raid' ? `Raid ${Save.raids + 1} · defend the Hideout` : pendingMode === 'training' ? 'Training Range · +20% damage per level, max 2' : (pendingMode === 'bonus' ? `★ ${BONUS.find(b => b.id === pendingBonus).name} · ${BONUS.find(b => b.id === pendingBonus).desc}` : `Level ${pendingLevel + 1} · ${LEVELS[pendingLevel].name} · ${DIFFS[Save.diff || 0].name}`)) + eq;
   drawCompRow();
   showOnly('heroScreen');
 }
@@ -3305,14 +3347,23 @@ function drawCompRow() {
 function drawHeroPreviews() {
   if (!$('survScreen').classList.contains('hidden') && survSel) { const c = $('survCv').getContext('2d'), t = performance.now() / 1000; withCtx(c, () => { c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, 280, 300); const g = c.createRadialGradient(140, 200, 10, 140, 200, 140); g.addColorStop(0, HEROES[survSel].color + '66'); g.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0, 0, 280, 300); c.setTransform(3.6, 0, 0, 3.6, 140, 282); drawHero(fakeHero(survSel, { walk: t * 6, vx: 3 }), true); }); }
   if ($('heroScreen').classList.contains('hidden')) return;
-  const t = performance.now() / 1000;
+  const now = performance.now(), t = now / 1000;
   for (const id of HERO_ORDER) {
-    const cv = heroCanvases[id]; if (!cv) continue; const c = cv.getContext('2d');
+    const cv = heroCanvases[id]; if (!cv) continue; const c = cv.getContext('2d'), H = HEROES[id], e = heroAct[id] ? (now - heroAct[id]) / 1000 : 99, act = e < 1.9;
     withCtx(c, () => {
       c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, 280, 300);
-      const g = c.createRadialGradient(140, 200, 10, 140, 200, 140); g.addColorStop(0, HEROES[id].color + '55'); g.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0, 0, 280, 300);
-      c.setTransform(3.6, 0, 0, 3.6, 140, 282); const sel = G.hero === id;
-      drawHero(fakeHero(id, { walk: t * 6, vx: sel ? 3 : 0 }), true);
+      const g = c.createRadialGradient(140, 200, 10, 140, 200, 140); g.addColorStop(0, H.color + (act ? '99' : '55')); g.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0, 0, 280, 300);
+      c.setTransform(3.6, 0, 0, 3.6, 120, 282);
+      const f = Math.floor(e * 60), k = f % 24, hero = act ? fakeHero(id, { walk: 0, vx: 0, face: 1, aim: 0, forceAim: id !== 'aris' || e < 1, lastFire: G.time, atkAnim: Math.max(0, 12 - k), muzzle: k < 4 ? 4 : 0, shieldT: id === 'ben' && e > 0.15 && e < 1.6 ? 100 : 0 }) : fakeHero(id, { walk: t * 6, vx: 3 });
+      drawHero(hero, true);
+      if (act) { c.lineCap = 'round';
+        if (id === 'maya') for (const v of [0.15, 0.95]) { const d = e - v; if (d > 0 && d < 0.7) for (const a of [-0.2, -0.1, 0, 0.1, 0.2]) { const x = 14 + d * 90, y = -24 + Math.tan(a) * d * 90; c.strokeStyle = '#e8d8b0'; c.lineWidth = 1.2; c.beginPath(); c.moveTo(x - 8, y - Math.tan(a) * 8); c.lineTo(x, y); c.stroke(); c.fillStyle = '#ccc'; c.beginPath(); c.arc(x, y, 1, 0, 7); c.fill(); } }
+        else if (id === 'ben') { if (e > 1.0 && e < 1.4) { const q = (e - 1) / 0.4; c.strokeStyle = `rgba(255,240,200,${1 - q})`; c.lineWidth = 3; c.beginPath(); c.ellipse(0, -20, 26, 20, 0, -1.2 + q * 0.4, 1.2 + q * 0.4); c.stroke(); } if (e > 1.15 && e < 1.6) { c.fillStyle = 'rgba(255,200,120,0.5)'; for (let i = 0; i < 6; i++) c.fillRect(12 + i * 4, -2 - (e - 1.15) * 20 * ((i % 3) + 1), 2, 2); } }
+        else if (id === 'aris') { for (let i = 0; i < 10; i++) { const y = -4 - ((e * 40 + i * 7) % 50), x = Math.sin(i * 2.3) * 16; c.globalAlpha = Math.max(0, 1 - ((e * 40 + i * 7) % 50) / 50); c.fillStyle = '#55ff88'; c.fillRect(x - 0.6, y - 2.5, 1.2, 5); c.fillRect(x - 2.5, y - 0.6, 5, 1.2); } c.globalAlpha = 1; if (e > 1) { c.fillStyle = `rgba(255,140,40,${1.9 - e})`; c.beginPath(); c.arc(14 + (e - 1) * 60, -24, 2.4, 0, 7); c.fill(); } }
+        else if (id === 'chloe') { const r = Math.max(0, e - 0.15) * 55; if (r > 0 && r < 70) for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2 + e * 2, x = Math.cos(a) * r, y = -22 + Math.sin(a) * r * 0.7; c.save(); c.translate(x, y); c.rotate(a); c.fillStyle = '#dde'; c.beginPath(); c.moveTo(4, 0); c.lineTo(-3, -1.3); c.lineTo(-3, 1.3); c.fill(); c.restore(); } }
+        else if (id === 'leo') { for (let q = 0; q < 3; q++) { const r = ((e * 45) + q * 14) % 50; c.strokeStyle = `rgba(48,224,208,${1 - r / 50})`; c.lineWidth = 1.5; c.beginPath(); c.ellipse(0, -18, r, r * 0.75, 0, 0, 7); c.stroke(); } c.fillStyle = '#30e0d0'; c.font = '8px sans-serif'; for (let i = 0; i < 3; i++) c.fillText(i % 2 ? '♪' : '♫', -14 + i * 12, -44 - ((e * 20 + i * 6) % 20)); }
+        c.setTransform(1, 0, 0, 1, 0, 0); c.font = 'bold 30px Bebas Neue, Impact, sans-serif'; c.textAlign = 'center'; c.lineWidth = 5; c.strokeStyle = '#000'; const sc = Math.min(1, e * 6), tx = H.spcName + '!'; c.save(); c.translate(140, 40); c.scale(sc, sc); c.strokeText(tx, 0, 0); c.fillStyle = '#ffcc33'; c.fillText(tx, 0, 0); c.restore(); c.textAlign = 'left';
+      }
     });
   }
 }
@@ -3360,8 +3411,10 @@ function showGameOver() {
   G.state = 'over'; Music.stop(); Amb.stop(); bankBlood();
   $('overKills').textContent = G.kills; $('overBlood').textContent = G.bloodRun; $('overSub').textContent = G.mode === 'raid' ? 'Raid ' + (Save.raids + 1) + ' · wave ' + G.wave : G.mode === 'bonus' ? G.bonus.name : G.L.name;
   $('overScreen').querySelector('h1').textContent = G.timeUp ? "TIME'S UP" : G.overrun ? 'BASE OVERRUN' : "YOU'RE DEAD";
+  if (G.mode === 'bonus' && G.bonus.endless) { const el = Math.floor((G.bonus.time * 60 - G.bonusT) / 60), pb = Save.endlessBest || { t: 0, k: 0 }, nb = el > pb.t, mins = Math.floor(el / 60), extra = Math.max(0, mins - (G.endPaid || 0)) * 20; G.endPaid = Math.max(G.endPaid || 0, mins); if (nb) Save.endlessBest = { t: el, k: G.kills }; Save.blood += extra; saveGame();
+    $('overScreen').querySelector('h1').textContent = nb ? 'NEW RECORD!' : 'THE HORDE WINS'; $('overSub').textContent = `Survived ${mins}:${String(el % 60).padStart(2, '0')} · wave ${G.endWave}${extra ? ` · +${extra} 🩸 survival bonus` : ''}${nb ? '' : ` · best ${Math.floor(pb.t / 60)}:${String(pb.t % 60).padStart(2, '0')}`}`; }
   $('overQuip').textContent = G.timeUp ? pick(['The clock is the real boss.', 'So close. The zombies are celebrating.', 'Time flies when you\'re being eaten.']) : G.overrun ? 'They ate the generator. Then the couch. Then the popcorn.' : pick(DEATH_QUIPS);
-  $('reviveBtn').classList.toggle('hidden', G.revived || !!G.overrun || G.mode === 'bonus'); $('touch').classList.add('hidden'); showOnly('overScreen');
+  $('reviveBtn').classList.toggle('hidden', G.revived || !!G.overrun || (G.mode === 'bonus' && !G.bonus.endless)); $('touch').classList.add('hidden'); showOnly('overScreen');
 }
 // Rewarded-ad hook: replace with your ad SDK and call onReward() when the ad finishes.
 function showRewardedAd(onReward) { if (Save.vip) { onReward(); return; } showOnly('adScreen'); let n = 3; $('adCount').textContent = n; const iv = setInterval(() => { n--; $('adCount').textContent = n; if (n <= 0) { clearInterval(iv); onReward(); } }, 1000); }
@@ -3385,7 +3438,7 @@ function showResults(title, color, sub, lines, note) {
   showOnly('completeScreen'); SFX.heal();
 }
 function raidWin() {
-  const n = Save.raids + 1, reward = 80 + n * 40; G.bloodRun += pickups.filter(k => k.type === 'blood').reduce((s, k) => s + k.val, 0); pickups = []; bankBlood(); Save.blood += reward; Save.raids = n;
+  const n = Save.raids + 1, reward = (80 + n * 40) * (G.siege ? 2 : 1); G.bloodRun += pickups.filter(k => k.type === 'blood').reduce((s, k) => s + k.val, 0); pickups = []; bankBlood(); Save.blood += reward; Save.raids = n;
   const unlocked = WPN_ORDER.find(w => WEAPONS[w].raid === n);
   showResults('BASE DEFENDED', '#33ff77', 'Raid ' + n, `<div class="statline">Zombies slain: <b>${G.kills}</b></div><div class="statline">Blood: 🩸 <b>${G.bloodRun}</b> · Raid bonus 🩸 <b>${reward}</b></div><div class="statline">Generator: <b>${Math.round(G.core.hp / G.core.max * 100)}%</b></div>`,
     (unlocked ? `🔓 <b style="color:#ffcc33">${WEAPONS[unlocked].name}</b> unlocked in the Armory!<br>` : '') + xpSummary());
@@ -3396,7 +3449,7 @@ function trainingDone() {
   showResults('TRAINING DONE', '#55ccff', 'Training Range', `<div class="statline">Score: <b>${G.score}</b></div><div class="statline">Blood earned: 🩸 <b>${G.bloodRun}</b></div>`, xpSummary() || 'Hit the targets to earn XP for the weapon in your hands.');
 }
 function levelComplete() {
-  const li = G.levelIdx, first = !Save.cleared[li], bonus = 80 + li * 40; G.bloodRun += pickups.filter(k => k.type === 'blood').reduce((s, k) => s + k.val, 0); pickups = [];
+  const li = G.levelIdx, first = !Save.cleared[li], bonus = Math.round((80 + li * 40) * DF().blood); Save.clearedDiff = Save.clearedDiff || {}; Save.clearedDiff[li] = Math.max(Save.clearedDiff[li] || 0, G.diffIdx || 0); G.bloodRun += pickups.filter(k => k.type === 'blood').reduce((s, k) => s + k.val, 0); pickups = [];
   const skId = G.L.theme, skKey = G.hero + '_' + skId, newSkin = !Save.skins[skKey]; Save.skins[skKey] = true;
   Save.gear = Save.gear || {}; const gKey = G.hero + '_' + li, newGear = !Save.gear[gKey]; Save.gear[gKey] = true; const gItem = GEAR[G.hero][li];
   const KG = 120 + li * 20, st = Save.stars[li] || [false, false, false], got = [true, G.kills >= KG, !G.downs]; let newStars = 0; got.forEach((g, i) => { if (g && !st[i]) { st[i] = true; newStars++; } }); Save.stars[li] = st; const starBlood = newStars * 50;
@@ -3427,10 +3480,11 @@ function setupBonus() {
 }
 function bonusTick() {
   const B = G.bonus; if (G.endT > 0) return;
-  if (--G.bonusT % 600 === 0 && G.bonusT > 0) addText(Math.round(G.bonusT / 60) + ' SECONDS', player.x, player.y - 90, '#ffcc33', 20, 60);
+  if (--G.bonusT % 600 === 0 && G.bonusT > 0 && !B.endless) addText(Math.round(G.bonusT / 60) + ' SECONDS', player.x, player.y - 90, '#ffcc33', 20, 60);
   if (G.phase === 'hold') G.holdT = G.bonusT;
   if (B.id === 'rescue') { const c = G.cage, cx = c.x + c.w / 2, cy = c.y + c.d / 2, near = Math.hypot(player.x - cx, player.y - cy) < 170, blocked = enemies.some(z => !z.dead && Math.hypot(z.x - cx, z.y - cy) < 70);
     if (near && !blocked) G.rescueP = Math.min(1, G.rescueP + 1 / (60 * 50)); if (blocked && G.time % 90 === 0) addText('ZOMBIES AT THE CAGE!', cx, c.y - 90, '#ff5555', 15, 50); if (!near && G.time % 120 === 0) addText('STAY CLOSE TO LEO', player.x, player.y - 80, '#30e0d0', 14, 50); }
+  if (B.endless) { const el = B.time * 60 - G.bonusT, m = Math.floor(el / 3600 * 60); if (el > 0 && el % 3600 === 0) { G.endWave = (G.endWave || 1) + 1; banner('WAVE ' + G.endWave, pick(['They keep coming', 'Louder now', 'Is that a brute?', 'Hold the line'])); SFX.roar(); for (let k = 0; k < Math.min(4, G.endWave - 1); k++) { const s2 = spawnSpot(); if (s2) spawnEnemy(G.endWave % 3 === 0 ? 'brute' : pick(['riot', 'bloater', 'screecher', 'armored']), s2.x, s2.y, { emerge: s2.emerge }); } } return; }
   const won = B.id === 'rescue' ? G.rescueP >= 1 : B.id === 'onehit' ? G.kills >= B.goal : B.id === 'bloodrush' ? G.bonusBlood >= B.goal : G.bonusT <= 0;
   if (won) { bonusWin(); return; }
   if (G.bonusT <= 0) { G.timeUp = true; bankBlood(); showGameOver(); }
@@ -3465,7 +3519,7 @@ on('roomClose', closeRoom);
 on('movieSkip', endMovie);
 on('shopBtn', () => { shopReturn = 'startScreen'; openShop(); });
 on('settingsBtn', () => { $('cfgSfx').checked = Cfg.sfx; $('cfgMusic').checked = Cfg.music; $('cfgShake').checked = Cfg.shake; $('cfgGore').checked = Cfg.gore; $('cfgAuto').checked = Cfg.autoAim; $('cfgVib').checked = Cfg.vib; $('cfgAim').checked = Cfg.aimLine; $('cfgHQ').checked = Cfg.hq; $('autoRow').classList.toggle('hidden', !Save.aimCharges); $('resetBtn').textContent = 'RESET'; showOnly('settingsScreen'); });
-on('settingsBack', () => { Cfg.sfx = $('cfgSfx').checked; Cfg.music = $('cfgMusic').checked; Cfg.shake = $('cfgShake').checked; Cfg.gore = $('cfgGore').checked; Cfg.autoAim = $('cfgAuto').checked; Cfg.vib = $('cfgVib').checked; Cfg.aimLine = $('cfgAim').checked; Cfg.hq = $('cfgHQ').checked; saveCfg(); resize(); refreshMenu(); showOnly('startScreen'); });
+on('settingsBack', () => { Cfg.sfx = $('cfgSfx').checked; Cfg.music = $('cfgMusic').checked; Cfg.shake = $('cfgShake').checked; Cfg.gore = $('cfgGore').checked; Cfg.autoAim = $('cfgAuto').checked; Cfg.vib = $('cfgVib').checked; Cfg.aimLine = $('cfgAim').checked; if ($('cfgHQ').checked && !Cfg.hq) Cfg.dprCap = 2; Cfg.hq = $('cfgHQ').checked; saveCfg(); resize(); refreshMenu(); showOnly('startScreen'); });
 on('resetBtn', () => { const b = $('resetBtn'); if (b.textContent === 'RESET') { b.textContent = 'TAP AGAIN'; return; } Object.assign(Save, { blood: 0, up: { hp: 0, dmg: 0, spd: 0, spc: 0 }, cleared: {}, aimCharges: 0 }); saveGame(); b.textContent = 'DONE'; });
 on('levelBack', () => showOnly('startScreen'));
 on('heroBack', () => pendingMode === 'campaign' ? openLevels() : openBase());
@@ -3519,7 +3573,7 @@ const endTouch = e => {
 };
 layer.addEventListener('touchend', endTouch); layer.addEventListener('touchcancel', endTouch);
 function tapBtn(id, fn) { const el = $(id); el.addEventListener('touchstart', e => { e.preventDefault(); e.stopPropagation(); A.init(); el.classList.add('on'); fn(); }, { passive: false }); const end = e => { e.preventDefault(); el.classList.remove('on'); }; el.addEventListener('touchend', end); el.addEventListener('touchcancel', end); el.addEventListener('mousedown', e => { e.stopPropagation(); fn(); }); }
-tapBtn('bRoll', () => In.rollQ = true); tapBtn('bSwap', () => In.swapQ = true); tapBtn('bSpc', () => In.spcQ = true); tapBtn('bUlt', () => In.ultQ = true);
+tapBtn('bRoll', () => In.rollQ = true); tapBtn('bSwap', () => In.swapQ = true); tapBtn('bSpc', () => In.spcQ = true); tapBtn('bUlt', () => In.ultQ = true); tapBtn('bBud', () => In.budQ = true);
 
 // ----- desktop test mode: keyboard + mouse -----
 function keyMove() { const k = In.keys; if (stickL.id !== null) return; In.mx = (k.d || k.arrowright ? 1 : 0) - (k.a || k.arrowleft ? 1 : 0); In.my = (k.s || k.arrowdown ? 1 : 0) - (k.w || k.arrowup ? 1 : 0); }
@@ -3529,7 +3583,7 @@ window.addEventListener('keydown', e => {
   if (G.state === 'play' && [' ', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(k)) e.preventDefault();
   In.keys[k] = true; keyMove();
   if (e.repeat) return;
-  if (k === ' ' || k === 'shift') In.rollQ = true; if (k === 'q') In.spcQ = true; if (k === 'e') In.ultQ = true; if (k === 'f') toggleAuto(); if (k === 'r') In.swapQ = true;
+  if (k === ' ' || k === 'shift') In.rollQ = true; if (k === 'q') In.spcQ = true; if (k === 'e') In.ultQ = true; if (k === 'f') toggleAuto(); if (k === 'r') In.swapQ = true; if (k === 'c') In.budQ = true;
 });
 window.addEventListener('keyup', e => { In.keys[e.key.toLowerCase()] = false; keyMove(); });
 canvas.addEventListener('mousemove', e => { if (isTouch) return; In.mouse.x = e.clientX; In.mouse.y = e.clientY; In.mouse.seen = true; });
@@ -3541,12 +3595,25 @@ function mouseAim() {
   In.ax = wx - player.x; In.ay = wy - (player.y - 20); In.aimOn = true; In.fire = In.mouse.down;
 }
 window.addEventListener('blur', () => { In.keys = {}; keyMove(); In.mouse.down = false; pauseGame(); });
-document.addEventListener('visibilitychange', () => { if (document.hidden) pauseGame(); });
+let sleepTrack = null;
+function goSleep() {
+  if (G.sleeping) return; G.sleeping = true; pauseGame(); In.keys = {}; In.mouse.down = false;
+  sleepTrack = Music.on ? (G.state === 'base' ? 'base' : G.state === 'menu' ? 'menu' : null) : null;
+  try { Music.stop(); Amb.stop(); } catch (e) {} try { if (A.ctx && A.ctx.state === 'running') A.ctx.suspend(); } catch (e) {} keepAwake(false);
+}
+function wakeUp() {
+  if (!G.sleeping || document.hidden) return; G.sleeping = false;
+  try { if (A.ctx && A.ctx.state === 'suspended') A.ctx.resume(); } catch (e) {}
+  if (sleepTrack && (G.state === 'menu' || G.state === 'base') && !Movie) { Music.play(sleepTrack); if (G.state === 'base') Amb.start(); } sleepTrack = null; last = performance.now();
+}
+document.addEventListener('visibilitychange', () => { if (document.hidden) goSleep(); else wakeUp(); });
+window.addEventListener('pagehide', goSleep); window.addEventListener('pageshow', () => setTimeout(wakeUp, 50));
+document.addEventListener('freeze', goSleep); document.addEventListener('resume', () => setTimeout(wakeUp, 50));
 
 /* ---------- 10. LOOP ---------- */
 function checkOrientation() { const portrait = isTouch && innerHeight > innerWidth; document.body.classList.toggle('portrait', portrait); if (portrait) pauseGame(); }
 function resize() {
-  DPR = Math.min(window.devicePixelRatio || 1, 2); SW = innerWidth; SH = innerHeight;
+  DPR = Math.min(window.devicePixelRatio || 1, Cfg.dprCap || 2); SW = innerWidth; SH = innerHeight;
   canvas.width = Math.round(SW * DPR); canvas.height = Math.round(SH * DPR); canvas.style.width = SW + 'px'; canvas.style.height = SH + 'px';
   SCALE = SH / VIEW_H; VW = SW / SCALE;
   LQ = Cfg.hq ? 0.5 : 0.33; lightC.width = Math.ceil(VW * LQ) + 2; lightC.height = Math.ceil(VIEW_H * LQ) + 2;
@@ -3554,8 +3621,20 @@ function resize() {
 }
 window.addEventListener('resize', resize); resize();
 const STEP = 1000 / 60; let last = performance.now(), acc = 0;
+const Perf = { sum: 0, n: 0, warm: 0 };
+function perfWatch(dt) {
+  if (G.state !== 'play' || document.hidden) { Perf.sum = Perf.n = 0; Perf.warm = 0; return; }
+  if (++Perf.warm < 120) return; Perf.sum += dt; Perf.n++;
+  if (Perf.n >= 240) { const avg = Perf.sum / Perf.n; Perf.sum = Perf.n = 0;
+    if (avg > 21.5) { if ((Cfg.dprCap || 2) > 1.5) { Cfg.dprCap = 1.5; saveCfg(); resize(); hintMsg('⚙️ Smooth mode: lowered resolution a little for your phone'); }
+      else if (Cfg.hq) { Cfg.hq = false; saveCfg(); resize(); hintMsg('⚙️ Smooth mode: lighter effects so the game stays fast'); }
+      else if (Cfg.dprCap > 1) { Cfg.dprCap = 1; saveCfg(); resize(); } } }
+}
+let wakeLock = null;
+async function keepAwake(on) { try { if (on && !wakeLock && 'wakeLock' in navigator && !document.hidden) { wakeLock = await navigator.wakeLock.request('screen'); wakeLock.addEventListener('release', () => { wakeLock = null; }); } else if (!on && wakeLock) { await wakeLock.release(); wakeLock = null; } } catch (e) { wakeLock = null; } }
 function frame(now) {
   let dt = now - last; last = now; if (dt > 100) dt = 100;
+  perfWatch(dt); if (G.state === 'play' && !wakeLock && G.time % 300 === 1) keepAwake(true); else if (G.state !== 'play' && G.state !== 'dying' && wakeLock && G.state !== 'paused') keepAwake(false);
   mouseAim();
   if (G.state === 'play' || G.state === 'dying') { acc += dt; let n = 0; while (acc >= STEP && n < 4) { step(); acc -= STEP; n++; } if (n === 4) acc = 0; } else acc = 0;
   try { render(); drawHeroPreviews(); renderMovie(); } catch (e) { console.error(e); }
