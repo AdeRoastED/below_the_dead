@@ -79,6 +79,10 @@ h1{font-family:Creepster,'Bebas Neue',Impact,sans-serif;font-weight:400;font-siz
 .skins{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}.sk{font:600 .56rem Barlow,sans-serif;background:#1a0a0e;color:#ddd;border:1px solid #552;border-radius:12px;padding:3px 7px 3px 3px;display:flex;align-items:center;gap:4px;cursor:pointer}.sk i{width:12px;height:12px;border-radius:50%;display:inline-block;border:1px solid #000}.sk.on{border-color:#33ff77;color:#8f8}.sk.lock{opacity:.55}
 .stars{display:flex;gap:6px;justify-content:center;margin-bottom:4px;font:600 .7rem Barlow,sans-serif;color:#777}.stars .on{color:#ffcc33}.lstars{position:absolute;left:10px;top:6px;color:#ffcc33;font-size:.9rem;letter-spacing:2px;text-shadow:1px 1px 0 #000}
 .overlay>.btns{position:sticky;bottom:-12px;z-index:2;padding:8px 10px 12px;margin-bottom:-12px;background:linear-gradient(180deg,rgba(5,0,2,0),rgba(5,0,2,.92) 35%);width:100%;justify-content:center}
+.gear{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:5px}.gear div{background:rgba(0,0,0,.4);border:1px solid #333;border-radius:6px;padding:3px 4px;display:grid;grid-template-columns:auto 1fr;column-gap:4px;align-items:center;opacity:.55}.gear div.on{border-color:#7cf;opacity:1}.gear span{grid-row:span 2;font-size:1rem}.gear b{font-size:.56rem;color:#fff;line-height:1.1}.gear i{font-size:.5rem;color:#7cf;font-style:normal}
+#dailyRow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;width:min(760px,96vw);margin:6px 0}.dd{background:rgba(20,3,8,.92);border:2px solid #442;border-radius:10px;padding:8px 4px;text-align:center;font-family:Barlow,sans-serif;position:relative}.dd small{display:block;color:#888;font-size:.6rem;letter-spacing:1px}.dd span{display:block;font-size:1.6rem;margin:4px 0}.dd b{color:#ffcc33;font:1rem Bebas Neue,Impact,sans-serif;letter-spacing:1px}.dd.got{opacity:.45}.dd.got:after{content:'✓';position:absolute;top:4px;right:6px;color:#3f7}.dd.now{border-color:#ffcc33;box-shadow:0 0 18px rgba(255,200,50,.5);animation:pulse 1.2s infinite}.dd.big{border-color:#ff0033}@keyframes pulse{50%{transform:scale(1.05)}}
+#startScreen{background:radial-gradient(ellipse at 50% 45%,rgba(10,0,4,.72) 0%,rgba(10,0,4,.35) 45%,rgba(0,0,0,.05) 80%)}#startScreen .panel{background:rgba(15,2,6,.78)}
+#trophyGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;width:min(760px,96vw)}.tro{background:rgba(20,3,8,.92);border:1px solid #333;border-radius:9px;padding:5px 6px;font-family:Barlow,sans-serif;display:flex;gap:6px;align-items:center;opacity:.6}.tro>span{font-size:1.4rem}.tro h4{font:.9rem Bebas Neue,Impact,sans-serif;letter-spacing:1px;color:#ddd}.tro p{font-size:.55rem;color:#aaa;line-height:1.15}.tro i{display:block;height:4px;background:#222;border-radius:2px;margin-top:3px}.tro i b{display:block;height:100%;background:#ffcc33;border-radius:2px}.tro.ready{opacity:1;border-color:#ffcc33;box-shadow:0 0 12px rgba(255,200,50,.35);cursor:pointer}.tro.done{opacity:1;border-color:#2a5}.tro .rw{font:600 .55rem Barlow,sans-serif;color:#ffcc33}
 .lcard h3{font-family:'Bebas Neue','Bebas Neue',Impact,sans-serif;font-size:1.2rem;letter-spacing:1px;text-shadow:2px 2px 0 #000}
 .lcard p{font-size:.7rem;color:#ddd;text-shadow:1px 1px 0 #000}
 .lcard .tag{position:absolute;top:7px;right:9px;font-size:.68rem;background:rgba(0,0,0,.6);padding:2px 8px;border-radius:10px}
@@ -295,6 +299,12 @@ h1{font-family:Creepster,'Bebas Neue',Impact,sans-serif;font-weight:400;font-siz
   </div>
 </div>
 
+<div id="dailyScreen" class="overlay solid hidden">
+  <h1 style="font-size:clamp(1.4rem,6vh,2.4rem)">DAILY RATIONS</h1>
+  <div class="sub" id="dailySub">Come back every day. Survivors who show up get fed.</div>
+  <div id="dailyRow"></div>
+  <div class="btns"><button class="btn gold" id="dailyDbl">📺 DOUBLE IT</button><button class="btn" id="dailyClaim">CLAIM</button></div>
+</div>
 <div id="appScreen" class="overlay hidden">
   <h1 style="font-size:clamp(1.4rem,6vh,2.4rem)">GET THE APP</h1>
   <div class="sub">Zombies, now living rent-free on your home screen</div>
@@ -310,7 +320,11 @@ h1{font-family:Creepster,'Bebas Neue',Impact,sans-serif;font-weight:400;font-siz
 </div>
 <div id="dexScreen" class="overlay hidden">
   <h1 style="font-size:clamp(1.4rem,6vh,2.4rem)">ZOMBIE GUIDE</h1>
+  <div class="sub" style="margin:2px 0 4px">🏆 TROPHIES</div>
+  <div id="trophyGrid"></div>
+  <div class="sub" style="margin:6px 0 4px">YOUR STATS</div>
   <div id="dexStats"></div>
+  <div class="sub" style="margin:6px 0 4px">ZOMBIES</div>
   <div id="dexGrid"></div>
   <div class="sub" style="margin:6px 0 4px">BOSSES</div>
   <div id="dexBoss"></div>
@@ -520,6 +534,14 @@ const SKIN_DEFS = [
 ];
 Save.skins = Save.skins || {}; Save.skin = Save.skin || {};
 const skinOwned = (h, sk) => sk.id === 'classic' || (sk.pack ? !!Save[sk.pack] : !!Save.skins[h + '_' + sk.id]);
+const GEAR = {
+  maya: [['🔭', 'Hunter\'s Scope'], ['🦺', 'Leather Vest'], ['🏹', 'Quick Quiver'], ['🍀', 'Dad\'s Lucky Arrow']],
+  ben: [['🩹', 'Taped Grip'], ['🧤', 'Catcher\'s Pads'], ['📣', 'Coach\'s Whistle'], ['📸', 'Team Photo']],
+  aris: [['🔬', 'Steady Hands'], ['🥼', 'Kevlar Lab Coat'], ['💉', 'Adrenaline Shot'], ['📁', 'Subject Zero File']],
+  chloe: [['🪨', 'Grandma\'s Whetstone'], ['🧥', 'Rooftop Hoodie'], ['🥤', 'Energy Drink'], ['🍕', 'Lucky Pizza Box']],
+  leo: [['🎛️', 'Overdrive Pedal'], ['🧥', 'Studded Jacket'], ['🎸', 'Fresh Strings'], ['📝', 'Last Setlist']]
+};
+const GEAR_FX = ['+10% damage', '+10% max health', '+15% special charge', 'ultimate 6 kills sooner'];
 function heroLook(id) { const sk = SKIN_DEFS.find(k => k.id === Save.skin[id]); return sk && sk.look && skinOwned(id, sk) ? Object.assign({}, HEROES[id].look, sk.look) : HEROES[id].look; }
 function syncLeo() { if (Save.leo && !HERO_ORDER.includes('leo')) HERO_ORDER.push('leo'); }
 const ZT = {
@@ -772,11 +794,11 @@ function startRun(heroId, mode = 'campaign', levelIdx) {
   if (isTouch) { try { const el = document.documentElement; const r = (el.requestFullscreen || el.webkitRequestFullscreen); if (r) { const pr = r.call(el); if (pr && pr.catch) pr.catch(() => {}); } if (screen.orientation && screen.orientation.lock) screen.orientation.lock('landscape').catch(() => {}); } catch (e) {} }
 }
 function makePlayer(id) {
-  const H = HEROES[id], max = Math.round(H.hp * (1 + Save.up.hp * 0.08));
+  const H = HEROES[id], gr = k => !!(Save.gear || {})[id + '_' + k], max = Math.round(H.hp * (1 + Save.up.hp * 0.08) * (gr(1) ? 1.1 : 1));
   return { id, H, x: 150, y: (G.L.ROAD[0] + G.L.ROAD[1]) / 2, r: 12, z: 0, vx: 0, vy: 0, face: 1, aim: 0, hp: max, max, iframes: 0, rollT: 0, rollCd: 0, rollA: 0,
     atkCd: 0, atkAnim: 0, spc: 40, spcMax: 100, ultKills: 0, ultUsed: false, shieldT: 0, dashT: 0, dashHits: null, regenT: 0, walk: 0, lastFire: 0, tick: 0, swing: null, muzzle: 0,
     wpn: 'sig', alt: Save.equip && Save.weapons[Save.equip] ? Save.equip : null, lastHurt: -999,
-    dmgMul: 1 + Save.up.dmg * 0.1, spdMul: 1 + Save.up.spd * 0.03, spcMul: 1 + Save.up.spc * 0.12, enraged: false, trail: [] };
+    dmgMul: (1 + Save.up.dmg * 0.1) * (gr(0) ? 1.1 : 1), spdMul: 1 + Save.up.spd * 0.03, spcMul: (1 + Save.up.spc * 0.12) * (gr(2) ? 1.15 : 1), ultNeed: ULT_KILLS - (gr(3) ? 6 : 0), enraged: false, trail: [] };
 }
 
 // ----- player -----
@@ -846,7 +868,7 @@ function powerChord(p, dm) {
   for (let i = 0; i < 10; i++) part({ x: p.x + rand(-30, 30), y: p.y + rand(-14, 14), z: rand(20, 50), vx: rand(-2, 2), vy: rand(-1, 1), vz: rand(1, 3), g: 0, life: 50, size: 10, color: '#30e0d0', kind: 'note' });
 }
 function useUlt(p) {
-  if (p.ultUsed || p.ultKills < ULT_KILLS) { SFX.buzz(); if (!p.ultUsed) addText(`ULTIMATE: ${p.ultKills}/${ULT_KILLS} KILLS`, p.x, p.y - 70, '#ff88bb', 14, 40); return; }
+  if (p.ultUsed || p.ultKills < p.ultNeed) { SFX.buzz(); if (!p.ultUsed) addText(`ULTIMATE: ${p.ultKills}/${p.ultNeed} KILLS`, p.x, p.y - 70, '#ff88bb', 14, 40); return; }
   p.ultUsed = true; SFX.ult(); vibrate([60, 40, 90]); addShake(20); G.flash = 16; G.flashCol = '255,60,140'; G.hitStop = 8;
   banner(p.H.ultName, 'Ultimate'); const dm = p.dmgMul;
   if (p.id === 'maya') G.rain = { t: 0, n: 0, dm };
@@ -959,7 +981,7 @@ function killEnemy(z) {
   if (z.dead) return; z.dead = true;
   G.kills++; G.combo++; G.comboT = 150; if (!z.d.dummy) { Save.zk[z.type] = (Save.zk[z.type] || 0) + 1; Save.st.kills++; Save.st.heroK[G.hero] = (Save.st.heroK[G.hero] || 0) + 1; if (G.combo > Save.st.combo) Save.st.combo = G.combo; } { const k = player.wpn === 'sig' ? player.id : player.wpn, xp = G.mode === 'training' ? (z.type === 'dummy' ? 12 : 4) : 1; Save.wxp[k] = (Save.wxp[k] || 0) + xp; G.xpGain[k] = (G.xpGain[k] || 0) + xp; if (G.mode === 'training') { G.score += 10 + G.combo; } } if (G.phase === 'lockdown') { G.lockKills++; if (G.lockKills === G.L.plan.lockKills) addText('BREACHING!', player.x, player.y - 90, '#ffcc33', 22, 60); }
   if (G.kills % 17 === 0 && G.mode !== 'training') addText(pick(KILL_QUIPS), z.x, z.y - 70, '#ffffff', 15, 45);
-  if (!player.ultUsed && player.ultKills < ULT_KILLS) { player.ultKills++; if (player.ultKills === ULT_KILLS) { addText('ULTIMATE READY!', player.x, player.y - 80, '#ff3388', 22, 80); SFX.special(); } }
+  if (!player.ultUsed && player.ultKills < player.ultNeed) { player.ultKills++; if (player.ultKills === player.ultNeed) { addText('ULTIMATE READY!', player.x, player.y - 80, '#ff3388', 22, 80); SFX.special(); } }
   const frenzy = G.combo >= 10 ? 2 : 1;
   pickups.push({ type: 'blood', x: z.x, y: z.y, z: 20, vz: 4, vx: rand(-1.5, 1.5), vy: rand(-1.5, 1.5), val: z.d.blood * frenzy * (G.bloodMul || 1), t: 0 });
   if (z.type === 'bloater') { SFX.explode(); addShake(8); ringFx(z.x, z.y, '#aacc44', 120); gases.push({ x: z.x, y: z.y, r: 90, life: 300 }); for (let k = 0; k < 14; k++) part({ x: z.x, y: z.y, z: 20, vx: rand(-3, 3), vy: rand(-3, 3), vz: rand(1, 4), g: 0.1, life: 40, size: rand(4, 8), color: 'rgba(150,200,60,0.6)', kind: 'smoke' }); for (const o2 of enemies) if (o2 !== z && !o2.dead && dist(o2, z) < 100) damageEnemy(o2, 4, { aoe: true, ang: Math.atan2(o2.y - z.y, o2.x - z.x), kb: 6 }); if (dist(player, z) < 95) hurtPlayer(14, z.x, z.y, 8); }
@@ -2498,14 +2520,39 @@ function drawEdgeArrows() {
 const menuZ = [];
 function renderMenuBg() {
   G.menuT++; ctx.setTransform(DPR * SCALE, 0, 0, DPR * SCALE, 0, 0);
-  const g = ctx.createLinearGradient(0, 0, 0, VIEW_H); g.addColorStop(0, '#0a0614'); g.addColorStop(0.6, '#1a0a18'); g.addColorStop(1, '#2a1012'); ctx.fillStyle = g; ctx.fillRect(0, 0, VW, VIEW_H);
-  const t = G.menuT;
-  for (let i = 0; i < 14; i++) { const bw = 90 + hash(i) * 80, bh = 150 + hash(i + 9) * 200, bx = ((i * 130 - t * 0.2) % (VW + 200) + VW + 200) % (VW + 200) - 100; ctx.fillStyle = '#140a16'; ctx.fillRect(bx, VIEW_H - 140 - bh, bw, bh); for (let r = 0; r < bh / 34 - 1; r++) for (let c = 0; c < 3; c++) if (hash(i * 31 + r * 7 + c) > 0.82) { ctx.fillStyle = 'rgba(255,190,90,0.4)'; ctx.fillRect(bx + 12 + c * 26, VIEW_H - 140 - bh + 14 + r * 34, 12, 16); } }
-  ctx.fillStyle = '#1a1618'; ctx.fillRect(0, VIEW_H - 140, VW, 140);
+  const t = G.menuT, H2 = VIEW_H, GY = H2 - 130;
+  if (!G.mBolt) G.mBolt = 0; if (G.mBolt > 0) G.mBolt--; else if (Math.random() < 0.002) G.mBolt = 18;
+  const g = ctx.createLinearGradient(0, 0, 0, GY); g.addColorStop(0, '#05030c'); g.addColorStop(0.55, '#1a0818'); g.addColorStop(1, '#4a1418'); ctx.fillStyle = g; ctx.fillRect(0, 0, VW, H2);
+  for (let i = 0; i < 70; i++) { ctx.fillStyle = `rgba(255,255,255,${0.15 + hash(i) * 0.5 * (0.6 + 0.4 * Math.sin(t * 0.03 + i))})`; ctx.fillRect(hash(i * 3) * VW, hash(i * 7) * GY * 0.55, 1.4, 1.4); }
+  // moon + clouds
+  const mx = VW * 0.8, my = 44; ctx.globalCompositeOperation = 'lighter'; glow(mx, my, 120, 'rgba(255,200,170,0.18)'); ctx.globalCompositeOperation = 'source-over'; ctx.fillStyle = '#f0e2d0'; circle(mx, my, 30); ctx.fillStyle = 'rgba(180,160,150,0.35)'; circle(mx - 8, my - 6, 6); circle(mx + 9, my + 8, 4); circle(mx + 5, my - 12, 3);
+  for (let k = 0; k < 5; k++) { const cx = ((k * 260 + t * (0.15 + k * 0.04)) % (VW + 400)) - 200, cy = 40 + k * 22; ctx.fillStyle = `rgba(40,20,40,${0.55 - k * 0.06})`; ctx.beginPath(); ctx.ellipse(cx, cy, 110, 14, 0, 0, 7); ctx.ellipse(cx + 50, cy - 8, 60, 12, 0, 0, 7); ctx.fill(); }
+  // searchlights
+  for (let k = 0; k < 2; k++) { const bx = VW * (0.2 + k * 0.55), a = -Math.PI / 2 + Math.sin(t * 0.008 + k * 2) * 0.6; const gr = ctx.createLinearGradient(bx, GY, bx + Math.cos(a) * 500, GY + Math.sin(a) * 500); gr.addColorStop(0, 'rgba(255,240,200,0.12)'); gr.addColorStop(1, 'rgba(255,240,200,0)'); ctx.fillStyle = gr; ctx.beginPath(); ctx.moveTo(bx, GY - 60); ctx.lineTo(bx + Math.cos(a - 0.07) * 600, GY - 60 + Math.sin(a - 0.07) * 600); ctx.lineTo(bx + Math.cos(a + 0.07) * 600, GY - 60 + Math.sin(a + 0.07) * 600); ctx.fill(); }
+  // far skyline
+  for (let i = 0; i < 18; i++) { const bw = 60 + hash(i + 40) * 70, bh = 90 + hash(i + 50) * 160, bx = ((i * 95 - t * 0.08) % (VW + 200) + VW + 200) % (VW + 200) - 100; ctx.fillStyle = '#1c0c1a'; ctx.fillRect(bx, GY - bh, bw, bh + 10); if (hash(i + 3) > 0.6) { ctx.fillRect(bx + bw * 0.45, GY - bh - 24, 3, 24); ctx.fillStyle = t % 80 < 40 ? '#ff2a2a' : '#4a0a0a'; circle(bx + bw * 0.45 + 1.5, GY - bh - 25, 2); } }
+  // fire glow on horizon
+  ctx.globalCompositeOperation = 'lighter'; for (let k = 0; k < 3; k++) { const fx = VW * (0.15 + k * 0.38), fl = 0.8 + Math.sin(t * 0.07 + k * 3) * 0.15; glow(fx, GY, 170 * fl, `rgba(255,90,30,${0.16 * fl})`); } ctx.globalCompositeOperation = 'source-over';
+  for (let k = 0; k < 3; k++) { const fx = VW * (0.15 + k * 0.38); for (let q = 0; q < 3; q++) { const ph = ((t * 0.004 + q / 3 + k * 0.2) % 1); ctx.fillStyle = `rgba(30,20,30,${0.5 * (1 - ph)})`; circle(fx + Math.sin(ph * 6 + k) * 30 + ph * 60, GY - 40 - ph * 200, 20 + ph * 50); } }
+  // near skyline with windows
+  for (let i = 0; i < 12; i++) { const bw = 90 + hash(i) * 80, bh = 120 + hash(i + 9) * 150, bx = ((i * 140 - t * 0.2) % (VW + 240) + VW + 240) % (VW + 240) - 120; ctx.fillStyle = '#100810'; ctx.fillRect(bx, GY - bh, bw, bh + 10); ctx.fillStyle = '#1e101c'; ctx.fillRect(bx, GY - bh, bw, 4);
+    for (let r = 0; r < bh / 26 - 1; r++) for (let c = 0; c < Math.floor(bw / 22); c++) { const hv = hash(i * 100 + r * 10 + c); if (hv > 0.78) { const fl = hv > 0.97 && hash(Math.floor(t / 6) + i + r) > 0.5; ctx.fillStyle = fl ? '#2a1a10' : hv > 0.9 ? '#ffcf7a' : '#c88a40'; ctx.fillRect(bx + 8 + c * 22, GY - bh + 14 + r * 26, 9, 12); } } }
+  // street
+  const sg = ctx.createLinearGradient(0, GY, 0, H2); sg.addColorStop(0, '#221a1e'); sg.addColorStop(1, '#0e0a0c'); ctx.fillStyle = sg; ctx.fillRect(0, GY, VW, H2 - GY); ctx.fillStyle = '#3a3034'; ctx.fillRect(0, GY, VW, 4);
+  ctx.fillStyle = 'rgba(255,200,80,0.25)'; for (let x = (-(t * 0.6) % 80); x < VW; x += 80) ctx.fillRect(x, GY + 62, 40, 3);
+  // rooftop with survivors and a campfire (left)
+  const rx = 26, ry = GY - 70; ctx.fillStyle = '#0a060a'; ctx.fillRect(0, ry, rx + 150, GY - ry + 4); ctx.fillStyle = '#1e141a'; ctx.fillRect(0, ry - 4, rx + 154, 6);
+  const fx = rx + 70, fl = 0.85 + Math.sin(t * 0.3) * 0.1 + hash(t) * 0.08; ctx.globalCompositeOperation = 'lighter'; glow(fx, ry - 10, 90 * fl, 'rgba(255,140,50,0.35)'); ctx.globalCompositeOperation = 'source-over';
+  ctx.fillStyle = '#3a2214'; ctx.fillRect(fx - 12, ry - 6, 24, 5); for (let k = 0; k < 3; k++) { ctx.fillStyle = ['#ff5a1a', '#ffaa30', '#fff0a0'][k]; ctx.beginPath(); ctx.moveTo(fx - 9 + k * 3, ry - 5); ctx.quadraticCurveTo(fx + Math.sin(t * 0.25 + k) * 4, ry - 26 * fl + k * 6, fx + 9 - k * 3, ry - 5); ctx.fill(); }
+  if (t % 6 === 0) { G.mEmb = G.mEmb || []; G.mEmb.push({ x: fx + rand(-6, 6), y: ry - 14, vx: rand(-0.3, 0.5), vy: rand(-1.2, -0.6), l: 70 }); } for (const e of G.mEmb || []) { e.x += e.vx; e.y += e.vy; e.l--; ctx.fillStyle = `rgba(255,${150 + e.l},60,${e.l / 70})`; ctx.fillRect(e.x, e.y, 2, 2); } if (G.mEmb) G.mEmb = G.mEmb.filter(e => e.l > 0);
+  const sv = [G.hero, Save.companion].filter((h, i, a) => h && HEROES[h] && a.indexOf(h) === i); sv.forEach((h, k) => { const hx = fx + (k ? 40 : -40), hp = fakeHero(h, { x: hx, y: ry - 2, face: k ? -1 : 1, walk: 0 }); ctx.save(); ctx.translate(hx, ry - 2); ctx.scale(1.15, 1.15); ctx.translate(-hx, -(ry - 2)); drawHero(hp, true); ctx.restore(); });
   if (menuZ.length < 7 && Math.random() < 0.02) { const types = ['shambler', 'shambler', 'sprinter', 'puker', 'armored']; const type = types[randi(0, 4)], d = ZT[type]; menuZ.push({ type, d, x: VW + 40, y: VIEW_H - rand(20, 110), r: d.r, vx: -d.spd * 0.5, vy: 0, face: -1, walk: 0, flash: 0, emerge: 0, state: 'walk', stun: 0, burn: 0, t: 0 }); }
   menuZ.sort((a, b) => a.y - b.y);
   for (let i = menuZ.length - 1; i >= 0; i--) { const z = menuZ[i]; z.x += z.vx; z.walk += Math.abs(z.vx) * 0.12 + 0.01; ctx.fillStyle = 'rgba(0,0,0,0.4)'; ellipse(z.x, z.y + 1, 14, 5); drawEnemy(z); ctx.fillStyle = '#ff3030'; circle(z.x - 6, z.y - 47, 1.6); if (z.x < -60) menuZ.splice(i, 1); }
-  const vg = ctx.createRadialGradient(VW / 2, VIEW_H / 2, 50, VW / 2, VIEW_H / 2, VW * 0.7); vg.addColorStop(0, 'rgba(0,0,0,0.2)'); vg.addColorStop(1, 'rgba(0,0,0,0.85)'); ctx.fillStyle = vg; ctx.fillRect(0, 0, VW, VIEW_H);
+  // rain + lightning
+  ctx.strokeStyle = 'rgba(170,180,220,0.22)'; ctx.lineWidth = 1; ctx.beginPath(); for (let i = 0; i < 90; i++) { const x = (hash(i) * (VW + 100) + t * 3) % (VW + 100) - 50, y = (hash(i * 3) * H2 + t * (9 + hash(i) * 4)) % H2; ctx.moveTo(x, y); ctx.lineTo(x - 3, y + 11); } ctx.stroke();
+  if (G.mBolt > 0) { ctx.fillStyle = `rgba(200,200,255,${G.mBolt % 6 < 3 ? 0.18 : 0.06})`; ctx.fillRect(0, 0, VW, H2); if (G.mBolt === 17) SFX.thunder && A.ctx && SFX.thunder(); }
+  const vg = ctx.createRadialGradient(VW / 2, H2 / 2, 80, VW / 2, H2 / 2, VW * 0.72); vg.addColorStop(0, 'rgba(0,0,0,0.25)'); vg.addColorStop(1, 'rgba(0,0,0,0.75)'); ctx.fillStyle = vg; ctx.fillRect(0, 0, VW, H2);
 }
 
 /* ---------- THE HIDEOUT (base oasis) ---------- */
@@ -2543,7 +2590,7 @@ function openRoom(id) {
       const today = new Date().toDateString(), can = Save.mealDay !== today && !Save.mealReady;
       const meal = MEALS[Math.floor(Date.now() / 86400000) % MEALS.length];
       if (!can && !Save.mealReady && Save.adMealDay !== today) { const r2 = row(`<div><h3>Seconds?</h3><p>Watch a short ad and cook one more meal today.</p></div>`); const b2 = document.createElement('div'); b2.className = 'bb'; b2.appendChild(btn((Save.vip ? '⭐' : '📺') + ' COOK AGAIN', 'gold', () => showRewardedAd(() => { Save.adMealDay = today; Save.mealReady = true; G.cookT = 240; saveGame(); $('baseScreen').classList.remove('hidden'); showOnly(null); banner('WELL FED', 'Next run: +25% max health'); openRoom('kitchen'); }))); r2.appendChild(b2); }
-      const r = row(`<div><h3>Today: ${meal}</h3><p>${Save.mealReady ? '✅ Meal eaten! Your next run starts with +25% max health.' : can ? 'Cook a hot meal: your next run starts with +25% max health.' : 'Already cooked today. Come back tomorrow, chef.'}</p></div>`, 'special'); const bb = document.createElement('div'); bb.className = 'bb'; bb.appendChild(btn('🍲 COOK', 'gold', () => { Save.mealDay = today; Save.mealReady = true; G.cookT = 240; saveGame(); sfx('sizzle', () => A.noise(1.4, 0.12, 'highpass', 2500)); banner('WELL FED', 'Next run: +25% max health'); openRoom('kitchen'); }, !can)); r.appendChild(bb);
+      const r = row(`<div><h3>Today: ${meal}</h3><p>${Save.mealReady ? '✅ Meal eaten! Your next run starts with +25% max health.' : can ? 'Cook a hot meal: your next run starts with +25% max health.' : 'Already cooked today. Come back tomorrow, chef.'}</p></div>`, 'special'); const bb = document.createElement('div'); bb.className = 'bb'; bb.appendChild(btn('🍲 COOK', 'gold', () => { Save.mealDay = today; Save.mealReady = true; Save.meals = (Save.meals || 0) + 1; G.cookT = 240; saveGame(); sfx('sizzle', () => A.noise(1.4, 0.12, 'highpass', 2500)); banner('WELL FED', 'Next run: +25% max health'); openRoom('kitchen'); }, !can)); r.appendChild(bb);
     }
   } else if (id === 'dig1' || id === 'dig2') {
     T.textContent = '⛏️ UNDUG ROCK';
@@ -2575,7 +2622,7 @@ function openRoom(id) {
     const r = row(`<div><h3>Use the toilet</h3><p>${Save.relieved ? 'You\'re already relieved. Go kill some zombies.' : 'Start your next mission relieved: +12% speed for 60 seconds.'}</p>${toiletLine ? `<p style="color:#9cf;margin-top:4px">“${toiletLine}”</p>` : ''}</div>`, 'special'); const bb = document.createElement('div'); bb.className = 'bb';
     bb.appendChild(btn('🚽 GO', 'gold', () => { if (Save.relieved) { SFX.buzz(); return; } Save.relieved = true; Save.washed = false; saveGame(); flushT = 120; toiletLine = TOILET_LINES[randi(0, TOILET_LINES.length - 1)]; sfx('flush', () => { A.noise(1.6, 0.35, 'bandpass', 700); A.tone(220, 'sine', 1.4, 0.06, 60); }); setTimeout(() => roomOpen === 'toilet' && openRoom('toilet'), 1200); }, Save.relieved)); r.appendChild(bb);
     if (Save.relieved) { const r2 = row(`<div><h3>🧼 Wash your hands</h3><p>${Save.washed ? 'Squeaky clean. Your next mission starts with +10% special charge.' : 'Don\'t be that survivor. Clean hands: +10% special charge next mission.'}</p></div>`, Save.washed ? '' : 'special'); const b2 = document.createElement('div'); b2.className = 'bb';
-      b2.appendChild(btn(Save.washed ? '✓ CLEAN' : '🧼 WASH', 'gold', () => { Save.washed = true; saveGame(); washT = 200; toiletLine = pick(WASH_LINES); sfx('wash', () => { A.noise(2.2, 0.16, 'bandpass', 2600); A.tone(1400, 'sine', 0.08, 0.02, 1800, 0.4); A.tone(1600, 'sine', 0.08, 0.02, 2000, 1.1); }); closeRoom(); banner('🧼 SQUEAKY CLEAN', toiletLine); }, Save.washed)); r2.appendChild(b2); }
+      b2.appendChild(btn(Save.washed ? '✓ CLEAN' : '🧼 WASH', 'gold', () => { Save.washed = true; Save.washes = (Save.washes || 0) + 1; saveGame(); washT = 200; toiletLine = pick(WASH_LINES); sfx('wash', () => { A.noise(2.2, 0.16, 'bandpass', 2600); A.tone(1400, 'sine', 0.08, 0.02, 1800, 0.4); A.tone(1600, 'sine', 0.08, 0.02, 2000, 1.1); }); closeRoom(); banner('🧼 SQUEAKY CLEAN', toiletLine); }, Save.washed)); r2.appendChild(b2); }
   } else if (id === 'defense') {
     T.textContent = '🛡 DEFENSES';
     const next = WPN_ORDER.find(w => WEAPONS[w].raid === Save.raids + 1);
@@ -3031,7 +3078,7 @@ function renderMovie() {
 }
 
 /* ---------- 9. UI ---------- */
-const SCREENS = ['appScreen', 'survScreen', 'dexScreen', 'baseScreen', 'startScreen', 'levelScreen', 'heroScreen', 'shopScreen', 'buyScreen', 'settingsScreen', 'pauseScreen', 'overScreen', 'adScreen', 'completeScreen'];
+const SCREENS = ['dailyScreen', 'appScreen', 'survScreen', 'dexScreen', 'baseScreen', 'startScreen', 'levelScreen', 'heroScreen', 'shopScreen', 'buyScreen', 'settingsScreen', 'pauseScreen', 'overScreen', 'adScreen', 'completeScreen'];
 function showOnly(id) { for (const s of SCREENS) $(s).classList.toggle('hidden', s !== id); }
 function banner(title, sub) { const b = $('banner'); b.querySelector('h2').textContent = title; b.querySelector('p').textContent = sub || ''; b.classList.remove('show'); void b.offsetWidth; b.classList.add('show'); }
 let comboShown = 0;
@@ -3040,10 +3087,10 @@ function updateHUD() {
   $('budBar').classList.toggle('hidden', !buddy); if (buddy) { $('budFill').style.width = (buddy.down > 0 ? (1 - buddy.down / 480) * 100 : buddy.hp / buddy.max * 100) + '%'; $('budFill').style.background = buddy.down > 0 ? '#aa3333' : ''; $('budTxt').textContent = buddy.down > 0 ? buddy.H.name.toUpperCase() + ' DOWN · HELP THEM UP' : buddy.H.name.toUpperCase() + (buddy.revUsed ? '' : ' · ❤ 1 REVIVE'); }
   $('hpFill').style.width = (p.hp / p.max * 100) + '%'; $('hpTxt').textContent = Math.ceil(p.hp) + ' / ' + p.max;
   const spR = p.spc / p.spcMax; $('spFill').style.width = spR * 100 + '%'; $('spTxt').textContent = p.H.spcName + (spR >= 1 ? ' READY' : '');
-  const ultR = p.ultUsed ? 0 : p.ultKills / ULT_KILLS; $('ultFill').style.width = ultR * 100 + '%';
-  $('ultTxt').textContent = p.ultUsed ? p.H.ultName + ' USED' : ultR >= 1 ? p.H.ultName + ' READY' : `${p.H.ultName} ${p.ultKills}/${ULT_KILLS}`;
+  const ultR = p.ultUsed ? 0 : p.ultKills / p.ultNeed; $('ultFill').style.width = ultR * 100 + '%';
+  $('ultTxt').textContent = p.ultUsed ? p.H.ultName + ' USED' : ultR >= 1 ? p.H.ultName + ' READY' : `${p.H.ultName} ${p.ultKills}/${p.ultNeed}`;
   $('bSpc').classList.toggle('ready', spR >= 1); $('bSpc').querySelector('.fill').style.height = spR * 100 + '%';
-  const bu = $('bUlt'); bu.classList.toggle('ready', ultR >= 1); bu.classList.toggle('used', p.ultUsed); bu.querySelector('.fill').style.height = ultR * 100 + '%'; $('bUltTxt').textContent = p.ultUsed ? '' : ultR >= 1 ? 'GO' : `${p.ultKills}/${ULT_KILLS}`;
+  const bu = $('bUlt'); bu.classList.toggle('ready', ultR >= 1); bu.classList.toggle('used', p.ultUsed); bu.querySelector('.fill').style.height = ultR * 100 + '%'; $('bUltTxt').textContent = p.ultUsed ? '' : ultR >= 1 ? 'GO' : `${p.ultKills}/${p.ultNeed}`;
   $('bRoll').style.opacity = p.rollCd > 0 ? 0.5 : 1;
   $('bloodTxt').textContent = G.bloodRun; $('killTxt').textContent = G.kills;
   $('lvlName').textContent = G.L.name.toUpperCase();
@@ -3078,6 +3125,7 @@ const KILL_QUIPS = ['BONK!', 'NOT TODAY!', 'STAY DOWN!', 'NEXT!', 'TOO SLOW!', '
 const pick = a => a[Math.floor(Math.random() * a.length)];
 const MENU_LINES = ['Get your thumbs ready to kill. 👍💀', 'Two thumbs. Zero mercy.', 'Thumbs warmed up? The dead are waiting.', 'Left thumb runs. Right thumb kills. Easy.', 'Wash your thumbs after. Seriously.'];
 function refreshMenu() {
+  try { const n = trophyReady(); $('dexBtn').textContent = '📖 ZOMBIES' + (n ? ` · 🏆${n}` : ''); $('dexBtn').classList.toggle('gold', n > 0); $('dexBtn').classList.toggle('sec', !n); } catch (e) {}
   $('menuBlood').textContent = Save.blood;
   $('menuNote').textContent = (Save.raids < 1 && Save.cleared[0] ? '⚠ Your Hideout is under attack! · ' : '') + (isTouch ? MENU_LINES[Math.floor(Date.now() / 1000) % MENU_LINES.length] : 'Made for phones. On computer: WASD move · mouse aim · click shoot · Space roll · Q special · E ultimate · R swap');
 }
@@ -3116,14 +3164,15 @@ function openSurvivors(id) {
   for (const h of HERO_ORDER) { const b = document.createElement('button'); b.textContent = HEROES[h].name; if (h === survSel) b.className = 'on'; b.onclick = () => { SFX.click(); openSurvivors(h); }; tabs.appendChild(b); }
   if (!Save.leo) { const b = document.createElement('button'); b.textContent = '???'; b.style.opacity = 0.6; b.onclick = () => { SFX.click(); hintToast('Someone is still out there... Clear the Abandoned Metro, then play RESCUE LEO.'); }; tabs.appendChild(b); }
   const H = HEROES[survSel], S = HERO_STORY[survSel], up = Save.up, lv = wLevel(survSel), read = (Save.storyRead || {})[survSel];
-  const hp = Math.round(H.hp * (1 + (up.hp || 0) * 0.08)), dmg = Math.round(((1 + (up.dmg || 0) * 0.1) * (1 + lv * 0.2) - 1) * 100);
+  const gq = k => (Save.gear || {})[survSel + '_' + k], hp = Math.round(H.hp * (1 + (up.hp || 0) * 0.08) * (gq(1) ? 1.1 : 1)), dmg = Math.round(((1 + (up.dmg || 0) * 0.1) * (1 + lv * 0.2) * (gq(0) ? 1.1 : 1) - 1) * 100);
   $('survInfo').innerHTML = `<h2>${H.name}</h2><div class="rl">${H.role}</div><div class="bio">${S.bio}</div>
     <div class="sgrid"><div>❤ HEALTH<b>${hp}</b></div><div>👟 SPEED<b>${(H.speed * (1 + (up.spd || 0) * 0.03)).toFixed(1)}</b></div><div>🛡 ARMOR<b>${Math.round(H.armor * 100)}%</b></div><div>⚔ ATTACKS/SEC<b>${(60 / H.atkCd).toFixed(1)}</b></div>
-    <div>🔪 DAMAGE BONUS<b>+${dmg}%</b></div><div>🎯 TRAINING<b>Lv ${lv}/${WMAX}</b></div><div>☠ KILLS<b>${Save.st.heroK[survSel] || 0}</b></div><div>⚡ CHARGE RATE<b>+${Math.round((up.spc || 0) * 12)}%</b></div></div>
+    <div>🔪 DAMAGE BONUS<b>+${dmg}%</b></div><div>🎯 TRAINING<b>Lv ${lv}/${WMAX}</b></div><div>☠ KILLS<b>${Save.st.heroK[survSel] || 0}</b></div><div>⚡ CHARGE RATE<b>+${Math.round(((1 + (up.spc || 0) * 0.12) * (gq(2) ? 1.15 : 1) - 1) * 100)}%</b></div></div>
     <div class="skl a"><b>⚔ ${H.atk}</b> · ${HERO_TRAIT[survSel]}</div>
     <div class="skl"><b>⚡ ${H.spcName}</b> · ${H.spc}. Charges over time and with every kill · tap ⚡</div>
-    <div class="skl u"><b>☠ ${H.ultName}</b> · ${H.ult}. Unlocks after ${ULT_KILLS} kills · once per level</div>
+    <div class="skl u"><b>☠ ${H.ultName}</b> · ${H.ult}. Unlocks after ${ULT_KILLS - ((Save.gear || {})[survSel + '_3'] ? 6 : 0)} kills · once per level</div>
     <div class="skl a"><b>🤝 As companion</b> · fights at 75% damage and pulls you up once per level when you go down</div>
+    <div class="gear">${GEAR[survSel].map((g, i) => { const own = (Save.gear || {})[survSel + '_' + i]; return `<div class="${own ? 'on' : ''}" title="${g[1]}"><span>${own ? g[0] : '🔒'}</span><b>${own ? g[1] : LEVELS[i].name}</b><i>${GEAR_FX[i]}</i></div>`; }).join('')}</div>
     <div class="skins">${SKIN_DEFS.map(k => { const own = skinOwned(survSel, k), on = (Save.skin[survSel] || 'classic') === k.id; return `<button class="sk${on ? ' on' : ''}${own ? '' : ' lock'}" data-k="${k.id}"><i style="background:${k.col || HEROES[survSel].look.shirt}"></i>${own ? '' : '🔒 '}${k.name}</button>`; }).join('')}</div>
     <button class="btn ${read ? 'sec' : 'gold'}" id="storyBtn">📜 ${read ? 'READ STORY AGAIN' : 'READ STORY · +20 🩸'}</button>`;
   $('storyBtn').onclick = () => { SFX.click(); openStory(survSel); };
@@ -3155,8 +3204,50 @@ function appWelcome() {
   if (isApp()) $('appBtn').classList.add('hidden');
   try { if ('serviceWorker' in navigator && location.protocol === 'https:' && !inFrame()) navigator.serviceWorker.register('sw.js').catch(() => {}); } catch (e) {}
 }
+const DAILY = [[50, '🥫', 'Beans'], [75, '🍞', 'Bread'], [100, '🩸', 'Blood bag'], [150, '🍫', 'Chocolate'], [200, '💊', 'Meds'], [250, '🔋', 'Batteries'], [500, '🎁', 'Supply crate']];
+function checkDaily() {
+  const today = new Date().toDateString(), yest = new Date(Date.now() - 86400000).toDateString(); Save.daily = Save.daily || { last: '', streak: 0 };
+  const D = Save.daily; if (D.last === today || G.state !== 'menu' || $('startScreen').classList.contains('hidden')) return false;
+  const day = D.last === yest ? (D.streak % 7) + 1 : 1; G.dailyDay = day; G.dailyClaimed = false;
+  $('dailyRow').innerHTML = DAILY.map((r, i) => `<div class="dd${i + 1 < day ? ' got' : ''}${i + 1 === day ? ' now' : ''}${i === 6 ? ' big' : ''}"><small>DAY ${i + 1}</small><span>${r[1]}</span><b>${r[0]} 🩸</b>${i === 6 ? '<small>+1 auto-aim</small>' : ''}</div>`).join('');
+  $('dailySub').textContent = day === 1 && D.streak > 0 && D.last !== yest ? 'You missed a day. The zombies ate your streak. Starting over!' : day === 7 ? 'DAY 7! The big supply crate is yours.' : `Day ${day} of 7 · come back tomorrow for something better`;
+  $('dailyDbl').textContent = (Save.vip ? '⭐' : '📺') + ' DOUBLE IT · ' + DAILY[day - 1][0] * 2 + ' 🩸';
+  showOnly('dailyScreen'); return true;
+}
+function claimDaily(mult) {
+  if (G.dailyClaimed) return; G.dailyClaimed = true; const day = G.dailyDay, r = DAILY[day - 1];
+  Save.daily = { last: new Date().toDateString(), streak: day }; Save.blood += r[0] * mult; if (day === 7) Save.aimCharges += 1; saveGame(); refreshMenu();
+  showOnly('startScreen'); SFX.heal(); banner(`+${r[0] * mult} 🩸`, `${r[2]}${day === 7 ? ' + 1 auto-aim level' : ''} · see you tomorrow`);
+}
+const TROPHIES = [
+  ['firstblood', '🩸', 'First Blood', 'Kill your first zombie', () => [Save.st.kills, 1], 25],
+  ['exterm', '☠️', 'Exterminator', 'Kill 1,000 zombies', () => [Save.st.kills, 1000], 200],
+  ['apoc', '🌋', 'Apocalypse Now', 'Kill 10,000 zombies', () => [Save.st.kills, 10000], 1000],
+  ['bosses', '👑', 'Boss Hunter', 'Beat all 4 bosses', () => [Object.keys(Save.st.bosses).length, 4], 400],
+  ['leo', '🎸', 'Full Band', 'Rescue Leo', () => [Save.leo ? 1 : 0, 1], 200],
+  ['stars', '⭐', 'Star Collector', 'Earn all 12 level stars', () => [Object.values(Save.stars || {}).flat().filter(Boolean).length, 12], 500],
+  ['tags', '🎨', 'Graffiti Hunter', 'Find all 12 Leo tags', () => [Object.keys(Save.tags || {}).filter(k => !k.startsWith('all')).length, 12], 300],
+  ['bonus', '🏅', 'Challenge Accepted', 'Finish every bonus challenge', () => [Object.keys(Save.bonusDone || {}).length, BONUS.length], 400],
+  ['skins', '👕', 'Fashionista', 'Own 10 skins', () => [HERO_ORDER.reduce((n, h) => n + SKIN_DEFS.filter(k => k.id !== 'classic' && skinOwned(h, k)).length, 0), 10], 300],
+  ['gear', '🎒', 'Fully Geared', 'Get all 4 gear for one survivor', () => [Math.max(...Object.keys(HEROES).map(h => [0, 1, 2, 3].filter(i => (Save.gear || {})[h + '_' + i]).length)), 4], 250],
+  ['combo', '🔥', 'Combo King', 'Reach a 30x combo', () => [Save.st.combo, 30], 150],
+  ['runs', '🏃', 'Seasoned Survivor', 'Play 50 runs', () => [Save.st.runs, 50], 200],
+  ['movies', '🎬', 'Movie Buff', 'Watch all 10 lounge movies', () => [Object.keys(Save.watched || {}).length, 10], 50],
+  ['cat', '🐈', 'Cat Person', 'Pet Mittens 25 times', () => [Save.pets || 0, 25], 100],
+  ['wash', '🧼', 'Clean Freak', 'Wash your hands 10 times', () => [Save.washes || 0, 10], 100],
+  ['chef', '🍳', 'Master Chef', 'Cook 7 meals', () => [Save.meals || 0, 7], 150]
+];
+const trophyReady = () => TROPHIES.filter(T => { const [v, n] = T[4](); return v >= n && !(Save.trophies || {})[T[0]]; }).length;
+function drawTrophies() {
+  const g = $('trophyGrid'); g.innerHTML = ''; Save.trophies = Save.trophies || {};
+  for (const T of TROPHIES) { const [v, n] = T[4](), done = Save.trophies[T[0]], ready = v >= n && !done, el = document.createElement('div'); el.className = 'tro' + (done ? ' done' : ready ? ' ready' : '');
+    el.innerHTML = `<span>${T[1]}</span><div style="flex:1"><h4>${T[2]}</h4><p>${T[3]}</p>${done ? '<div class="rw">✓ CLAIMED</div>' : ready ? `<div class="rw">TAP TO CLAIM · ${T[5]} 🩸</div>` : `<i><b style="width:${Math.min(100, v / n * 100)}%"></b></i><div class="rw" style="color:#888">${Math.min(v, n)}/${n} · ${T[5]} 🩸</div>`}</div>`;
+    if (ready) el.onclick = () => { Save.trophies[T[0]] = true; Save.blood += T[5]; saveGame(); SFX.heal(); banner('🏆 ' + T[2], '+' + T[5] + ' 🩸'); refreshMenu(); drawTrophies(); };
+    g.appendChild(el); }
+}
 function openDex() {
   const S = Save.st, tm = Math.floor(S.time / 60), fav = Object.entries(S.heroK).sort((a, b) => b[1] - a[1])[0];
+  drawTrophies();
   $('dexStats').innerHTML = [['☠ ZOMBIES KILLED', S.kills], ['👑 BOSSES SLAIN', Object.values(S.bosses).reduce((a, b) => a + b, 0)], ['💀 TIMES DIED', S.deaths], ['🔥 BEST COMBO', S.combo + 'x'],
     ['🩸 BLOOD EARNED', S.blood], ['🏃 RUNS', S.runs], ['⏱ TIME SURVIVED', Math.floor(tm / 3600) + 'h ' + Math.floor(tm / 60) % 60 + 'm'], ['⭐ FAVOURITE', fav ? HEROES[fav[0]].name : '—']].map(([a, b]) => `<div class="dst">${a}<b>${b}</b></div>`).join('');
   const g = $('dexGrid'); g.innerHTML = '';
@@ -3262,7 +3353,7 @@ function purchaseProduct(id, title, price, onSuccess) { $('buyTitle').textConten
 let shopReturn = 'startScreen';
 function refreshAutoBtn() { const b = $('autoBtn'), onNow = autoAimOn(), left = Save.aimCharges; b.classList.toggle('on', onNow); b.textContent = '🎯 AUTO ' + (onNow ? 'ON' : 'OFF') + (G.aimActive ? '' : ` · ${left} left`); $('pauseAuto').textContent = '🎯 AUTO-AIM: ' + (onNow ? 'ON' : 'OFF') + (G.aimActive ? ` · ${left} more level${left === 1 ? '' : 's'} after this` : ` · ${left} left`); }
 function toggleAuto() { if (!hasAim()) return; Cfg.autoAim = !Cfg.autoAim; if (Cfg.autoAim && !G.aimActive && player) useAimCharge(false); saveCfg(); refreshAutoBtn(); SFX.click(); }
-function goMenu() { if (Movie) { Movie = null; $('movieScreen').classList.add('hidden'); } Music.boss = false; Music.stop(); Amb.stop(); if (A.ctx) Music.play('menu'); G.state = 'menu'; player = null; $('hud').classList.add('hidden'); $('touch').classList.add('hidden'); $('hint').classList.add('hidden'); $('combo').classList.remove('show'); refreshMenu(); showOnly('startScreen'); }
+function goMenu() { if (Movie) { Movie = null; $('movieScreen').classList.add('hidden'); } Music.boss = false; Music.stop(); Amb.stop(); if (A.ctx) Music.play('menu'); G.state = 'menu'; player = null; $('hud').classList.add('hidden'); $('touch').classList.add('hidden'); $('hint').classList.add('hidden'); $('combo').classList.remove('show'); refreshMenu(); showOnly('startScreen');  setTimeout(checkDaily, 400); }
 function pauseGame() { if (G.state !== 'play') return; G.state = 'paused'; $('pauseQuip').textContent = pick(PAUSE_TIPS); Music.stop(); Amb.stop(); $('pauseSub').textContent = G.L.name; $('pauseAuto').classList.toggle('hidden', !hasAim()); $('pauseAim').textContent = 'AIM LINE: ' + (Cfg.aimLine ? 'ON' : 'OFF'); refreshAutoBtn(); showOnly('pauseScreen'); resetInput(); }
 function resumeGame() { if (G.state !== 'paused') return; showOnly(null); G.state = 'play'; Music.play(trackFor()); Amb.start(); last = performance.now(); }
 function showGameOver() {
@@ -3307,12 +3398,13 @@ function trainingDone() {
 function levelComplete() {
   const li = G.levelIdx, first = !Save.cleared[li], bonus = 80 + li * 40; G.bloodRun += pickups.filter(k => k.type === 'blood').reduce((s, k) => s + k.val, 0); pickups = [];
   const skId = G.L.theme, skKey = G.hero + '_' + skId, newSkin = !Save.skins[skKey]; Save.skins[skKey] = true;
+  Save.gear = Save.gear || {}; const gKey = G.hero + '_' + li, newGear = !Save.gear[gKey]; Save.gear[gKey] = true; const gItem = GEAR[G.hero][li];
   const KG = 120 + li * 20, st = Save.stars[li] || [false, false, false], got = [true, G.kills >= KG, !G.downs]; let newStars = 0; got.forEach((g, i) => { if (g && !st[i]) { st[i] = true; newStars++; } }); Save.stars[li] = st; const starBlood = newStars * 50;
   bankBlood(); Save.blood += bonus + starBlood; Save.cleared[li] = true; saveGame();
   const secs = Math.round((performance.now() - G.runStart) / 1000), next = WPN_ORDER.find(w => WEAPONS[w].raid === Save.raids + 1), last = li >= LEVELS.length - 1;
   const bns = BONUS.filter(b => b.need === li), bn = bns.length ? { name: bns.map(b => b.name).join(' & ') } : null;
   showResults(last ? 'THE CITY IS FREE' : 'LEVEL CLEARED', '#33ff77', G.L.name, `<div class="stars">${['Clear the level', KG + '+ kills', 'Never go down'].map((n, i) => `<span class="${got[i] ? 'on' : ''}">${got[i] ? '★' : '☆'} ${n}</span>`).join('')}</div>${starBlood ? `<div class="statline" style="color:#ffcc33">New stars: 🩸 <b>+${starBlood}</b></div>` : ''}<div class="statline">Zombies slain: <b>${G.kills}</b></div><div class="statline">Blood: 🩸 <b>${G.bloodRun}</b> · Clear bonus 🩸 <b>${bonus}</b></div><div class="statline">Time: <b>${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}</b></div>`,
-    (next ? `⚠ <b style="color:#ff6655">Your Hideout is under attack!</b> Defend it to unlock the <b style="color:#ffcc33">${WEAPONS[next].name}</b>.<br>` : '') + (newSkin ? `👕 New skin: <b style="color:#ffcc33">${HEROES[G.hero].name} · ${SKIN_DEFS.find(k => k.id === skId).name}</b> (equip it in Survivors)<br>` : '') + (first && bn ? `★ Bonus challenge unlocked: <b style="color:#ffcc33">${bn.name}</b><br>` : '') + (last ? 'The Necromancer is dust. You beat Below the Dead! 🏆' : first ? `🔓 <b style="color:#ffcc33">${LEVELS[li + 1].name}</b> unlocked` : ''));
+    (next ? `⚠ <b style="color:#ff6655">Your Hideout is under attack!</b> Defend it to unlock the <b style="color:#ffcc33">${WEAPONS[next].name}</b>.<br>` : '') + (newGear ? `${gItem[0]} New gear: <b style="color:#7cf">${gItem[1]}</b> · ${GEAR_FX[li]} for ${HEROES[G.hero].name}<br>` : '') + (newSkin ? `👕 New skin: <b style="color:#ffcc33">${HEROES[G.hero].name} · ${SKIN_DEFS.find(k => k.id === skId).name}</b> (equip it in Survivors)<br>` : '') + (first && bn ? `★ Bonus challenge unlocked: <b style="color:#ffcc33">${bn.name}</b><br>` : '') + (last ? 'The Necromancer is dust. You beat Below the Dead! 🏆' : first ? `🔓 <b style="color:#ffcc33">${LEVELS[li + 1].name}</b> unlocked` : ''));
   $('againBtn').textContent = last ? 'PLAY AGAIN' : 'NEXT LEVEL ▶';
 }
 function setupBonus() {
@@ -3356,10 +3448,12 @@ const on = (id, fn) => $(id).addEventListener('click', e => { A.init(); SFX.clic
 on('playBtn', openLevels);
 on('dblBtn', () => { if (G.dblDone) return; const amt = G.bloodRun; showRewardedAd(() => { G.dblDone = true; Save.blood += amt; saveGame(); showOnly('completeScreen'); $('dblBtn').classList.add('hidden'); banner('+' + amt + ' 🩸', 'Blood doubled'); SFX.pickup(); }); });
 on('dexBtn', openDex);
+on('dailyClaim', () => claimDaily(1));
+on('dailyDbl', () => showRewardedAd(() => claimDaily(2)));
 on('appBtn', openApp);
 on('appBack', () => showOnly('startScreen'));
 on('installBtn', async () => { if (!installEvt) return; installEvt.prompt(); try { const r = await installEvt.userChoice; if (r.outcome === 'accepted') { $('appBody').innerHTML = '<h3 style="color:#33ff77">🧟 Installing...</h3><p>Look for the zombie on your home screen. Open it for your +200 🩸 bonus.</p>'; $('installBtn').classList.add('hidden'); } } catch (e) {} installEvt = null; });
-appWelcome();
+appWelcome(); refreshMenu(); setTimeout(checkDaily, 900);
 on('survBtn', () => openSurvivors());
 on('survBack', () => { $('storyBox').classList.add('hidden'); showOnly('startScreen'); });
 on('dexBack', () => showOnly('startScreen'));
