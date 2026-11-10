@@ -1,6 +1,6 @@
 # Below the Dead
 
-Zombie survival game for phones (landscape).
+Zombie survival game for phones (landscape). Works fully offline once loaded.
 
 ## Put it online with GitHub Pages
 1. Upload ALL these files to the top of a **Public** repository (not inside a folder):
@@ -12,5 +12,13 @@ Zombie survival game for phones (landscape).
 Open the link in Chrome (Android) or Safari (iPhone), tap **GET THE APP** in the menu and follow the steps.
 
 ## Updating
-Upload the new `index.html` over the old one. If the installed app keeps showing the old version,
-change `btd-v1` to `btd-v2` (and so on) at the top of `sw.js` and upload that too.
+Upload the new `index.html` AND `sw.js` over the old ones (the version number inside sw.js makes
+installed apps pick up the update). If the app still shows the old version, close it fully and reopen.
+
+## Test mode
+Settings -> "Test mode" unlocks every chapter, sublevel, challenge and Leo without touching real progress.
+Before publishing for players you can hide it: in index.html search for `cfgTest` and delete that settings row.
+
+## Ads and purchases
+They are placeholders. Replace `showRewardedAd()` and `purchaseProduct()` in index.html with the real
+SDK of the platform you publish on (CrazyGames / Poki / GameDistribution, or AdMob + store billing in an app).
