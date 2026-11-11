@@ -243,6 +243,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 #survCv{height:min(58vh,260px)!important}.svTap{font-size:.7rem!important}
 .zc{align-items:flex-start!important}.zc>div{text-align:left;min-width:0;flex:1}.zc canvas{align-self:center}.zc h4{line-height:1;margin-bottom:2px}
 .tro{align-items:flex-start!important}.tro>span{align-self:center}.tro>div{flex:1;min-width:0;text-align:left}html.bigtext .tro p,html.bigtext .zc p{font-size:.68rem!important;line-height:1.2!important}html.bigtext .tro h4,html.bigtext .zc h4{font-size:1rem!important}
+#roomX{position:sticky;top:0;float:right;margin:-4px -4px 0 6px;width:34px;height:34px;border-radius:50%;border:2px solid #ff3355;background:#2a0a10;color:#fff;font:bold 1.05rem sans-serif;cursor:pointer;z-index:2;line-height:1}#roomX:active{transform:scale(.9)}
 </style>
 </head>
 <body>
@@ -292,7 +293,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 <div id="baseScreen" class="hidden">
   <div id="baseTop"><button class="btn sec" id="baseBack">◀ MENU</button><div id="baseInfo">🩸 <b id="baseBlood">0</b> · <span id="lgRaids">Raids survived</span> <b id="baseRaids">0</b></div><button class="btn sec" id="downBtn">⬇ BASEMENT</button><button class="btn gold" id="defBtn">🛡 DEFENSES</button></div>
   <div id="baseHint">Tap a room</div>
-  <div id="roomPanel" class="panel hidden"><div id="roomTitle"></div><div id="roomBody"></div><button class="btn sec" id="roomClose" style="margin-top:6px;font-size:.8rem;padding:6px 14px">CLOSE</button></div>
+  <div id="roomPanel" class="panel hidden"><button id="roomX" aria-label="Close" onclick="event.stopPropagation();SFX.click();closeRoom()">✕</button><div id="roomTitle"></div><div id="roomBody"></div><button class="btn sec" id="roomClose" style="margin-top:6px;font-size:.8rem;padding:6px 14px">CLOSE</button></div>
 </div>
 <div id="movieScreen" class="hidden"><canvas id="movieCanvas"></canvas><button class="btn sec" id="movieSkip">LEAVE</button><div id="movieMsg"></div><div id="recDot" class="hidden">● REC</div><div id="clipDone" class="hidden"><h2>🎬 Your movie is ready!</h2><p id="clipDoneP"></p><div class="btns"><button class="btn gold" id="clipShare">📤 SHARE</button><button class="btn sec" id="clipSave">💾 SAVE</button><button class="btn" id="clipClose">CLOSE</button></div></div></div>
 
@@ -2233,7 +2234,7 @@ function drawHero(p, preview) {
   else drawHuman(o);
   if (p.rollT > 0) ctx.restore();
   if (p.swing) { const k = p.swing.t / 10; ctx.strokeStyle = `rgba(255,240,200,${k * 0.85})`; ctx.lineWidth = 6 * k + 2; ctx.beginPath(); ctx.ellipse(p.x, p.y - 20, 80, 62, 0, p.swing.a - 1.05 + (1 - k) * 0.5, p.swing.a + 1.05 - (1 - k) * 0.5); ctx.stroke(); }
-  if (p.shieldT > 0 && !preview) { const T = G.time, cy = p.y - 34, rx = 40, ry = 54, fade = Math.min(1, p.shieldT / 15), pl = 0.75 + Math.sin(T * 0.25) * 0.2; ctx.save(); ctx.globalAlpha = fade;
+  if (p.shieldT > 0 && (!preview || p.cardDome)) { const T = p.cardDome ? performance.now() / 16 : G.time, cy = p.y - (p.cardDome ? 48 : 34), rx = p.cardDome ? 47 : 40, ry = p.cardDome ? 52 : 54, fade = Math.min(1, p.shieldT / 15), pl = 0.75 + Math.sin(T * 0.25) * 0.2; ctx.save(); ctx.globalAlpha = fade;
     const gg = ctx.createRadialGradient(p.x, cy, 6, p.x, cy, ry); gg.addColorStop(0, 'rgba(80,170,255,0.04)'); gg.addColorStop(0.7, 'rgba(80,170,255,0.16)'); gg.addColorStop(1, 'rgba(150,215,255,0.45)'); ctx.fillStyle = gg; ctx.beginPath(); ctx.ellipse(p.x, cy, rx, ry, 0, 0, 7); ctx.fill();
     ctx.globalCompositeOperation = 'lighter'; ctx.strokeStyle = `rgba(120,200,255,${0.55 * pl})`; ctx.lineWidth = 3; ctx.beginPath(); ctx.ellipse(p.x, cy, rx, ry, 0, 0, 7); ctx.stroke();
     ctx.strokeStyle = 'rgba(220,240,255,0.7)'; ctx.lineWidth = 2; for (let k = 0; k < 2; k++) { const a0 = T * 0.06 + k * Math.PI; ctx.beginPath(); ctx.ellipse(p.x, cy, rx - 3, ry - 3, 0, a0, a0 + 0.9); ctx.stroke(); }
@@ -3336,7 +3337,7 @@ function renderBase() {
   ctx.fillStyle = '#1a1214'; ctx.fillRect(0, 34, VW, WALL_T - 34); ctx.fillStyle = '#2a1e1a'; for (let x = 0; x < VW; x += 70) ctx.fillRect(x, 34, 10, WALL_T - 34);
   ctx.fillStyle = '#3a2a22'; ctx.fillRect(0, WALL_T - 6, VW, 6);
   for (const r of rooms) {
-    const x = r.x, w = r.w, cx = x + w / 2;
+    const x = r.x, w = r.w, cx = x + w / 2; G.curRoom = [x, w];
     // back wall
     const wallCol = { armory: '#262a32', lounge: '#4a2a26', range: '#1e2a24', toilet: '#4a565a' }[r.id];
     ctx.fillStyle = wallCol; ctx.fillRect(x, WALL_T, w, FLOOR_Y - WALL_T);
@@ -3368,7 +3369,7 @@ function renderBase() {
       const zx = tvx - tw / 2 + ((t * 0.25) % (tw + 40)) - 20; ctx.fillRect(zx, ty + th * 0.48, 6, th * 0.4); circle(zx + 4, ty + th * 0.46, 4); ctx.fillRect(zx + 5, ty + th * 0.55, 9, 2.5);
       for (let i = 0; i < 40; i++) { ctx.fillStyle = `rgba(255,255,255,${hash(i + t) * 0.15})`; ctx.fillRect(tvx - tw / 2 + hash(i * 3 + t) * tw, ty + hash(i * 7 + t) * th, 1.5, 1.5); }
       ctx.restore(); ctx.fillStyle = '#222'; ctx.fillRect(tvx - 20, ty + th + 5, 40, 6);
-      ctx.fillStyle = '#c8b890'; ctx.fillRect(x + w - 54, 110, 36, 50); ctx.fillStyle = '#8a2020'; ctx.font = 'bold 6px Bebas Neue, Impact, sans-serif'; ctx.fillText('BRAINS', x + w - 50, 124); ctx.fillText('AT', x + w - 40, 132); ctx.fillText('BREAKFAST', x + w - 54 + 2, 140); ctx.fillStyle = '#3a2a1a'; ctx.fillRect(x + w - 44, 144, 14, 12);
+      { const px = x + w - 50, pw = 46; ctx.fillStyle = '#e8dcb8'; ctx.fillRect(px, 104, pw, 74); ctx.fillStyle = 'rgba(0,0,0,0.25)'; ctx.fillRect(px + pw, 106, 2, 74); ctx.fillStyle = '#c03030'; circle(px + pw / 2, 107, 2.5); ctx.fillStyle = '#9a1818'; ctx.textAlign = 'center'; ctx.font = 'bold 15px Bebas Neue, Impact, sans-serif'; ctx.fillText('BRAINS', px + pw / 2, 126); ctx.font = 'bold 11px Bebas Neue, Impact, sans-serif'; ctx.fillText('AT', px + pw / 2, 139); ctx.font = 'bold 12px Bebas Neue, Impact, sans-serif'; ctx.fillText('BREAKFAST', px + pw / 2, 153, pw - 4); ctx.fillStyle = '#3a2a1a'; ctx.fillRect(px + pw / 2 - 8, 158, 16, 14); ctx.fillStyle = '#e8dcb8'; ctx.fillRect(px + pw / 2 - 5, 162, 3, 3); ctx.fillRect(px + pw / 2 + 2, 162, 3, 3); ctx.textAlign = 'left'; }
       ctx.strokeStyle = '#2a2a2a'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x, 92); ctx.quadraticCurveTo(x + w * 0.25, 110, x + w * 0.5, 92); ctx.quadraticCurveTo(x + w * 0.75, 110, x + w, 92); ctx.stroke();
       // rug, couch, lamp, plant, fridge, cat
       ctx.fillStyle = '#6a2a2a'; ctx.beginPath(); ctx.ellipse(tvx, FLOOR_Y + 70, w * 0.32, 30, 0, 0, Math.PI * 2); ctx.fill(); ctx.strokeStyle = '#c8a050'; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(tvx, FLOOR_Y + 70, w * 0.27, 24, 0, 0, Math.PI * 2); ctx.stroke();
@@ -3397,7 +3398,7 @@ function renderBase() {
       const tx = x + w * 0.32; ctx.fillStyle = '#e8ecee'; ctx.beginPath(); ctx.roundRect(tx - 16, FLOOR_Y - 46, 32, 30, 4); ctx.fill(); ctx.fillStyle = '#cfd6d8'; ctx.fillRect(tx - 16, FLOOR_Y - 46, 32, 5); ctx.fillStyle = '#e8ecee'; ctx.beginPath(); ctx.ellipse(tx, FLOOR_Y - 6, 18, 11, 0, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = '#d0d6d8'; ctx.fillRect(tx - 10, FLOOR_Y - 6, 20, 26); ctx.fillStyle = flushT > 0 ? `rgba(80,160,255,${0.5 + Math.sin(t * 0.6) * 0.3})` : '#9ab8c8'; ctx.beginPath(); ctx.ellipse(tx, FLOOR_Y - 7, 12, 6, 0, 0, Math.PI * 2); ctx.fill();
       if (flushT > 0) { ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(tx, FLOOR_Y - 7, 6, t * 0.4, t * 0.4 + 4); ctx.stroke(); }
       ctx.fillStyle = '#f2f2f2'; circle(x + 10, FLOOR_Y - 40, 6); ctx.fillStyle = '#bbb'; circle(x + 10, FLOOR_Y - 40, 2);
-      ctx.save(); ctx.translate(x + w * 0.5, FLOOR_Y - 92); ctx.rotate(-0.03); ctx.fillStyle = '#f4ecd0'; ctx.fillRect(-21, -42, 42, 84); ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.fillRect(-8, -45, 16, 5); ctx.fillStyle = '#c0281e'; ctx.textAlign = 'center'; ctx.font = 'bold 13px Bebas Neue, Impact, sans-serif'; ctx.fillText('STILL', 0, -24); ctx.fillText('CAN\'T', 0, -10); ctx.fillText('AIM?', 0, 4); ctx.fillStyle = '#333'; ctx.font = 'italic 7.5px Barlow, sans-serif'; ctx.fillText('after all', 0, 19); ctx.fillText('those', 0, 28); ctx.fillText('zombies?', 0, 37); ctx.restore();
+      ctx.save(); ctx.translate(x + w * 0.32, FLOOR_Y - 96); ctx.rotate(-0.03); ctx.fillStyle = '#f4ecd0'; ctx.fillRect(-21, -42, 42, 84); ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.fillRect(-8, -45, 16, 5); ctx.fillStyle = '#c0281e'; ctx.textAlign = 'center'; ctx.font = 'bold 13px Bebas Neue, Impact, sans-serif'; ctx.fillText('STILL', 0, -24); ctx.fillText('CAN\'T', 0, -10); ctx.fillText('AIM?', 0, 4); ctx.fillStyle = '#333'; ctx.font = 'italic 7.5px Barlow, sans-serif'; ctx.fillText('after all', 0, 19); ctx.fillText('those', 0, 28); ctx.fillText('zombies?', 0, 37); ctx.restore();
       ctx.fillStyle = '#333'; ctx.fillRect(cx - 0.5, WALL_T, 1, 22); ctx.fillStyle = hash(Math.floor(t / 4)) > 0.05 ? '#fff6d0' : '#555'; circle(cx, WALL_T + 26, 4);
     }
     homeTouches(r, x, w, cx, t);
@@ -3412,7 +3413,7 @@ function renderBase() {
   // warm light pass (additive)
   ctx.globalCompositeOperation = 'lighter';
   for (const r of rooms) {
-    const x = r.x, w = r.w, cx = x + w / 2;
+    const x = r.x, w = r.w, cx = x + w / 2; G.curRoom = [x, w];
     if (r.id === 'lounge') { const tvx = x + w * 0.58, fl = 0.7 + hash(Math.floor(t / 3)) * 0.3; glow(x + w * 0.14, FLOOR_Y - 60, 160, 'rgba(255,190,110,0.28)'); glow(tvx, 160, 150 * fl, `rgba(110,140,255,${0.18 * fl})`); glow(tvx, FLOOR_Y + 60, 110, `rgba(110,140,255,${0.08 * fl})`);
       for (let i = 0; i < 14; i++) { const fu = (i + 0.5) / 14, hu = (fu * 2) % 1, fx = x + w * fu, fy = 92 + 36 * hu * (1 - hu); const on = Math.sin(t * 0.05 + i * 1.7) > -0.3; const col = ['255,200,80', '255,90,120', '120,220,255', '140,255,140'][i % 4]; ctx.fillStyle = `rgba(${col},${on ? 0.95 : 0.35})`; circle(fx, fy, 2.2); if (on) glow(fx, fy, 12, `rgba(${col},0.35)`); } }
     if (r.id === 'armory') glow(cx, WALL_T + 30, 120, 'rgba(255,60,50,0.22)');
@@ -3489,7 +3490,7 @@ function homeTouches(r, x, w, cx, t) {
     const bx = x + 12, by = 232; ctx.fillStyle = '#5a3a22'; ctx.fillRect(bx - 3, by - 3, 86, 54); ctx.fillStyle = '#23302a'; ctx.fillRect(bx, by, 80, 48);
     ctx.fillStyle = 'rgba(240,240,230,0.8)'; ctx.font = '7px Barlow, sans-serif'; ctx.fillText('BEST SCORES', bx + 6, by + 10);
     [['MAYA', 7], ['BEN', 3], ['ARIS', 5], ['CHLOE', 8]].forEach(([n, k], i) => { ctx.fillText(n, bx + 6, by + 20 + i * 8); ctx.strokeStyle = 'rgba(240,240,230,0.75)'; ctx.lineWidth = 0.9; ctx.beginPath(); for (let j = 0; j < k; j++) { const tx2 = bx + 36 + j * 4 + Math.floor(j / 5) * 3; if (j % 5 === 4) { ctx.moveTo(tx2 - 17, by + 18 + i * 8); ctx.lineTo(tx2, by + 13 + i * 8); } else { ctx.moveTo(tx2, by + 13 + i * 8); ctx.lineTo(tx2, by + 19 + i * 8); } } ctx.stroke(); });
-    ctx.save(); ctx.translate(x + w - 46, 246); ctx.rotate(0.08); ctx.fillStyle = '#ffe46a'; ctx.fillRect(-18, -14, 36, 30); ctx.fillStyle = '#333'; ctx.font = '6px Barlow, sans-serif'; ctx.textAlign = 'center'; ctx.fillText('BEN: STOP', 0, -4); ctx.fillText('SHOOTING', 0, 4); ctx.fillText('THE LIGHTS', 0, 12); ctx.textAlign = 'left'; ctx.restore();
+    ctx.save(); ctx.translate(x + w - 54, 236); ctx.rotate(0.06); ctx.fillStyle = '#ffe46a'; ctx.fillRect(-32, -24, 64, 52); ctx.fillStyle = 'rgba(0,0,0,0.12)'; ctx.fillRect(-32, -24, 64, 6); ctx.fillStyle = '#222'; ctx.font = 'bold 11px Barlow, sans-serif'; ctx.textAlign = 'center'; ctx.fillText('BEN: STOP', 0, -4, 60); ctx.fillText('SHOOTING', 0, 9, 60); ctx.fillText('THE LIGHTS!', 0, 22, 60); ctx.textAlign = 'left'; ctx.restore();
     mug(x + w - 22, FLOOR_Y + 34, '#c03030', false, t);
   } else if (r.id === 'toilet') {
     // toothbrush cup - one for each survivor
@@ -3531,7 +3532,7 @@ function renderHideout() {
 function drawResident(id, px, py, face, lines, t, seed, sc = 1.35) {
   if (!id || !HEROES[id]) return; const hp = { id, x: px, y: py, vx: 0, vy: 0, face, aim: face > 0 ? 0 : Math.PI, walk: t * 0.04 + seed, lastFire: -999, atkAnim: 0, iframes: 0, shieldT: 0, trail: [], tick: 0, H: HEROES[id] };
   ctx.save(); ctx.translate(px, py); ctx.scale(sc, sc); ctx.translate(-px, -py); drawHero(hp, true); ctx.restore();
-  const cyc = (t + seed * 211) % 720; if (cyc < 160) { const ln = lines[Math.floor((t + seed * 211) / 720) % lines.length]; ctx.font = '9px Barlow, sans-serif'; const lw = ctx.measureText(ln).width + 12, bx = clamp(px - lw / 2, 16, VW - lw - 16), by = py - 72 * sc - 14; ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.beginPath(); ctx.roundRect(bx, by, lw, 16, 8); ctx.fill(); ctx.fillStyle = '#222'; ctx.fillText(ln, bx + 6, by + 11); }
+  const cyc = (t + seed * 211) % 720; if (cyc < 160) { const ln = lines[Math.floor((t + seed * 211) / 720) % lines.length]; ctx.font = '9px Barlow, sans-serif'; let fs = 9; const R = G.curRoom || [16, VW - 32]; while (fs > 6.5 && ctx.measureText(ln).width + 12 > R[1] - 8) { fs -= 0.5; ctx.font = fs + 'px Barlow, sans-serif'; } const lw = ctx.measureText(ln).width + 12, bx = clamp(px - lw / 2, Math.max(16, R[0] + 8), Math.min(VW - 16, R[0] + R[1] - 8) - lw), by = py - 72 * sc - 14; ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.beginPath(); ctx.roundRect(bx, by, lw, 16, 8); ctx.fill(); ctx.fillStyle = '#222'; ctx.fillText(ln, bx + 6, by + 11); }
 }
 function leoRoom() { const rs = ['lounge', 'armory', 'range', 'toilet', 'dig2'].concat(Save.kitchen ? ['kitchen'] : []); return rs[Math.floor(Date.now() / 25000) % rs.length]; }
 function drawLeo(r, x, w, t) { if (!Save.leo || !HEROES.leo || r.id !== leoRoom()) return; const P = { lounge: [0.86, 100, -1], armory: [0.3, 104, 1], range: [0.82, 104, -1], toilet: [0.3, 100, 1], dig2: [0.28, 92, 1], kitchen: [0.25, 60, 1] }[r.id]; if (P) drawResident('leo', x + w * P[0], FLOOR_Y + P[1], P[2], ['Anyone seen my pick?', 'This room needs more volume.', 'Just passing through.', 'Rock never dies. Unlike us.'], t, 4, 1.25); }
@@ -3545,7 +3546,7 @@ function renderBasement() {
   ctx.strokeStyle = '#4a3a2a'; ctx.lineWidth = 2; for (let i = 0; i < 6; i++) { const rx = hash(i * 13) * VW; ctx.beginPath(); ctx.moveTo(rx, 34); ctx.quadraticCurveTo(rx + 20, 52, rx + 8 + hash(i) * 30, WALL_T - 4); ctx.stroke(); }
   ctx.fillStyle = '#3a3a3e'; ctx.fillRect(0, WALL_T - 8, VW, 8); ctx.fillStyle = '#5a5a60'; ctx.fillRect(0, WALL_T - 14, VW, 4); // pipe
   for (const r of rooms) {
-    const x = r.x, w = r.w, cx = x + w / 2;
+    const x = r.x, w = r.w, cx = x + w / 2; G.curRoom = [x, w];
     if (r.id === 'kitchen') {
       const built = Save.kitchen;
       ctx.fillStyle = built ? '#c8b896' : '#4a4a4a'; ctx.fillRect(x, WALL_T, w, FLOOR_Y - WALL_T);
@@ -4293,9 +4294,8 @@ function drawHeroCard(c, id, e, t, ox) {
   const H = HEROES[id], act = e < 1.9;
   c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, 280, 300);
   const g = c.createRadialGradient(140, 200, 10, 140, 200, 140); g.addColorStop(0, H.color + (act ? '99' : '55')); g.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0, 0, 280, 300);
-  const SC = { maya: 3.0, ben: 2.75, aris: 3.0, chloe: 3.6, leo: 3.6 }[id] || 3.3; c.setTransform(SC, 0, 0, SC, ox, 288);
-  if (act && id === 'ben' && e > 0.15) { const q = Math.min(1, (e - 0.15) / 0.3), fade = e > 1.6 ? Math.max(0, 1 - (e - 1.6) / 0.3) : 1, pl = 0.75 + Math.sin(e * 18) * 0.15; c.save(); c.globalAlpha = fade; const gg = c.createRadialGradient(0, -30, 4, 0, -30, 40 * q); gg.addColorStop(0, 'rgba(80,170,255,0.05)'); gg.addColorStop(0.75, 'rgba(80,170,255,0.22)'); gg.addColorStop(1, 'rgba(140,210,255,0.55)'); c.fillStyle = gg; c.beginPath(); c.ellipse(0, -30, 30 * q, 40 * q, 0, 0, 7); c.fill(); c.strokeStyle = `rgba(150,220,255,${pl})`; c.lineWidth = 1.6; c.stroke(); c.restore(); }
-  const f = Math.floor(e * 60), k = f % 24, hero = act ? fakeHero(id, { walk: 0, vx: 0, face: 1, aim: 0, forceAim: id !== 'aris' || e < 1, lastFire: G.time, atkAnim: Math.max(0, 12 - k), muzzle: k < 4 ? 4 : 0, shieldT: id === 'ben' && e > 0.15 && e < 1.6 ? 100 : 0 }) : fakeHero(id, { walk: t * 6, vx: 3 });
+  const SP = SPR[id], f0 = SP && SP.f && SP.s && SP.s.idle ? SP.f[SP.s.idle[0]] : null, SC = f0 ? (id === 'ben' ? 244 : 228) / (f0[3] * SP.u) : 3.3; c.setTransform(SC, 0, 0, SC, ox, 288);
+  const f = Math.floor(e * 60), k = f % 24, hero = act ? fakeHero(id, { walk: 0, vx: 0, face: 1, aim: 0, forceAim: id !== 'aris' || e < 1, lastFire: G.time, atkAnim: Math.max(0, 12 - k), muzzle: k < 4 ? 4 : 0, shieldT: id === 'ben' && e > 0.15 && e < 1.6 ? Math.min(100, (1.6 - e) * 60) : 0, cardDome: true }) : fakeHero(id, { walk: t * 6, vx: 3 });
   drawHero(hero, true);
   if (!act) return; c.lineCap = 'round';
   if (id === 'maya') for (const v of [0.15, 0.95]) { const d = e - v; if (d > 0 && d < 0.7) for (const a of [-0.2, -0.1, 0, 0.1, 0.2]) { const x = 24 + d * 90, y = -45 + Math.tan(a) * d * 90; c.strokeStyle = '#e8d8b0'; c.lineWidth = 1.2; c.beginPath(); c.moveTo(x - 8, y - Math.tan(a) * 8); c.lineTo(x, y); c.stroke(); c.fillStyle = '#ccc'; c.beginPath(); c.arc(x, y, 1, 0, 7); c.fill(); } }
