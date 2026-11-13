@@ -94,6 +94,14 @@ h1{font-family:Creepster,'Bebas Neue',Impact,sans-serif;font-weight:400;font-siz
 #subRow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;width:min(900px,97vw)}.subc{background:linear-gradient(180deg,#24101a,#0c0408);border:2px solid #663;border-radius:12px;padding:8px 6px;text-align:center;cursor:pointer;font-family:Barlow,sans-serif;display:flex;flex-direction:column;align-items:center;gap:2px}.subc small{font:700 .6rem Barlow,sans-serif;color:#888;letter-spacing:1px}.subc span{font-size:clamp(1.4rem,9vh,2.2rem)}.subc b{font:clamp(.9rem,4.5vh,1.15rem) Bebas Neue,Impact,sans-serif;letter-spacing:1px;color:#fff}.subc p{font-size:clamp(.5rem,2.4vh,.66rem);color:#bbb;line-height:1.2;flex:1}.subc i{font-style:normal;color:#ffcc33;font-size:.75rem;letter-spacing:2px}.subc.boss{border-color:#ff0033;box-shadow:0 0 14px rgba(255,0,51,.35)}.subc.dark{background:linear-gradient(180deg,#05050a,#000)}.subc.locked{opacity:.4;cursor:default}.subc:active{transform:scale(.96)}
 #avRow{display:flex;gap:8px;justify-content:center;margin:6px 0 2px}.av{display:flex;flex-direction:column;align-items:center;cursor:pointer;font:700 .55rem Barlow,sans-serif;color:#aaa;letter-spacing:1px;text-transform:uppercase}.av canvas{width:clamp(34px,11vh,46px);height:clamp(34px,11vh,46px);border-radius:50%;border:2px solid #444;background:#111}.av.on canvas{border-color:#ff0033;box-shadow:0 0 12px rgba(255,0,51,.7)}.av.on{color:#fff}.av:active canvas{transform:scale(.92)}
 .abtn{width:calc(58px*var(--bs,1))!important;height:calc(58px*var(--bs,1))!important;font-size:calc(1.5rem*var(--bs,1))!important}#bSwap,#bBud,#bFrost{width:calc(48px*var(--bs,1))!important;height:calc(48px*var(--bs,1))!important;font-size:calc(1.2rem*var(--bs,1))!important}#actBtns{opacity:var(--bop,1)}
+html body.lyAbs #actBtns{display:block;inset:0;top:0;left:0;right:0;bottom:0;transform:none;pointer-events:none}body.lyAbs #actBtns .abtn{position:absolute;pointer-events:auto;margin:0}
+#saProbe{position:fixed;left:0;top:0;width:0;height:0;visibility:hidden;pointer-events:none;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.pvB{position:absolute;border-radius:50%;background:rgba(30,5,10,.72);border:2px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;box-sizing:border-box;opacity:var(--bop,1)}.pvB.ult{border-color:#ff3388}.pvZone{position:absolute;bottom:3px;width:50%;display:flex;justify-content:center;font:700 .45rem Barlow,sans-serif;color:#555;letter-spacing:2px}
+.csl{display:flex;align-items:center;gap:4px}.csl input{width:clamp(90px,22vw,180px);accent-color:#ff0033}.csl button{font:700 .8rem Barlow,sans-serif;width:24px;height:22px;border-radius:8px;border:1px solid #555;background:#111;color:#fff;cursor:pointer;padding:0}.csl b{font:700 .65rem Barlow,sans-serif;color:#ffcc33;min-width:34px;text-align:right}
+@media (max-height:400px){#settingsScreen .btns .btn{padding:5px 12px;font-size:.8rem}#ctrlScreen .cn small{display:none}#ctrlScreen h1{font-size:1.2rem!important;margin:0 0 2px}#ctrlScreen .crow{padding:1px 8px}#ctrlScreen .cseg button{padding:2px 7px}}
+#layEd{position:fixed;inset:0;z-index:60;background:rgba(5,0,2,.78);touch-action:none;user-select:none;-webkit-user-select:none}#layEd .zone{position:absolute;top:0;bottom:0;width:50%;display:flex;align-items:center;justify-content:center;font:2rem Bebas Neue,Impact,sans-serif;letter-spacing:6px;color:rgba(255,255,255,.08)}#layEd .zone.l{left:0;border-right:1px dashed rgba(255,255,255,.12)}#layEd .zone.r{right:0}
+#layBar{position:absolute;left:25%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;gap:5px;align-items:stretch;background:rgba(10,4,8,.94);border:2px solid #ffcc33;border-radius:12px;padding:4px 8px;z-index:2;white-space:nowrap}#layBar b{font:1rem Bebas Neue,Impact,sans-serif;letter-spacing:2px;color:#ffcc33;text-align:center}#layBar .btn{padding:4px 10px;font-size:.75rem}
+#layEd .abtn{position:absolute;z-index:3;cursor:grab;touch-action:none;opacity:var(--bop,1)}#layEd .abtn.drag{border-color:#ffcc33;box-shadow:0 0 18px #ffcc33;cursor:grabbing;z-index:4}
 body.lefty #actBtns{right:auto;left:max(12px,env(safe-area-inset-left));top:auto;bottom:max(14px,env(safe-area-inset-bottom));grid-template-areas:'swap . .' 'roll frost .' 'ult spc bud'}
 .bth1 .abtn{border-color:#2af0ff!important;background:rgba(0,30,40,.72)!important;box-shadow:0 0 10px rgba(42,240,255,.35)}.bth2 .abtn{border-color:#ffcc33!important;background:rgba(40,28,0,.72)!important}.bth3 .abtn{border-color:rgba(255,255,255,.7)!important;background:rgba(255,255,255,.08)!important}.bth4 .abtn{border-color:#7cff4a!important;background:rgba(10,35,0,.72)!important;box-shadow:0 0 10px rgba(124,255,74,.3)}
 #padOpts{display:flex;flex-direction:column;gap:3px;width:min(640px,96vw);max-height:62vh;overflow-y:auto}#padOpts .pv{font:700 .7rem Barlow,sans-serif;color:#ffcc33;min-width:90px;text-align:right;align-self:center;padding-right:6px}#padInfo{font-size:.7rem!important;color:#aaa}#padCur{position:fixed;left:-14px;top:-14px;width:28px;height:28px;border:3px solid #ffcc33;border-radius:50%;z-index:99;pointer-events:none;box-shadow:0 0 10px #ffcc33,inset 0 0 6px #000}#padCur::after{content:'';position:absolute;left:9px;top:9px;width:4px;height:4px;background:#fff;border-radius:50%}.padOn #stickL,.padOn #stickR{display:none!important} #ctrlScreen{overflow:hidden}#ctrlWrap{display:flex;gap:12px;width:min(900px,97vw);align-items:stretch}#ctrlOpts{flex:1;display:flex;flex-direction:column;gap:3px}.crow{display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(20,3,8,.85);border:1px solid #442;border-radius:8px;padding:3px 8px}.cn{font:700 clamp(.6rem,2.8vh,.8rem) Barlow,sans-serif;color:#fff}.cn small{display:block;font-weight:600;font-size:.55rem;color:#999}.cseg{display:flex;gap:3px;flex-wrap:wrap;justify-content:flex-end}.cseg button{font:600 clamp(.55rem,2.5vh,.72rem) Barlow,sans-serif;padding:3px 8px;border-radius:10px;border:1px solid #555;background:#111;color:#bbb;cursor:pointer}.cseg button.on{border-color:#ff0033;color:#fff;background:#3a0010}
@@ -357,7 +365,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 </div>
 
 <div id="settingsScreen" class="overlay hidden">
-  <h1 style="font-size:clamp(1.3rem,7vh,2.6rem)" id="lgSetTitle">SETTINGS</h1>
+  <div style="display:flex;align-items:baseline;gap:10px;justify-content:center"><h1 style="font-size:clamp(1.3rem,7vh,2.6rem)" id="lgSetTitle">SETTINGS</h1><span id="verTxt" style="font:700 .65rem Barlow,sans-serif;color:#888;letter-spacing:1px"></span></div>
   <div class="panel" id="setPanel">
     <div class="setRow"><label for="cfgSfx">Sound effects</label><input type="checkbox" id="cfgSfx"></div>
     <div class="setRow"><label for="cfgMusic">Music</label><input type="checkbox" id="cfgMusic"></div>
@@ -373,7 +381,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
     <div class="setRow"><span>💾 Save code <span style="font-size:.7rem;color:#999">(move your progress to another phone)</span></span><span><button class="btn sec" id="expBtn" style="font-size:.75rem;padding:5px 10px">EXPORT</button> <button class="btn sec" id="impBtn" style="font-size:.75rem;padding:5px 10px">IMPORT</button></span></div>
     <div class="setRow"><span id="lgReset">Reset all progress</span><button class="btn sec" id="resetBtn" style="font-size:.75rem;padding:5px 12px">RESET</button></div>
   </div>
-  <div class="btns"><button class="btn gold" id="ctrlBtn">🎮 CONTROLS</button><button class="btn sec" id="creditsBtn">🎬 CREDITS</button><button class="btn" id="settingsBack">BACK</button></div>
+  <div class="btns"><button class="btn gold" id="ctrlBtn">🎮 CONTROLS</button><button class="btn sec" id="creditsBtn">🎬 CREDITS</button><button class="btn sec" id="bugBtn">🐞 BUG REPORT</button><button class="btn" id="settingsBack">BACK</button></div>
 </div>
 
 <div id="pauseScreen" class="overlay hidden">
@@ -415,9 +423,11 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 <div id="padCur" class="hidden"></div>
 <div id="ctrlScreen" class="overlay hidden">
   <h1 style="font-size:clamp(1.2rem,6vh,2.2rem)">CONTROLS</h1>
-  <div id="ctrlWrap"><div id="ctrlOpts"></div><div id="ctrlPrev"><div class="pvStick"></div><div class="pvBtns"><div class="abtn ult">☠</div><div class="abtn">⚡</div><div class="abtn">🌀</div></div><small>PREVIEW</small></div></div>
+  <div id="ctrlWrap"><div id="ctrlOpts"></div><div id="ctrlPrev"><div id="pvIn"></div><small>PREVIEW</small></div></div>
   <div class="btns"><button class="btn" id="ctrlBack">✓ DONE</button><button class="btn gold" id="padBtn">🎮 GAMEPAD</button></div>
 </div>
+<div id="layEd" class="hidden"><div class="zone l" id="layZL">MOVE</div><div class="zone r" id="layZR">AIM</div><div id="layBar"><b>DRAG THE BUTTONS</b><button class="btn sec" id="layReset">↺ RESET</button><button class="btn sec" id="layCancel">✕ CANCEL</button><button class="btn gold" id="laySave">✓ SAVE</button></div></div>
+<div id="saProbe"></div>
 <div id="subScreen" class="overlay hidden"><h1 id="subTitle" style="font-size:clamp(1.2rem,6vh,2.2rem)"></h1><div class="sub" id="subSub"></div><div id="subRow"></div><div class="btns"><button class="btn sec" id="subBack">◀ BACK</button></div></div>
 <div id="cardScreen" class="overlay hidden"><div class="sub">⬆ <span id="cardLv"></span> · CHOOSE ONE</div><div id="cardRow"></div></div>
 <div id="talk" class="hidden" onclick="talkNext()"><div id="talkBox"><div id="talkFace"></div><div class="tb"><b id="talkWho"></b><p id="talkTxt"></p></div><small>TAP ▶</small><button id="talkSkip" class="hidden" onclick="event.stopPropagation();SFX.click();talkNext();G.talkQ=null;$('talk').classList.add('hidden');if(G.state==='talk'){G.state='play';last=performance.now();}if(isTouch&&player)$('touch').classList.remove('hidden');endTutorial(true)">SKIP TUTORIAL</button></div></div>
@@ -481,6 +491,10 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 
 <script>
 'use strict';
+const VERSION = 'v36'; // bump together with sw.js
+const ERRLOG = []; const logErr = m => { ERRLOG.push(new Date().toISOString().slice(11, 19) + ' ' + String(m).slice(0, 240)); if (ERRLOG.length > 12) ERRLOG.shift(); };
+window.addEventListener('error', e => logErr((e.message || 'error') + (e.filename ? ' @' + e.filename.split('/').pop() + ':' + e.lineno + ':' + e.colno : '')));
+window.addEventListener('unhandledrejection', e => logErr('promise: ' + ((e.reason && (e.reason.message || e.reason)) || '?')));
 /* =====================================================================
    BELOW THE DEAD · stage 1 (top-down, mobile landscape, twin-stick)
    1 Utils & save · 2 Audio · 3 Data · 4 State & input · 5 World
@@ -537,7 +551,7 @@ const A = {
   init() {
     if (!this.ctx) {
       const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
-      this.ctx = new AC(); this.master = this.ctx.createGain(); this.master.gain.value = 0.7;
+      this.ctx = new AC(); try { this.ctx.onstatechange = () => { const st = this.ctx.state; if ((st === 'interrupted' || (st === 'suspended' && !G.sleeping)) && typeof pauseGame === 'function') pauseGame(); }; } catch (e) {} this.master = this.ctx.createGain(); this.master.gain.value = 0.7;
       try { const c = this.ctx, comp = c.createDynamicsCompressor(); comp.threshold.value = -16; comp.knee.value = 12; comp.ratio.value = 4; comp.attack.value = 0.004; comp.release.value = 0.2; comp.connect(c.destination);
         const len = Math.floor(c.sampleRate * 1.7), ir = c.createBuffer(2, len, c.sampleRate); for (let ch = 0; ch < 2; ch++) { const d = ir.getChannelData(ch); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3.2); }
         const conv = c.createConvolver(); conv.buffer = ir; const wet = c.createGain(); wet.gain.value = 0.22; this.master.connect(comp); this.master.connect(wet); wet.connect(conv); conv.connect(comp); this.comp = comp;
@@ -546,7 +560,7 @@ const A = {
       const n = this.ctx.sampleRate * 2; this.nbuf = this.ctx.createBuffer(1, n, this.ctx.sampleRate);
       const d = this.nbuf.getChannelData(0); for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
     }
-    if (this.ctx.state === 'suspended') this.ctx.resume();
+    if (this.ctx.state === 'suspended' || this.ctx.state === 'interrupted') this.ctx.resume();
   },
   tone(f, type, d, v = 0.1, slide = null, delay = 0, dest = null) {
     if (!this.ctx || (!dest && !Cfg.sfx)) return;
@@ -1579,7 +1593,7 @@ function killEnemy(z) {
   if (z.elite) { vibrate(25); gainXP(4); for (let k = 0; k < 4; k++) pickups.push({ type: 'blood', x: z.x, y: z.y, z: 20, vz: rand(4, 6), vx: rand(-2, 2), vy: rand(-2, 2), val: Math.max(1, Math.round(3 * (G.bloodMul || 1))), t: 0 });
     if (z.elite === 'explode') { ringFx(z.x, z.y, '#ff6622', 100); explosion(z.x, z.y, 95, 3, 0); fires.pop(); if (player && dist(player, z) < 95) hurtPlayer(14, z.x, z.y, 10); }
     if (z.elite === 'split') for (let k = 0; k < 2; k++) { const c2 = spawnEnemy(z.type === 'brute' ? 'shambler' : z.type, z.x + rand(-20, 20), z.y + rand(-15, 15), { minion: true }); c2.hp = c2.max = Math.max(1, z.max * 0.12); c2.sc = 0.75; c2.spd *= 1.2; } }
-  G.kills++; G.combo++; G.comboT = 150; if (!z.d.dummy) { Save.zk[z.type] = (Save.zk[z.type] || 0) + 1; Save.st.kills++; Save.st.heroK[G.hero] = (Save.st.heroK[G.hero] || 0) + 1; if (G.combo > Save.st.combo) Save.st.combo = G.combo; } { const k = player.wpn === 'sig' ? player.id : player.wpn, xp = G.mode === 'training' ? trainXp(z.type === 'dummy' ? 12 : 4) : 1; if (G.mode === 'training' && xp) addHeroXP(G.hero, Math.ceil(xp / 6) * TUNE.hero.xp.trainKill / 2); Save.wxp[k] = (Save.wxp[k] || 0) + xp; G.xpGain[k] = (G.xpGain[k] || 0) + xp; if (G.mode === 'training') { G.score += 10 + G.combo; } } if (G.phase === 'lockdown') { G.lockKills++; if (G.lockKills === G.lockNeed) addText('BREACHING!', player.x, player.y - 90, '#ffcc33', 22, 60); }
+  G.kills++; const cUp = G.comboF !== G.time; if (cUp) { G.combo++; G.comboF = G.time; } G.comboT = 90; if (!z.d.dummy) { Save.zk[z.type] = (Save.zk[z.type] || 0) + 1; Save.st.kills++; Save.st.heroK[G.hero] = (Save.st.heroK[G.hero] || 0) + 1; if (G.combo > Save.st.combo) Save.st.combo = G.combo; } { const k = player.wpn === 'sig' ? player.id : player.wpn, xp = G.mode === 'training' ? trainXp(z.type === 'dummy' ? 12 : 4) : 1; if (G.mode === 'training' && xp) addHeroXP(G.hero, Math.ceil(xp / 6) * TUNE.hero.xp.trainKill / 2); Save.wxp[k] = (Save.wxp[k] || 0) + xp; G.xpGain[k] = (G.xpGain[k] || 0) + xp; if (G.mode === 'training') { G.score += 10 + G.combo; } } if (G.phase === 'lockdown') { G.lockKills++; if (G.lockKills === G.lockNeed) addText('BREACHING!', player.x, player.y - 90, '#ffcc33', 22, 60); }
   if (G.kills % 17 === 0 && G.mode !== 'training') addText(pick(KILL_QUIPS), z.x, z.y - 70, '#ffffff', 15, 45);
   if (player.ultC < player.ultMax) player.ultC = Math.min(player.ultMax, player.ultC + TUNE.ult.killSec * 60);
   if (!z.d.dummy && G.mode !== 'training') addHeroXP(G.hero, z.elite ? TUNE.hero.xp.elite : TUNE.hero.xp.kill);
@@ -1598,7 +1612,7 @@ function killEnemy(z) {
   if (Cfg.gore) decals.push({ x: z.x + rand(-6, 6), y: z.y + rand(-4, 4), r: rand(12, 22), c: Math.random() < 0.3 ? 'rgba(60,90,40,.65)' : 'rgba(110,0,0,.65)' });
   if (decals.length > 90) decals.shift();
   SFX.kill();
-  if (G.combo > 1 && G.combo % 5 === 0) addText(G.combo + 'x CARNAGE!', z.x, z.y - 60, '#ffcc00', 20, 55);
+  if (cUp && G.combo > 1 && G.combo % 5 === 0) addText(G.combo + 'x CARNAGE!', z.x, z.y - 60, '#ffcc00', 20, 55);
   if (z.type === 'dog') sparks(z.x, z.y, 14);
   if (z.robo === 2) { G.robo = null; pickups.push({ type: 'arm', x: z.x, y: z.y, z: 20, vz: 6, vx: 0, vy: 0, t: 0, keep: true }); for (let i = 0; i < TUNE.dark.robodog; i++) pickups.push({ type: 'dark', x: z.x, y: z.y, z: 24, vz: rand(5, 8), vx: rand(-3, 3), vy: rand(-2, 2), val: 1, t: 0 }); addText('ROCCO\'S ARM!', z.x, z.y - 60, '#ffcc33', 20, 90); }
 }
@@ -4200,7 +4214,7 @@ function updateHUD() {
   if (G.mode === 'bonus') $('lvlName').textContent = '★ ' + G.bonus.name;
   else if (G.mode !== 'campaign') $('lvlName').textContent = G.mode === 'raid' ? 'THE HIDEOUT · RAID ' + (Save.raids + 1) : 'TRAINING RANGE';
   const c = $('combo');
-  if (G.combo >= 3) { c.textContent = G.combo >= 10 ? `${G.combo}x · BLOOD FRENZY ×2` : `${G.combo}x COMBO`; c.classList.add('show'); if (G.combo !== comboShown) { c.classList.remove('pop'); void c.offsetWidth; c.classList.add('pop'); comboShown = G.combo; } }
+  if (G.combo >= 5) { c.textContent = G.combo >= 10 ? `${G.combo}x · BLOOD FRENZY ×2` : `${G.combo}x COMBO`; c.classList.add('show'); if (G.combo !== comboShown) { c.classList.remove('pop'); void c.offsetWidth; c.classList.add('pop'); comboShown = G.combo; } }
   else c.classList.remove('show');
 }
 function withCtx(c, fn) { const o = ctx; ctx = c; try { fn(); } finally { ctx = o; } }
@@ -4377,10 +4391,23 @@ function scCode(obj) { const u = new TextEncoder().encode(JSON.stringify(obj)); 
 function scRead(code) { const m = /^BTD1-([0-9a-z]+)-([A-Za-z0-9+/=]+)$/.exec(String(code).replace(/\s+/g, '')); if (!m) return null;
   try { const b = atob(m[2]), u = new Uint8Array(b.length); let h = 7; for (let i = 0; i < b.length; i++) { u[i] = b.charCodeAt(i) ^ SC_KEY.charCodeAt(i % SC_KEY.length) ^ ((i * 73) & 255); h = (h * 31 + u[i]) >>> 0; }
     if (h.toString(36) !== m[1]) return null; const o = JSON.parse(new TextDecoder().decode(u)); return o && typeof o === 'object' ? o : null; } catch (e) { return null; } }
-function codeBox(title, text, ro, okTxt, ok) { let b = $('codeBox'); if (!b) { b = document.createElement('div'); b.id = 'codeBox'; b.className = 'overlay'; b.style.cssText = 'position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.75)'; document.body.appendChild(b); }
-  b.innerHTML = `<div class="panel" style="width:min(92vw,520px);padding:12px"><h3 style="margin-bottom:6px">${title}</h3><p class="muted" id="cbMsg" style="font-size:.72rem;margin-bottom:6px">${ro ? 'Copy this code and keep it somewhere safe. Paste it with IMPORT on the other phone.' : 'Paste your save code. This REPLACES the progress on this phone.'}</p><textarea id="cbTxt" style="width:100%;height:84px;font-size:.62rem;background:#111;color:#ddd;border:1px solid #555;border-radius:6px;user-select:text;-webkit-user-select:text" ${ro ? 'readonly' : ''}>${text}</textarea><div class="btns" style="margin-top:6px"><button class="btn gold" id="cbOk">${okTxt}</button><button class="btn sec" id="cbBack">BACK</button></div></div>`;
+function codeBox(title, text, ro, okTxt, ok, msg) { let b = $('codeBox'); if (!b) { b = document.createElement('div'); b.id = 'codeBox'; b.className = 'overlay'; b.style.cssText = 'position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.75)'; document.body.appendChild(b); }
+  b.innerHTML = `<div class="panel" style="width:min(92vw,520px);padding:12px"><h3 style="margin-bottom:6px">${title}</h3><p class="muted" id="cbMsg" style="font-size:.72rem;margin-bottom:6px">${msg || (ro ? 'Copy this code and keep it somewhere safe. Paste it with IMPORT on the other phone.' : 'Paste your save code. This REPLACES the progress on this phone.')}</p><textarea id="cbTxt" style="width:100%;height:84px;font-size:.62rem;background:#111;color:#ddd;border:1px solid #555;border-radius:6px;user-select:text;-webkit-user-select:text" ${ro ? 'readonly' : ''}>${text}</textarea><div class="btns" style="margin-top:6px"><button class="btn gold" id="cbOk">${okTxt}</button><button class="btn sec" id="cbBack">BACK</button></div></div>`;
   b.classList.remove('hidden'); $('cbBack').onclick = () => { SFX.click(); b.classList.add('hidden'); }; $('cbOk').onclick = () => { SFX.click(); ok($('cbTxt').value, b); }; }
 function v33Wire() {
+$('verTxt').textContent = VERSION;
+function bugCode() {
+  const n = navigator, sc = screen, d = Save.diff || 0, pad = (() => { try { const g = [...(n.getGamepads ? n.getGamepads() : [])].find(x => x); return g ? g.id.slice(0, 60) : 'none'; } catch (e) { return '?'; } })();
+  const L = ['BTD BUG REPORT · ' + VERSION + ' · ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC',
+    'Device: ' + n.userAgent,
+    'Screen: ' + innerWidth + 'x' + innerHeight + ' (screen ' + sc.width + 'x' + sc.height + ', dpr ' + (window.devicePixelRatio || 1) + ', touch ' + (isTouch ? 'yes' : 'no') + ', installed ' + (matchMedia('(display-mode: standalone)').matches || n.standalone ? 'yes' : 'no') + ')',
+    'Lang: ' + (n.language || '?') + ' · Pad: ' + pad,
+    'Game: state ' + G.state + ' · mode ' + G.mode + ' · hero ' + G.hero + ' · stage ' + ((G.levelIdx || 0) + 1) + '-' + ((G.sub || 0) + 1) + ' · diff ' + d,
+    'Settings: hq ' + !!Cfg.hq + ' · layout ' + (Cfg.lay || 0) + (Cfg.lefty ? ' left' : '') + ' · size ' + (Cfg.bsc || 1) + ' · auto ' + !!Cfg.autoAim + ' · test ' + !!Cfg.test,
+    'Errors (' + ERRLOG.length + '):'].concat(ERRLOG.length ? ERRLOG : ['none']);
+  return L.join('\n');
+}
+on('bugBtn', () => { const c = (bugCode() + '\n\nWhat happened? (write here)\n').replace(/&/g, '&amp;').replace(/</g, '&lt;'); codeBox('🐞 BUG REPORT', c, false, '📋 COPY', (v) => { const done = () => { $('cbMsg').textContent = '✅ Copied! Paste it in your message to us.'; }; try { navigator.clipboard.writeText(v).then(done, () => { $('cbTxt').select(); document.execCommand('copy'); done(); }); } catch (e) { $('cbTxt').select(); try { document.execCommand('copy'); done(); } catch (e2) {} } }, 'Write what happened, then COPY and send it to us.'); });
 on('expBtn', () => { saveGame(); const c = scCode(Save); codeBox('💾 YOUR SAVE CODE', c, true, '📋 COPY', (v, b) => { const done = () => { $('cbMsg').textContent = '✅ Copied! Keep it safe.'; }; try { navigator.clipboard.writeText(v).then(done, () => { $('cbTxt').select(); document.execCommand('copy'); done(); }); } catch (e) { $('cbTxt').select(); try { document.execCommand('copy'); done(); } catch (e2) {} } }); });
 on('impBtn', () => codeBox('💾 IMPORT SAVE', '', false, '✅ LOAD', v => { const o = scRead(v); if (!o) { SFX.buzz(); $('cbMsg').textContent = '❌ That code is not valid. Check you copied all of it.'; return; } store.set(SAVE_KEY, o); $('cbMsg').textContent = '✅ Loaded! Restarting...'; setTimeout(() => location.reload(), 700); }));
 { let n = 0, tm = 0; const t = $('lgSetTitle'); if (Cfg.test) $('testRow').classList.remove('hidden'); if (t) t.addEventListener('click', () => { clearTimeout(tm); tm = setTimeout(() => n = 0, 1500); if (++n >= 7) { n = 0; $('testRow').classList.remove('hidden'); SFX.heal(); } }); }
@@ -4462,24 +4489,98 @@ function drawTrophies() {
     g.appendChild(el); }
 }
 const CTRL_OPTS = [
-  ['lefty', '✋ Layout', ['Right-handed', 'Left-handed'], 'Swap which side moves and which side aims'],
-  ['bsz', '🔘 Button size', ['Small', 'Medium', 'Large', 'XL'], ''],
-  ['bop', '👻 Buttons', ['Faint', 'Half', 'Solid'], 'How see-through the buttons are'],
+  ['lefty', '✋ Hand', ['Right-handed', 'Left-handed'], 'Swap which side moves and which side aims'],
+  ['lay', '🧩 Button layout', ['Top corner', 'Side column', 'Thumb arc', 'Custom'], 'Where the action buttons sit'],
+  ['bsc', '🔘 Button size', null, '', 0.7, 1.5, 0.05],
+  ['bopv', '👻 See-through', null, 'Lower = more see-through', 0.25, 1, 0.05],
   ['bth', '🎨 Button style', ['Blood', 'Neon', 'Gold', 'Ghost', 'Toxic'], ''],
   ['sens', '🕹️ Stick sensitivity', ['Precise', 'Normal', 'Fast'], 'Fast = less thumb movement for full speed'],
   ['assist', '🎯 Aim help (free)', ['Off', 'Light'], 'Gently nudges your aim onto nearby zombies'],
   ['cb', '👁️ Elite labels', ['Icons', 'Icons + words'], 'Helpful for colour-blind players']
 ];
-const ctrlVal = k => k === 'lefty' || k === 'cb' ? (Cfg[k] ? 1 : 0) : k === 'assist' ? (Cfg.assist === false ? 0 : 1) : Cfg[k] === undefined ? { bsz: 1, bop: 2, bth: 0, sens: 1 }[k] : Cfg[k];
+// old 4-step size / 3-step opacity -> slider values (one-time)
+if (Cfg.bsc === undefined) Cfg.bsc = [0.8, 1, 1.2, 1.4][Cfg.bsz === undefined ? 1 : Cfg.bsz] || 1;
+if (Cfg.bopv === undefined) Cfg.bopv = [0.45, 0.72, 1][Cfg.bop === undefined ? 2 : Cfg.bop] || 1;
+const ctrlVal = k => k === 'lefty' || k === 'cb' ? (Cfg[k] ? 1 : 0) : k === 'assist' ? (Cfg.assist === false ? 0 : 1) : Cfg[k] === undefined ? { bth: 0, sens: 1, lay: 0 }[k] : Cfg[k];
+// ----- action-button layouts: 0 corner · 1 side column · 2 thumb arc · 3 custom (Cfg.cpos = {id:[fx,fy]} centres as screen fractions) -----
+const BTN_IDS = ['bUlt', 'bSpc', 'bRoll', 'bFrost', 'bBud', 'bSwap'], BTN_BIG = { bUlt: 1, bSpc: 1, bRoll: 1 }, BTN_ICO = { bUlt: '☠', bSpc: '⚡', bRoll: '🌀', bFrost: '❄', bBud: '🤝', bSwap: '🔁' };
+const btnSize = (id, s) => (BTN_BIG[id] ? 58 : 48) * s;
+function safeIns() { const c = getComputedStyle($('saProbe')); return { t: parseFloat(c.paddingTop) || 0, r: parseFloat(c.paddingRight) || 0, b: parseFloat(c.paddingBottom) || 0, l: parseFloat(c.paddingLeft) || 0 }; }
+function presetPos(mode, W, H, s, lefty, ins) {
+  ins = ins || { t: 0, r: 0, b: 0, l: 0 }; const B = 58 * s, S = 48 * s, g = 8, P = {};
+  if (mode === 0) { // top-right corner (left-handed: same block flipped to the bottom-left)
+    const R = Math.max(10, ins.r), T = Math.max(8, ins.t), c3 = W - R - B / 2, c2 = c3 - B - g, c1 = c2 - B / 2 - g - S / 2, y1 = T + B / 2, y2 = y1 + B + g, y3 = y2 + B / 2 + g + S / 2;
+    Object.assign(P, { bBud: [c1, y1], bSpc: [c2, y1], bUlt: [c3, y1], bFrost: [c2, y2], bRoll: [c3, y2], bSwap: [c3, y3] });
+    if (lefty) for (const k in P) P[k] = [W - P[k][0] + (Math.max(12, ins.l) - R), H - P[k][1] - (Math.max(14, ins.b) - T)];
+    return P;
+  }
+  if (mode === 1) { // side column on the edge, centred below the top bar
+    const R = Math.max(10, ins.r), xo = W - R - B / 2, xi = xo - B / 2 - g - S / 2, h = 3 * B + 2 * g, top = Math.max(64, Math.min(H - h - 10, (64 + H) / 2 - h / 2));
+    Object.assign(P, { bSpc: [xo, top + B / 2], bUlt: [xo, top + B * 1.5 + g], bRoll: [xo, top + B * 2.5 + g * 2], bBud: [xi, top + B / 2], bFrost: [xi, top + B * 1.5 + g], bSwap: [xi, top + B * 2.5 + g * 2] });
+  } else { // thumb arc: ULT in the bottom corner, the rest on two rings around it (where the aim thumb rests)
+    const cx = W - Math.max(10, ins.r) - B / 2 - 6, cy = H - Math.max(12, ins.b) - B / 2 - 6, R1 = B * 1.55, R2 = R1 + (B + S) / 2 + g, at = (r, d) => [cx + r * Math.cos(d * Math.PI / 180), Math.max(S / 2 + 4, cy + r * Math.sin(d * Math.PI / 180))];
+    Object.assign(P, { bUlt: [cx, cy], bRoll: at(R1, 188), bSpc: at(R1, 250), bFrost: at(R2, 186), bBud: at(R2, 223), bSwap: at(R2, 260) });
+  }
+  if (lefty) for (const k in P) P[k] = [W - P[k][0], P[k][1]];
+  return P;
+}
+function clampPos(P, W, H, s) { for (const k in P) { const h = btnSize(k, s) / 2 + 2; P[k] = [Math.max(h, Math.min(W - h, P[k][0])), Math.max(h, Math.min(H - h, P[k][1]))]; } return P; }
+function layoutPos(W, H, s, ins) {
+  const m = ctrlVal('lay');
+  if (m === 3 && Cfg.cpos) { const P = presetPos(0, W, H, s, !!Cfg.lefty, ins); for (const k of BTN_IDS) if (Cfg.cpos[k]) P[k] = [Cfg.cpos[k][0] * W, Cfg.cpos[k][1] * H]; return clampPos(P, W, H, s); }
+  return presetPos(m === 3 ? 0 : m, W, H, s, !!Cfg.lefty, ins);
+}
+function layoutBtns() {
+  document.body.classList.add('lyAbs'); const s = Cfg.bsc || 1, P = layoutPos(innerWidth, innerHeight, s, safeIns());
+  for (const id of BTN_IDS) { const el = $(id), z = btnSize(id, s); if (!el || !P[id]) continue; el.style.left = (P[id][0] - z / 2) + 'px'; el.style.top = (P[id][1] - z / 2) + 'px'; }
+}
+function drawCtrlPrev() {
+  const box = $('pvIn'), pr = $('ctrlPrev'); if (!box || !pr) return; const pw = pr.clientWidth || 200, W = innerWidth || 740, H = innerHeight || 360, k = pw / W, ph = H * k, s = Cfg.bsc || 1, P = layoutPos(W, H, s);
+  box.style.cssText = `position:absolute;left:0;top:50%;width:${pw}px;height:${ph}px;transform:translateY(-50%);border-top:1px solid #332;border-bottom:1px solid #332`;
+  const L = Cfg.lefty ? 'AIM' : 'MOVE', R = Cfg.lefty ? 'MOVE' : 'AIM';
+  box.innerHTML = `<div class="pvZone" style="left:0">${L}</div><div class="pvZone" style="right:0">${R}</div>` + BTN_IDS.map(id => { const z = btnSize(id, s) * k; return `<div class="pvB${id === 'bUlt' ? ' ult' : ''}" style="left:${P[id][0] * k - z / 2}px;top:${P[id][1] * k - z / 2}px;width:${z}px;height:${z}px;font-size:${z * 0.45}px">${BTN_ICO[id]}</div>`; }).join('');
+}
 function applyControls() {
-  const b = document.body; b.classList.toggle('lefty', !!Cfg.lefty); b.style.setProperty('--bs', [0.8, 1, 1.2, 1.4][ctrlVal('bsz')]); b.style.setProperty('--bop', [0.45, 0.72, 1][ctrlVal('bop')]);
-  for (let i = 0; i < 5; i++) b.classList.toggle('bth' + i, ctrlVal('bth') === i); RAD = [60, 46, 34][ctrlVal('sens')]; try { placeSticks(); } catch (e) {}
+  const b = document.body; b.classList.toggle('lefty', !!Cfg.lefty); b.style.setProperty('--bs', Cfg.bsc || 1); b.style.setProperty('--bop', Cfg.bopv || 1);
+  for (let i = 0; i < 5; i++) b.classList.toggle('bth' + i, ctrlVal('bth') === i); RAD = [60, 46, 34][ctrlVal('sens')]; try { placeSticks(); layoutBtns(); drawCtrlPrev(); } catch (e) {}
 }
+const sliderTxt = (k, v) => Math.round(v * 100) + '%';
 function openControls() {
-  $('ctrlOpts').innerHTML = CTRL_OPTS.map(([k, n, opts, ds]) => `<div class="crow"><div class="cn">${n}${ds ? `<small>${ds}</small>` : ''}</div><div class="cseg">${opts.map((o, i) => `<button class="${ctrlVal(k) === i ? 'on' : ''}" data-k="${k}" data-i="${i}">${o}</button>`).join('')}</div></div>`).join('');
-  $('ctrlOpts').querySelectorAll('button').forEach(b => b.onclick = () => { SFX.click(); const k = b.dataset.k, i = +b.dataset.i; Cfg[k] = k === 'lefty' || k === 'cb' ? i === 1 : k === 'assist' ? i === 1 : i; saveCfg(); applyControls(); openControls(); });
-  showOnly('ctrlScreen');
+  $('ctrlOpts').innerHTML = CTRL_OPTS.map(([k, n, opts, ds, mn, mx, st]) => `<div class="crow"><div class="cn">${n}${ds ? `<small>${ds}</small>` : ''}</div>` + (opts ? `<div class="cseg">${opts.map((o, i) => `<button class="${ctrlVal(k) === i ? 'on' : ''}" data-k="${k}" data-i="${i}">${o}</button>`).join('')}${k === 'lay' && ctrlVal('lay') === 3 ? '<button class="on" id="layEdit" style="border-color:#ffcc33;background:#3a2a00">✏ EDIT</button>' : ''}</div>`
+    : `<div class="csl"><button data-sk="${k}" data-d="-1">−</button><input type="range" min="${mn}" max="${mx}" step="${st}" value="${Cfg[k]}" data-sk="${k}"><button data-sk="${k}" data-d="1">+</button><b id="sv_${k}">${sliderTxt(k, Cfg[k])}</b></div>`) + '</div>').join('');
+  $('ctrlOpts').querySelectorAll('.cseg button[data-k]').forEach(b => b.onclick = () => { SFX.click(); const k = b.dataset.k, i = +b.dataset.i;
+    if (k === 'lay' && i === 3) { if (ctrlVal('lay') !== 3) Cfg.layPrev = ctrlVal('lay'); Cfg.lay = 3; saveCfg(); applyControls(); openControls(); if (!Cfg.cpos) openLayEd(); return; }
+    Cfg[k] = k === 'lefty' || k === 'cb' ? i === 1 : k === 'assist' ? i === 1 : i; saveCfg(); applyControls(); openControls(); });
+  const ed = $('layEdit'); if (ed) ed.onclick = () => { SFX.click(); openLayEd(); };
+  const setSl = (k, v) => { const o = CTRL_OPTS.find(x => x[0] === k); v = Math.round(Math.max(o[4], Math.min(o[5], v)) / o[6]) * o[6]; Cfg[k] = +v.toFixed(2); const r = $('ctrlOpts').querySelector(`input[data-sk="${k}"]`); if (r) r.value = Cfg[k]; $('sv_' + k).textContent = sliderTxt(k, Cfg[k]); applyControls(); };
+  $('ctrlOpts').querySelectorAll('input[data-sk]').forEach(r => { r.oninput = () => setSl(r.dataset.sk, +r.value); r.onchange = () => saveCfg(); });
+  $('ctrlOpts').querySelectorAll('.csl button').forEach(b => b.onclick = () => { SFX.click(); const k = b.dataset.sk, o = CTRL_OPTS.find(x => x[0] === k); setSl(k, Cfg[k] + o[6] * 2 * +b.dataset.d); saveCfg(); });
+  showOnly('ctrlScreen'); drawCtrlPrev();
 }
+// ----- custom layout editor: drag each button, saved as screen fractions -----
+let layE = null;
+function openLayEd() {
+  const W = innerWidth, H = innerHeight, s = Cfg.bsc || 1, ed = $('layEd'), P = layoutPos(W, H, s, safeIns());
+  ed.querySelectorAll('.abtn').forEach(x => x.remove()); layE = { P };
+  $('layZL').textContent = Cfg.lefty ? 'AIM' : 'MOVE'; $('layZR').textContent = Cfg.lefty ? 'MOVE' : 'AIM';
+  const place = id => { const el = layE.el[id], z = btnSize(id, s); el.style.left = (layE.P[id][0] - z / 2) + 'px'; el.style.top = (layE.P[id][1] - z / 2) + 'px'; };
+  layE.el = {}; layE.place = place;
+  for (const id of BTN_IDS) { const el = document.createElement('div'), z = btnSize(id, s); el.className = 'abtn' + (id === 'bUlt' ? ' ult' : ''); el.style.cssText = `width:${z}px!important;height:${z}px!important;font-size:${z * 0.42}px`; el.innerHTML = BTN_ICO[id]; el.style.setProperty('width', z + 'px', 'important'); el.style.setProperty('height', z + 'px', 'important'); el.style.setProperty('font-size', (z * 0.42) + 'px', 'important');
+    el.addEventListener('pointerdown', e => { e.preventDefault(); e.stopPropagation(); try { el.setPointerCapture(e.pointerId); } catch (_) {} layE.drag = { id, dx: layE.P[id][0] - e.clientX, dy: layE.P[id][1] - e.clientY }; el.classList.add('drag'); SFX.click(); });
+    el.addEventListener('pointermove', e => { const d = layE && layE.drag; if (!d || d.id !== id) return; layE.P[id] = [e.clientX + d.dx, e.clientY + d.dy]; clampPos(layE.P, innerWidth, innerHeight, s); place(id); });
+    const up = () => { if (layE && layE.drag && layE.drag.id === id) { layE.drag = null; el.classList.remove('drag'); } };
+    el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up);
+    layE.el[id] = el; ed.appendChild(el); place(id); }
+  ed.classList.remove('hidden');
+}
+function closeLayEd(save) {
+  if (!layE) return; const W = innerWidth, H = innerHeight;
+  if (save) { Cfg.cpos = {}; for (const id of BTN_IDS) Cfg.cpos[id] = [+(layE.P[id][0] / W).toFixed(4), +(layE.P[id][1] / H).toFixed(4)]; Cfg.lay = 3; SFX.heal(); }
+  else if (!Cfg.cpos) Cfg.lay = Cfg.layPrev || 0;
+  saveCfg(); layE = null; $('layEd').classList.add('hidden'); applyControls(); if (!$('ctrlScreen').classList.contains('hidden')) openControls();
+}
+$('laySave').onclick = () => { A.init(); closeLayEd(true); }; $('layCancel').onclick = () => { SFX.click(); closeLayEd(false); };
+$('layReset').onclick = () => { SFX.click(); if (!layE) return; const s = Cfg.bsc || 1; layE.P = presetPos(0, innerWidth, innerHeight, s, !!Cfg.lefty, safeIns()); for (const id of BTN_IDS) layE.place(id); };
 const KM_W = 48, KM_H = 6;
 const KM_MS = [
   [100, '🩸', '150 blood', 150, ''], [500, '💰', '+5% blood on this map', 300, 'blood'], [1500, '🃏', 'Start runs here with a free upgrade card', 800, 'card'],
@@ -5091,7 +5192,7 @@ function resize() {
   canvas.width = Math.round(SW * DPR); canvas.height = Math.round(SH * DPR); canvas.style.width = SW + 'px'; canvas.style.height = SH + 'px';
   SCALE = SH / VIEW_H; VW = SW / SCALE;
   LQ = Cfg.hq ? 0.5 : 0.33; lightC.width = Math.ceil(VW * LQ) + 2; lightC.height = Math.ceil(VIEW_H * LQ) + 2;
-  checkOrientation(); placeSticks(); if (Movie) sizeMovie();
+  checkOrientation(); placeSticks(); try { layoutBtns(); drawCtrlPrev(); } catch (e) {} if (Movie) sizeMovie();
 }
 window.addEventListener('resize', resize); resize();
 const STEP = 1000 / 60; let last = performance.now(), acc = 0;
@@ -5128,6 +5229,7 @@ function padClick(x, y) {
   el.dispatchEvent(new MouseEvent('click', o)); if (el.tagName === 'INPUT' && el.type !== 'checkbox') el.focus();
 }
 function padBack() {
+  if (layE) return closeLayEd(false);
   if (G.talkQ) return talkNext(); if (roomOpen) return closeRoom();
   const ov = Array.from(document.querySelectorAll('.overlay:not(.hidden)')).pop() || $('baseScreen'); if (!ov) return;
   const b = Array.from(ov.querySelectorAll('button')).find(x => /back|cancel|close|done|^menu$|◀/i.test(x.id + ' ' + x.textContent.trim()) && x.offsetParent);
