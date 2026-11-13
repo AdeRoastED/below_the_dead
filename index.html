@@ -65,7 +65,7 @@ h1{font-family:Creepster,'Bebas Neue',Impact,sans-serif;font-weight:400;font-siz
 #compRow{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:center;margin-bottom:4px;font-family:Barlow,'Segoe UI',Roboto,sans-serif;font-size:.8rem;color:#ccc}
 #compRow .cb{padding:5px 12px;border-radius:14px;border:2px solid #555;background:rgba(0,0,0,.6);color:#ddd;cursor:pointer;font-family:inherit;font-size:.8rem}
 #compRow .cb.on{border-color:#33ff77;color:#33ff77;box-shadow:0 0 10px rgba(50,255,120,.4)}
-#compRow .cb:disabled{opacity:.3}
+#compRow .cb:disabled{opacity:.3}#compRow .cb.solo{margin-right:10px}#compRow .cb.cat{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;margin-left:6px}#compRow .cb.cat small{font-size:.62rem;opacity:.8}.catIc{display:inline-block;width:20px;height:21px;background:url(sprites/cat.webp) no-repeat;background-size:384px auto;background-position:-129px 0}
 #levelGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:min(760px,96vw);margin-bottom:10px}
 .lcard{position:relative;border-radius:10px;padding:10px 12px;cursor:pointer;border:2px solid #ff0033;min-height:clamp(62px,18vh,110px);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;font-family:Barlow,'Segoe UI',Roboto,sans-serif}
 .bcard{border-color:#ffcc33}.bcard h3{color:#ffdd66}
@@ -173,7 +173,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 #baseInfo b{color:#ff4455}
 #baseHint{position:absolute;top:calc(max(8px,env(safe-area-inset-top)) + 40px);left:50%;transform:translateX(-50%);font-family:Barlow,sans-serif;font-size:.8rem;color:#ffe;background:rgba(0,0,0,.55);padding:5px 14px;border-radius:12px;animation:pulse2 1.6s infinite alternate}
 @keyframes pulse2{to{opacity:.55}}
-.agrid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.acard{background:rgba(255,255,255,.05);border:1px solid #3a3a44;border-radius:8px;padding:5px;font-size:.6rem;line-height:1.25;display:flex;flex-direction:column;gap:2px;color:#ccc}.acard.eq{border-color:#33ff77}.acard.lock{opacity:.6}.acard .ah{display:flex;align-items:center;gap:4px}.acard img,.acard .ai{width:30px;height:30px;object-fit:contain;font-size:20px;flex:0 0 30px}.acard h4{margin:0;font-size:.7rem;color:#ffcc33;line-height:1.1}.acard .lv{color:#7cf}.acard .how{color:#999}.acard button{margin-top:auto;font-size:.6rem!important;padding:3px 5px!important}#roomPanel.wide{width:min(74vw,680px)}#roomPanel.left{right:auto;left:max(10px,env(safe-area-inset-left))} #roomPanel{position:absolute;right:max(10px,env(safe-area-inset-right));top:52px;bottom:10px;width:min(48vw,440px);overflow-y:auto;pointer-events:auto;margin:0}
+.agrid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.acard{background:rgba(255,255,255,.05);border:1px solid #3a3a44;border-radius:8px;padding:5px;font-size:.6rem;line-height:1.25;display:flex;flex-direction:column;gap:2px;color:#ccc}.acard.eq{border-color:#33ff77}.acard.lock{opacity:.6}.acard .ah{display:flex;align-items:center;gap:4px}.acard img,.acard .ai{width:30px;height:30px;object-fit:contain;font-size:20px;flex:0 0 30px}.acard h4{margin:0;font-size:.7rem;color:#ffcc33;line-height:1.1}.acard .lv{color:#7cf}.acard .how{color:#999}.acard button{margin-top:auto;font-size:.6rem!important;padding:3px 5px!important}#roomPanel.wide{width:min(74vw,680px)}body.fromPause .toMenu{display:none}.bpN{font-size:.55rem!important;line-height:1.2}.bpT{display:flex;flex-direction:column;gap:2px;margin:3px 0}.bpT div{display:grid;grid-template-columns:1.4fr 1fr 1.1fr .8fr 26px;align-items:center;gap:4px;background:rgba(0,0,0,.35);border:1px solid #333;border-radius:6px;padding:1px 6px;font-size:.62rem;color:#ccc}.bpT i{font-style:normal;color:#9ab}.bpT b{color:#33ff77;text-align:right}.bpPlus{width:24px;height:20px;border-radius:5px;border:1px solid #ffcc33;background:#3a2a08;color:#ffcc33;font-weight:bold;cursor:pointer}.bpPlus:disabled{opacity:.25;cursor:default}#subRow .subc{padding:4px 4px;gap:1px}#subRow .subc span{font-size:clamp(1rem,6vh,1.6rem)}#subRow .subc b{font-size:clamp(.72rem,3.4vh,.98rem)}#subRow .subc p{font-size:clamp(.45rem,1.9vh,.6rem)}#subRow .subc i{font-size:.62rem}@media (max-height:430px){#subRow .subc p{display:none}}#levelGrid .lcard.soon p{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;font-size:.62rem!important;line-height:1.15!important;-webkit-line-clamp:unset!important;display:block!important}#levelGrid .lcard.soon h3{font-size:.8rem}#roomPanel,#roomPanel>*{overflow-x:hidden;max-width:100%}#roomPanel{overflow-wrap:anywhere}#roomPanel.left{right:auto;left:max(10px,env(safe-area-inset-left))} #roomPanel{position:absolute;right:max(10px,env(safe-area-inset-right));top:52px;bottom:10px;width:min(48vw,440px);overflow-y:auto;pointer-events:auto;margin:0}
 #roomTitle{font-family:'Bebas Neue','Bebas Neue',Impact,sans-serif;font-size:1.3rem;color:#ff4455;letter-spacing:2px;margin-bottom:6px}
 #movieScreen{position:fixed;inset:0;z-index:40;background:#000}
 #movieCanvas{position:absolute;inset:0}
@@ -226,9 +226,9 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 #actBtns{position:fixed;right:max(10px,env(safe-area-inset-right));top:max(8px,env(safe-area-inset-top));display:grid;gap:8px;grid-template-areas:'bud spc ult' '. frost roll' '. . swap';align-items:center;justify-items:center}#bUlt{grid-area:ult}#bSpc{grid-area:spc}#bRoll{grid-area:roll}#bSwap{grid-area:swap}#bFrost{grid-area:frost}#bBud{grid-area:bud}
 .abtn{position:relative;width:58px;height:58px;border-radius:50%;background:rgba(30,5,10,.72);border:2px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 14px rgba(0,0,0,.7);overflow:hidden}
 .abtn .fill{position:absolute;left:0;right:0;bottom:0;background:rgba(255,200,40,.3);height:0}
-.abtn.ready{border-color:#ffcc33;box-shadow:0 0 18px #ffcc33}
+.abtn.ready{border-color:#ffcc33;box-shadow:0 0 18px #ffcc33;animation:rdyPulse 1.3s ease-in-out infinite}.abtn.ready.on{animation:none}@keyframes rdyPulse{50%{transform:scale(1.07);box-shadow:0 0 26px currentColor}}
 .abtn.ult .fill{background:rgba(255,40,130,.35)}
-.abtn.ult.ready{border-color:#ff3388;box-shadow:0 0 22px #ff3388;animation:pulse .5s infinite alternate}
+.abtn.ult.ready{border-color:#ff3388;box-shadow:0 0 22px #ff3388;color:#ff3388;animation:rdyPulse 1.3s ease-in-out infinite}
 .abtn.used{opacity:.3}
 .abtn.on{transform:scale(.92);background:rgba(255,0,51,.5)}
 .abtn small{position:absolute;bottom:3px;font-size:8px;font-family:Barlow,sans-serif;font-weight:bold}
@@ -662,7 +662,7 @@ const TUNE = {
     { hp: 1.8,  dmg: 1.55, blood: 2,   spawn: 1.2,  elite: 1.6, zspd: 1.12, heal: 0.6, dark: 0.14, gate: 1.3,  ult: 75, frost: 0 }
   ],
   // Heroes level up ONLY by playing. need(lv) = XP to go from lv to lv+1. per = bonus per level above 1.
-  hero: { maxLv: 30, need: lv => 100 + 60 * lv, per: { hp: 0.025, dmg: 0.025, spd: 0.005, spc: 0.02 },
+  hero: { maxLv: 30, need: lv => 100 + 60 * lv, per: { hp: 0.025, dmg: 0.025, spd: 0.005, spc: 0.02 }, pt: { hp: 0.03, dmg: 0.03, spd: 0.01, spc: 0.03 }, /* pt = per boss point spent */
     xp: { kill: 1, elite: 5, boss: 60, stage: 40, chapter: 120, mission: 60, trainKill: 2, firstWin: 100 } },
   weapon: { maxLv: 50, need: lv => 40 + 12 * lv, per: 0.012 },   // every weapon, signature ones included. 1 XP per kill · +60% at Lv 50 (zombies: chapter 4 = x1.8 HP)
   special: { maxLv: 10, need: lv => 3 + 2 * lv, per: 0.06 },      // 1 XP per special used · +6% special power per level
@@ -681,7 +681,7 @@ const TUNE = {
     ['cryo', '❄️', 'Cryo Lab', 'Frost bombs: +3% radius and +0.25 s slow per tier', 20, 450, 1.18, 0.03],
     ['serum', '💉', 'Field Serum', 'Medkits heal +2% more per tier', 20, 350, 1.18, 0.02],
     ['catlab', '🐈', 'Cat Training', 'Tier 1: a cat helper joins every level · +5% cat speed and reach per tier', 20, 500, 1.18, 0.05] ] },
-  kitchen: { unlockStage: 5 },                                       // free: rescue Chef Rocco in stage 1-5
+  kitchen: { unlockStage: 10 },                                      // free: rescue Chef Rocco in stage 1-10 (chapter 1 boss stage)
   frost: { radius: 140, slowSec: 6, max: 9, pack: 3, packCost: 300, drop: 0.08, throwDist: 190 },
   dark: { boss: [3, 4, 6], robodog: 3 },                             // GREEN radioactive blood ☢️ (Save.dark): bosses + elites (rare zombies)
   def: { hold: 0.72, holdCap: 40, holdDouble: 0.65, raid: 0.62, raidCap: 46, raidWave: 1.55 }, // defences: spawn interval x, max zombies, double-spawn chance, raid wave size x
@@ -720,22 +720,27 @@ const SUBS = [
   { id: 'boss', icon: '👑', name: 'Showdown', desc: 'The boss is waiting. Then the safe house.' }
 ];
 const ELITES = { fast: ['⚡', '#ffee33', 'FAST'], explode: ['💥', '#ff6622', 'VOLATILE'], shield: ['🛡', '#66ccff', 'SHIELDED'], split: ['✂', '#bb77ff', 'SPLITTER'], regen: ['✚', '#55ff88', 'REGENERATING'], giant: ['▲', '#ff3344', 'GIANT'] };
-const subOf = () => G.mode === 'campaign' ? (G.sub === undefined ? 4 : G.sub) : -1;
+/* v35: 10 stages per chapter. k = stage type (0 outbreak, 1 blackout, 2 elite, 3 supply, 4 boss); hp/sp = zombie HP and spawn-speed factor */
+const STAGES = [
+  { k: 0, icon: '🧟', name: 'Outbreak', desc: 'The streets are crawling. Push through.', hp: 1, sp: 1 },
+  { k: 1, icon: '🔦', name: 'Blackout', desc: 'Power is out. Only your flashlight.', hp: 1.03, sp: 1 },
+  { k: 2, icon: '💀', name: 'Elite Night', desc: 'Mutated elite zombies everywhere.', hp: 1.05, sp: 1 },
+  { k: 3, icon: '📦', name: 'Supply Run', desc: 'Grab 3 supply crates. Save the survivor.', hp: 1.06, sp: 1.05 },
+  { k: 0, icon: '🌊', name: 'Horde Night', desc: 'They come in waves. Keep moving.', hp: 1.08, sp: 1.2 },
+  { k: 1, icon: '🕯️', name: 'Dead Silence', desc: 'Dark again. And they got hungrier.', hp: 1.1, sp: 1.1 },
+  { k: 2, icon: '☣️', name: 'Mutation', desc: 'The elites are getting stronger.', hp: 1.12, sp: 1.1 },
+  { k: 3, icon: '🎒', name: 'Last Supplies', desc: 'Find the crates before they do.', hp: 1.14, sp: 1.15 },
+  { k: 0, icon: '🔥', name: 'The Gauntlet', desc: 'Everything at once. No breaks.', hp: 1.17, sp: 1.3 },
+  { k: 4, icon: '👑', name: 'Showdown', desc: 'The boss is waiting. Then the safe house.', hp: 1.2, sp: 1 }
+];
+const LAST = STAGES.length - 1, NST = STAGES.length;
+const subOf = () => G.mode === 'campaign' ? (G.sub === undefined ? LAST : G.sub) : -1;
+const kindOf = () => { const s = subOf(); return s < 0 ? -1 : STAGES[s].k; };
+const stg = () => G.mode === 'campaign' ? STAGES[subOf()] : null;
 const diffOn = () => G.mode === 'campaign' || G.mode === 'bonus';
 const DF = () => DIFFS[diffOn() ? (Save.diff || 0) : 0];
-const SKIN_DEFS = [
-  { id: 'classic', name: 'Classic', col: null },
-  { id: 'streets', name: 'Night Owl', lvl: 0, col: '#2a3048', look: { shirt: '#1e2230', shirt2: '#3a4058', pants: '#15161c', boots: '#0c0c0e' } },
-  { id: 'metro', name: 'Commuter', lvl: 1, col: '#c8a020', look: { shirt: '#c8a020', shirt2: '#8a6a10', pants: '#2a3a4a', boots: '#3a2a1a' } },
-  { id: 'lab', name: 'Hazmat', lvl: 2, col: '#d8d830', look: { shirt: '#e0e030', shirt2: '#a0a020', pants: '#c8c820', boots: '#2a2a2a' } },
-  { id: 'crypt', name: 'Bone Collector', lvl: 3, col: '#e8e0d0', look: { shirt: '#e8e0d0', shirt2: '#2a2028', pants: '#2a2028', boots: '#1a1418', hair: '#dddddd' } },
-  { id: 'gold', name: 'Golden', pack: 'starter', col: '#e8b830', look: { shirt: '#e8b830', shirt2: '#a07818', pants: '#5a4210', boots: '#c89820', hair: '#ffd860' } },
-  { id: 'reaper', name: 'Reaper', pack: 'pass', col: '#3a2a4a', look: { shirt: '#2a1e34', shirt2: '#6a1a2a', pants: '#141018', boots: '#0a0a0a', hair: '#e8e0f0' } },
-  { id: 'dawn', name: 'Dawn Hero', pack: 'beatGame', end: true, col: '#ff9a5a', look: { shirt: '#ff9a5a', shirt2: '#ffd9a0', pants: '#5a3028', boots: '#3a2018', hair: '#ffd9a0' } },
-  { id: 'neon', name: 'Neon', pack: 'neon', col: '#ff2aa0', look: { shirt: '#ff2aa0', shirt2: '#2af0ff', pants: '#1a1a2a', boots: '#2af0ff', hair: '#2af0ff' } }
-];
-Save.skins = Save.skins || {}; Save.skin = Save.skin || {};
-const skinOwned = (h, sk) => sk.id === 'classic' || (sk.pack ? !!Save[sk.pack] : !!Save.skins[h + '_' + sk.id]);
+/* v34: hero skins removed (Andrea may draw clothes later) */
+delete Save.skins; delete Save.skin;
 const GEAR = {
   maya: [['🔭', 'Hunter\'s Scope'], ['🦺', 'Leather Vest'], ['🏹', 'Quick Quiver'], ['🍀', 'Dad\'s Lucky Arrow']],
   ben: [['🩹', 'Taped Grip'], ['🧤', 'Catcher\'s Pads'], ['📣', 'Coach\'s Whistle'], ['📸', 'Team Photo']],
@@ -744,7 +749,7 @@ const GEAR = {
   leo: [['🎛️', 'Overdrive Pedal'], ['🧥', 'Studded Jacket'], ['🎸', 'Fresh Strings'], ['📝', 'Last Setlist']]
 };
 const GEAR_FX = ['+10% damage', '+10% max health', '+15% special charge', 'ultimate recharges 12% faster'];
-function heroLook(id) { const sk = SKIN_DEFS.find(k => k.id === Save.skin[id]); return sk && sk.look && skinOwned(id, sk) ? Object.assign({}, HEROES[id].look, sk.look) : HEROES[id].look; }
+function heroLook(id) { return HEROES[id].look; }
 function syncLeo() { const want = Save.leo || (typeof Cfg !== 'undefined' && Cfg.test); if (want && !HERO_ORDER.includes('leo')) HERO_ORDER.push('leo'); else if (!want && HERO_ORDER.includes('leo')) { HERO_ORDER.splice(HERO_ORDER.indexOf('leo'), 1); if (G.hero === 'leo') G.hero = 'maya'; if (Save.companion === 'leo') Save.companion = null; } }
 const ZT = {
   shambler: { hp: 4, spd: 1.15, r: 12, dmg: 12, reach: 20, wind: 18, blood: 2, look: { skin: '#7d9a5c', shirt: '#5a4632', pants: '#3a3a4a', hair: '#3a3020', hairStyle: 'messy', boots: '#2a2018' }, hunch: 0.35 },
@@ -778,7 +783,10 @@ const BONUS = [
   { id: 'hordenight', name: 'HORDE NIGHT', icon: '🌙', desc: 'Survive 2 minutes of endless horde', lvl: 3, need: 3, reward: 350, time: 120 }
 ];
 Save.bonusDone = Save.bonusDone || {}; syncLeo();
-Save.subs = Save.subs || {}; Save.stars = Save.stars || {}; for (const k of Object.keys(Save.cleared || {})) if (Save.cleared[k]) Save.subs[k] = 5; for (const k of Object.keys(Save.stars)) if (Array.isArray(Save.stars[k]) && !String(k).includes('_')) { Save.stars[k + '_4'] = Save.stars[k]; delete Save.stars[k]; }
+Save.subs = Save.subs || {}; Save.stars = Save.stars || {}; for (const k of Object.keys(Save.cleared || {})) if (Save.cleared[k]) Save.subs[k] = NST; for (const k of Object.keys(Save.stars)) if (Array.isArray(Save.stars[k]) && !String(k).includes('_')) { Save.stars[k + '_4'] = Save.stars[k]; delete Save.stars[k]; }
+// v35 migration: 5 -> 10 stages (old boss stage 5 = new stage 10; cleared chapters stay cleared)
+if (!Save.st10) { Save.st10 = true; for (const k of Object.keys(Save.stars)) if (/^\d+_4$/.test(k)) { Save.stars[k.replace('_4', '_' + LAST)] = Save.stars[k]; delete Save.stars[k]; }
+  for (const P of [Save.prog ? Object.values(Save.prog) : [], [{ subs: Save.subs, cleared: Save.cleared || {} }]].flat()) if (P && P.subs) for (const k of Object.keys(P.cleared || {})) if (P.cleared[k]) P.subs[k] = NST; }
 // ---- v33: separate progress record per difficulty (old saves: progress counts for the difficulty it was played on) ----
 if (!Save.prog) { Save.prog = {}; Save.prog[Save.diff || 0] = { subs: Save.subs, cleared: Save.cleared || {} }; }
 function useDiffProg() { const d = Save.diff || 0; Save.prog[d] = Save.prog[d] || { subs: {}, cleared: {} }; Save.subs = Save.prog[d].subs; Save.cleared = Save.prog[d].cleared; }
@@ -814,7 +822,9 @@ function wLevel(k) { return wInfo(k).lv; }
 const wMul = k => 1 + wLevel(k) * TUNE.weapon.per;
 const heroInfo = id => lvCalc((Save.hxp || {})[id], TUNE.hero.need, TUNE.hero.maxLv, 1);
 const heroLv = id => heroInfo(id).lv;
-const heroStat = (id, k) => 1 + (heroLv(id) - 1) * TUNE.hero.per[k];
+Save.bp = Save.bp || {}; // v35 boss points: +1 to the hero who kills a boss, spent on that hero's stats
+const bpOf = id => (Save.bp[id] = Save.bp[id] || { pts: 0, hp: 0, dmg: 0, spd: 0, spc: 0 });
+const heroStat = (id, k) => (1 + (heroLv(id) - 1) * TUNE.hero.per[k]) * (1 + ((Save.bp[id] || {})[k] || 0) * TUNE.hero.pt[k]);
 const spInfo = id => lvCalc((Save.spx || {})[id], TUNE.special.need, TUNE.special.maxLv, 0);
 const spMul = id => 1 + spInfo(id).lv * TUNE.special.per;
 const lvTxt = (I, max) => `Lv ${I.lv}/${max}` + (I.next ? ` · ${I.xp}/${I.next} XP` : ' · MAX');
@@ -1001,20 +1011,21 @@ function explosion(x, y, r, dmgE, dmgP) {
 // ----- run setup -----
 function startRun(heroId, mode = 'campaign', levelIdx) {
   recReset();
+  G.lv0 = { bp: HEROES[heroId] ? bpOf(heroId).pts : 0, h: heroLv(heroId), s: spInfo(heroId).lv, w: Object.fromEntries(Object.keys(WEAPONS).concat(Object.keys(HEROES)).map(k => [k, wInfo(k).lv])) };
   A.init(); Save.st.runs++;
   G.hero = heroId; G.mode = mode; G.levelIdx = levelIdx !== undefined ? levelIdx : (G.levelIdx || 0); G.bonus = mode === 'bonus' ? BONUS.find(b => b.id === pendingBonus) : null; if (G.bonus) G.levelIdx = G.bonus.endless ? randi(0, 3) : G.bonus.weekly ? WEEK() % 4 : G.bonus.lvl; G.L = mode === 'campaign' || mode === 'bonus' ? LEVELS[G.levelIdx] : BASE_LEVEL;
   const L0 = G.L;
-  Object.assign(G, { slowmo: 0, zoomV: 1, focus: null, drops: [], pk: {}, xp: 0, plv: 0, cardQ: false, drone: null, zaps: [], bubT: 0, chainN: 0, benSw: 0, endPaid: 0, endWave: 1, safeTalk: null, speaker: null, cage: null, rescueP: 0, bloodMul: 1, timeUp: false, bonusT: 0, overrun: false, wave: 0, breakT: 300, waveTotal: 0, waveSpawned: 0, trainT: 45 * 60, score: 0, xpGain: {}, hxpGain: 0, darkRun: 0, actors: [], frostN: 0, frostB: [], cat: null, tutor: false, tutHold: false, tutSpc: 0, tutUlt: 0, core: null, relievedT: 0, time: 0, kills: 0, bloodRun: 0, banked: 0, combo: 0, comboT: 0, shake: 0, hitStop: 0, flash: 0, revived: false, arena: false, phase: mode === 'campaign' ? 'street' : mode === 'raid' ? 'raidBreak' : 'train', lockKills: 0, holdT: 0, doorOpen: 0, minX: 10, maxX: L0.W - 10, camL: 0, camR: L0.W, spawnMaxX: mode === 'campaign' && gatesOf(L0).length ? gatesOf(L0)[0] - 60 : 1e9, bolt: 0, nextBolt: 900, thunderT: 0, boss: null, bossDone: false, endT: 0, spawnT: 120, hordes: 0, rain: null, runStart: performance.now(), hintT: 420 });
+  Object.assign(G, { cL: undefined, cR: undefined, slowmo: 0, zoomV: 1, focus: null, drops: [], pk: {}, xp: 0, plv: 0, cardQ: false, drone: null, zaps: [], bubT: 0, chainN: 0, benSw: 0, endPaid: 0, endWave: 1, safeTalk: null, speaker: null, cage: null, rescueP: 0, bloodMul: 1, timeUp: false, bonusT: 0, overrun: false, wave: 0, breakT: 300, waveTotal: 0, waveSpawned: 0, trainT: 45 * 60, score: 0, xpGain: {}, hxpGain: 0, darkRun: 0, actors: [], frostN: 0, frostB: [], cat: null, tutor: false, tutHold: false, tutSpc: 0, tutUlt: 0, core: null, relievedT: 0, time: 0, kills: 0, bloodRun: 0, banked: 0, combo: 0, comboT: 0, shake: 0, hitStop: 0, flash: 0, revived: false, arena: false, phase: mode === 'campaign' ? 'street' : mode === 'raid' ? 'raidBreak' : 'train', lockKills: 0, holdT: 0, doorOpen: 0, minX: 10, maxX: L0.W - 10, camL: 0, camR: L0.W, spawnMaxX: mode === 'campaign' && gatesOf(L0).length ? gatesOf(L0)[0] - 60 : 1e9, bolt: 0, nextBolt: 900, thunderT: 0, boss: null, bossDone: false, endT: 0, spawnT: 120, hordes: 0, rain: null, runStart: performance.now(), hintT: 420 });
   enemies = []; allies = []; shots = []; eshots = []; parts = []; texts = []; pickups = []; fires = []; acids = []; rings = []; teles = []; decals = []; flashes = []; skybolts = []; corpses = [];
   buildLevel(); G.gates = mode === 'campaign' ? gatesOf(L0) : []; G.gate = 0; G.lockNeed = 0;
-  G.sub = mode === 'campaign' ? (pendingSub === undefined ? 4 : pendingSub) : undefined; G.blackout = subOf() === 1; G.evT = randi(1800, 3000); G.flickT = 0; G.domLv = 0; G.domT = 0; G.supplies = []; G.survivor = null;
+  G.sub = mode === 'campaign' ? (pendingSub === undefined ? LAST : pendingSub) : undefined; G.blackout = kindOf() === 1; G.evT = randi(1800, 3000); G.flickT = 0; G.domLv = 0; G.domT = 0; G.supplies = []; G.survivor = null;
   { const fk = G.levelIdx + '_' + subOf(); Save.fails = Save.fails || {}; G.assist = mode === 'campaign' ? Math.min(3, Save.fails[fk] || 0) : 0; }
   G.downs = 0; G.tags = []; Save.tags = Save.tags || {}; Save.stars = Save.stars || {};
   if (mode === 'campaign') { const L = G.L, li = G.levelIdx;
     [0.2, 0.52, 0.86].forEach((f, k) => { const x = 500 + f * (L.ARENA - 800) + hash(li * 7 + k) * 120; G.tags.push({ k: li + '_' + k, x, y: L.TOP + 22, got: !!Save.tags[li + '_' + k] }); });
     if (G.blackout) for (const o of obstacles) if (o.type === 'lamp') o.on = false;
-    if (subOf() === 3) [0.25, 0.55, 0.85].forEach(f => { for (let t2 = 0; t2 < 30; t2++) { const x = 500 + f * (L.ARENA - 700) + rand(-150, 150), y = rand(L.TOP + 70, L.BOT - 70); if (!obstacles.some(o => x > o.x - 30 && x < o.x + o.w + 30 && y > o.y - 30 && y < o.y + o.d + 30)) { G.supplies.push({ x, y, got: false }); break; } } });
-    if (subOf() === 3 || (subOf() !== 4 && Math.random() < 0.35)) { const x = L.ARENA * rand(0.45, 0.7); G.survivor = { x, y: L.TOP + 150, prog: 0, saved: false, look: pick([{ skin: '#e0b090', shirt: '#4a7ab0', pants: '#333', boots: '#222', hair: '#3a2a1a', hairStyle: 'long' }, { skin: '#c89070', shirt: '#b04a4a', pants: '#2a2a3a', boots: '#222', hair: '#111', hairStyle: 'short' }]) }; }
+    if (kindOf() === 3) [0.25, 0.55, 0.85].forEach(f => { for (let t2 = 0; t2 < 30; t2++) { const x = 500 + f * (L.ARENA - 700) + rand(-150, 150), y = rand(L.TOP + 70, L.BOT - 70); if (!obstacles.some(o => x > o.x - 30 && x < o.x + o.w + 30 && y > o.y - 30 && y < o.y + o.d + 30)) { G.supplies.push({ x, y, got: false }); break; } } });
+    if (kindOf() === 3 || (kindOf() !== 4 && Math.random() < 0.35)) { const x = L.ARENA * rand(0.45, 0.7); G.survivor = { x, y: L.TOP + 150, prog: 0, saved: false, look: pick([{ skin: '#e0b090', shirt: '#4a7ab0', pants: '#333', boots: '#222', hair: '#3a2a1a', hairStyle: 'long' }, { skin: '#c89070', shirt: '#b04a4a', pants: '#2a2a3a', boots: '#222', hair: '#111', hairStyle: 'short' }]) }; }
     if (Math.random() < 0.4) for (let tries = 0; tries < 30; tries++) { const x = rand(700, G.L.ARENA - 300), y = rand(L.TOP + 60, L.BOT - 80); if (!obstacles.some(o => x < o.x + o.w + 30 && x + 64 > o.x && y < o.y + o.d + 30 && y + 56 > o.y)) { obstacles.push({ type: 'crate', gold: true, x, y, w: 34, d: 26, h: 30, hp: 7 }); break; } } }
   player = makePlayer(heroId);
   G.core = obstacles.find(o => o.type === 'core') || null;
@@ -1393,7 +1404,7 @@ function frostBurst(x, y) {
 }
 let pendingCat = false;
 function spawnRunCat() { if (G.cat || !player) return; G.cat = { x: player.x - 40, y: player.y + 24, t: 0, face: 1, walk: 0 }; ringFx(G.cat.x, G.cat.y, '#ffdd88', 40); }
-function drawCatRow() { const r = $('catRow'); if (!r) return; const show = (pendingMode === 'campaign' || pendingMode === 'bonus') && !labLv('catlab'), c = TUNE.cat.levelCost; r.classList.toggle('hidden', !show); if (!show) return;
+function drawCatRow() { const r = $('catRow'); if (r) r.classList.add('hidden'); return; if (!r) return; const show = (pendingMode === 'campaign' || pendingMode === 'bonus') && !labLv('catlab'), c = TUNE.cat.levelCost; r.classList.toggle('hidden', !show); if (!show) return;
   r.innerHTML = `<button class="btn ${pendingCat ? 'green' : 'sec'}" style="font-size:.72rem;padding:5px 12px">🐈 ${pendingCat ? '✓ CAT COMES ALONG' : `BRING A CAT · ${c} 🩸`} <small style="opacity:.75">(this level only · grabs blood you miss)</small></button>`;
   r.firstChild.onclick = () => { SFX.click(); if (pendingCat) { pendingCat = false; Save.blood += c; } else if (Save.blood >= c) { pendingCat = true; Save.blood -= c; } else { SFX.buzz(); return; } saveGame(); drawCatRow(); }; }
 const catBank = () => { const h = Math.min(TUNE.cat.capHours, (Date.now() - (Save.catT || Date.now())) / 3600000); return Math.floor(h * TUNE.cat.perHour * (Save.cats || 0)); };
@@ -1532,10 +1543,10 @@ function playerDie() {
 
 // ----- enemies -----
 function spawnEnemy(type, x, y, opts = {}) {
-  const d = ZT[type], prog = clamp(player.x / G.L.ARENA, 0, 1), mul = (1 + prog * 0.35) * (G.mode === 'campaign' || G.mode === 'bonus' ? (G.L.diff || 1) * DF().hp : 1);
+  const d = ZT[type], prog = clamp(player.x / G.L.ARENA, 0, 1), mul = (1 + prog * 0.35) * (G.mode === 'campaign' || G.mode === 'bonus' ? (G.L.diff || 1) * DF().hp * (stg() ? stg().hp : 1) : 1);
   const z = { type, d, x, y, r: d.r, vx: 0, vy: 0, hp: d.hp * mul, max: d.hp * mul, spd: d.spd * rand(0.88, 1.12), face: -1, flash: 0, stun: 0, burn: 0, walk: rand(0, 10), t: randi(0, 200),
     atkT: randi(20, 60), state: 'walk', st: 0, emerge: opts.emerge || 0, dead: false, minion: !!opts.minion, buffT: 0 };
-  { const eb = (subOf() === 2 ? 0.22 : subOf() >= 0 || G.mode === 'bonus' ? 0.035 : 0) * (diffOn() ? DF().elite : 1) + (G.domLv || 0) * 0.04; if (!opts.minion && !d.dummy && G.mode !== 'training' && (opts.elite || G.wRule === 'elite' || Math.random() < eb)) { const ek = pick(Object.keys(ELITES)); z.elite = ek; z.nick = pick(ZNICKS); z.hp *= ek === 'giant' ? 4 : 2.2; z.max = z.hp; if (ek === 'fast') z.spd *= 1.6; if (ek === 'shield') z.eShield = 3; if (ek === 'giant') { z.sc = 1.4; z.r = d.r * 1.35; } } }
+  { const eb = (kindOf() === 2 ? (subOf() > 5 ? 0.3 : 0.22) : subOf() >= 0 || G.mode === 'bonus' ? 0.035 : 0) * (diffOn() ? DF().elite : 1) + (G.domLv || 0) * 0.04; if (!opts.minion && !d.dummy && G.mode !== 'training' && (opts.elite || G.wRule === 'elite' || Math.random() < eb)) { const ek = pick(Object.keys(ELITES)); z.elite = ek; z.nick = pick(ZNICKS); z.hp *= ek === 'giant' ? 4 : 2.2; z.max = z.hp; if (ek === 'fast') z.spd *= 1.6; if (ek === 'shield') z.eShield = 3; if (ek === 'giant') { z.sc = 1.4; z.r = d.r * 1.35; } } }
   if (G.assist) { z.hp *= 1 - 0.08 * G.assist; z.max = z.hp; }
   if (diffOn() && !d.dummy) z.spd *= DF().zspd;
   if (G.wRule === 'speed') z.spd *= 1.5; if (G.wRule === 'swarm') { z.sc = 0.7; z.hp *= 0.45; z.max = z.hp; z.spd *= 1.3; }
@@ -1712,7 +1723,7 @@ function updateSpawns() {
     for (let i = 0; i < 9 + G.hordes * 3; i++) { const s = spawnSpot(); if (s) spawnEnemy(pickW(L.mix), s.x, s.y, { emerge: s.emerge }); }
   }
   if (--G.spawnT > 0) return;
-  G.spawnT = lerp(L.rate[0], L.rate[1], prog) * rand(0.7, 1.3) / (diffOn() ? DF().spawn : 1) * (G.tutor ? 1.8 : 1) * (1 - (G.domLv || 0) * 0.12) * (G.blackout ? 0.9 : 1);
+  G.spawnT = lerp(L.rate[0], L.rate[1], prog) * rand(0.7, 1.3) / (diffOn() ? DF().spawn : 1) / (stg() ? stg().sp : 1) * (G.tutor ? 1.8 : 1) * (1 - (G.domLv || 0) * 0.12) * (G.blackout ? 0.9 : 1);
   if (enemies.length >= 26) return;
   const n = Math.random() < 0.2 + prog * 0.35 ? 2 : 1;
   for (let k = 0; k < n; k++) { const s = spawnSpot(); if (s) spawnEnemy(pickW(L.mix), s.x, s.y, { emerge: s.emerge }); }
@@ -1896,7 +1907,9 @@ function updateCamera() {
   const p = player, L = G.L;
   const tx = p.x - VW * 0.5 + Math.cos(p.aim) * 50, ty = p.y - VIEW_H * 0.56 + Math.sin(p.aim) * 30;
   G.cam.x += (tx - G.cam.x) * 0.1; G.cam.y += (ty - G.cam.y) * 0.1;
-  G.cam.x = clamp(G.cam.x, G.camL, Math.max(G.camL, G.camR - VW)); G.cam.y = clamp(G.cam.y, -70, L.BOT + 70 - VIEW_H);
+  // v34: camera limits ease to their new values (no jump when a gate opens or a hold starts)
+  if (G.cL === undefined || !isFinite(G.cL)) { G.cL = G.camL; G.cR = G.camR; } else { G.cL += (G.camL - G.cL) * 0.05; G.cR += (G.camR - G.cR) * 0.05; if (Math.abs(G.cL - G.camL) < 1) G.cL = G.camL; if (Math.abs(G.cR - G.camR) < 1) G.cR = G.camR; }
+  G.cam.x = clamp(G.cam.x, G.cL, Math.max(G.cL, G.cR - VW)); G.cam.y = clamp(G.cam.y, -70, L.BOT + 70 - VIEW_H);
 }
 function checkProgress() {
   const L = G.L, p = player, P = L.plan;
@@ -1910,7 +1923,7 @@ function checkProgress() {
   if (G.mode === 'bonus') { bonusTick(); return; }
   if ((G.phase === 'street' || G.phase === 'street2') && G.gate < G.gates.length && p.x > G.gates[G.gate] - 430 && !G.tutHold) startLockdown();
   if (G.phase === 'lockdown' && G.lockKills >= G.lockNeed) endLockdown();
-  if ((G.phase === 'street' || G.phase === 'street2') && G.gate >= G.gates.length && p.x > L.ARENA + 140) { if (P.boss && (subOf() === 4 || G.mode !== 'campaign')) { if (G.robo && G.robo.robo === 2 && !G.robo.dead) { if (G.time % 120 === 0) hintMsg('Get Rocco’s arm back from the robot dog first!'); p.x = Math.min(p.x, L.ARENA + 130); } else startBoss(); } else if (P.safe) toSafe(); else levelComplete(); }
+  if ((G.phase === 'street' || G.phase === 'street2') && G.gate >= G.gates.length && p.x > L.ARENA + 140) { if (P.boss && (kindOf() === 4 || G.mode !== 'campaign')) { if (G.robo && G.robo.robo === 2 && !G.robo.dead) { if (G.time % 120 === 0) hintMsg('Get Rocco’s arm back from the robot dog first!'); p.x = Math.min(p.x, L.ARENA + 130); } else startBoss(); } else if (P.safe) toSafe(); else levelComplete(); }
   if (G.mode === 'campaign') sideTick();
   if (G.endT > 0 && --G.endT === 0) { if (P.safe) toSafe(); else levelComplete(); }
   if (G.phase === 'toSafe' && p.x > P.safe.fx + 12 && p.x < P.safe.fx2 - 12 && p.y < L.TOP + P.safe.fy - 6) startHold();
@@ -1946,7 +1959,10 @@ function applyKit() {
 }
 function toSafe() {
   const L = G.L; G.phase = 'toSafe'; G.arena = false; G.maxX = L.W - 10; G.camR = L.W; G.camL = L.plan.boss ? L.ARENA - 40 : 0; G.minX = L.plan.boss ? L.ARENA : 10; G.spawnMaxX = L.W - 20;
-  const g = obstacles.find(o => o.gateR); if (g) { for (let y = L.TOP; y < L.BOT; y += 40) dust(g.x + 13, y, 2); obstacles.splice(obstacles.indexOf(g), 1); }
+  const g = obstacles.find(o => o.gateR); if (g) { for (let y = L.TOP; y < L.BOT; y += 40) dust(g.x + 13, y, 3);
+    SFX.explode(); for (const y of [L.TOP + 120, (L.TOP + L.BOT) / 2, L.BOT - 120]) { lightFlash(g.x + 13, y, 200, 18, 'rgba(255,170,60,0.6)'); ringFx(g.x + 13, y, '#ffaa33', 90); }
+    for (let i = 0; i < 14; i++) part({ x: g.x + 13, y: rand(L.TOP, L.BOT), z: 20, vx: rand(0, 5), vy: rand(-2, 2), vz: rand(3, 7), life: 90, size: rand(4, 8), color: '#7a6a5a', kind: 'chunk', rot: rand(0, 6), vr: 0.2, g: 0.4 });
+    obstacles.splice(obstacles.indexOf(g), 1); addShake(8); vibrate([40, 30, 60]); }
   banner('FIND THE SAFE HOUSE', 'Get inside the barricades'); hintMsg('Follow the green marker to the safe house'); applyKit();
 }
 function startHold() {
@@ -2122,6 +2138,7 @@ function damageBoss(b, dmg, src) {
 function bossDie(b) {
   G.slowmo = 150; G.focus = { x: b.x, y: b.y }; vibrate([80, 40, 120, 40, 200]);
   missionEvent('boss');
+  if (HEROES[G.hero]) { bpOf(G.hero).pts++; addText('👑 +1 BOSS POINT FOR ' + HEROES[G.hero].name.toUpperCase(), b.x, b.y - 120, '#ffcc33', 18, 150); }
   Save.st.bosses[b.type] = (Save.st.bosses[b.type] || 0) + 1;
   clipQueue('boss', 70, { boss: b.name }); if (SPR[b.type]) corpses.push({ x: b.x, y: b.y, face: b.face || 1, d: { s: 1 / 0.88 }, type: b.type, t: 0, life: 99999 });
   b.hp = 0; G.boss = null; G.bossDone = true; G.endT = 180; G.hitStop = 18;
@@ -2451,7 +2468,7 @@ setTimeout(loaderHide, 15000);
 for (const id in SPR) { const S = SPR[id], im = new Image(); im.onload = () => { S.img = im; sprTick(); const c = document.createElement('canvas'); c.width = im.width; c.height = im.height; const x = c.getContext('2d'); x.drawImage(im, 0, 0); x.globalCompositeOperation = 'source-in'; x.fillStyle = '#fff'; x.fillRect(0, 0, c.width, c.height); S.white = c; }; im.onerror = () => { S.img = null; sprTick(); }; im.src = 'sprites/' + id + '.webp?v=' + SPR_V; }
 function sprOK(id) { const S = SPR[id]; return !!(S && S.img && !Cfg.vecArt); }
 const SKIN_TINT = { streets: ['multiply', '#4a5070', 0.75], metro: ['color', '#c8a020', 0.5], lab: ['color', '#e0e030', 0.6], crypt: ['color', '#e8e0d0', 0.7], gold: ['color', '#f0c030', 0.7], reaper: ['multiply', '#5a4078', 0.8], neon: ['color', '#ff2aa0', 0.65], dawn: ['soft-light', '#ff8a30', 0.9] };
-function heroSkinId(id) { const k = Save.skin && Save.skin[id]; if (!k || k === 'classic' || !SKIN_TINT[k]) return null; const sk = SKIN_DEFS.find(x => x.id === k); return sk && skinOwned(id, sk) ? k : null; }
+function heroSkinId() { return null; }
 function sprTint(id, k) {
   const S = SPR[id]; S.tint = S.tint || {}; if (S.tint[k]) return S.tint[k];
   const [op, col, a] = SKIN_TINT[k], c = document.createElement('canvas'); c.width = S.img.width; c.height = S.img.height; const x = c.getContext('2d');
@@ -3603,7 +3620,8 @@ function openBase() {
   showOnly(null); $('baseScreen').classList.remove('hidden'); closeRoom(); refreshBaseTop();
   { const n = collectCats(); if (n) { refreshBaseTop(); setTimeout(() => banner(`🐈 +${n} 🩸`, Save.cats > 1 ? 'Your cats collected blood while you were away' : 'Your cat collected blood while you were away'), 300); } } }
 function refreshBaseTop() { $('baseBlood').textContent = Save.blood + (Save.dark ? ' · ☢️ ' + Save.dark : ''); $('baseRaids').textContent = Save.raids; }
-function closeRoom() { roomOpen = null; $('roomPanel').classList.remove('wide', 'left'); $('roomPanel').classList.add('hidden'); $('baseHint').classList.remove('hidden'); }
+function closeRoom() { const was = roomOpen; roomOpen = null; $('roomPanel').classList.remove('wide', 'left'); $('roomPanel').classList.add('hidden'); $('baseHint').classList.remove('hidden');
+  if (labRet && was === 'dig2' && G.state === 'base') { const r = labRet; labRet = null; pendingMode = 'campaign'; pendingLevel = r.level; pendingSub = r.sub; G.hero = r.hero; showOnly(null); startRun(r.hero, 'campaign', r.level); } }
 function openRoom(id) {
   roomOpen = id; SFX.click(); $('baseHint').classList.add('hidden');
   const P = $('roomPanel'), T = $('roomTitle'), B = $('roomBody'); P.classList.remove('hidden'); P.classList.toggle('left', ['range', 'toilet', 'dig2'].includes(id)); B.innerHTML = ''; $('roomClose').style.display = '';
@@ -4175,8 +4193,8 @@ function updateHUD() {
   else if (G.mode === 'bonus') { const B = G.bonus, s2 = Math.max(0, Math.ceil(G.bonusT / 60)); obj = B.endless ? (() => { const el = Math.floor((B.time * 60 - G.bonusT) / 60), bs = (Save.endlessBest || {}).t || 0; return `♾️ ${Math.floor(el / 60)}:${String(el % 60).padStart(2, '0')} · WAVE ${G.endWave || 1} · BEST ${Math.floor(bs / 60)}:${String(bs % 60).padStart(2, '0')}`; })() : B.id === 'rescue' ? `🔓 FREEING LEO ${Math.floor(G.rescueP * 100)}% · ${s2}s` : B.id === 'onehit' ? `💀 KILLS ${G.kills}/${B.goal} · ${s2}s` : B.id === 'bloodrush' ? `🩸 BLOOD ${G.bonusBlood}/${B.goal} · ${s2}s` : `${B.icon} SURVIVE · ${s2}s`; prog = B.endless ? ((B.time * 60 - G.bonusT) % 3600) / 3600 : B.id === 'rescue' ? G.rescueP : B.id === 'onehit' ? G.kills / B.goal : B.id === 'bloodrush' ? G.bonusBlood / B.goal : 1 - G.bonusT / (B.time * 60); }
   else if (ph === 'hold') { obj = `🏠 HOLD OUT · ${Math.ceil(G.holdT / 60)}s`; prog = 1 - G.holdT / ((G.holdMax || P.safe.hold) * 60); }
   else if (ph === 'enter') obj = '🚪 GET INSIDE!';
-  if (G.mode === 'campaign' && subOf() === 3 && obj) obj += ` · 📦 ${G.supplies.filter(q => q.got).length}/3`;
-  if (G.mode === 'campaign' && G.sub !== undefined) $('lvlName').textContent = G.L.name.toUpperCase() + ' · ' + (G.levelIdx + 1) + '-' + (G.sub + 1) + ' ' + SUBS[G.sub].name.toUpperCase();
+  if (G.mode === 'campaign' && kindOf() === 3 && obj) obj += ` · 📦 ${G.supplies.filter(q => q.got).length}/3`;
+  if (G.mode === 'campaign' && G.sub !== undefined) $('lvlName').textContent = G.L.name.toUpperCase() + ' · ' + (G.levelIdx + 1) + '-' + (G.sub + 1) + ' ' + STAGES[G.sub].name.toUpperCase();
   $('objTxt').textContent = obj; $('progFill').style.width = clamp(prog * 100, 0, 100) + '%';
   $('progBar').classList.toggle('hidden', ph === 'boss');
   if (G.mode === 'bonus') $('lvlName').textContent = '★ ' + G.bonus.name;
@@ -4327,18 +4345,18 @@ function openSurvivors(id) {
   if (!Save.leo) { const b = document.createElement('button'); b.textContent = '???'; b.style.opacity = 0.6; b.onclick = () => { SFX.click(); hintToast('Someone is still out there... Clear the Abandoned Metro, then play RESCUE LEO.'); }; tabs.appendChild(b); }
   const H = HEROES[survSel], S = HERO_STORY[survSel], lv = wLevel(survSel), read = (Save.storyRead || {})[survSel];
   const gq = k => (Save.gear || {})[survSel + '_' + k], hp = Math.round(H.hp * heroStat(survSel, 'hp') * (gq(1) ? 1.1 : 1)), dmg = Math.round((heroStat(survSel, 'dmg') * wMul(survSel) * (gq(0) ? 1.1 : 1) - 1) * 100);
-  $('survInfo').className = 'sv' + (survSub || 0); $('survInfo').innerHTML = `<div class="svSub"><button data-s="0" class="${survSub ? '' : 'on'}">📊 STATS & SKILLS</button><button data-s="1" class="${survSub ? 'on' : ''}">🎒 GEAR & SKINS</button></div><div class="svM"><h2>${H.name} <small>${H.role} · ⭐ ${lvTxt(heroInfo(survSel), TUNE.hero.maxLv)}</small></h2><div class="bio">${S.bio}</div>
+  $('survInfo').className = 'sv' + (survSub || 0); $('survInfo').innerHTML = `<div class="svSub"><button data-s="0" class="${survSub ? '' : 'on'}">📊 STATS & SKILLS</button><button data-s="1" class="${survSub ? 'on' : ''}">🎒 GEAR · 👑 POINTS</button></div><div class="svM"><h2>${H.name} <small>${H.role} · ⭐ ${lvTxt(heroInfo(survSel), TUNE.hero.maxLv)}</small></h2><div class="bio">${S.bio}</div>
     <div class="sgrid"><div>❤ HEALTH<b>${hp}</b></div><div>👟 SPEED<b>${(H.speed * heroStat(survSel, 'spd')).toFixed(1)}</b></div><div>🛡 ARMOR<b>${Math.round(H.armor * 100)}%</b></div><div>⚔ ATK/SEC<b>${(60 / H.atkCd).toFixed(1)}</b></div>
     <div>🔪 DAMAGE<b>+${dmg}%</b></div><div>⭐ LEVEL<b>${heroLv(survSel)}/${TUNE.hero.maxLv}</b></div><div>☠ KILLS<b>${Save.st.heroK[survSel] || 0}</b></div><div>⚡ CHARGE<b>+${Math.round((heroStat(survSel, 'spc') * (gq(2) ? 1.15 : 1) - 1) * 100)}%</b></div></div>
     <div class="skl a"><b>⚔ ${H.atk}</b> · ${HERO_TRAIT[survSel]} · <span style="color:#7cf">${lvTxt(wInfo(survSel), WMAX)}</span></div>
     <div class="skl"><b>⚡ ${H.spcName}</b> · ${H.spc} · <span style="color:#7cf">${lvTxt(spInfo(survSel), TUNE.special.maxLv)}</span></div>
     <div class="skl u"><b>☠ ${H.ultName}</b> · ${H.ult} (recharges in ${Math.round(DIFFS[Save.diff || 0].ult * (gq(3) ? 1 - TUNE.ult.gearCut : 1))}s)</div></div>
     <div class="svR"><div class="svH">🎒 GEAR</div><div class="gear2">${GEAR[survSel].map((g, i) => { const own = (Save.gear || {})[survSel + '_' + i]; return `<div class="${own ? 'on' : ''}" data-g="${i}"><span>${own ? g[0] : '🔒'}</span><i>${['+10% DMG', '+10% HP', '+15% ⚡', 'ULT -12%'][i]}</i></div>`; }).join('')}</div><div class="gnote" id="gNote">${(() => { const o = [0, 1, 2, 3].filter(i => (Save.gear || {})[survSel + '_' + i]); return o.length ? o.map(i => GEAR[survSel][i][1]).join(' · ') : 'Clear levels with ' + H.name + ' to earn gear'; })()}</div>
-    <div class="svH">👕 SKINS</div><div class="skins2">${SKIN_DEFS.map(k => { const own = skinOwned(survSel, k), on = (Save.skin[survSel] || 'classic') === k.id; return `<button class="sk${on ? ' on' : ''}${own ? '' : ' lock'}" data-k="${k.id}" style="background:${k.col || HEROES[survSel].look.shirt}">${own ? '' : '🔒'}</button>`; }).join('')}</div><div class="gnote">Wearing: <b>${(SKIN_DEFS.find(k => k.id === (Save.skin[survSel] || 'classic')) || SKIN_DEFS[0]).name}</b> · tap a colour</div>
+    ${(() => { const B = bpOf(survSel), lv = heroLv(survSel), pc = v => (v >= 0 ? '+' : '') + Math.round(v * 100) + '%'; return `<div class="svH">👑 BOSS POINTS <span style="color:${B.pts ? '#ffcc33' : '#888'}">${B.pts} to spend</span></div><div class="bpT">${[['hp', '❤ Health'], ['dmg', '🔪 Damage'], ['spd', '👟 Speed'], ['spc', '⚡ Special charge']].map(([k, n]) => `<div><span>${n}</span><i>Lv ${pc((lv - 1) * TUNE.hero.per[k])}</i><i>👑 ${B[k]} · ${pc(B[k] * TUNE.hero.pt[k])}</i><b>${pc(heroStat(survSel, k) - 1)}</b><button class="bpPlus" data-k="${k}" ${B.pts ? '' : 'disabled'}>+</button></div>`).join('')}</div><div class="gnote bpN">Boss killed with ${H.name} = +1 point · ❤ +${Math.round(TUNE.hero.pt.hp * 100)}% · 🔪 +${Math.round(TUNE.hero.pt.dmg * 100)}% · 👟 +${Math.round(TUNE.hero.pt.spd * 100)}% · ⚡ +${Math.round(TUNE.hero.pt.spc * 100)}%</div>`; })()}
     <button class="btn ${read ? 'sec' : 'gold'}" id="storyBtn">📜 ${read ? 'STORY' : 'STORY · +20 🩸'}</button></div>`;
   $('storyBtn').onclick = () => { SFX.click(); openStory(survSel); };
+  $('survInfo').querySelectorAll('.bpPlus').forEach(b => b.onclick = () => { const B = bpOf(survSel); if (!B.pts) return; B.pts--; B[b.dataset.k]++; SFX.heal(); saveGame(); openSurvivors(survSel); });
   $('survInfo').querySelectorAll('.svSub button').forEach(b => b.onclick = () => { SFX.click(); survSub = +b.dataset.s; openSurvivors(survSel); });
-  $('survInfo').querySelectorAll('.sk').forEach(b => b.onclick = () => { SFX.click(); const k = SKIN_DEFS.find(x => x.id === b.dataset.k); if (skinOwned(survSel, k)) { Save.skin[survSel] = k.id; saveGame(); openSurvivors(survSel); } else if (k.end) banner('🔒 ' + k.name, 'Beat the Necromancer to unlock it'); else if (k.pack) { shopReturn = 'startScreen'; openShop(); } else banner('🔒 ' + k.name, `Clear ${LEVELS[k.lvl].name} with ${HEROES[survSel].name}`); });
   $('survCv').onclick = () => { heroAct['s_' + survSel] = performance.now(); heroMoveSfx(survSel); };
   showOnly('survScreen');
 }
@@ -4423,7 +4441,6 @@ const TROPHIES = [
   ['tags', '🎨', 'Graffiti Hunter', 'Find # Leo tags', () => Object.keys(Save.tags || {}).filter(k => !k.startsWith('all')).length, () => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 40],
   ['bonus', '🏅', 'Challenge Accepted', 'Finish # bonus challenges', () => Object.keys(Save.bonusDone || {}).filter(k => k !== 'weekly').length, () => upTo(TR_STD, BONUS.filter(b => !b.endless && !b.weekly).length), 100],
   ['endless', '♾️', 'Unkillable', 'Survive # in Endless Horde', () => (Save.endlessBest || {}).t || 0, () => [60, 120, 180, 240, 300, 360, 420, 480, 600, 720, 840, 960, 1080, 1200, 1500], 80, v => Math.floor(v / 60) + ':' + String(v % 60).padStart(2, '0')],
-  ['skins', '👕', 'Fashionista', 'Own # skins', () => HERO_ORDER.reduce((n, h) => n + SKIN_DEFS.filter(k => k.id !== 'classic' && skinOwned(h, k)).length, 0), () => upTo([1, 2, 3, 5, 7, 10, 13, 16, 20, 25, 30, 35, 40, 45, 50], HERO_ORDER.length * (SKIN_DEFS.length - 1)), 60],
   ['gear', '🎒', 'Geared Up', 'Collect # gear items', () => Object.keys(HEROES).reduce((n, h) => n + [0, 1, 2, 3].filter(i => (Save.gear || {})[h + '_' + i]).length, 0), () => upTo([1, 2, 3, 4, 6, 8, 10, 12, 14, 16, 18, 20], Object.keys(HEROES).length * 4), 60],
   ['combo', '🔥', 'Combo King', 'Reach a #x combo', () => Save.st.combo, () => [10, 15, 20, 25, 30, 40, 50, 60, 75, 90, 100, 125, 150, 175, 200], 50],
   ['runs', '🏃', 'Seasoned Survivor', 'Play # runs', () => Save.st.runs, () => [5, 10, 20, 30, 50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1500], 40],
@@ -4534,7 +4551,7 @@ function missionEvent(type, data = {}) {
 const PASS_TIERS = 30, PASS_XP = 250;
 const passTier = () => Math.min(PASS_TIERS, Math.floor((Save.sxp || 0) / PASS_XP));
 const passFree = t => t % 10 === 0 ? ['🎁', 600, t === 30 ? 'aim' : null] : t % 5 === 0 ? ['💰', 300] : ['🩸', 80];
-const passPrem = t => t === 10 ? ['💀', 500, 'reaper'] : t % 5 === 0 ? ['💎', 800, t >= 20 ? 'aim' : null] : ['🩸', 200];
+const passPrem = t => t === 10 ? ['💀', 1500] : t % 5 === 0 ? ['💎', 800, t >= 20 ? 'aim' : null] : ['🩸', 200];
 let msTab = 0;
 function openMissions(tab) {
   if (tab !== undefined) msTab = tab; dailyMissions();
@@ -4553,8 +4570,8 @@ function openMissions(tab) {
     $('wkGo').onclick = () => { SFX.click(); pendingMode = 'bonus'; pendingBonus = 'weekly'; pendingLevel = WEEK() % 4; openHeroes(); };
   } else {
     const t = passTier(), xp = Save.sxp || 0; Save.passCl = Save.passCl || {};
-    B.innerHTML = `<div class="ps"><b>SEASON 1 · RISE OF THE DEAD</b><span>TIER ${t}/${PASS_TIERS} · ${xp % PASS_XP}/${PASS_XP} XP</span>${Save.pass ? '<em>⭐ PREMIUM</em>' : `<button class="btn gold" id="passBuy">⭐ PREMIUM €4.99</button>`}</div><div class="pt">${Array.from({ length: PASS_TIERS }, (_, i) => { const n = i + 1, f = passFree(n), pr = passPrem(n), got = n <= t; return `<div class="pc${got ? ' got' : ''}"><small>${n}</small><button class="pf${Save.passCl['f' + n] ? ' cl' : got ? ' ready' : ''}" data-k="f${n}">${f[0]}<i>${f[1]}</i></button><button class="pp${Save.passCl['p' + n] ? ' cl' : got && Save.pass ? ' ready' : ''}${Save.pass ? '' : ' lock'}" data-k="p${n}">${pr[0]}<i>${pr[2] === 'reaper' ? 'SKIN' : pr[1]}</i></button></div>`; }).join('')}</div><p class="psn">Earn season XP from kills, cleared levels and missions. Bottom row = premium.</p>`;
-    B.querySelectorAll('.ready').forEach(el => el.onclick = () => { const k = el.dataset.k, n = +k.slice(1), rw = k[0] === 'f' ? passFree(n) : passPrem(n); Save.passCl[k] = true; Save.blood += rw[1]; if (rw[2] === 'aim') Save.aimCharges += 1; saveGame(); refreshMenu(); SFX.heal(); banner('TIER ' + n, '+' + rw[1] + ' 🩸' + (rw[2] === 'reaper' ? ' · Reaper skins (premium)' : rw[2] === 'aim' ? ' · +1 auto-aim' : '')); openMissions(); const pt = B.querySelector('.pt'); if (pt) pt.scrollLeft = Math.max(0, (n - 3) * 54); });
+    B.innerHTML = `<div class="ps"><b>SEASON 1 · RISE OF THE DEAD</b><span>TIER ${t}/${PASS_TIERS} · ${xp % PASS_XP}/${PASS_XP} XP</span>${Save.pass ? '<em>⭐ PREMIUM</em>' : `<button class="btn gold" id="passBuy">⭐ PREMIUM €4.99</button>`}</div><div class="pt">${Array.from({ length: PASS_TIERS }, (_, i) => { const n = i + 1, f = passFree(n), pr = passPrem(n), got = n <= t; return `<div class="pc${got ? ' got' : ''}"><small>${n}</small><button class="pf${Save.passCl['f' + n] ? ' cl' : got ? ' ready' : ''}" data-k="f${n}">${f[0]}<i>${f[1]}</i></button><button class="pp${Save.passCl['p' + n] ? ' cl' : got && Save.pass ? ' ready' : ''}${Save.pass ? '' : ' lock'}" data-k="p${n}">${pr[0]}<i>${pr[1]}</i></button></div>`; }).join('')}</div><p class="psn">Earn season XP from kills, cleared levels and missions. Bottom row = premium.</p>`;
+    B.querySelectorAll('.ready').forEach(el => el.onclick = () => { const k = el.dataset.k, n = +k.slice(1), rw = k[0] === 'f' ? passFree(n) : passPrem(n); Save.passCl[k] = true; Save.blood += rw[1]; if (rw[2] === 'aim') Save.aimCharges += 1; saveGame(); refreshMenu(); SFX.heal(); banner('TIER ' + n, '+' + rw[1] + ' 🩸' + (rw[2] === 'aim' ? ' · +1 auto-aim' : '')); openMissions(); const pt = B.querySelector('.pt'); if (pt) pt.scrollLeft = Math.max(0, (n - 3) * 54); });
     const pb = $('passBuy'); if (pb) pb.onclick = () => purchaseProduct('season_pass_1', 'Season Pass · Premium', '€4.99', () => { Save.pass = true; saveGame(); showOnly('msScreen'); openMissions(2); });
     const pt = B.querySelector('.pt'); if (pt) pt.scrollLeft = Math.max(0, (t - 3) * 54);
   }
@@ -4599,12 +4616,12 @@ function rollCredits(reward, onDone) {
     ['h2', 'YOUR APOCALYPSE'], ['r', 'Zombies sent back down', (S.kills || 0).toLocaleString()], ['r', 'Times you died', String(S.deaths || 0)], ['r', 'Time survived', (hrs ? hrs + 'h ' : '') + mins + 'm'], ['r', 'Best combo', 'x' + (S.combo || 0)], ['r', 'Favourite survivor', fav ? HEROES[fav[0]].name : '—'], ['g'],
     ['s', 'No zombies were harmed in the making of this game.'], ['s', 'Except ' + (S.kills || 0).toLocaleString() + ' of them. By you.'], ['g'],
     ['h2', 'THANKS FOR PLAYING'], ['s', 'The Endless Horde never sleeps. Neither should you. (Please sleep.)']];
-  if (reward) L.push(['g'], ['rw', '🎁 +1000 🩸 and the DAWN HERO skin for every survivor']);
+  if (reward) L.push(['g'], ['rw', '🎁 +1000 🩸']);
   const el = $('credits'), roll = $('creditsRoll');
   roll.innerHTML = L.map(([t, a, b]) => t === 'g' ? '<div class="cg"></div>' : t === 'r' ? `<div class="cr"><span>${a}</span><b>${b}</b></div>` : `<div class="c${t}">${a}</div>`).join('');
   el.classList.remove('hidden'); roll.style.animation = 'none'; void roll.offsetWidth; roll.style.animation = '';
   Music.stop(); try { SFX.special(); } catch (e) { }
-  let done = false; const fin = () => { if (done) return; done = true; el.classList.add('hidden'); if (reward) banner('🌅 DAWN HERO UNLOCKED', 'A new skin for every survivor · +1000 🩸'); onDone && onDone(); };
+  let done = false; const fin = () => { if (done) return; done = true; el.classList.add('hidden'); if (reward) banner('🌅 THE CITY IS FREE', '+1000 🩸'); onDone && onDone(); };
   el.onclick = () => { if (Date.now() - t0 > 900) fin(); }; const t0 = Date.now(); roll.onanimationend = fin;
 }
 function playComic(key, onDone) {
@@ -4647,7 +4664,7 @@ function drawDiffRow() {
 }
 function openSubs(li) {
   const L = LEVELS[li], done = Save.subs[li] || 0; $('subTitle').textContent = (li + 1) + '. ' + L.name; $('subSub').textContent = DIFFS[Save.diff || 0].name + ' · ' + L.sub;
-  $('subRow').innerHTML = SUBS.map((S, k) => { const open = k <= done || Cfg.test, st = (Save.stars[li + '_' + k] || []).filter(Boolean).length; return `<div class="subc${open ? '' : ' locked'}${k === 4 ? ' boss' : ''}${k === 1 ? ' dark' : ''}" data-k="${k}"><small>${li + 1}-${k + 1}</small><span>${open ? S.icon : '🔒'}</span><b>${S.name}</b><p>${k === 4 ? 'Boss: ' + L.bossName.replace('THE ', '') : S.desc}</p><i>${open ? '★'.repeat(st) + '☆'.repeat(3 - st) : 'Clear ' + (li + 1) + '-' + k}</i></div>`; }).join('');
+  $('subRow').innerHTML = STAGES.map((S, k) => { const open = k <= done || Cfg.test, st = (Save.stars[li + '_' + k] || []).filter(Boolean).length; return `<div class="subc${open ? '' : ' locked'}${S.k === 4 ? ' boss' : ''}${S.k === 1 ? ' dark' : ''}" data-k="${k}"><small>${li + 1}-${k + 1}</small><span>${open ? S.icon : '🔒'}</span><b>${S.name}</b><p>${S.k === 4 ? 'Boss: ' + L.bossName.replace('THE ', '') : S.desc}</p><i>${open ? '★'.repeat(st) + '☆'.repeat(3 - st) : 'Clear ' + (li + 1) + '-' + k}</i></div>`; }).join('');
   if (Cfg.test) $('subSub').textContent += ' · 🧪 TEST MODE';
   $('subRow').querySelectorAll('.subc').forEach(el => { const k = +el.dataset.k; if (k <= done || Cfg.test) el.onclick = () => { SFX.click(); pendingMode = 'campaign'; pendingLevel = li; pendingSub = k; openHeroes(); }; });
   G.subLi = li; showOnly('subScreen');
@@ -4658,9 +4675,15 @@ function openLevels() {
   if (tab === 0) LEVELS.forEach((L, i) => {
     const open = L.ready && (i === 0 || Save.cleared[i - 1] || Cfg.test);
     const el = document.createElement('div'); el.className = 'lcard' + (open ? '' : ' locked'); const lvImg = ['streets', 'metro', 'lab', 'crypt'][i]; el.style.background = lvImg ? `linear-gradient(0deg,rgba(0,0,0,.82),rgba(0,0,0,.15) 65%),url(sprites/lv/${lvImg}.webp) 70% center/cover,${L.grad}` : L.grad;
-    el.innerHTML = `<span class="tag">${!open ? '🔒 ' + TX('lockLv').replace('#', i) : Save.cleared[i] ? '✓ ' + TX('cleared') : TX('boss') + ' ' + L.bossName.replace('THE ', '')}</span><h3>${i + 1}. ${L.name}</h3><p>${L.sub}${open ? ` · 🎸 ${[0, 1, 2].filter(k => (Save.tags || {})[i + '_' + k]).length}/3 tags` : ''}</p>${open && Save.clearedDiff && Save.clearedDiff[i] !== undefined && Save.cleared[i] ? `<span class="ldiff" style="color:${DIFFS[Save.clearedDiff[i]].col}">BEST: ${DIFFS[Save.clearedDiff[i]].name}</span>` : ''}${open ? `<span class="lstars">★ ${[0, 1, 2, 3, 4].reduce((a, k) => a + ((Save.stars || {})[i + '_' + k] || []).filter(Boolean).length, 0)}/15 · ${Math.min(5, Save.subs[i] || 0)}/5 ✓</span>` : ''}`;
+    el.innerHTML = `<span class="tag">${!open ? '🔒 ' + TX('lockLv').replace('#', i) : Save.cleared[i] ? '✓ ' + TX('cleared') : TX('boss') + ' ' + L.bossName.replace('THE ', '')}</span><h3>${i + 1}. ${L.name}</h3><p>${L.sub}${open ? ` · 🎸 ${[0, 1, 2].filter(k => (Save.tags || {})[i + '_' + k]).length}/3 tags` : ''}</p>${open && Save.clearedDiff && Save.clearedDiff[i] !== undefined && Save.cleared[i] ? `<span class="ldiff" style="color:${DIFFS[Save.clearedDiff[i]].col}">BEST: ${DIFFS[Save.clearedDiff[i]].name}</span>` : ''}${open ? `<span class="lstars">★ ${[0, 1, 2, 3, 4].reduce((a, k) => a + ((Save.stars || {})[i + '_' + k] || []).filter(Boolean).length, 0)}/${NST * 3} · ${Math.min(NST, Save.subs[i] || 0)}/${NST} ✓</span>` : ''}`;
     if (open) el.onclick = () => { SFX.click(); openSubs(i); };
     g.appendChild(el);
+  });
+  // v34: 4 teaser chapters (not playable)
+  if (tab === 0) ['Please wait: zombie farming in progress 🌱', 'Zombies still in the oven 🔥', 'Built by zombies. Very slowly 🔨', 'The dead are still stretching 🧘'].forEach((t, k) => {
+    const el = document.createElement('div'); el.className = 'lcard locked soon'; el.style.background = 'repeating-linear-gradient(135deg,#1a1416 0 14px,#221a1c 14px 28px)';
+    el.innerHTML = `<span class="tag">🚧 COMING SOON</span><h3>${LEVELS.length + k + 1}. ???</h3><p>${t}</p>`;
+    el.onclick = () => { SFX.buzz(); banner('🚧 COMING SOON', ['The zombies are not ready yet', 'Still rotting nicely', 'Come back later, survivor', 'Brains need time'][k]); }; g.appendChild(el);
   });
   if (tab === 1) BONUS.forEach(B => { if (B.weekly) return;
     const open = !!Save.cleared[B.need] || !!Cfg.test, done = Save.bonusDone[B.id];
@@ -4686,7 +4709,7 @@ function openHeroes() {
     heroCanvases[id] = el.querySelector('canvas'); g.appendChild(el);
   }
   const eq = Save.equip && Save.weapons[Save.equip] ? ` · 2nd weapon: ${WEAPONS[Save.equip].icon} ${WEAPONS[Save.equip].name}` : '';
-  $('heroSub').textContent = (pendingMode === 'raid' ? `Raid ${Save.raids + 1} · defend the Hideout` : pendingMode === 'training' ? `Training Range · up to ${TUNE.daily.trainXpCap} weapon XP a day` : (pendingMode === 'bonus' ? `★ ${BONUS.find(b => b.id === pendingBonus).name} · ${BONUS.find(b => b.id === pendingBonus).desc}` : `${pendingLevel + 1}-${pendingSub + 1} ${SUBS[pendingSub].icon} ${SUBS[pendingSub].name} · ${LEVELS[pendingLevel].name} · ${DIFFS[Save.diff || 0].name}`)) + eq;
+  $('heroSub').textContent = (pendingMode === 'raid' ? `Raid ${Save.raids + 1} · defend the Hideout` : pendingMode === 'training' ? `Training Range · up to ${TUNE.daily.trainXpCap} weapon XP a day` : (pendingMode === 'bonus' ? `★ ${BONUS.find(b => b.id === pendingBonus).name} · ${BONUS.find(b => b.id === pendingBonus).desc}` : `${pendingLevel + 1}-${pendingSub + 1} ${STAGES[pendingSub].icon} ${STAGES[pendingSub].name} · ${LEVELS[pendingLevel].name} · ${DIFFS[Save.diff || 0].name}`)) + eq;
   drawCompRow(); drawCatRow();
   showOnly('heroScreen');
 }
@@ -4695,9 +4718,13 @@ function drawCompRow() {
   if (pendingMode === 'training') { r.innerHTML = '<span>Training is solo.</span>'; return; }
   const lab = document.createElement('span'); lab.textContent = '🤝 Companion:'; r.appendChild(lab);
   for (const id of [null, ...HERO_ORDER]) {
-    const b = document.createElement('button'); b.className = 'cb' + (Save.companion === id ? ' on' : ''); b.textContent = id ? HEROES[id].name : 'Solo'; b.disabled = id === G.hero;
+    const b = document.createElement('button'); b.className = 'cb' + (Save.companion === id ? ' on' : ''); b.textContent = id ? HEROES[id].name : 'Solo'; if (!id) b.classList.add('solo'); b.disabled = id === G.hero;
     b.onclick = e => { e.stopPropagation(); SFX.click(); Save.companion = id; saveGame(); drawCompRow(); }; r.appendChild(b);
   }
+  // v34: hire a cat = cat button after the last name (this level only)
+  if ((pendingMode === 'campaign' || pendingMode === 'bonus') && !labLv('catlab')) { const c = TUNE.cat.levelCost, k = document.createElement('button'); k.className = 'cb cat' + (pendingCat ? ' on' : ''); k.title = 'Hire a cat for this level: it grabs blood you miss';
+    k.innerHTML = `<span class="catIc"></span><small>${pendingCat ? '✓' : c + '🩸'}</small>`;
+    k.onclick = e => { e.stopPropagation(); SFX.click(); if (pendingCat) { pendingCat = false; Save.blood += c; } else if (Save.blood >= c) { pendingCat = true; Save.blood -= c; banner('🐈 CAT HIRED', 'This level only · grabs blood you miss'); } else { SFX.buzz(); banner('🐈 NOT ENOUGH BLOOD', c + ' 🩸 to hire a cat'); return; } saveGame(); drawCompRow(); }; r.appendChild(k); }
 }
 function drawHeroCard(c, id, e, t, ox) {
   const H = HEROES[id], act = e < 1.9;
@@ -4726,9 +4753,8 @@ function openShop() {
   const offer = (html, label, price, done, fn) => { const r = document.createElement('div'); r.className = 'shopRow special'; r.innerHTML = html; const b = document.createElement('button'); b.className = 'btn gold'; b.style.cssText = 'font-size:.75rem;padding:6px 10px;white-space:nowrap'; b.textContent = done ? '✓ OWNED' : label; b.disabled = !!done; b.onclick = fn; r.appendChild(b); list.appendChild(r); };
   const today = new Date().toDateString(); if (Save.freeDay !== today) { Save.freeDay = today; Save.freeN = 0; }
   offer(`<div><h3>📺 Free blood <span style="color:#888;font-size:.75rem">${Save.freeN}/3 today</span></h3><p>Watch a short ad, get 150 🩸. Three times a day.</p></div>`, (Save.vip ? '⭐' : '📺') + ' +150 🩸', '', Save.freeN >= 3, () => showRewardedAd(() => { Save.freeN++; Save.blood += 150; saveGame(); openShop(); banner('+150 🩸', 'Thanks for watching'); }));
-  offer(`<div><h3>🎁 Starter Pack <span style="color:#ff6688;font-size:.7rem">ONE TIME ONLY</span></h3><p>5,000 🩸 + <b>Golden skins</b> for every survivor + 3 levels of auto-aim.</p></div>`, '€4.99', '', Save.starter, () => purchaseProduct('starter_pack', 'Starter Pack', '€4.99', () => { Save.starter = true; Save.blood += 5000; Save.aimCharges += 3; saveGame(); SFX.heal(); openShop(); }));
+  offer(`<div><h3>🎁 Starter Pack <span style="color:#ff6688;font-size:.7rem">ONE TIME ONLY</span></h3><p>5,000 🩸 + 3 levels of auto-aim.</p></div>`, '€4.99', '', Save.starter, () => purchaseProduct('starter_pack', 'Starter Pack', '€4.99', () => { Save.starter = true; Save.blood += 5000; Save.aimCharges += 3; saveGame(); SFX.heal(); openShop(); }));
   offer(`<div><h3>⭐ No Ads</h3><p>Skip every ad and still get all the rewards: double blood, free blood, revives, extra meals.</p></div>`, '€2.99', '', Save.vip, () => purchaseProduct('no_ads', 'No Ads', '€2.99', () => { Save.vip = true; saveGame(); SFX.heal(); openShop(); }));
-  offer(`<div><h3>💖 Neon Skin Pack</h3><p>Glowing <b>Neon skins</b> for every survivor, Leo included.</p></div>`, '€1.99', '', Save.neon, () => purchaseProduct('neon_skins', 'Neon Skin Pack', '€1.99', () => { Save.neon = true; saveGame(); SFX.heal(); openShop(); }));
   const aa = document.createElement('div'); aa.className = 'shopRow special';
   const ch = Save.aimCharges;
   aa.innerHTML = `<div><h3>🎯 Auto-Aim · ${AIM_PACK} levels ${ch ? `<span style="color:#33ff77;font-size:.8rem">${ch} LEVEL${ch > 1 ? 'S' : ''} LEFT</span>` : ''}</h3><p>Your survivor aims and fires at the nearest zombie by itself for ${AIM_PACK} levels. A level only uses a charge if you start it with auto-aim ON.</p></div>`;
@@ -4760,7 +4786,7 @@ function purchaseProduct(id, title, price, onSuccess) { $('buyTitle').textConten
 let shopReturn = 'startScreen';
 function refreshAutoBtn() { const b = $('autoBtn'), onNow = autoAimOn(), left = Save.aimCharges; b.classList.toggle('on', onNow); b.textContent = '🎯 AUTO ' + (onNow ? 'ON' : 'OFF') + (G.aimActive ? '' : ` · ${left} left`); $('pauseAuto').textContent = '🎯 AUTO-AIM: ' + (onNow ? 'ON' : 'OFF') + (G.aimActive ? ` · ${left} more level${left === 1 ? '' : 's'} after this` : ` · ${left} left`); }
 function toggleAuto() { if (!hasAim()) return; Cfg.autoAim = !Cfg.autoAim; if (Cfg.autoAim && !G.aimActive && player) useAimCharge(false); saveCfg(); refreshAutoBtn(); SFX.click(); }
-function goMenu() { if (Movie) { Movie = null; $('movieScreen').classList.add('hidden'); } Music.boss = false; Music.stop(); Amb.stop(); if (A.ctx) Music.play('menu'); G.state = 'menu'; player = null; $('hud').classList.add('hidden'); $('touch').classList.add('hidden'); $('hint').classList.add('hidden'); $('combo').classList.remove('show'); refreshMenu(); showOnly('startScreen');  setTimeout(checkDaily, 400); setTimeout(() => { if (G.state === 'menu') installNudge(); }, 2500); }
+function goMenu() { labRet = null; if (Movie) { Movie = null; $('movieScreen').classList.add('hidden'); } Music.boss = false; Music.stop(); Amb.stop(); if (A.ctx) Music.play('menu'); G.state = 'menu'; player = null; $('hud').classList.add('hidden'); $('touch').classList.add('hidden'); $('hint').classList.add('hidden'); $('combo').classList.remove('show'); refreshMenu(); showOnly('startScreen');  setTimeout(checkDaily, 400); setTimeout(() => { if (G.state === 'menu') installNudge(); }, 2500); }
 function pauseGame() { if (G.state !== 'play') return; G.state = 'paused'; $('pauseQuip').textContent = pick(PAUSE_TIPS); Music.stop(); Amb.stop(); $('pauseSub').textContent = G.L.name; $('pauseAuto').classList.toggle('hidden', !hasAim()); $('pauseAim').textContent = 'AIM LINE: ' + (Cfg.aimLine ? 'ON' : 'OFF'); refreshAutoBtn(); showOnly('pauseScreen'); resetInput(); }
 function resumeGame() { if (G.state !== 'paused') return; showOnly(null); G.state = 'play'; Music.play(trackFor()); Amb.start(); last = performance.now(); }
 function showGameOver() {
@@ -4795,7 +4821,18 @@ function showResults(title, color, sub, lines, note) {
   if (G.mode === 'campaign' && Save.dm && Save.dm.list) lines += `<div class="statline" style="margin-top:6px;color:#ffcc33">🎯 <b>Daily missions</b></div>` + Save.dm.list.map(m => { const done = m.prog >= m.goal; return `<div class="statline" style="color:${done ? '#55ff88' : '#bbb'}">${done ? '✓' : '·'} ${m.desc} <b>${Math.min(m.prog, m.goal)}/${m.goal}</b></div>`; }).join('');
   $('cBaseBtn').classList.toggle('hidden', G.mode === 'campaign' && !(note || '').includes('under attack'));
   $('completeSub').textContent = sub; $('cLines').innerHTML = lines; $('cNote').innerHTML = note || '';
+  goToRow();
   showOnly('completeScreen'); SFX.heal();
+}
+/* v34: GO TO buttons on the results screen when something levelled up or can be upgraded */
+function goToRow() {
+  let r = $('goRow'); if (!r) { r = document.createElement('div'); r.id = 'goRow'; r.className = 'btns'; r.style.cssText = 'margin-top:4px;gap:6px;flex-wrap:wrap;justify-content:center'; $('cLines').after(r); }
+  r.innerHTML = ''; const L0 = G.lv0 || { h: 99, s: 99, w: {} }, hero = G.hero;
+  const add = (txt, fn) => { const b = document.createElement('button'); b.className = 'btn sec'; b.style.cssText = 'font-size:.7rem;padding:5px 10px'; b.textContent = txt; b.onclick = () => { SFX.click(); fn(); }; r.appendChild(b); };
+  if (HEROES[hero] && (heroLv(hero) > L0.h || spInfo(hero).lv > L0.s)) add(`⭐ ${HEROES[hero].name.toUpperCase()} LEVEL UP · GO TO STATS`, () => { goMenu(); openSurvivors(hero); showOnly('survScreen'); });
+  if (HEROES[hero] && bpOf(hero).pts > (L0.bp || 0)) add(`👑 +1 BOSS POINT · GO TO STATS`, () => { goMenu(); survSub = 1; openSurvivors(hero); showOnly('survScreen'); });
+  if (Object.keys(G.xpGain || {}).some(k => wInfo(k).lv > (L0.w[k] || 0))) add('🗡️ WEAPON LEVEL UP · GO TO ARMORY', () => { openBase(); setTimeout(() => G.state === 'base' && openRoom('armory'), 300); });
+  if (labOpen() && LAB_RES.some(q => labLv(q[0]) < q[4] && labCost(q) <= Save.blood)) add('🧪 LAB UPGRADE READY · GO TO LAB', () => { openBase(); $('downBtn').click(); setTimeout(() => G.state === 'base' && openRoom('dig2'), 650); });
 }
 function raidWin() {
   const n = Save.raids + 1, reward = (80 + n * 40) * (G.siege ? 2 : 1); G.bloodRun += pickups.filter(k => k.type === 'blood').reduce((s, k) => s + k.val, 0); pickups = []; bankBlood(); Save.blood += reward; Save.raids = n;
@@ -4809,24 +4846,23 @@ function trainingDone() {
   showResults('TRAINING DONE', '#55ccff', 'Training Range', `<div class="statline">Score: <b>${G.score}</b></div><div class="statline">Blood earned: 🩸 <b>${G.bloodRun}</b></div>`, xpSummary() || 'Hit the targets to earn XP for the weapon in your hands.');
 }
 function levelComplete() {
-  if (G.mode === 'campaign' && subOf() !== 4) { subComplete(); return; }
-  Save.subs[G.levelIdx] = 5; missionEvent('clear', { h: G.hero, sub: 4 }); addHeroXP(G.hero, TUNE.hero.xp.chapter); const fw = firstWin(); if (!Save.labBuilt && labOpen()) Save.labBuilt = true;
+  if (G.mode === 'campaign' && subOf() !== LAST) { subComplete(); return; }
+  Save.subs[G.levelIdx] = NST; missionEvent('clear', { h: G.hero, sub: 4 }); addHeroXP(G.hero, TUNE.hero.xp.chapter); const fw = firstWin(); if (!Save.labBuilt && labOpen()) Save.labBuilt = true;
   const li = G.levelIdx, first = !Save.cleared[li], bonus = Math.round((80 + li * 40) * DF().blood); Save.clearedDiff = Save.clearedDiff || {}; Save.clearedDiff[li] = Math.max(Save.clearedDiff[li] || 0, G.diffIdx || 0); G.bloodRun += pickups.filter(k => k.type === 'blood').reduce((s, k) => s + k.val, 0); pickups = [];
-  const skId = G.L.theme, skKey = G.hero + '_' + skId, newSkin = !Save.skins[skKey]; Save.skins[skKey] = true;
   Save.gear = Save.gear || {}; const gKey = G.hero + '_' + li, newGear = !Save.gear[gKey]; Save.gear[gKey] = true; const gItem = GEAR[G.hero][li];
-  const KG = 120 + li * 20, sk4 = li + '_4', st = Save.stars[sk4] || [false, false, false], got = [true, G.kills >= KG, !G.downs]; let newStars = 0; got.forEach((g, i) => { if (g && !st[i]) { st[i] = true; newStars++; } }); Save.stars[sk4] = st; const starBlood = newStars * 50;
-  if (Save.fails) delete Save.fails[li + '_4'];
+  const KG = 120 + li * 20, sk4 = li + '_' + LAST, st = Save.stars[sk4] || [false, false, false], got = [true, G.kills >= KG, !G.downs]; let newStars = 0; got.forEach((g, i) => { if (g && !st[i]) { st[i] = true; newStars++; } }); Save.stars[sk4] = st; const starBlood = newStars * 50;
+  if (Save.fails) delete Save.fails[li + '_' + LAST];
   bankBlood(); Save.blood += bonus + starBlood; Save.cleared[li] = true; saveGame();
   const secs = Math.round((performance.now() - G.runStart) / 1000), next = WPN_ORDER.find(w => WEAPONS[w].raid === Save.raids + 1), last = li >= LEVELS.length - 1;
   const bns = BONUS.filter(b => b.need === li), bn = bns.length ? { name: bns.map(b => b.name).join(' & ') } : null;
   showResults(last ? 'THE CITY IS FREE' : 'LEVEL CLEARED', '#33ff77', G.L.name, `<div class="stars">${['Clear the level', KG + '+ kills', 'Never go down'].map((n, i) => `<span class="${got[i] ? 'on' : ''}">${got[i] ? '★' : '☆'} ${n}</span>`).join('')}</div>${starBlood ? `<div class="statline" style="color:#ffcc33">New stars: 🩸 <b>+${starBlood}</b></div>` : ''}<div class="statline">Zombies slain: <b>${G.kills}</b></div><div class="statline">Blood: 🩸 <b>${G.bloodRun}</b> · Clear bonus 🩸 <b>${bonus}</b></div><div class="statline">Time: <b>${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}</b></div>${fw}`,
-    (next ? `⚠ <b style="color:#ff6655">Your Hideout is under attack!</b> Defend it to unlock the <b style="color:#ffcc33">${WEAPONS[next].name}</b>.<br>` : '') + (newGear ? `${gItem[0]} New gear: <b style="color:#7cf">${gItem[1]}</b> · ${GEAR_FX[li]} for ${HEROES[G.hero].name}<br>` : '') + (newSkin ? `👕 New skin: <b style="color:#ffcc33">${HEROES[G.hero].name} · ${SKIN_DEFS.find(k => k.id === skId).name}</b> (equip it in Survivors)<br>` : '') + (first && bn ? `★ Bonus challenge unlocked: <b style="color:#ffcc33">${bn.name}</b><br>` : '') + (G.roccoNew ? '🍳 <b style="color:#ffcc33">Chef Rocco joined you!</b> The Hideout kitchen is open, free.<br>' : '') + (last ? 'The Necromancer is dust. You beat Below the Dead! 🏆' : first ? `🔓 <b style="color:#ffcc33">${LEVELS[li + 1].name}</b> unlocked` : '') + '<br>' + xpSummary());
+    (next ? `⚠ <b style="color:#ff6655">Your Hideout is under attack!</b> Defend it to unlock the <b style="color:#ffcc33">${WEAPONS[next].name}</b>.<br>` : '') + (newGear ? `${gItem[0]} New gear: <b style="color:#7cf">${gItem[1]}</b> · ${GEAR_FX[li]} for ${HEROES[G.hero].name}<br>` : '') + (first && bn ? `★ Bonus challenge unlocked: <b style="color:#ffcc33">${bn.name}</b><br>` : '') + (G.roccoNew ? '🍳 <b style="color:#ffcc33">Chef Rocco joined you!</b> The Hideout kitchen is open, free.<br>' : '') + (last ? 'The Necromancer is dust. You beat Below the Dead! 🏆' : first ? `🔓 <b style="color:#ffcc33">${LEVELS[li + 1].name}</b> unlocked` : '') + '<br>' + xpSummary());
   $('againBtn').textContent = last ? 'PLAY AGAIN' : 'NEXT LEVEL ▶';
   if (last && first) { const fresh = !Save.beatGame; Save.beatGame = true; if (fresh) Save.blood += 1000; saveGame(); playComic('end', () => playComic('end2', () => rollCredits(fresh, () => showOnly('completeScreen')))); }
 }
 function subComplete() {
-  missionEvent('clear', { h: G.hero, sub: subOf() });
-  const li = G.levelIdx, sb = subOf(), key = li + '_' + sb, SB = SUBS[sb], bonus = Math.round((40 + li * 20 + sb * 10) * DF().blood);
+  missionEvent('clear', { h: G.hero, sub: kindOf() });
+  const li = G.levelIdx, sb = subOf(), key = li + '_' + sb, SB = STAGES[sb], bonus = Math.round((40 + li * 20 + sb * 10) * DF().blood);
   G.bloodRun += pickups.filter(k => k.type === 'blood').reduce((a, k) => a + k.val, 0); pickups = [];
   const KG = 100 + li * 20, st = Save.stars[key] || [false, false, false], got = [true, G.kills >= KG, !G.downs]; let ns = 0; got.forEach((g, i) => { if (g && !st[i]) { st[i] = true; ns++; } }); Save.stars[key] = st;
   const sup = G.supplies.filter(q => q.got).length, supB = sb === 3 && sup === 3 ? 150 : 0, svB = G.survivor && G.survivor.saved ? 100 : 0, starB = ns * 50;
@@ -4834,7 +4870,7 @@ function subComplete() {
   addHeroXP(G.hero, TUNE.hero.xp.stage); const fw = firstWin(), labNew = !Save.labBuilt && labOpen(); if (labNew) Save.labBuilt = true;
   bankBlood(); Save.blood += bonus + supB + starB; saveGame();
   showResults(SB.icon + ' ' + SB.name.toUpperCase() + ' CLEARED', '#33ff77', G.L.name + ' · ' + (li + 1) + '-' + (sb + 1), `<div class="stars">${['Clear it', KG + '+ kills', 'Never go down'].map((n, i) => `<span class="${got[i] ? 'on' : ''}">${got[i] ? '★' : '☆'} ${n}</span>`).join('')}</div>${starB ? `<div class="statline" style="color:#ffcc33">New stars: 🩸 <b>+${starB}</b></div>` : ''}<div class="statline">Zombies slain: <b>${G.kills}</b> · Level ${G.plv + 1}</div><div class="statline">Blood: 🩸 <b>${G.bloodRun}</b> · Bonus 🩸 <b>${bonus}</b></div>${sb === 3 ? `<div class="statline">📦 Supplies: <b>${sup}/3</b>${supB ? ' · +150 🩸' : ''}</div>` : ''}${svB ? '<div class="statline">🙋 Survivor rescued · +100 🩸</div>' : ''}${fw}`,
-    (labNew ? '🧪 <b style="color:#7cf">The Lab is open!</b> Research upgrades in the Hideout basement.<br>' : '') + (sb < 4 ? `🔓 Next: <b style="color:#ffcc33">${SUBS[sb + 1].icon} ${SUBS[sb + 1].name}</b><br>` : '') + xpSummary());
+    (labNew ? '🧪 <b style="color:#7cf">The Lab is open!</b> Research upgrades in the Hideout basement.<br>' : '') + (sb < LAST ? `🔓 Next: <b style="color:#ffcc33">${STAGES[sb + 1].icon} ${STAGES[sb + 1].name}</b><br>` : '') + xpSummary());
   $('againBtn').textContent = 'NEXT ▶';
 }
 function sideTick() {
@@ -4884,7 +4920,7 @@ function setupBonus() {
   if (B.id === 'onehit') { p.max = 1; p.hp = 1; buddy = null; }
   if (B.id === 'bloodrush') G.bloodMul = 3;
   if (B.id === 'rescue') { const cx = (L.ARENA + L.ARENA_R) / 2, cy = (L.TOP + L.BOT) / 2 + 40; obstacles = obstacles.filter(o => !(o.x < cx + 160 && o.x + o.w > cx - 160 && o.y < cy + 120 && o.y + o.d > cy - 140)); G.cage = { type: 'cage', x: cx - 24, y: cy - 20, w: 48, d: 30, h: 74 }; obstacles.push(G.cage); G.rescueP = 0; p.x = cx - 120; p.y = cy + 30; }
-  G.cam.x = clamp(p.x - VW / 2, G.camL, Math.max(G.camL, G.camR - VW)); G.cam.y = p.y - VIEW_H * 0.58;
+  G.cam.x = clamp(p.x - VW / 2, G.camL, Math.max(G.camL, G.camR - VW)); G.cam.y = p.y - VIEW_H * 0.58; G.cL = G.camL; G.cR = G.camR;
   setTimeout(() => { banner(B.name, B.desc); hintMsg(B.desc); }, 50);
 }
 function bonusTick() {
@@ -4909,6 +4945,9 @@ function bonusWin() {
 
 const on = (id, fn) => $(id).addEventListener('click', e => { A.init(); SFX.click(); fn(e); });
 v33Wire();
+/* v34: 🏠 MENU next to BACK on nested screens */
+['heroBack', 'subBack', 'ctrlBack', 'padBack'].forEach(id => { const b0 = $(id); if (!b0) return; const m = document.createElement('button'); m.className = b0.className + ' toMenu'; m.textContent = '🏠 MENU'; b0.after(m);
+  m.addEventListener('click', () => { A.init(); SFX.click(); if (G.setFromPause) return; if (id === 'heroBack' && pendingCat) { pendingCat = false; Save.blood += TUNE.cat.levelCost; saveGame(); } if (id === 'padBack') Pad.cap = null; if (id === 'ctrlBack' || id === 'padBack') saveCfg(); labRet = null; refreshMenu(); showOnly('startScreen'); }); });
 on('playBtn', openLevels);
 for (const id of ['baseBtn', 'shopBtn', 'survBtn', 'msBtn', 'dexBtn', 'kmBtn', 'appBtn']) $(id).addEventListener('click', () => { if (Save.menuNew && Save.menuNew[id]) { delete Save.menuNew[id]; saveGame(); } });
 on('dblBtn', () => { if (G.dblDone) return; const amt = G.bloodRun; showRewardedAd(() => { G.dblDone = true; Save.blood += amt; saveGame(); showOnly('completeScreen'); $('dblBtn').classList.add('hidden'); banner('+' + amt + ' 🩸', 'Blood doubled'); SFX.pickup(); }); });
@@ -4943,19 +4982,19 @@ on('creditsBtn', () => { SFX.click(); rollCredits(false, () => { }); });
 on('cfgBig', () => { Cfg.bigText = $('cfgBig').checked; saveCfg(); document.documentElement.classList.toggle('bigtext', !!Cfg.bigText); });
 on('settingsBack', () => { Cfg.sfx = $('cfgSfx').checked; Cfg.music = $('cfgMusic').checked; Cfg.shake = $('cfgShake').checked; Cfg.gore = $('cfgGore').checked; Cfg.autoAim = $('cfgAuto').checked; Cfg.vib = $('cfgVib').checked; Cfg.aimLine = $('cfgAim').checked; Cfg.test = $('cfgTest').checked; syncLeo(); if ($('cfgHQ').checked && !Cfg.hq) Cfg.dprCap = 2; Cfg.hq = $('cfgHQ').checked; saveCfg(); resize(); refreshMenu(); showOnly('startScreen'); });
 on('resetBtn', () => { const b = $('resetBtn'); if (!b.dataset.armed) { b.dataset.armed = '1'; b.textContent = TX('again'); return; } delete b.dataset.armed; Object.assign(Save, { blood: 0, up: { hp: 0, dmg: 0, spd: 0, spc: 0 }, cleared: {}, aimCharges: 0 }); saveGame(); b.textContent = 'DONE'; });
-on('levelBack', () => showOnly('startScreen')); on('pauseSet', () => { G.setFromPause = true; $('settingsBtn').click(); }); $('settingsBack').addEventListener('click', () => { if (G.setFromPause) { G.setFromPause = false; Music.stop(); showOnly('pauseScreen'); } }); $('resetBtn').closest('.setRow').id = 'resetRow';
+on('levelBack', () => showOnly('startScreen')); on('pauseSet', () => { G.setFromPause = true; document.body.classList.add('fromPause'); $('settingsBtn').click(); }); $('settingsBack').addEventListener('click', () => { if (G.setFromPause) { G.setFromPause = false; document.body.classList.remove('fromPause'); Music.stop(); showOnly('pauseScreen'); } }); $('resetBtn').closest('.setRow').id = 'resetRow';
 on('heroBack', () => { if (pendingCat) { pendingCat = false; Save.blood += TUNE.cat.levelCost; saveGame(); } }); on('heroBack', () => pendingMode === 'campaign' ? openSubs(pendingLevel) : pendingMode === 'bonus' ? openLevels() : openBase());
-let pendingMode = 'campaign', pendingLevel = 0, pendingBonus = null, pendingSub = 4;
+let pendingMode = 'campaign', pendingLevel = 0, pendingBonus = null, pendingSub = LAST;
 const trackFor = () => (G.mode === 'raid' || G.mode === 'training') ? 'streets' : (G.L.theme || 'streets');
 /* v33: before a chapter (from chapter 2), a small reminder that the Lab makes safe houses stronger */
-const labNag = {};
+const labNag = {}; let labRet = null;
 function labRemind() {
   if (pendingMode !== 'campaign' || pendingLevel < 1 || !labOpen() || labNag[pendingLevel] || !LAB_RES.some(r => labLv(r[0]) < r[4])) return false;
   labNag[pendingLevel] = 1; let b = $('labNag');
   if (!b) { b = document.createElement('div'); b.id = 'labNag'; b.className = 'overlay'; b.style.cssText = 'position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.65)';
     b.innerHTML = '<div class="panel" style="max-width:380px;text-align:center;padding:14px 16px"><p style="margin-bottom:10px">You can make the safe house stronger in the Lab.</p><div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button class="btn gold" id="labNagGo">🧪 GO TO THE LAB</button><button class="btn" id="labNagPlay">▶ START</button></div></div>';
     document.body.appendChild(b);
-    $('labNagGo').onclick = () => { SFX.click(); b.classList.add('hidden'); openBase(); $('downBtn').click(); setTimeout(() => { if (G.state === 'base') openRoom('dig2'); }, 650); };
+    $('labNagGo').onclick = () => { SFX.click(); b.classList.add('hidden'); labRet = { hero: G.hero, level: pendingLevel, sub: pendingSub }; openBase(); $('downBtn').click(); setTimeout(() => { if (G.state === 'base') { openRoom('dig2'); banner('🧪 LAB', 'Close the Lab to start the stage'); } }, 650); };
     $('labNagPlay').onclick = () => { SFX.click(); b.classList.add('hidden'); showOnly(null); startRun(G.hero, pendingMode, pendingLevel); }; }
   b.classList.remove('hidden'); return true;
 }
@@ -4971,7 +5010,7 @@ on('quitBtn', () => { bankBlood(); goMenu(); });
 on('reviveBtn', revive);
 on('retryBtn', () => startRun(G.hero, G.mode, G.levelIdx));
 on('overMenuBtn', goMenu);
-on('againBtn', () => { if (G.mode === 'campaign') { pendingMode = 'campaign'; if (subOf() < 4) { pendingLevel = G.levelIdx; pendingSub = subOf() + 1; } else { pendingLevel = G.levelIdx >= LEVELS.length - 1 ? 0 : G.levelIdx + 1; pendingSub = Math.min(4, Save.subs[pendingLevel] || 0); } openHeroes(); } else { if (G.mode === 'bonus') pendingBonus = G.bonus.id; startRun(G.hero, G.mode, G.levelIdx); } });
+on('againBtn', () => { if (G.mode === 'campaign') { pendingMode = 'campaign'; if (subOf() < LAST) { pendingLevel = G.levelIdx; pendingSub = subOf() + 1; } else { pendingLevel = G.levelIdx >= LEVELS.length - 1 ? 0 : G.levelIdx + 1; pendingSub = Math.min(LAST, Save.subs[pendingLevel] || 0); } openHeroes(); } else { if (G.mode === 'bonus') pendingBonus = G.bonus.id; startRun(G.hero, G.mode, G.levelIdx); } });
 on('cBaseBtn', () => openBase());
 on('cMenuBtn', goMenu);
 $('pauseBtn').addEventListener('click', () => { SFX.click(); pauseGame(); });
