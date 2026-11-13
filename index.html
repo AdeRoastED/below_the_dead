@@ -70,7 +70,7 @@ h1{font-family:Creepster,'Bebas Neue',Impact,sans-serif;font-weight:400;font-siz
 .lcard{position:relative;border-radius:10px;padding:10px 12px;cursor:pointer;border:2px solid #ff0033;min-height:clamp(62px,18vh,110px);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;font-family:Barlow,'Segoe UI',Roboto,sans-serif}
 .bcard{border-color:#ffcc33}.bcard h3{color:#ffdd66}
 .quip{font-style:italic;color:#ffcc66;font-size:.8rem;margin:-4px 0 8px;text-align:center;max-width:90vw;text-shadow:1px 1px 0 #000}
-.mlist{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}.mbtn{font:600 .58rem 'Segoe UI',sans-serif;background:#2a1418;color:#eee;border:1px solid #663;border-radius:6px;padding:5px 4px;text-align:left;cursor:pointer}.mbtn.seen{color:#8f8;border-color:#363}
+.mlist{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}.mbtn{font:600 .52rem 'Segoe UI',sans-serif;background:#2a1418;color:#eee;border:1px solid #663;border-radius:6px;padding:5px 4px;text-align:left;cursor:pointer}.mbtn.seen{color:#8f8;border-color:#363}
 #dexStats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;width:min(760px,96vw);margin-bottom:8px}.dst{background:rgba(20,3,8,.9);border:1px solid #552;border-radius:8px;padding:5px;text-align:center;font:600 .6rem 'Segoe UI',sans-serif;color:#aaa}.dst b{display:block;font:1.05rem 'Bebas Neue',Impact,sans-serif;color:#ffcc33;letter-spacing:1px}
 #dexGrid,#dexBoss{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;width:min(760px,96vw)}.zc{background:rgba(20,3,8,.92);border:1px solid #552;border-radius:9px;padding:5px;display:flex;gap:6px;align-items:center;font-family:Barlow,'Segoe UI',sans-serif}.zc canvas{width:54px;height:62px;flex:none}.zc h4{font:1rem 'Bebas Neue',Impact,sans-serif;letter-spacing:1px;color:#ff5566}.zc p{font-size:.58rem;color:#ccc;line-height:1.2}.zc i{font-size:.56rem;color:#ffcc33;font-style:normal;display:block;margin-top:2px}.zc .k{font:.7rem 'Bebas Neue',Impact,sans-serif;color:#8f8;letter-spacing:1px}.zc.lock h4{color:#666}.zc.boss{border-color:#a33}
 #survScreen{overflow:hidden;justify-content:center}#survScreen h1{font-size:clamp(1.1rem,6vh,2.2rem)!important;margin:0}
@@ -94,7 +94,7 @@ h1{font-family:Creepster,'Bebas Neue',Impact,sans-serif;font-weight:400;font-siz
 #subRow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;width:min(900px,97vw)}.subc{background:linear-gradient(180deg,#24101a,#0c0408);border:2px solid #663;border-radius:12px;padding:8px 6px;text-align:center;cursor:pointer;font-family:Barlow,sans-serif;display:flex;flex-direction:column;align-items:center;gap:2px}.subc small{font:700 .6rem Barlow,sans-serif;color:#888;letter-spacing:1px}.subc span{font-size:clamp(1.4rem,9vh,2.2rem)}.subc b{font:clamp(.9rem,4.5vh,1.15rem) Bebas Neue,Impact,sans-serif;letter-spacing:1px;color:#fff}.subc p{font-size:clamp(.5rem,2.4vh,.66rem);color:#bbb;line-height:1.2;flex:1}.subc i{font-style:normal;color:#ffcc33;font-size:.75rem;letter-spacing:2px}.subc.boss{border-color:#ff0033;box-shadow:0 0 14px rgba(255,0,51,.35)}.subc.dark{background:linear-gradient(180deg,#05050a,#000)}.subc.locked{opacity:.4;cursor:default}.subc:active{transform:scale(.96)}
 #avRow{display:flex;gap:8px;justify-content:center;margin:6px 0 2px}.av{display:flex;flex-direction:column;align-items:center;cursor:pointer;font:700 .55rem Barlow,sans-serif;color:#aaa;letter-spacing:1px;text-transform:uppercase}.av canvas{width:clamp(34px,11vh,46px);height:clamp(34px,11vh,46px);border-radius:50%;border:2px solid #444;background:#111}.av.on canvas{border-color:#ff0033;box-shadow:0 0 12px rgba(255,0,51,.7)}.av.on{color:#fff}.av:active canvas{transform:scale(.92)}
 .abtn{width:calc(58px*var(--bs,1))!important;height:calc(58px*var(--bs,1))!important;font-size:calc(1.5rem*var(--bs,1))!important}#bSwap,#bBud,#bFrost{width:calc(48px*var(--bs,1))!important;height:calc(48px*var(--bs,1))!important;font-size:calc(1.2rem*var(--bs,1))!important}#actBtns{opacity:var(--bop,1)}
-body.lefty #actBtns{right:auto;left:max(12px,env(safe-area-inset-left));align-items:flex-start;top:auto;bottom:max(14px,env(safe-area-inset-bottom));transform:none}
+body.lefty #actBtns{right:auto;left:max(12px,env(safe-area-inset-left));top:auto;bottom:max(14px,env(safe-area-inset-bottom));grid-template-areas:'swap . .' 'roll frost .' 'ult spc bud'}
 .bth1 .abtn{border-color:#2af0ff!important;background:rgba(0,30,40,.72)!important;box-shadow:0 0 10px rgba(42,240,255,.35)}.bth2 .abtn{border-color:#ffcc33!important;background:rgba(40,28,0,.72)!important}.bth3 .abtn{border-color:rgba(255,255,255,.7)!important;background:rgba(255,255,255,.08)!important}.bth4 .abtn{border-color:#7cff4a!important;background:rgba(10,35,0,.72)!important;box-shadow:0 0 10px rgba(124,255,74,.3)}
 #padOpts{display:flex;flex-direction:column;gap:3px;width:min(640px,96vw);max-height:62vh;overflow-y:auto}#padOpts .pv{font:700 .7rem Barlow,sans-serif;color:#ffcc33;min-width:90px;text-align:right;align-self:center;padding-right:6px}#padInfo{font-size:.7rem!important;color:#aaa}#padCur{position:fixed;left:-14px;top:-14px;width:28px;height:28px;border:3px solid #ffcc33;border-radius:50%;z-index:99;pointer-events:none;box-shadow:0 0 10px #ffcc33,inset 0 0 6px #000}#padCur::after{content:'';position:absolute;left:9px;top:9px;width:4px;height:4px;background:#fff;border-radius:50%}.padOn #stickL,.padOn #stickR{display:none!important} #ctrlScreen{overflow:hidden}#ctrlWrap{display:flex;gap:12px;width:min(900px,97vw);align-items:stretch}#ctrlOpts{flex:1;display:flex;flex-direction:column;gap:3px}.crow{display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(20,3,8,.85);border:1px solid #442;border-radius:8px;padding:3px 8px}.cn{font:700 clamp(.6rem,2.8vh,.8rem) Barlow,sans-serif;color:#fff}.cn small{display:block;font-weight:600;font-size:.55rem;color:#999}.cseg{display:flex;gap:3px;flex-wrap:wrap;justify-content:flex-end}.cseg button{font:600 clamp(.55rem,2.5vh,.72rem) Barlow,sans-serif;padding:3px 8px;border-radius:10px;border:1px solid #555;background:#111;color:#bbb;cursor:pointer}.cseg button.on{border-color:#ff0033;color:#fff;background:#3a0010}
 #ctrlPrev{width:min(28vw,220px);flex:none;position:relative;background:linear-gradient(180deg,#1a1418,#0a0608);border:2px solid #442;border-radius:12px;overflow:hidden}#ctrlPrev small{position:absolute;bottom:4px;left:0;right:0;text-align:center;font:700 .5rem Barlow,sans-serif;color:#666;letter-spacing:2px}.pvBtns{position:absolute;right:8px;top:50%;transform:translateY(-50%) scale(.7);transform-origin:right center;display:flex;flex-direction:column;gap:8px;align-items:flex-end;opacity:var(--bop,1)}.pvBtns .abtn{position:relative}.pvStick{position:absolute;left:14%;top:56%;width:54px;height:54px;border-radius:50%;border:2px dashed rgba(255,255,255,.35)}body.lefty .pvBtns{right:auto;left:8px;transform-origin:left center;align-items:flex-start}body.lefty .pvStick{left:auto;right:14%}
@@ -173,7 +173,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 #baseInfo b{color:#ff4455}
 #baseHint{position:absolute;top:calc(max(8px,env(safe-area-inset-top)) + 40px);left:50%;transform:translateX(-50%);font-family:Barlow,sans-serif;font-size:.8rem;color:#ffe;background:rgba(0,0,0,.55);padding:5px 14px;border-radius:12px;animation:pulse2 1.6s infinite alternate}
 @keyframes pulse2{to{opacity:.55}}
-.agrid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.acard{background:rgba(255,255,255,.05);border:1px solid #3a3a44;border-radius:8px;padding:5px;font-size:.6rem;line-height:1.25;display:flex;flex-direction:column;gap:2px;color:#ccc}.acard.eq{border-color:#33ff77}.acard.lock{opacity:.6}.acard .ah{display:flex;align-items:center;gap:4px}.acard img,.acard .ai{width:30px;height:30px;object-fit:contain;font-size:20px;flex:0 0 30px}.acard h4{margin:0;font-size:.7rem;color:#ffcc33;line-height:1.1}.acard .lv{color:#7cf}.acard .how{color:#999}.acard button{margin-top:auto;font-size:.6rem!important;padding:3px 5px!important}#roomPanel.wide{width:min(74vw,680px)} #roomPanel{position:absolute;right:max(10px,env(safe-area-inset-right));top:52px;bottom:10px;width:min(48vw,440px);overflow-y:auto;pointer-events:auto;margin:0}
+.agrid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.acard{background:rgba(255,255,255,.05);border:1px solid #3a3a44;border-radius:8px;padding:5px;font-size:.6rem;line-height:1.25;display:flex;flex-direction:column;gap:2px;color:#ccc}.acard.eq{border-color:#33ff77}.acard.lock{opacity:.6}.acard .ah{display:flex;align-items:center;gap:4px}.acard img,.acard .ai{width:30px;height:30px;object-fit:contain;font-size:20px;flex:0 0 30px}.acard h4{margin:0;font-size:.7rem;color:#ffcc33;line-height:1.1}.acard .lv{color:#7cf}.acard .how{color:#999}.acard button{margin-top:auto;font-size:.6rem!important;padding:3px 5px!important}#roomPanel.wide{width:min(74vw,680px)}#roomPanel.left{right:auto;left:max(10px,env(safe-area-inset-left))} #roomPanel{position:absolute;right:max(10px,env(safe-area-inset-right));top:52px;bottom:10px;width:min(48vw,440px);overflow-y:auto;pointer-events:auto;margin:0}
 #roomTitle{font-family:'Bebas Neue','Bebas Neue',Impact,sans-serif;font-size:1.3rem;color:#ff4455;letter-spacing:2px;margin-bottom:6px}
 #movieScreen{position:fixed;inset:0;z-index:40;background:#000}
 #movieCanvas{position:absolute;inset:0}
@@ -201,9 +201,9 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 #objTxt{font-size:.78rem;letter-spacing:1px;color:#ffdd66;text-shadow:2px 2px 0 #000;margin-top:3px;font-family:'Bebas Neue','Bebas Neue',Impact,sans-serif}
 #bossName{font-size:.9rem;letter-spacing:2px;color:#ff3355;text-shadow:2px 2px 0 #000}
 #bossBar{height:14px}#bossFill{background:linear-gradient(90deg,#800,#ff0033)}
-#hudRight{position:absolute;top:max(8px,env(safe-area-inset-top));right:calc(max(10px,env(safe-area-inset-right)) + 50px);text-align:right;font-size:1rem;text-shadow:2px 2px 0 #000;color:#ff4455;line-height:1.3}
-#pauseBtn{position:absolute;top:max(8px,env(safe-area-inset-top));right:max(10px,env(safe-area-inset-right));width:40px;height:40px;border-radius:8px;border:2px solid #ff0033;background:rgba(30,0,5,.8);color:#fff;font-size:.95rem;pointer-events:auto}
-#autoBtn{position:absolute;top:calc(max(8px,env(safe-area-inset-top)) + 46px);right:max(10px,env(safe-area-inset-right));height:30px;padding:0 10px;border-radius:15px;border:2px solid #666;background:rgba(0,0,0,.6);color:#aaa;font-size:.75rem;pointer-events:auto;letter-spacing:1px}
+#hudRow{display:flex;align-items:center;gap:6px;margin-top:3px}#hudRow .sp{flex:1}#hudRight{display:flex;gap:10px;font-size:.9rem;text-shadow:2px 2px 0 #000;color:#ff4455;line-height:1.2;white-space:nowrap}
+#pauseBtn{width:34px;height:28px;flex:none;border-radius:8px;border:2px solid #ff0033;background:rgba(30,0,5,.8);color:#fff;font-size:.95rem;pointer-events:auto}
+#autoBtn{height:26px;padding:0 8px;flex:none;white-space:nowrap;border-radius:15px;border:2px solid #666;background:rgba(0,0,0,.6);color:#aaa;font-size:.75rem;pointer-events:auto;letter-spacing:1px}
 #autoBtn.on{border-color:#33ff77;color:#33ff77;box-shadow:0 0 10px rgba(50,255,120,.5)}
 #combo{position:fixed;top:20%;left:50%;transform:translateX(-50%);z-index:9;pointer-events:none;font-size:clamp(1.2rem,6vh,2.2rem);color:#ffcc00;text-shadow:0 0 14px #ff6600,3px 3px 0 #000;letter-spacing:2px;opacity:0;transition:opacity .25s}
 #combo.show{opacity:1}
@@ -223,7 +223,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 .stick.on{opacity:1}
 .stick .knob{position:absolute;width:48px;height:48px;left:29px;top:29px;border-radius:50%;background:rgba(255,255,255,.35);border:2px solid rgba(255,255,255,.6)}
 #stickR{border-color:rgba(255,60,60,.4)}#stickR .knob{background:rgba(255,30,60,.45);border-color:rgba(255,80,100,.8)}
-#actBtns{position:fixed;right:max(12px,env(safe-area-inset-right));top:calc(50% + 20px);transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+#actBtns{position:fixed;right:max(10px,env(safe-area-inset-right));top:max(8px,env(safe-area-inset-top));display:grid;gap:8px;grid-template-areas:'bud spc ult' '. frost roll' '. . swap';align-items:center;justify-items:center}#bUlt{grid-area:ult}#bSpc{grid-area:spc}#bRoll{grid-area:roll}#bSwap{grid-area:swap}#bFrost{grid-area:frost}#bBud{grid-area:bud}
 .abtn{position:relative;width:58px;height:58px;border-radius:50%;background:rgba(30,5,10,.72);border:2px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 14px rgba(0,0,0,.7);overflow:hidden}
 .abtn .fill{position:absolute;left:0;right:0;bottom:0;background:rgba(255,200,40,.3);height:0}
 .abtn.ready{border-color:#ffcc33;box-shadow:0 0 18px #ffcc33}
@@ -246,7 +246,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 #roomX{position:sticky;top:0;float:right;margin:-4px -4px 0 6px;width:34px;height:34px;border-radius:50%;border:2px solid #ff3355;background:#2a0a10;color:#fff;font:bold 1.05rem sans-serif;cursor:pointer;z-index:2;line-height:1}#roomX:active{transform:scale(.9)}
 #startScreen h1{align-self:flex-start!important;text-align:left!important;margin-left:max(22px,env(safe-area-inset-left))!important;font-size:clamp(2rem,11vh,3.9rem)!important}#startScreen #menuSub{align-self:flex-start;margin-left:max(24px,env(safe-area-inset-left))}
 #lvTabs,#dexTabs{display:flex;gap:6px;margin:2px 0 6px}#lvTabs button,#dexTabs button{font:1rem Bebas Neue,Impact,sans-serif;letter-spacing:1px;background:#1a0a0e;color:#ccc;border:2px solid #3a1a22;border-radius:10px;padding:4px 14px;cursor:pointer}#lvTabs button.on,#dexTabs button.on{border-color:#ff0033;color:#fff}.dexPane{width:min(900px,96vw);max-height:58vh;overflow-y:auto}
-#miniBtns{display:flex;gap:8px}
+
 </style>
 </head>
 <body>
@@ -269,12 +269,10 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
   <div id="hudCenter">
     <div id="lvlName"></div>
     <div class="bar" id="progBar"><div id="progFill"></div></div>
+    <div id="hudRow"><div id="hudRight"><span>🩸 <span id="bloodTxt">0</span></span><span>☠ <span id="killTxt">0</span></span><span id="darkHud" class="hidden">☢️ <span id="darkTxt">0</span></span></div><span class="sp"></span><button id="autoBtn" class="hidden">🎯 AUTO</button><button id="pauseBtn" aria-label="Pause">❚❚</button></div>
     <div id="objTxt"></div>
     <div id="bossHud" class="hidden"><div id="bossName"></div><div class="bar" id="bossBar"><div id="bossFill"></div></div></div>
   </div>
-  <div id="hudRight"><div>🩸 <span id="bloodTxt">0</span></div><div>☠ <span id="killTxt">0</span></div><div id="darkHud" class="hidden">☢️ <span id="darkTxt">0</span></div></div>
-  <button id="pauseBtn" aria-label="Pause">❚❚</button>
-  <button id="autoBtn" class="hidden">🎯 AUTO</button>
 </div>
 <div id="combo"></div>
 <div id="banner"><h2></h2><p></p></div>
@@ -288,9 +286,9 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
     <div id="bUlt" class="abtn ult"><div class="fill"></div>☠<small id="bUltTxt"></small></div>
     <div id="bSpc" class="abtn"><div class="fill"></div>⚡</div>
     <div id="bRoll" class="abtn">🌀</div>
-    <div id="miniBtns"><div id="bFrost" class="abtn hidden" style="width:48px;height:48px;font-size:1.2rem">❄<small id="bFrostTxt"></small></div>
+    <div id="bFrost" class="abtn hidden" style="width:48px;height:48px;font-size:1.2rem">❄<small id="bFrostTxt"></small></div>
     <div id="bBud" class="abtn hidden" style="width:48px;height:48px;font-size:1.2rem"><div class="fill"></div>🤝<small id="bBudTxt"></small></div>
-    <div id="bSwap" class="abtn hidden" style="width:48px;height:48px;font-size:1.2rem">🔁</div></div>
+    <div id="bSwap" class="abtn hidden" style="width:48px;height:48px;font-size:1.2rem">🔁</div>
   </div>
 </div>
 
@@ -367,11 +365,12 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
     <div class="setRow"><label for="cfgGore">Blood &amp; gore</label><input type="checkbox" id="cfgGore"></div>
     <div class="setRow"><label for="cfgAim">Aim line (red dotted line)</label><input type="checkbox" id="cfgAim"></div>
     <div class="setRow"><label for="cfgVib">Vibration</label><input type="checkbox" id="cfgVib"></div>
-    <div class="setRow"><label for="cfgTest">🧪 Test mode <span style="font-size:.7rem;color:#999">(unlock all levels to try them)</span></label><input type="checkbox" id="cfgTest"></div>
+    <div class="setRow hidden" id="testRow"><label for="cfgTest">🧪 Test mode <span style="font-size:.7rem;color:#999">(unlock all levels to try them)</span></label><input type="checkbox" id="cfgTest"></div>
     <div class="setRow"><label for="cfgHQ">High-quality graphics <span style="font-size:.7rem;color:#999">(turn off on older phones)</span></label><input type="checkbox" id="cfgHQ"></div>
     <div class="setRow"><label for="cfgBig">Bigger text</label><input type="checkbox" id="cfgBig"></div>
     <div class="setRow" id="autoRow"><label for="cfgAuto">Auto-aim</label><input type="checkbox" id="cfgAuto"></div>
     <div class="setRow" id="langRow"><span id="lgLabel">Language</span><span id="langBtns"></span></div>
+    <div class="setRow"><span>💾 Save code <span style="font-size:.7rem;color:#999">(move your progress to another phone)</span></span><span><button class="btn sec" id="expBtn" style="font-size:.75rem;padding:5px 10px">EXPORT</button> <button class="btn sec" id="impBtn" style="font-size:.75rem;padding:5px 10px">IMPORT</button></span></div>
     <div class="setRow"><span id="lgReset">Reset all progress</span><button class="btn sec" id="resetBtn" style="font-size:.75rem;padding:5px 12px">RESET</button></div>
   </div>
   <div class="btns"><button class="btn gold" id="ctrlBtn">🎮 CONTROLS</button><button class="btn sec" id="creditsBtn">🎬 CREDITS</button><button class="btn" id="settingsBack">BACK</button></div>
@@ -480,8 +479,6 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
   </div>
 </div>
 
-  <div id="kitBox" class="hidden" style="position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.7)"><div class="panel" style="max-width:460px;max-height:88vh;overflow:auto"><h3>🏚 SAFE HOUSE</h3><div id="kitText"></div><button class="btn" id="kitGo" style="width:100%;margin-top:8px">FIGHT ▶</button></div></div>
-  <div id="bRent" class="hidden" style="position:fixed;top:54px;left:50%;transform:translateX(-50%);z-index:40;background:rgba(40,10,10,.85);border:2px solid #ffcc33;border-radius:10px;padding:5px 12px;color:#ffcc33;font-weight:bold;text-align:center;font-size:.85rem;cursor:pointer;user-select:none">🔫 RENT TURRET</div>
 <script>
 'use strict';
 /* =====================================================================
@@ -687,7 +684,7 @@ const TUNE = {
   kitchen: { unlockStage: 5 },                                       // free: rescue Chef Rocco in stage 1-5
   frost: { radius: 140, slowSec: 6, max: 9, pack: 3, packCost: 300, drop: 0.08, throwDist: 190 },
   dark: { boss: [3, 4, 6], robodog: 3 },                             // GREEN radioactive blood ☢️ (Save.dark): bosses + elites (rare zombies)
-  def: { hold: 0.72, holdCap: 40, holdDouble: 0.65, raid: 0.75, raidCap: 38, raidWave: 1.3 }, // defences: spawn interval x, max zombies, double-spawn chance, raid wave size x
+  def: { hold: 0.72, holdCap: 40, holdDouble: 0.65, raid: 0.62, raidCap: 46, raidWave: 1.55 }, // defences: spawn interval x, max zombies, double-spawn chance, raid wave size x
   door: { min: 5 },                                                   // safe-house wait at Lab 'door' tier 20 (seconds)
   cat: { perHour: 30, capHours: 8, max: 4, darkCost: [0, 15, 30, 50], iap: '€0.99', radius: 320, levelCost: 150, drop: 0.04 }, // levelCost = red blood for a cat in one level · drop = chance per elite
   daily: { firstWinBlood: 150, trainXpCap: 400 }                     // first win of the day · Training XP per day
@@ -782,6 +779,12 @@ const BONUS = [
 ];
 Save.bonusDone = Save.bonusDone || {}; syncLeo();
 Save.subs = Save.subs || {}; Save.stars = Save.stars || {}; for (const k of Object.keys(Save.cleared || {})) if (Save.cleared[k]) Save.subs[k] = 5; for (const k of Object.keys(Save.stars)) if (Array.isArray(Save.stars[k]) && !String(k).includes('_')) { Save.stars[k + '_4'] = Save.stars[k]; delete Save.stars[k]; }
+// ---- v33: separate progress record per difficulty (old saves: progress counts for the difficulty it was played on) ----
+if (!Save.prog) { Save.prog = {}; Save.prog[Save.diff || 0] = { subs: Save.subs, cleared: Save.cleared || {} }; }
+function useDiffProg() { const d = Save.diff || 0; Save.prog[d] = Save.prog[d] || { subs: {}, cleared: {} }; Save.subs = Save.prog[d].subs; Save.cleared = Save.prog[d].cleared; }
+useDiffProg();
+const anyProg = f => Object.values(Save.prog).some(p => p && f(p));
+const everStarted = () => anyProg(p => !!p.cleared[0] || (p.subs[0] || 0) >= 1);
 Save.zk = Save.zk || {}; Save.st = Object.assign({ kills: 0, deaths: 0, runs: 0, blood: 0, time: 0, combo: 0, bosses: {}, heroK: {} }, Save.st || {});
 const UPGRADES = [
   { id: 'hp', name: 'Toughness', icon: '❤️', desc: '+8% max health', base: 200, max: 10 },
@@ -821,7 +824,7 @@ const Lab = id => labLv(id) > 0;
 const labPer = id => labLv(id) * (LAB_RES.find(r => r[0] === id) || [0, 0, 0, 0, 0, 0, 0, 0])[7];
 const holdSecs = h => Math.round(TUNE.door.min + (h - TUNE.door.min) * (1 - Math.min(20, labLv('door')) / 20));
 const labCost = r => Math.round(r[5] * Math.pow(r[6], labLv(r[0])) / 10) * 10;
-const stageReached = n => !!(Save.cleared && Save.cleared[0]) || (Save.subs && ((Save.subs[0] || 0) >= n || Object.keys(Save.subs).some(k => +k > 0 && Save.subs[k] > 0)));
+const stageReached = n => anyProg(p => !!p.cleared[0] || (p.subs[0] || 0) >= n || Object.keys(p.subs).some(k => +k > 0 && p.subs[k] > 0));
 const labOpen = () => !!Save.labBuilt || stageReached(TUNE.lab.unlockStage);
 const wallHp = () => Math.round(TUNE.walls.base * (1 + TUNE.walls.per * Save.base.walls) * (1 + labPer('steel')));
 const BASE_LEVEL = { theme: 'streets', name: 'The Hideout', sub: 'Defend your base', W: 2000, TOP: 210, BOT: 890, ROAD: [330, 770], ARENA: 1700, dark: 0.6, rate: [60, 40], mix: { shambler: 6, sprinter: 3 }, plan: {}, base: true, fort: { x1: 720, x2: 1280, y2: 600 }, seed: 4242 };
@@ -1363,7 +1366,7 @@ function useSpecial(p) {
   else if (p.id === 'ben') { p.shieldT = Math.round(300 * sm); ringFx(p.x, p.y, '#88ccff', 90); }
   else if (p.id === 'aris') { arisHealAllies(p, sm); const v = Math.round(p.max * 0.45 * sm); p.hp = Math.min(p.max, p.hp + v); p.regenT = 240; SFX.heal(); for (let i = 0; i < 22; i++) part({ x: p.x + rand(-18, 18), y: p.y + rand(-6, 6), z: rand(0, 40), vz: rand(1, 2), g: 0, life: 50, size: 4, color: '#55ff88', kind: 'plus' }); addText('+' + v, p.x, p.y - 80, '#55ff88', 20); }
   else if (p.id === 'leo') powerChord(p, dm);
-  else { p.storm = 3; p.stormT = 0; p.iframes = Math.max(p.iframes, 20); SFX.dash(); ringFx(p.x, p.y, '#a080ff', 120); }
+  else { p.spinUntil = G.time + 45; p.storm = 3; p.stormT = 0; p.iframes = Math.max(p.iframes, 20); SFX.dash(); ringFx(p.x, p.y, '#a080ff', 120); }
 }
 
 /* ---------- v30: hero XP, frost bombs, green blood, cat helpers ---------- */
@@ -1418,7 +1421,7 @@ function budInside() { if (buddy && G.phase === 'hold' && G.L.plan.safe && buddy
 function arisHealAllies(p, sm = 1) {
   const R = TUNE.aris.radius; ringFx(p.x, p.y, '#55ff88', R); lightFlash(p.x, p.y, R, 18, 'rgba(80,255,140,0.35)');
   const list = [buddy].concat(G.actors || []).filter(q => q && q !== p && q.hp !== undefined && dist(q, p) < R);
-  for (const q of list) { const v = Math.round((q.max || 100) * TUNE.aris.allyHeal * sm); q.hp = Math.min(q.max || 100, q.hp + v); if (q.down > 0) { q.down = 0; q.hp = Math.max(q.hp, Math.round(q.max * 0.45)); } addText('+' + v, q.x, q.y - 80, '#55ff88', 16); for (let i = 0; i < 10; i++) part({ x: q.x + rand(-14, 14), y: q.y, z: rand(0, 40), vz: 1.5, g: 0, life: 40, size: 4, color: '#55ff88', kind: 'plus' }); }
+  for (const q of list) { const v = Math.round((q.max || 100) * TUNE.aris.allyHeal * sm); q.healUntil = G.time + 120; q.hp = Math.min(q.max || 100, q.hp + v); if (q.down > 0) { q.down = 0; q.hp = Math.max(q.hp, Math.round(q.max * 0.45)); } addText('+' + v, q.x, q.y - 80, '#55ff88', 16); for (let i = 0; i < 10; i++) part({ x: q.x + rand(-14, 14), y: q.y, z: rand(0, 40), vz: 1.5, g: 0, life: 40, size: 4, color: '#55ff88', kind: 'plus' }); }
 }
 function guitarRiff(solo) {
   const C = A.ctx; if (!C || !Cfg.sfx) return; const t0 = C.currentTime + 0.01;
@@ -1930,57 +1933,21 @@ function endLockdown() {
   obstacles = obstacles.filter(o => !(o.rb === gi && o.type === 'barrier'));
   banner('BREAKTHROUGH!', 'Keep moving'); vibrate([50, 30, 80]);
 }
-/* ---------- SAFE HOUSE KIT: level 1 is fully stocked (borrowed gear), from level 2 you build your own ---------- */
-const KIT = [
-  ['walls', '🧱', 'Steel walls', 'Barricades get +120% health', 300],
-  ['turret', '🔫', 'Twin turrets', 'Two auto-turrets guard the yard', 450],
-  ['autorepair', '🔧', 'Nano-repair', 'Barricades slowly fix themselves', 350],
-  ['electric', '⚡', 'Electric fence', 'Zombies touching barricades get shocked', 400],
-  ['mg', '💥', 'Machine gun nest', 'A heavy gun covers the whole yard', 700]
-];
-const kitCost = c => Math.round(c * (1 + 0.4 * Math.max(0, G.levelIdx - 1)) / 10) * 10;
-function kitOf() { if (G.mode !== 'campaign') return null; if (G.levelIdx === 0) return { walls: 1, turret: 1, autorepair: 1, electric: 1, mg: 1 }; Save.kit = Save.kit || {}; return (Save.kit[G.levelIdx] = Save.kit[G.levelIdx] || {}); }
+/* ---------- SAFE HOUSE: level 1 is fully stocked, from level 2 the Lab research decides the defences ---------- */
+function kitOf() { if (G.mode !== 'campaign') return null; if (G.levelIdx === 0) return { walls: 1, turret: 1, autorepair: 1, electric: 1, mg: 1 };
+  return { walls: 0, turret: Save.base.turret > 0 ? 1 : 0, autorepair: +Lab('autorepair'), electric: +Lab('electric'), mg: +Lab('mg') }; }
 const inSafeLvl = () => G.mode === 'campaign' && G.L && G.L.plan && G.L.plan.safe;
 const shFx = id => inSafeLvl() ? !!(kitOf() || {})[id] : Lab(id);
 function applyKit() {
   const K = kitOf(), L = G.L, S = L.plan.safe; if (!K || !S) return; const hp = Math.round(wallHp() * (K.walls ? 2.2 : 1));
-  for (const o of obstacles) if (o.type === 'barricade' && o.sh) { const k = o.max ? o.hp / o.max : 1; o.max = hp; o.hp = o.broken ? 0 : Math.max(1, hp * k); o.lvl = K.walls ? 4 : 0; }
+  for (const o of obstacles) if (o.type === 'barricade' && o.sh) { const k = o.max ? o.hp / o.max : 1; o.max = hp; o.hp = o.broken ? 0 : Math.max(1, hp * k); o.lvl = K.walls ? 4 : Math.min(4, Math.floor(labLv('steel') / 4)); }
   if (K.turret && !obstacles.some(o => o.kitT)) { obstacles.push({ type: 'turret', kitT: 1, x: S.fx + 30, y: L.TOP + S.fy - 40, w: 24, d: 22, h: 26, ang: -Math.PI / 2, cd: 0, flash: 0 }); obstacles.push({ type: 'turret', kitT: 1, x: S.fx2 - 54, y: L.TOP + S.fy - 40, w: 24, d: 22, h: 26, ang: -Math.PI / 2, cd: 6, flash: 0 }); }
   if (K.mg && !obstacles.some(o => o.kitM)) obstacles.push({ type: 'turret', kitM: 1, heavy: true, x: (S.fx + S.fx2) / 2 - 16, y: L.TOP + S.fy - 70, w: 32, d: 26, h: 30, ang: -Math.PI / 2, cd: 0, flash: 0 });
-}
-function openKit() {
-  const K = kitOf(); if (!K || G.levelIdx === 0) return;
-  const missing = KIT.filter(k => !K[k[0]]); if (!missing.length) return;
-  G.state = 'kit'; resetInput(); $('touch').classList.add('hidden');
-  const first = !Save.kitStory; Save.kitStory = true; saveGame();
-  const draw = () => {
-    const miss = KIT.filter(k => !K[k[0]]), all = Math.round(miss.reduce((a, k) => a + kitCost(k[4]), 0) * 0.75 / 10) * 10;
-    $('kitText').innerHTML = (first ? `<p><b>Borrowed gear.</b> The first safe house was stocked by another group of survivors. We only borrowed it. From here on, nobody left us anything: build your own defenses.</p>` : `<p>This safe house is still bare. Build it before the horde arrives.</p>`) + `<p style="color:#ff6655">🩸 You have <b>${Save.blood}</b></p>` +
-      KIT.map(k => { const own = K[k[0]], c = kitCost(k[4]); return `<div class="statline" style="display:flex;align-items:center;gap:8px;justify-content:space-between"><span>${k[1]} <b>${k[2]}</b><br><small class="muted">${k[3]}</small></span>${own ? '<b style="color:#55ff88">✓ BUILT</b>' : `<button class="btn ${Save.blood >= c ? '' : 'sec'}" data-k="${k[0]}" style="padding:6px 10px;font-size:.85rem">${c} 🩸</button>`}</div>`; }).join('') +
-      (miss.length > 1 ? `<button class="btn gold" id="kitAll" style="width:100%;margin-top:6px">🔨 REBUILD ALL · ${all} 🩸 <small>(-25%)</small></button>` : '');
-    $('kitText').querySelectorAll('button[data-k]').forEach(b => b.onclick = () => { const k = KIT.find(x => x[0] === b.dataset.k), c = kitCost(k[4]); if (Save.blood < c) { SFX.buzz(); return; } Save.blood -= c; K[k[0]] = 1; saveGame(); SFX.heal(); applyKit(); draw(); });
-    const ab = $('kitAll'); if (ab) ab.onclick = () => { if (Save.blood < all) { SFX.buzz(); return; } Save.blood -= all; for (const k of miss) K[k[0]] = 1; saveGame(); SFX.heal(); applyKit(); draw(); };
-  };
-  draw(); $('kitBox').classList.remove('hidden');
-  $('kitGo').onclick = () => { SFX.click(); $('kitBox').classList.add('hidden'); G.state = 'play'; if (isTouch) $('touch').classList.remove('hidden'); last = performance.now(); };
-}
-/* rent a turret: expensive last resort during safe-house holds and Hideout raids */
-const rentCost = () => G.mode === 'raid' ? 250 : 200 + 100 * G.levelIdx;
-function rentOn() { return G.state === 'play' && player && (G.phase === 'hold' || G.mode === 'raid'); }
-function rentTurret() {
-  if (!rentOn()) return; const c = rentCost(); if (Save.blood < c) { SFX.buzz(); hintMsg('Not enough blood to rent a turret'); return; }
-  Save.blood -= c; saveGame(); const p = player; obstacles.push({ type: 'turret', rent: 25 * 60, x: p.x - 12, y: p.y - 40, w: 24, d: 22, h: 26, ang: -Math.PI / 2, cd: 0, flash: 0 });
-  SFX.special(); dust(p.x, p.y - 30, 8); addText('TURRET RENTED · 25s', p.x, p.y - 80, '#ffcc33', 16, 70);
-}
-function rentTick() {
-  const b = $('bRent'); if (b) { const on = rentOn(); b.classList.toggle('hidden', !on); if (on) b.innerHTML = `🔫 RENT TURRET 25s<br><small>${rentCost()} 🩸</small>`; }
-  for (const o of obstacles) if (o.rent > 0 && --o.rent <= 0) { o.dead = true; dust(o.x + 12, o.y + 10, 6); }
-  if (obstacles.some(o => o.dead && o.rent !== undefined)) obstacles = obstacles.filter(o => !(o.dead && o.rent !== undefined));
 }
 function toSafe() {
   const L = G.L; G.phase = 'toSafe'; G.arena = false; G.maxX = L.W - 10; G.camR = L.W; G.camL = L.plan.boss ? L.ARENA - 40 : 0; G.minX = L.plan.boss ? L.ARENA : 10; G.spawnMaxX = L.W - 20;
   const g = obstacles.find(o => o.gateR); if (g) { for (let y = L.TOP; y < L.BOT; y += 40) dust(g.x + 13, y, 2); obstacles.splice(obstacles.indexOf(g), 1); }
-  banner('FIND THE SAFE HOUSE', 'Get inside the barricades'); hintMsg('Follow the green marker to the safe house'); applyKit(); if (G.mode === 'campaign' && G.levelIdx > 0) setTimeout(() => { if (G.state === 'play' && G.phase === 'toSafe') openKit(); }, 900);
+  banner('FIND THE SAFE HOUSE', 'Get inside the barricades'); hintMsg('Follow the green marker to the safe house'); applyKit();
 }
 function startHold() {
   applyKit();
@@ -2033,7 +2000,7 @@ function buddySpecial(b) {
   else if (b.id === 'ben') { b.shieldT = 300; ringFx(b.x, b.y, '#88ccff', 90); }
   else if (b.id === 'aris') { for (const q of [player, b]) { const v = Math.round(q.max * 0.35); q.hp = Math.min(q.max, q.hp + v); q.regenT = 200; addText('+' + v, q.x, q.y - 80, '#55ff88', 18); for (let i = 0; i < 12; i++) part({ x: q.x + rand(-16, 16), y: q.y, z: rand(0, 40), vz: 1.5, g: 0, life: 40, size: 4, color: '#55ff88', kind: 'plus' }); } SFX.heal(); }
   else if (b.id === 'leo') powerChord(b, dm);
-  else { b.storm = 3; b.stormT = 0; }
+  else { b.spinUntil = G.time + 45; b.storm = 3; b.stormT = 0; }
 }
 const CHAT = {
   maya: ['Leo would love this.', 'Left side! LEFT!', 'Dad taught me this one.', 'Stay close, I\'ve got you.', 'Bolts are free. Use them.'],
@@ -2336,7 +2303,7 @@ function step() {
   updatePlayer(); if (G.state !== 'play') return;
   funTick(); recTick();
   if (G.time % 30 === 0 && player) { let n = 0; for (const z of enemies) if (!z.dead && Math.abs(z.x - player.x) < 420 && Math.abs(z.y - player.y) < 300) n++; Music.int += (Math.min(1, n / 12) - Music.int) * 0.5; }
-  updateAllies(); updateBuddy(); updateEnemies(); updateBoss(); updateObstacles(); updateShots(); updateEShots(); updateZones(); updateTraps(); updatePickups(); checkTags(); tutTick(); perkUpdate(); updateDrops(); labTick(); rentTick(); v30Tick(); budInside(); updateParticles(); updateWeather(); updateCamera(); updateSpawns(); checkProgress();
+  updateAllies(); updateBuddy(); updateEnemies(); updateBoss(); updateObstacles(); updateShots(); updateEShots(); updateZones(); updateTraps(); updatePickups(); checkTags(); tutTick(); perkUpdate(); updateDrops(); labTick(); v30Tick(); budInside(); updateParticles(); updateWeather(); updateCamera(); updateSpawns(); checkProgress();
   if (G.time % 3 === 0) updateHUD();
 }
 
@@ -2548,7 +2515,20 @@ function heroSprFrame(p, moving, aiming, preview, dsfx) {
   if (moving > 0.1) { const n = S.walk.length; return S.walk[((Math.floor((p.walk || 0) / (Math.PI * 2 / n)) % n) + n) % n]; }
   const seq = [0, 1, 2, 1, 0, 4, 5, 4, 0, 3]; return S.idle[seq[Math.floor((G.time + (p.x || 0)) / 14) % seq.length]];
 }
+/* v33 code effects: Aris green heal glow (anyone healed), Chloe knife spin (her special) */
+function heroFx(p) {
+  const t = G.time, hg = Math.max(p.regenT || 0, (p.healUntil || 0) - t);
+  if (hg > 0) { const k = Math.min(1, hg / 60), pu = 0.75 + 0.25 * Math.sin(t * 0.2); ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 0.5 * k * pu; glow(p.x, p.y - 26, 50, 'rgba(80,255,140,0.85)');
+    ctx.globalAlpha = 0.75 * k; ctx.strokeStyle = '#55ff88'; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(p.x, p.y, 26 + 4 * Math.sin(t * 0.15), 9, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore(); }
+  const sp = (p.spinUntil || 0) - t;
+  if (p.id === 'chloe' && sp > 0) { const k = Math.min(1, sp / 12), n = 6, R = 30 + (45 - sp) * 0.5; ctx.save(); ctx.globalAlpha = k;
+    for (let i = 0; i < n; i++) { const a = t * 0.5 + i * Math.PI * 2 / n; ctx.save(); ctx.translate(p.x + Math.cos(a) * R, p.y - 24 + Math.sin(a) * R * 0.5); ctx.rotate(a + Math.PI / 2 + t * 0.6);
+      ctx.fillStyle = '#e8eef4'; ctx.strokeStyle = '#1a1014'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(0, -11); ctx.lineTo(3, -2); ctx.lineTo(0, 1); ctx.lineTo(-3, -2); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#7a3cc0'; ctx.fillRect(-1.5, 1, 3, 6); ctx.restore(); }
+    ctx.strokeStyle = 'rgba(190,150,255,' + (0.35 * k) + ')'; ctx.lineWidth = 3; ctx.beginPath(); ctx.ellipse(p.x, p.y - 24, R, R * 0.5, 0, t * 0.5, t * 0.5 + 2.4); ctx.stroke(); ctx.restore(); }
+}
 function drawHero(p, preview) {
+  if (!preview) heroFx(p);
   const H = p.H || HEROES[p.id], L = HEROES[p.id] ? heroLook(p.id) : H.look, sp = Math.hypot(p.vx || 0, p.vy || 0);
   const moving = clamp(sp / 2.5, 0, 1);
   for (const t of p.trail || []) { ctx.save(); ctx.globalAlpha = t.life / 30; drawHuman({ x: t.x, y: t.y, s: 0.9, facing: t.f, walk: p.walk, moving: 1, look: { skin: '#8060ff', shirt: '#6040dd', pants: '#4020aa', boots: '#4020aa', hair: '#6040dd', hairStyle: 'short' }, noFace: true }); ctx.restore(); }
@@ -3623,10 +3603,10 @@ function openBase() {
   showOnly(null); $('baseScreen').classList.remove('hidden'); closeRoom(); refreshBaseTop();
   { const n = collectCats(); if (n) { refreshBaseTop(); setTimeout(() => banner(`🐈 +${n} 🩸`, Save.cats > 1 ? 'Your cats collected blood while you were away' : 'Your cat collected blood while you were away'), 300); } } }
 function refreshBaseTop() { $('baseBlood').textContent = Save.blood + (Save.dark ? ' · ☢️ ' + Save.dark : ''); $('baseRaids').textContent = Save.raids; }
-function closeRoom() { roomOpen = null; $('roomPanel').classList.remove('wide'); $('roomPanel').classList.add('hidden'); $('baseHint').classList.remove('hidden'); }
+function closeRoom() { roomOpen = null; $('roomPanel').classList.remove('wide', 'left'); $('roomPanel').classList.add('hidden'); $('baseHint').classList.remove('hidden'); }
 function openRoom(id) {
   roomOpen = id; SFX.click(); $('baseHint').classList.add('hidden');
-  const P = $('roomPanel'), T = $('roomTitle'), B = $('roomBody'); P.classList.remove('hidden'); B.innerHTML = '';
+  const P = $('roomPanel'), T = $('roomTitle'), B = $('roomBody'); P.classList.remove('hidden'); P.classList.toggle('left', ['range', 'toilet', 'dig2'].includes(id)); B.innerHTML = ''; $('roomClose').style.display = '';
   const row = (html, cls = '') => { const d = document.createElement('div'); d.className = 'shopRow ' + cls; d.innerHTML = html; B.appendChild(d); return d; };
   const btn = (txt, cls, fn, dis) => { const b = document.createElement('button'); b.className = 'btn ' + cls; b.style.cssText = 'font-size:.74rem;padding:6px 10px;white-space:nowrap'; b.textContent = txt; b.disabled = !!dis; b.onclick = e => { e.stopPropagation(); A.init(); SFX.click(); fn(); }; return b; };
   const lvBar = k => { const I = wInfo(k); return `<span style="color:#7cf;font-size:.72rem">${lvTxt(I, WMAX)} · +${Math.round(I.lv * TUNE.weapon.per * 100)}% damage</span>`; };
@@ -3648,7 +3628,7 @@ function openRoom(id) {
     T.textContent = '⛏️ UNDUG ROCK';
     row(`<div><h3>${id === 'dig2' ? 'A small lab' : 'A workshop'}… one day</h3><p>Still solid rock. ${id === 'dig2' ? 'Dr. Aris has big plans for a lab down here.' : 'Ben wants a workshop to build turrets.'} Coming in a future update.</p></div>`);
   } else if (id === 'armory') {
-    T.textContent = '🗡️ ARMORY'; P.classList.add('wide');
+    T.textContent = '🗡️ ARMORY'; P.classList.add('wide'); $('roomClose').style.display = 'none';
     const g = document.createElement('div'); g.className = 'agrid'; B.appendChild(g);
     const card = (key, icon, name, desc, how, lvl, act) => { const c = document.createElement('div'); c.className = 'acard' + (act && act.eq ? ' eq' : '') + (lvl === null ? ' lock' : ''); const src = wIconSrc(key);
       c.innerHTML = `<div class="ah">${src ? `<img src="${src}" alt="">` : `<span class="ai">${icon}</span>`}<div><h4>${name}</h4>${lvl !== null ? `<span class="lv">Lv ${lvl}/${WMAX}</span>` : '<span class="lv">🔒</span>'}</div></div><div>${desc}</div><div class="how">${how}</div>`;
@@ -3658,7 +3638,7 @@ function openRoom(id) {
       card(w, W.icon, W.name, W.desc, owned ? '2nd weapon for any hero' : unlocked ? `Buy for ${W.cost} 🩸` : `Survive raid ${W.raid}, then ${W.cost} 🩸`, owned ? wLevel(w) : null,
         !unlocked ? null : !owned ? { t: W.cost + ' 🩸', cls: 'gold', dis: Save.blood < W.cost, fn: () => { if (Save.blood >= W.cost) { Save.blood -= W.cost; Save.weapons[w] = true; Save.equip = w; saveGame(); SFX.heal(); refreshBaseTop(); openRoom('armory'); } } }
         : { t: Save.equip === w ? '✓ EQUIPPED' : 'EQUIP', cls: Save.equip === w ? 'green' : 'sec', eq: Save.equip === w, fn: () => { Save.equip = Save.equip === w ? null : w; saveGame(); openRoom('armory'); } }); }
-    const n = document.createElement('p'); n.className = 'muted'; n.style.cssText = 'margin-top:4px;font-size:.62rem'; n.textContent = `Weapons level up by killing with them (max ${WMAX}, +${Math.round(TUNE.weapon.per * 100)}% damage each). Swap with 🔁 in game.`; B.appendChild(n);
+    const n = document.createElement('p'); n.className = 'muted'; n.style.cssText = 'margin-top:2px;font-size:.6rem;line-height:1'; n.textContent = 'Weapons level up by killing.'; B.appendChild(n);
   } else if (id === 'lounge') {
     T.textContent = '📺 LOUNGE';
     const fresh = Save.movieDay !== new Date().toDateString();
@@ -4013,7 +3993,7 @@ function baseTap(cx, cy) {
   if (G.state !== 'base' || !$('heroScreen').classList.contains('hidden')) return;
   if (G.slide > 0.01 && G.slide < 0.99) return;
   const x = cx / SCALE, y = cy / SCALE; if (y < WALL_T - 10 || y > VIEW_H) return;
-  if (!$('roomPanel').classList.contains('hidden') && cx > SW - $('roomPanel').offsetWidth - 20) return;
+  { const rp = $('roomPanel'); if (!rp.classList.contains('hidden') && (rp.classList.contains('left') ? cx < rp.offsetWidth + 20 : cx > SW - rp.offsetWidth - 20)) return; }
   if (!G.baseDown && G.catPos && Math.hypot(x - G.catPos.x, y - G.catPos.y) < 34) { petCat(); return; }
   if (!G.baseDown) for (const [wx, wy, ww, wh] of Object.values(G.winR || {})) if (x > wx - 8 && x < wx + ww + 8 && y > wy - 8 && y < wy + wh + 8) { const k = wx < VW / 2 ? 'winL' : 'winR'; Save[k] = !Save[k]; saveGame(); Amb.win(); sfx('win', () => { A.noise(0.12, 0.25, 'lowpass', 400); A.tone(140, 'sine', 0.1, 0.06, 80); }); return; }
   for (const r of baseRooms()) if (x > r.x && x < r.x + r.w) { openRoom(r.id); return; }
@@ -4168,7 +4148,7 @@ function renderMovie() {
 
 /* ---------- 9. UI ---------- */
 const SCREENS = ['msScreen', 'kmScreen', 'ctrlScreen', 'padScreen', 'subScreen', 'cardScreen', 'dailyScreen', 'appScreen', 'survScreen', 'dexScreen', 'baseScreen', 'startScreen', 'levelScreen', 'heroScreen', 'shopScreen', 'buyScreen', 'settingsScreen', 'pauseScreen', 'overScreen', 'adScreen', 'completeScreen'];
-function showOnly(id) { { const rb = document.getElementById('bRent'); if (rb) rb.classList.add('hidden'); } for (const s of SCREENS) $(s).classList.toggle('hidden', s !== id); }
+function showOnly(id) { for (const s of SCREENS) $(s).classList.toggle('hidden', s !== id); }
 function banner(title, sub) { const b = $('banner'); b.querySelector('h2').textContent = title; b.querySelector('p').textContent = sub || ''; b.classList.remove('show'); void b.offsetWidth; b.classList.add('show'); }
 let comboShown = 0;
 function updateHUD() {
@@ -4289,7 +4269,7 @@ function drawAvatars() {
   const pa = $('playAs'); if (pa) pa.textContent = T().playAs + ' ' + HEROES[G.hero].name;
 }
 function tileBadge(id, n, pre) { const e = $(id); if (!e) return; const b = e.querySelector('.badge'); if (!b) return; const nw = (Save.menuNew || {})[id]; b.textContent = n ? (pre || '') + n : nw ? T().newTag : ''; b.classList.toggle('on', !!(n || nw)); e.classList.toggle('hot', !!n); }
-const MENU_UNLOCK = { baseBtn: () => Save.st.runs >= 1 || !!Save.cleared[0] || (Save.subs[0] || 0) >= 1, shopBtn: () => Save.st.runs >= 1, survBtn: () => Save.st.runs >= 1, msBtn: () => (Save.subs[0] || 0) >= 1 || !!Save.cleared[0], dexBtn: () => Save.st.kills >= 40, kmBtn: () => !!Save.cleared[0], appBtn: () => Save.st.runs >= 2 && !isApp() };
+const MENU_UNLOCK = { baseBtn: () => Save.st.runs >= 1 || everStarted(), shopBtn: () => Save.st.runs >= 1, survBtn: () => Save.st.runs >= 1, msBtn: () => everStarted(), dexBtn: () => Save.st.kills >= 40, kmBtn: () => anyProg(p => !!p.cleared[0]), appBtn: () => Save.st.runs >= 2 && !isApp() };
 function menuUnlocks() {
   const firstTime = !Save.menuSeen; Save.menuSeen = Save.menuSeen || {}; Save.menuNew = Save.menuNew || {}; let changed = false;
   if (firstTime) { for (const id in MENU_UNLOCK) if (MENU_UNLOCK[id]()) Save.menuSeen[id] = true; changed = true; }
@@ -4371,6 +4351,30 @@ window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); instal
 window.addEventListener('appinstalled', () => { installEvt = null; Save.appInstalled = true; saveGame(); });
 const isApp = () => { try { return matchMedia('(display-mode: fullscreen)').matches || matchMedia('(display-mode: standalone)').matches || navigator.standalone === true || /[?&]app=1/.test(location.search); } catch (e) { return false; } };
 const inFrame = () => { try { return window.self !== window.top; } catch (e) { return true; } };
+/* v33: scrambled save code (export/import) · hidden Test mode (tap SETTINGS title 7 times) · one-time install nudge for iPhone/Brave */
+const SC_KEY = 'BelowTheDead·horde';
+function scCode(obj) { const u = new TextEncoder().encode(JSON.stringify(obj)); let h = 7; const o = new Uint8Array(u.length);
+  for (let i = 0; i < u.length; i++) { h = (h * 31 + u[i]) >>> 0; o[i] = u[i] ^ SC_KEY.charCodeAt(i % SC_KEY.length) ^ ((i * 73) & 255); }
+  let b = ''; for (let i = 0; i < o.length; i += 8192) b += String.fromCharCode.apply(null, o.subarray(i, i + 8192)); return 'BTD1-' + h.toString(36) + '-' + btoa(b); }
+function scRead(code) { const m = /^BTD1-([0-9a-z]+)-([A-Za-z0-9+/=]+)$/.exec(String(code).replace(/\s+/g, '')); if (!m) return null;
+  try { const b = atob(m[2]), u = new Uint8Array(b.length); let h = 7; for (let i = 0; i < b.length; i++) { u[i] = b.charCodeAt(i) ^ SC_KEY.charCodeAt(i % SC_KEY.length) ^ ((i * 73) & 255); h = (h * 31 + u[i]) >>> 0; }
+    if (h.toString(36) !== m[1]) return null; const o = JSON.parse(new TextDecoder().decode(u)); return o && typeof o === 'object' ? o : null; } catch (e) { return null; } }
+function codeBox(title, text, ro, okTxt, ok) { let b = $('codeBox'); if (!b) { b = document.createElement('div'); b.id = 'codeBox'; b.className = 'overlay'; b.style.cssText = 'position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.75)'; document.body.appendChild(b); }
+  b.innerHTML = `<div class="panel" style="width:min(92vw,520px);padding:12px"><h3 style="margin-bottom:6px">${title}</h3><p class="muted" id="cbMsg" style="font-size:.72rem;margin-bottom:6px">${ro ? 'Copy this code and keep it somewhere safe. Paste it with IMPORT on the other phone.' : 'Paste your save code. This REPLACES the progress on this phone.'}</p><textarea id="cbTxt" style="width:100%;height:84px;font-size:.62rem;background:#111;color:#ddd;border:1px solid #555;border-radius:6px;user-select:text;-webkit-user-select:text" ${ro ? 'readonly' : ''}>${text}</textarea><div class="btns" style="margin-top:6px"><button class="btn gold" id="cbOk">${okTxt}</button><button class="btn sec" id="cbBack">BACK</button></div></div>`;
+  b.classList.remove('hidden'); $('cbBack').onclick = () => { SFX.click(); b.classList.add('hidden'); }; $('cbOk').onclick = () => { SFX.click(); ok($('cbTxt').value, b); }; }
+function v33Wire() {
+on('expBtn', () => { saveGame(); const c = scCode(Save); codeBox('💾 YOUR SAVE CODE', c, true, '📋 COPY', (v, b) => { const done = () => { $('cbMsg').textContent = '✅ Copied! Keep it safe.'; }; try { navigator.clipboard.writeText(v).then(done, () => { $('cbTxt').select(); document.execCommand('copy'); done(); }); } catch (e) { $('cbTxt').select(); try { document.execCommand('copy'); done(); } catch (e2) {} } }); });
+on('impBtn', () => codeBox('💾 IMPORT SAVE', '', false, '✅ LOAD', v => { const o = scRead(v); if (!o) { SFX.buzz(); $('cbMsg').textContent = '❌ That code is not valid. Check you copied all of it.'; return; } store.set(SAVE_KEY, o); $('cbMsg').textContent = '✅ Loaded! Restarting...'; setTimeout(() => location.reload(), 700); }));
+{ let n = 0, tm = 0; const t = $('lgSetTitle'); if (Cfg.test) $('testRow').classList.remove('hidden'); if (t) t.addEventListener('click', () => { clearTimeout(tm); tm = setTimeout(() => n = 0, 1500); if (++n >= 7) { n = 0; $('testRow').classList.remove('hidden'); SFX.heal(); } }); }
+}
+function installNudge() {
+  const ios = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (Save.instAsk || isApp() || inFrame() || installEvt || !(ios || navigator.brave) || !(Save.st && Save.st.runs >= 1)) return;
+  if (document.querySelector('.overlay:not(.hidden):not(#startScreen)')) return;
+  Save.instAsk = true; saveGame(); let b = document.createElement('div'); b.className = 'overlay'; b.style.cssText = 'position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6)';
+  b.innerHTML = '<div class="panel" style="max-width:360px;text-align:center;padding:14px"><p style="margin-bottom:10px">📲 Play full screen and offline: add the game to your home screen.</p><div class="btns"><button class="btn gold" id="nudgeHow">SHOW ME HOW</button><button class="btn sec" id="nudgeNo">LATER</button></div></div>';
+  document.body.appendChild(b); $('nudgeNo').onclick = () => { SFX.click(); b.remove(); }; $('nudgeHow').onclick = () => { SFX.click(); b.remove(); openApp(); };
+}
 function openApp() {
   const ios = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1), B = $('appBody'), ib = $('installBtn');
   ib.classList.add('hidden');
@@ -4378,7 +4382,12 @@ function openApp() {
   if (isApp()) B.innerHTML = '<h3 style="color:#33ff77">✅ You\'re already in the app!</h3><p>The dead have moved in. Please don\'t feed them after midnight.</p>';
   else if (inFrame()) B.innerHTML = perks + '<p>📎 Apps can\'t be installed from inside this preview.</p><p style="margin-top:6px">Open the game from your <b>GitHub Pages link</b> in <b>Chrome</b> (Android) or <b>Safari</b> (iPhone), then tap <b>📲 GET THE APP</b> again.</p>';
   else if (installEvt) { B.innerHTML = perks + '<p>One tap and the zombies are on your home screen.</p>'; ib.classList.remove('hidden'); }
+  else if (ios && /CriOS|FxiOS|EdgiOS|OPiOS|Brave/i.test(navigator.userAgent)) B.innerHTML = perks + '<ol style="margin-left:18px;line-height:1.7"><li>Tap the <b>Share</b> button <b>⬆️</b> (top right in Chrome, in the <b>☰</b> menu in Firefox)</li><li>Tap <b>Add to Home Screen ➕</b></li><li>Not there? Open this page in <b>Safari</b> and do the same.</li></ol>';
   else if (ios) B.innerHTML = perks + '<ol style="margin-left:18px;line-height:1.7"><li>Tap the <b>Share</b> button <b>⬆️</b> at the bottom of Safari</li><li>Scroll down and tap <b>Add to Home Screen ➕</b></li><li>Tap <b>Add</b>. Done. Run.</li></ol>';
+  else if (navigator.brave) B.innerHTML = perks + '<ol style="margin-left:18px;line-height:1.7"><li>Tap the <b>⋮</b> menu in Brave (bottom right or top right)</li><li>Tap <b>Add to Home screen</b> (or <b>Install app</b>)</li><li>Tap <b>Install</b> / <b>Add</b>. Shields can stay on: the game needs no internet.</li></ol>';
+  else if (/SamsungBrowser/i.test(navigator.userAgent)) B.innerHTML = perks + '<ol style="margin-left:18px;line-height:1.7"><li>Tap the <b>☰</b> menu</li><li>Tap <b>Add page to</b> → <b>Home screen</b></li><li>Tap <b>Add</b>.</li></ol>';
+  else if (/Firefox/i.test(navigator.userAgent)) B.innerHTML = perks + '<ol style="margin-left:18px;line-height:1.7"><li>Tap the <b>⋮</b> menu in Firefox</li><li>Tap <b>Install</b> (or <b>Add to Home screen</b>)</li><li>Tap <b>Add</b>.</li></ol>';
+  else if (!isTouch) B.innerHTML = perks + '<ol style="margin-left:18px;line-height:1.7"><li>Click the <b>install icon ⊕</b> at the right of the address bar</li><li>Or open the browser menu and choose <b>Install Below the Dead</b></li></ol>';
   else B.innerHTML = perks + '<ol style="margin-left:18px;line-height:1.7"><li>Tap the <b>⋮</b> menu in Chrome</li><li>Tap <b>Install app</b> (or <b>Add to Home screen</b>)</li><li>Tap <b>Install</b>. The horde is ready when you are.</li></ol>';
   showOnly('appScreen');
 }
@@ -4634,7 +4643,7 @@ function openDex() {
 }
 function drawDiffRow() {
   const r = $('diffRow'); const d = Save.diff || 0; r.innerHTML = DIFFS.map((D, i) => `<button class="df${i === d ? ' on' : ''}" data-i="${i}" style="--c:${D.col}">${D.name}</button>`).join('') + `<span>${TX('d' + d)}</span>`;
-  r.querySelectorAll('.df').forEach(b => b.onclick = () => { SFX.click(); Save.diff = +b.dataset.i; saveGame(); openLevels(); });
+  r.querySelectorAll('.df').forEach(b => b.onclick = () => { SFX.click(); Save.diff = +b.dataset.i; useDiffProg(); saveGame(); openLevels(); });
 }
 function openSubs(li) {
   const L = LEVELS[li], done = Save.subs[li] || 0; $('subTitle').textContent = (li + 1) + '. ' + L.name; $('subSub').textContent = DIFFS[Save.diff || 0].name + ' · ' + L.sub;
@@ -4751,7 +4760,7 @@ function purchaseProduct(id, title, price, onSuccess) { $('buyTitle').textConten
 let shopReturn = 'startScreen';
 function refreshAutoBtn() { const b = $('autoBtn'), onNow = autoAimOn(), left = Save.aimCharges; b.classList.toggle('on', onNow); b.textContent = '🎯 AUTO ' + (onNow ? 'ON' : 'OFF') + (G.aimActive ? '' : ` · ${left} left`); $('pauseAuto').textContent = '🎯 AUTO-AIM: ' + (onNow ? 'ON' : 'OFF') + (G.aimActive ? ` · ${left} more level${left === 1 ? '' : 's'} after this` : ` · ${left} left`); }
 function toggleAuto() { if (!hasAim()) return; Cfg.autoAim = !Cfg.autoAim; if (Cfg.autoAim && !G.aimActive && player) useAimCharge(false); saveCfg(); refreshAutoBtn(); SFX.click(); }
-function goMenu() { if (Movie) { Movie = null; $('movieScreen').classList.add('hidden'); } Music.boss = false; Music.stop(); Amb.stop(); if (A.ctx) Music.play('menu'); G.state = 'menu'; player = null; $('hud').classList.add('hidden'); $('touch').classList.add('hidden'); $('hint').classList.add('hidden'); $('combo').classList.remove('show'); refreshMenu(); showOnly('startScreen');  setTimeout(checkDaily, 400); }
+function goMenu() { if (Movie) { Movie = null; $('movieScreen').classList.add('hidden'); } Music.boss = false; Music.stop(); Amb.stop(); if (A.ctx) Music.play('menu'); G.state = 'menu'; player = null; $('hud').classList.add('hidden'); $('touch').classList.add('hidden'); $('hint').classList.add('hidden'); $('combo').classList.remove('show'); refreshMenu(); showOnly('startScreen');  setTimeout(checkDaily, 400); setTimeout(() => { if (G.state === 'menu') installNudge(); }, 2500); }
 function pauseGame() { if (G.state !== 'play') return; G.state = 'paused'; $('pauseQuip').textContent = pick(PAUSE_TIPS); Music.stop(); Amb.stop(); $('pauseSub').textContent = G.L.name; $('pauseAuto').classList.toggle('hidden', !hasAim()); $('pauseAim').textContent = 'AIM LINE: ' + (Cfg.aimLine ? 'ON' : 'OFF'); refreshAutoBtn(); showOnly('pauseScreen'); resetInput(); }
 function resumeGame() { if (G.state !== 'paused') return; showOnly(null); G.state = 'play'; Music.play(trackFor()); Amb.start(); last = performance.now(); }
 function showGameOver() {
@@ -4899,6 +4908,7 @@ function bonusWin() {
 }
 
 const on = (id, fn) => $(id).addEventListener('click', e => { A.init(); SFX.click(); fn(e); });
+v33Wire();
 on('playBtn', openLevels);
 for (const id of ['baseBtn', 'shopBtn', 'survBtn', 'msBtn', 'dexBtn', 'kmBtn', 'appBtn']) $(id).addEventListener('click', () => { if (Save.menuNew && Save.menuNew[id]) { delete Save.menuNew[id]; saveGame(); } });
 on('dblBtn', () => { if (G.dblDone) return; const amt = G.bloodRun; showRewardedAd(() => { G.dblDone = true; Save.blood += amt; saveGame(); showOnly('completeScreen'); $('dblBtn').classList.add('hidden'); banner('+' + amt + ' 🩸', 'Blood doubled'); SFX.pickup(); }); });
@@ -4937,7 +4947,19 @@ on('levelBack', () => showOnly('startScreen')); on('pauseSet', () => { G.setFrom
 on('heroBack', () => { if (pendingCat) { pendingCat = false; Save.blood += TUNE.cat.levelCost; saveGame(); } }); on('heroBack', () => pendingMode === 'campaign' ? openSubs(pendingLevel) : pendingMode === 'bonus' ? openLevels() : openBase());
 let pendingMode = 'campaign', pendingLevel = 0, pendingBonus = null, pendingSub = 4;
 const trackFor = () => (G.mode === 'raid' || G.mode === 'training') ? 'streets' : (G.L.theme || 'streets');
-on('heroGo', () => { showOnly(null); startRun(G.hero, pendingMode, pendingLevel); });
+/* v33: before a chapter (from chapter 2), a small reminder that the Lab makes safe houses stronger */
+const labNag = {};
+function labRemind() {
+  if (pendingMode !== 'campaign' || pendingLevel < 1 || !labOpen() || labNag[pendingLevel] || !LAB_RES.some(r => labLv(r[0]) < r[4])) return false;
+  labNag[pendingLevel] = 1; let b = $('labNag');
+  if (!b) { b = document.createElement('div'); b.id = 'labNag'; b.className = 'overlay'; b.style.cssText = 'position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.65)';
+    b.innerHTML = '<div class="panel" style="max-width:380px;text-align:center;padding:14px 16px"><p style="margin-bottom:10px">You can make the safe house stronger in the Lab.</p><div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button class="btn gold" id="labNagGo">🧪 GO TO THE LAB</button><button class="btn" id="labNagPlay">▶ START</button></div></div>';
+    document.body.appendChild(b);
+    $('labNagGo').onclick = () => { SFX.click(); b.classList.add('hidden'); openBase(); $('downBtn').click(); setTimeout(() => { if (G.state === 'base') openRoom('dig2'); }, 650); };
+    $('labNagPlay').onclick = () => { SFX.click(); b.classList.add('hidden'); showOnly(null); startRun(G.hero, pendingMode, pendingLevel); }; }
+  b.classList.remove('hidden'); return true;
+}
+on('heroGo', () => { if (labRemind()) return; showOnly(null); startRun(G.hero, pendingMode, pendingLevel); });
 on('shopBack', () => { if (shopReturn === 'completeScreen') showOnly('completeScreen'); else { refreshMenu(); showOnly('startScreen'); } });
 on('buyConfirm', () => { const cb = buyCb; buyCb = null; if (cb) cb(); });
 on('buyCancel', () => openShop());
@@ -4986,7 +5008,6 @@ const endTouch = e => {
 };
 layer.addEventListener('touchend', endTouch); layer.addEventListener('touchcancel', endTouch);
 function tapBtn(id, fn) { const el = $(id); el.addEventListener('touchstart', e => { e.preventDefault(); e.stopPropagation(); A.init(); el.classList.add('on'); fn(); }, { passive: false }); const end = e => { e.preventDefault(); el.classList.remove('on'); }; el.addEventListener('touchend', end); el.addEventListener('touchcancel', end); el.addEventListener('mousedown', e => { e.stopPropagation(); fn(); }); }
-$('bRent').addEventListener('pointerdown', e => { e.preventDefault(); e.stopPropagation(); A.init(); rentTurret(); });
 tapBtn('bRoll', () => In.rollQ = true); tapBtn('bSwap', () => In.swapQ = true); tapBtn('bSpc', () => In.spcQ = true); tapBtn('bUlt', () => In.ultQ = true); tapBtn('bBud', () => In.budQ = true); tapBtn('bFrost', () => In.frostQ = true);
 
 // ----- desktop test mode: keyboard + mouse -----
