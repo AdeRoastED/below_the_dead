@@ -88,7 +88,7 @@ h1{font-family:Creepster,'Bebas Neue',Impact,sans-serif;font-weight:400;font-siz
 #startScreen{background:radial-gradient(ellipse at 50% 45%,rgba(10,0,4,.72) 0%,rgba(10,0,4,.35) 45%,rgba(0,0,0,.05) 80%)}#startScreen .panel{background:rgba(15,2,6,.78)}
 #trophyGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;width:min(760px,96vw)}.tro{background:rgba(20,3,8,.92);border:1px solid #333;border-radius:9px;padding:5px 6px;font-family:Barlow,sans-serif;display:flex;gap:6px;align-items:center;opacity:.6}.tro>span{font-size:1.4rem}.tro h4{font:.9rem Bebas Neue,Impact,sans-serif;letter-spacing:1px;color:#ddd}.tro p{font-size:.55rem;color:#aaa;line-height:1.15}.tro i{display:block;height:4px;background:#222;border-radius:2px;margin-top:3px}.tro i b{display:block;height:100%;background:#ffcc33;border-radius:2px}.tro.ready{opacity:1;border-color:#ffcc33;box-shadow:0 0 12px rgba(255,200,50,.35);cursor:pointer}.tro.done{opacity:1;border-color:#2a5}.tro .rw{font:600 .55rem Barlow,sans-serif;color:#ffcc33}
 #diffRow{display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;margin:2px 0 6px;width:min(760px,96vw)}#diffRow .df{font:1rem Bebas Neue,Impact,sans-serif;letter-spacing:2px;padding:4px 14px;border-radius:14px;border:2px solid #444;background:rgba(0,0,0,.6);color:#888;cursor:pointer}#diffRow .df.on{border-color:var(--c);color:var(--c);box-shadow:0 0 12px var(--c)}#diffRow span{font:600 .62rem Barlow,sans-serif;color:#bbb;flex-basis:100%;text-align:center}.ldiff{position:absolute;left:64px;top:9px;font:700 .5rem Barlow,sans-serif;letter-spacing:1px}
-#sprWait{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;background:rgba(5,0,2,.82)}#sprWait.hidden{display:none}#sprWait div{text-align:center;font:1.6rem 'Bebas Neue',Impact,sans-serif;letter-spacing:2px;color:#ff3355}#sprWait i{display:block;margin:10px auto 0;width:160px;height:6px;border-radius:3px;background:linear-gradient(90deg,#ff0033 0 30%,#3a0a12 30%);background-size:200% 100%;animation:sprw 1s linear infinite}@keyframes sprw{to{background-position:-200% 0}}
+html.photo #hud,html.photo #touch,html.photo #pauseScreen,html.photo #hint,html.photo .banner,html.photo #banner{display:none!important}#photoBar{position:fixed;left:50%;bottom:8px;transform:translateX(-50%);z-index:50;display:flex;gap:8px;opacity:.8}#photoBar .btn{font-size:.75rem!important;padding:5px 12px!important}#photoBar.hidden{display:none}html.snap #photoBar{display:none}#foodBox{position:fixed;inset:0;z-index:45;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.7)}#foodBox.hidden{display:none}#foodBox .fbx{background:linear-gradient(#2a0d12,#160509);border:2px solid #ff3355;border-radius:14px;padding:12px 16px;max-width:min(520px,92vw);text-align:center;color:#eee;font:600 .85rem Barlow,sans-serif}#foodBox h3{font:1.5rem 'Bebas Neue',Impact,sans-serif;letter-spacing:2px;color:#ffcc33;margin:0 0 4px}#foodBox p{margin:4px 0}#foodBox .muted{font-size:.68rem;color:#aaa}#foodBox .bb{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px}#sprWait{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;background:rgba(5,0,2,.82)}#sprWait.hidden{display:none}#sprWait div{text-align:center;font:1.6rem 'Bebas Neue',Impact,sans-serif;letter-spacing:2px;color:#ff3355}#sprWait i{display:block;margin:10px auto 0;width:160px;height:6px;border-radius:3px;background:linear-gradient(90deg,#ff0033 0 30%,#3a0a12 30%);background-size:200% 100%;animation:sprw 1s linear infinite}@keyframes sprw{to{background-position:-200% 0}}
 #talk{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.25);pointer-events:auto}#talkBox{position:absolute;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);width:min(86vw,640px);display:flex;gap:10px;align-items:center;background:rgba(10,4,8,.94);border:2px solid #ffcc33;border-radius:14px;padding:10px 14px 18px}#talkBox.narr{border-color:#666}#talkBox.narr #talkTxt{font-style:italic;color:#bbb}#talkFace{font-size:34px;width:52px;height:52px;flex:0 0 52px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.07);border-radius:50%;overflow:hidden}#talkFace img{width:100%;height:100%;object-fit:cover;border-radius:50%}#talkBox .tb{flex:1}#talkWho{display:block;font:1.05rem Bebas Neue,Impact,sans-serif;letter-spacing:2px}#talkTxt{margin:2px 0 0;font:600 .95rem Barlow,sans-serif;color:#fff;line-height:1.3}#talkBox small{position:absolute;right:12px;bottom:4px;font:600 .6rem Barlow,sans-serif;color:#ffcc33;opacity:.8}#talkSkip{position:absolute;right:10px;top:-30px;font:600 .65rem Barlow,sans-serif;background:rgba(0,0,0,.7);color:#bbb;border:1px solid #555;border-radius:12px;padding:4px 10px} #tut{position:fixed;inset:0;z-index:8;pointer-events:none}#tutBox{position:absolute;left:50%;top:22%;transform:translateX(-50%);background:rgba(10,0,4,.85);border:2px solid #ffcc33;border-radius:14px;padding:8px 18px;text-align:center;box-shadow:0 0 24px rgba(255,200,50,.4);animation:pulse 1s infinite alternate;max-width:80vw}#tutBox b{display:block;font:1rem Bebas Neue,Impact,sans-serif;letter-spacing:2px;color:#ffcc33}#tutBox span{font:600 .95rem Barlow,sans-serif;color:#fff}#tutRing{position:absolute;width:120px;height:120px;border-radius:50%;border:3px dashed rgba(255,204,51,.8);animation:tring 1.2s infinite;display:none}@keyframes tring{0%{transform:scale(.8);opacity:1}100%{transform:scale(1.3);opacity:0}}
 .gear2{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}.gear2 div{background:rgba(0,0,0,.4);border:1px solid #333;border-radius:6px;text-align:center;padding:2px 0;opacity:.5}.gear2 div.on{border-color:#7cf;opacity:1}.gear2 span{display:block;font-size:clamp(.8rem,4.5vh,1.1rem)}.gear2 i{display:block;font:700 .46rem Barlow,sans-serif;color:#7cf;font-style:normal}.gnote{font:600 .5rem Barlow,sans-serif;color:#999;line-height:1.2}.gnote b{color:#fff}.skins2{display:flex;gap:4px;flex-wrap:wrap}.skins2 .sk{width:clamp(18px,7vh,26px);height:clamp(18px,7vh,26px);padding:0;border-radius:50%;border:2px solid #222;display:flex;align-items:center;justify-content:center;font-size:.5rem;cursor:pointer}.skins2 .sk.on{border-color:#33ff77;box-shadow:0 0 8px #33ff77}.skins2 .sk.lock{opacity:.45}
 #xpFill{background:linear-gradient(90deg,#2a7aff,#7cf)}#xpBar{height:9px}#cardScreen{background:rgba(0,0,0,.72)}#cardRow{display:flex;gap:12px;justify-content:center;margin-top:6px}.pcard{width:min(30vw,190px);background:linear-gradient(180deg,#24101a,#0c0408);border:3px solid #555;border-radius:14px;padding:10px 8px;text-align:center;cursor:pointer;font-family:Barlow,sans-serif;animation:cardIn .35s ease-out backwards;transition:transform .1s}.pcard:nth-child(2){animation-delay:.08s}.pcard:nth-child(3){animation-delay:.16s}.pcard:active{transform:scale(.95)}.pcard small{font:700 .6rem Barlow,sans-serif;letter-spacing:2px}.pcard span{display:block;font-size:clamp(1.6rem,10vh,2.6rem);margin:4px 0}.pcard b{display:block;font:clamp(1rem,5vh,1.3rem) Bebas Neue,Impact,sans-serif;letter-spacing:1px;color:#fff}.pcard p{font-size:clamp(.6rem,2.8vh,.78rem);color:#ccc;margin-top:3px}.pcard.r-r{border-color:#4af;box-shadow:0 0 16px rgba(60,160,255,.35)}.pcard.r-e{border-color:#c6f;box-shadow:0 0 20px rgba(200,100,255,.45)}.pcard.r-h{border-color:#fc3;box-shadow:0 0 22px rgba(255,200,50,.5)}@keyframes cardIn{from{transform:translateY(40px) scale(.8);opacity:0}}
@@ -110,7 +110,7 @@ body.lefty #actBtns{right:auto;left:max(12px,env(safe-area-inset-left));top:auto
 #settingsScreen{overflow:hidden}#setPanel{display:grid;grid-template-columns:1fr 1fr;column-gap:22px;width:min(820px,96vw)}#setPanel .setRow{margin:clamp(2px,1.2vh,7px) 0;font-size:clamp(.72rem,3.4vh,1rem)}#setPanel .setRow label{line-height:1.1}#setPanel .setRow span{display:block}
 #kmScreen{overflow:hidden}#kmTabs{display:flex;gap:5px;margin:2px 0 5px}#kmTabs button{font:1rem Bebas Neue,Impact,sans-serif;letter-spacing:1px;background:#1a0a0e;color:#ccc;border:2px solid #552;border-radius:10px;padding:3px 10px;cursor:pointer;line-height:1}#kmTabs button small{display:block;font:700 .55rem Barlow,sans-serif;color:#f66}#kmTabs button.on{border-color:#ff0033;color:#fff}#kmCv{width:min(900px,97vw);height:clamp(70px,26vh,160px);border:2px solid #442;border-radius:10px}#kmInfo{font:600 clamp(.65rem,3vh,.85rem) Barlow,sans-serif;color:#ccc;margin:3px 0}#kmInfo b{color:#ff4455;font:1.1rem Bebas Neue,Impact,sans-serif;letter-spacing:1px}#kmMiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;width:min(900px,97vw)}.kmm{background:rgba(20,3,8,.9);border:1px solid #333;border-radius:9px;padding:4px;text-align:center;font-family:Barlow,sans-serif;opacity:.6}.kmm span{font-size:clamp(.9rem,5vh,1.3rem)}.kmm b{display:block;font:clamp(.8rem,4vh,1rem) Bebas Neue,Impact,sans-serif;color:#fff;letter-spacing:1px}.kmm p{font-size:clamp(.48rem,2.2vh,.6rem);color:#bbb;line-height:1.15}.kmm i{display:block;font-style:normal;font:700 .52rem Barlow,sans-serif;color:#888;margin-top:2px}.kmm.ready{opacity:1;border-color:#ffcc33;box-shadow:0 0 12px rgba(255,200,50,.4);cursor:pointer}.kmm.ready i{color:#ffcc33}.kmm.done{opacity:1;border-color:#2a5}.kmm.done i{color:#3f7}
 @media (max-height:360px){#startScreen .sub{display:none}#startScreen h1{font-size:1.6rem!important}#startScreen .panel{padding:4px 12px;margin:4px 0}#startScreen .btns{gap:5px}#startScreen .btn{padding:5px 12px;font-size:.78rem}#avRow{margin:2px 0}.av canvas{width:32px;height:32px}.av span{display:none}}
-#msScreen{overflow:hidden;background:linear-gradient(rgba(8,3,5,.86),rgba(8,3,5,.9)),url(sprites/wall/daily.webp) center/cover}#msTabs{display:flex;gap:6px;margin:2px 0 6px}#msTabs button{font:1rem Bebas Neue,Impact,sans-serif;letter-spacing:1px;background:#1a0a0e;color:#ccc;border:2px solid #3a1a22;border-radius:10px;padding:4px 14px;cursor:pointer}#msTabs button.on{border-color:#ff0033;color:#fff}#msBody{width:min(820px,96vw);display:flex;flex-direction:column;gap:5px}.msr{display:flex;align-items:center;gap:10px;background:rgba(20,3,8,.9);border:1px solid #2a1418;border-radius:9px;padding:6px 10px;font-family:Barlow,sans-serif}.msr>div{flex:1}.msr b{font-size:clamp(.7rem,3.2vh,.9rem);color:#fff}.msr small{font-size:.6rem;color:#999;display:block}.msr i{display:block;height:5px;background:#222;border-radius:3px;margin:3px 0}.msr i u{display:block;height:100%;background:linear-gradient(90deg,#800,#ff3355);border-radius:3px}.msr span{font:1rem Bebas Neue,Impact,sans-serif;letter-spacing:1px;color:#888;white-space:nowrap}.msr.ready{border-color:#33cc66;box-shadow:0 0 10px rgba(50,220,100,.3);cursor:pointer}.msr.ready span{color:#33ff77}.msr.cl{opacity:.5}.msr.on2{border-color:#4af}.wk{display:flex;gap:12px;align-items:center;background:rgba(20,3,8,.9);border:1px solid #3a1a22;border-radius:12px;padding:10px 14px;font-family:Barlow,sans-serif}.wk>span{font-size:2.6rem}.wk b{font:1.3rem Bebas Neue,Impact,sans-serif;color:#fff;letter-spacing:1px}.wk p{font-size:.72rem;color:#ccc;margin-top:2px}.wk>div{flex:1}.ps{display:flex;align-items:center;gap:10px;font-family:Barlow,sans-serif}.ps b{font:1.1rem Bebas Neue,Impact,sans-serif;color:#fff;letter-spacing:1px}.ps span{font:700 .7rem Barlow,sans-serif;color:#7cf;flex:1}.ps em{color:#ff5566;font-weight:700;font-style:normal}.ps .btn{font-size:.7rem;padding:5px 10px}.pt{display:flex;gap:4px;overflow-x:auto;padding:4px 0;scrollbar-width:none}.pc{flex:none;width:50px;display:flex;flex-direction:column;gap:3px;align-items:center;opacity:.55}.pc.got{opacity:1}.pc small{font:700 .55rem Barlow,sans-serif;color:#888}.pf,.pp{width:48px;height:clamp(34px,13vh,52px);border-radius:8px;border:1px solid #444;background:#140a0e;color:#fff;font-size:1.1rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center}.pf i,.pp i{font:700 .5rem Barlow,sans-serif;font-style:normal;color:#ffcc33}.pp{background:#1e1430;border-color:#6a4a9a}.pp.lock{filter:grayscale(.8)}.ready{border-color:#ffcc33!important;box-shadow:0 0 10px rgba(255,200,50,.5)}.cl{opacity:.35}.psn{font:600 .55rem Barlow,sans-serif;color:#888;text-align:center}
+.defDiff{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:0 0 5px;font:600 .7rem Barlow,sans-serif;color:#aaa}.defDiff button{font:.85rem 'Bebas Neue',Impact,sans-serif;letter-spacing:1px;background:#1a0a0e;color:#aaa;border:2px solid #444;border-radius:7px;padding:2px 9px;cursor:pointer}.defDiff button.on{border-color:#33ff77;color:#33ff77}.defDiff button[data-d="1"].on{border-color:#ffcc33;color:#ffcc33}.defDiff button[data-d="2"].on{border-color:#ff3355;color:#ff3355}.btr{font:700 .6rem Barlow,sans-serif;border-radius:6px;border:1px solid #6a2a35;background:#2a0d12;color:#aaa;padding:1px 6px;margin-left:4px;white-space:nowrap}.btr.ok{background:#5a0d1a;border-color:#ff3355;color:#fff}.btr.max{border-color:#33ff77;color:#33ff77}.btr:disabled{opacity:.7}.msGo{font-size:.62rem!important;padding:3px 8px!important;margin:0 6px;flex:none}#msScreen{overflow:hidden;background:linear-gradient(rgba(8,3,5,.86),rgba(8,3,5,.9)),url(sprites/wall/daily.webp) center/cover}#msTabs{display:flex;gap:6px;margin:2px 0 6px}#msTabs button{font:1rem Bebas Neue,Impact,sans-serif;letter-spacing:1px;background:#1a0a0e;color:#ccc;border:2px solid #3a1a22;border-radius:10px;padding:4px 14px;cursor:pointer}#msTabs button.on{border-color:#ff0033;color:#fff}#msBody{width:min(820px,96vw);display:flex;flex-direction:column;gap:5px;flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-bottom:4px}#msBody>*{flex:none}.msr{display:flex;align-items:center;gap:10px;background:rgba(20,3,8,.9);border:1px solid #2a1418;border-radius:9px;padding:6px 10px;font-family:Barlow,sans-serif}.msr>div{flex:1}.msr b{font-size:clamp(.7rem,3.2vh,.9rem);color:#fff}.msr small{font-size:.6rem;color:#999;display:block}.msr i{display:block;height:5px;background:#222;border-radius:3px;margin:3px 0}.msr i u{display:block;height:100%;background:linear-gradient(90deg,#800,#ff3355);border-radius:3px}.msr span{font:1rem Bebas Neue,Impact,sans-serif;letter-spacing:1px;color:#888;white-space:nowrap}.msr.ready{border-color:#33cc66;box-shadow:0 0 10px rgba(50,220,100,.3);cursor:pointer}.msr.ready span{color:#33ff77}.msr.cl{opacity:.5}.msr.on2{border-color:#4af}.wk{display:flex;gap:12px;align-items:center;background:rgba(20,3,8,.9);border:1px solid #3a1a22;border-radius:12px;padding:10px 14px;font-family:Barlow,sans-serif}.wk>span{font-size:2.6rem}.wk b{font:1.3rem Bebas Neue,Impact,sans-serif;color:#fff;letter-spacing:1px}.wk p{font-size:.72rem;color:#ccc;margin-top:2px}.wk>div{flex:1}.ps{display:flex;align-items:center;gap:10px;font-family:Barlow,sans-serif}.ps b{font:1.1rem Bebas Neue,Impact,sans-serif;color:#fff;letter-spacing:1px}.ps span{font:700 .7rem Barlow,sans-serif;color:#7cf;flex:1}.ps em{color:#ff5566;font-weight:700;font-style:normal}.ps .btn{font-size:.7rem;padding:5px 10px}.pt{display:flex;gap:4px;overflow-x:auto;padding:4px 0;scrollbar-width:none}.pc{flex:none;width:50px;display:flex;flex-direction:column;gap:3px;align-items:center;opacity:.55}.pc.got{opacity:1}.pc small{font:700 .55rem Barlow,sans-serif;color:#888}.pf,.pp{width:48px;height:clamp(34px,13vh,52px);border-radius:8px;border:1px solid #444;background:#140a0e;color:#fff;font-size:1.1rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center}.pf i,.pp i{font:700 .5rem Barlow,sans-serif;font-style:normal;color:#ffcc33}.pp{background:#1e1430;border-color:#6a4a9a}.pp.lock{filter:grayscale(.8)}.ready{border-color:#ffcc33!important;box-shadow:0 0 10px rgba(255,200,50,.5)}.cl{opacity:.35}.psn{font:600 .55rem Barlow,sans-serif;color:#888;text-align:center}
 @media (max-height:360px){#msScreen h1{display:none}.msr{padding:3px 8px}.msr b{font-size:.68rem}.msr small{font-size:.52rem}.msr i{margin:2px 0}#msBody{gap:3px}#kmScreen h1{display:none}}
 #credits{position:fixed;inset:0;z-index:41;background:radial-gradient(circle at 50% 40%,#2a0a12,#050002 75%);overflow:hidden;font-family:Barlow,sans-serif;color:#eee}#creditsRoll{position:absolute;left:50%;top:100%;width:min(560px,86vw);transform:translateX(-50%);text-align:center;animation:croll 38s linear forwards}@keyframes croll{to{top:0;transform:translate(-50%,-100%)}}#credits .ch{font:44px 'Bebas Neue',Impact,sans-serif;color:#ff2a44;letter-spacing:4px;text-shadow:0 0 18px #a01}#credits .ch2{font:28px 'Bebas Neue',Impact,sans-serif;color:#ffcc33;letter-spacing:3px;margin:6px 0}#credits .cs{font-style:italic;color:#c8b8b8;margin:4px 0}#credits .cg{height:34px}#credits .cr{display:flex;justify-content:space-between;gap:18px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:15px}#credits .cr span{color:#b0a0a0}#credits .cr b{color:#fff;text-align:right}#credits .crw{font:24px 'Bebas Neue',Impact,sans-serif;color:#7cff9a;letter-spacing:2px}#creditsTap{position:absolute;bottom:max(10px,env(safe-area-inset-bottom));right:16px;font-size:12px;color:#888;letter-spacing:2px}
 #loader{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:radial-gradient(circle at 50% 45%,#2a0610,#050002 70%);transition:opacity .45s}#loader.gone{opacity:0;pointer-events:none}#loader .lt{font:clamp(34px,7vw,64px) 'Bebas Neue',Impact,sans-serif;letter-spacing:6px;color:#ff2a44;text-shadow:0 0 22px #a01,3px 3px 0 #000}#loader .lbar{width:min(360px,60vw);height:10px;border-radius:6px;background:#1a0a0e;border:1px solid #5a1a24;overflow:hidden}#loader .lbar i{display:block;height:100%;width:4%;background:linear-gradient(90deg,#8a0010,#ff2a44);transition:width .25s}#loadTip{font:italic 15px Barlow,sans-serif;color:#c8a8a8;min-height:20px}
@@ -182,7 +182,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 #baseInfo b{color:#ff4455}
 #baseHint{position:absolute;top:calc(max(8px,env(safe-area-inset-top)) + 40px);left:50%;transform:translateX(-50%);font-family:Barlow,sans-serif;font-size:.8rem;color:#ffe;background:rgba(0,0,0,.55);padding:5px 14px;border-radius:12px;animation:pulse2 1.6s infinite alternate}
 @keyframes pulse2{to{opacity:.55}}
-.agrid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.acard{background:rgba(255,255,255,.05);border:1px solid #3a3a44;border-radius:8px;padding:5px;font-size:.6rem;line-height:1.25;display:flex;flex-direction:column;gap:2px;color:#ccc}.acard.eq{border-color:#33ff77}.acard.lock{opacity:.6}.acard .ah{display:flex;align-items:center;gap:4px}.acard img,.acard .ai{width:30px;height:30px;object-fit:contain;font-size:20px;flex:0 0 30px}.acard h4{margin:0;font-size:.7rem;color:#ffcc33;line-height:1.1}.acard .lv{color:#7cf}.acard .how{color:#999}.acard button{margin-top:auto;font-size:.6rem!important;padding:3px 5px!important}#roomPanel.wide{width:min(74vw,680px)}body.fromPause .toMenu{display:none}.bpN{font-size:.55rem!important;line-height:1.2}.bpT{display:flex;flex-direction:column;gap:2px;margin:3px 0}.bpT div{display:grid;grid-template-columns:1.4fr 1fr 1.1fr .8fr 26px;align-items:center;gap:4px;background:rgba(0,0,0,.35);border:1px solid #333;border-radius:6px;padding:1px 6px;font-size:.62rem;color:#ccc}.bpT i{font-style:normal;color:#9ab}.bpT b{color:#33ff77;text-align:right}.bpPlus{width:24px;height:20px;border-radius:5px;border:1px solid #ffcc33;background:#3a2a08;color:#ffcc33;font-weight:bold;cursor:pointer}.bpPlus:disabled{opacity:.25;cursor:default}#subRow .subc{padding:4px 4px;gap:1px}#subRow .subc span{font-size:clamp(1rem,6vh,1.6rem)}#subRow .subc b{font-size:clamp(.72rem,3.4vh,.98rem)}#subRow .subc p{font-size:clamp(.45rem,1.9vh,.6rem)}#subRow .subc i{font-size:.62rem}@media (max-height:430px){#subRow .subc p{display:none}}#levelGrid .lcard.soon p{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;font-size:.62rem!important;line-height:1.15!important;-webkit-line-clamp:unset!important;display:block!important}#levelGrid .lcard.soon h3{font-size:.8rem}#roomPanel,#roomPanel>*{overflow-x:hidden;max-width:100%}#roomPanel{overflow-wrap:anywhere}#roomPanel.left{right:auto;left:max(10px,env(safe-area-inset-left))} #roomPanel{position:absolute;right:max(10px,env(safe-area-inset-right));top:52px;bottom:10px;width:min(48vw,440px);overflow-y:auto;pointer-events:auto;margin:0}
+.abub{position:fixed;z-index:60;max-width:min(320px,90vw);white-space:normal!important;text-align:center;background:#ffcc33;color:#1a0a00;font:700 .68rem Barlow,sans-serif;padding:5px 9px;border-radius:9px;white-space:nowrap;box-shadow:0 3px 8px rgba(0,0,0,.6);pointer-events:none;animation:abub .18s ease-out}@keyframes abub{from{opacity:0;transform:translateY(6px)}}.agrid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.acard{background:rgba(255,255,255,.05);border:1px solid #3a3a44;border-radius:8px;padding:5px;font-size:.6rem;line-height:1.25;display:flex;flex-direction:column;gap:2px;color:#ccc}.acard.eq{border-color:#33ff77}.acard.lock{opacity:.6}.acard .ah{display:flex;align-items:center;gap:4px}.acard img,.acard .ai{width:30px;height:30px;object-fit:contain;font-size:20px;flex:0 0 30px}.acard h4{margin:0;font-size:.7rem;color:#ffcc33;line-height:1.1}.acard .lv{color:#7cf}.acard .how{color:#999}.acard button{margin-top:auto;font-size:.6rem!important;padding:3px 5px!important}#roomPanel.wide{width:min(74vw,680px)}body.fromPause .toMenu{display:none}.bpN{font-size:.55rem!important;line-height:1.2}.bpT{display:flex;flex-direction:column;gap:2px;margin:3px 0}.bpT div{display:grid;grid-template-columns:1.4fr 1fr 1.1fr .8fr 26px;align-items:center;gap:4px;background:rgba(0,0,0,.35);border:1px solid #333;border-radius:6px;padding:1px 6px;font-size:.62rem;color:#ccc}.bpT i{font-style:normal;color:#9ab}.bpT b{color:#33ff77;text-align:right}.bpPlus{width:24px;height:20px;border-radius:5px;border:1px solid #ffcc33;background:#3a2a08;color:#ffcc33;font-weight:bold;cursor:pointer}.bpPlus:disabled{opacity:.25;cursor:default}#subRow .subc{padding:4px 4px;gap:1px}#subRow .subc span{font-size:clamp(1rem,6vh,1.6rem)}#subRow .subc b{font-size:clamp(.72rem,3.4vh,.98rem)}#subRow .subc p{font-size:clamp(.45rem,1.9vh,.6rem)}#subRow .subc i{font-size:.62rem}@media (max-height:430px){#subRow .subc p{display:none}}#levelGrid .lcard.soon p{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;font-size:.62rem!important;line-height:1.15!important;-webkit-line-clamp:unset!important;display:block!important}#levelGrid .lcard.soon h3{font-size:.8rem}#roomPanel,#roomPanel>*{overflow-x:hidden;max-width:100%}#roomPanel{overflow-wrap:anywhere}#roomPanel.left{right:auto;left:max(10px,env(safe-area-inset-left))} #roomPanel{position:absolute;right:max(10px,env(safe-area-inset-right));top:52px;bottom:10px;width:min(48vw,440px);overflow-y:auto;pointer-events:auto;margin:0}
 #roomTitle{font-family:'Bebas Neue','Bebas Neue',Impact,sans-serif;font-size:1.3rem;color:#ff4455;letter-spacing:2px;margin-bottom:6px}
 #movieScreen{position:fixed;inset:0;z-index:40;background:#000}
 #movieCanvas{position:absolute;inset:0}
@@ -198,7 +198,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 .bar>div{height:100%;transition:width .12s}
 .bar>span{position:absolute;inset:0;font-size:9px;line-height:10px;text-align:center;font-family:Barlow,sans-serif;font-weight:bold;text-shadow:1px 1px 0 #000}
 #hpBar,#spBar,#ultBar{width:clamp(120px,22vw,200px)}
-#hpFill{background:linear-gradient(90deg,#600,#ff1a1a)}
+#hpFill{background:linear-gradient(90deg,#600,#ff1a1a)}html.cb #hpFill{background:linear-gradient(90deg,#5a3000,#ff9900)}html.cb .btn.green,html.cb .msr.ready,html.cb .acard.eq,html.cb .defDiff button.on[data-d="0"]{border-color:#3fa9ff!important;color:#7cc8ff!important}html.cb .linfo span:first-child{color:#7cc8ff}
 #spBar{border-color:#ffcc33;height:9px}#spBar>span{font-size:7px;line-height:6px}
 #spFill{background:linear-gradient(90deg,#a06000,#ffd040)}
 #ultBar{border-color:#ff3388;height:9px}#ultBar>span{font-size:7px;line-height:6px}
@@ -330,7 +330,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 </div>
 
 <div id="baseScreen" class="hidden">
-  <div id="baseTop"><button class="btn sec" id="baseBack">◀ MENU</button><div id="baseInfo">🩸 <b id="baseBlood">0</b> · <span id="lgRaids">Raids survived</span> <b id="baseRaids">0</b></div><button class="btn sec" id="downBtn">⬇ BASEMENT</button><button class="btn gold" id="defBtn">🛡 DEFENSES</button></div>
+  <div id="baseTop"><button class="btn sec" id="baseBack">◀ MENU</button><div id="baseInfo">🩸 <b id="baseBlood">0</b> · 🍖 <b class="foodTxt">10/10</b> · <span id="lgRaids">Raids survived</span> <b id="baseRaids">0</b></div><button class="btn sec" id="downBtn">⬇ BASEMENT</button><button class="btn gold" id="defBtn">🛡 DEFENSES</button></div>
   <div id="baseHint">Tap a room</div>
   <div id="roomPanel" class="panel hidden"><button id="roomX" aria-label="Close" onclick="event.stopPropagation();SFX.click();closeRoom()">✕</button><div id="roomTitle"></div><div id="roomBody"></div><button class="btn sec" id="roomClose" style="margin-top:6px;font-size:.8rem;padding:6px 14px">CLOSE</button></div>
 </div>
@@ -344,7 +344,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
     <div id="menuLeft">
       <div id="avRow"></div>
       <button class="playBig" id="playBtn"><span class="pIcon"><img src="sprites/ui/ic_play.webp" alt="" draggable="false"></span><span class="pTxt"><b id="playLbl">PLAY</b><small id="playAs"></small></span></button>
-      <div class="bloodPill"><span id="lgBlood">Total Blood:</span> 🩸 <b id="menuBlood">0</b></div>
+      <div class="bloodPill"><span id="lgBlood">Total Blood:</span> 🩸 <b id="menuBlood">0</b> · 🍖 <b class="foodTxt">10/10</b> <small class="foodNext"></small></div>
       <div class="muted" id="menuNote"></div>
     </div>
     <div id="menuTiles">
@@ -405,6 +405,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
     <div class="setRow hidden" id="testRow"><label for="cfgTest">🧪 Test mode <span style="font-size:.7rem;color:#999">(unlock all levels to try them)</span></label><input type="checkbox" id="cfgTest"></div>
     <div class="setRow"><label for="cfgHQ">High-quality graphics <span style="font-size:.7rem;color:#999">(turn off on older phones)</span></label><input type="checkbox" id="cfgHQ"></div>
     <div class="setRow"><label for="cfgBig">Bigger text</label><input type="checkbox" id="cfgBig"></div>
+    <div class="setRow"><label for="cfgCb">Colour-blind HUD <span style="font-size:.7rem;color:#999">(blue instead of green, orange instead of red)</span></label><input type="checkbox" id="cfgCb"></div>
     <div class="setRow" id="autoRow"><label for="cfgAuto">Auto-aim</label><input type="checkbox" id="cfgAuto"></div>
     <div class="setRow" id="langRow"><span id="lgLabel">Language</span><span id="langBtns"></span></div>
     <div class="setRow"><span>💾 Save code <span style="font-size:.7rem;color:#999">(move your progress to another phone)</span></span><span><button class="btn sec" id="expBtn" style="font-size:.75rem;padding:5px 10px">EXPORT</button> <button class="btn sec" id="impBtn" style="font-size:.75rem;padding:5px 10px">IMPORT</button></span></div>
@@ -422,6 +423,8 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
     <button class="btn sec" id="pauseAuto">🎯 AUTO-AIM: OFF</button>
     <button class="btn sec" id="pauseAim">AIM LINE: ON</button>
     <button class="btn sec" id="pauseSet">⚙ SETTINGS</button>
+    <button class="btn sec" id="pausePhoto">📸 PHOTO MODE</button>
+    <button class="btn sec hidden" id="pauseCrowd">🧟 STORE SHOT: CROWD + GOD MODE</button>
     <button class="btn sec" id="restartBtn">RESTART LEVEL</button>
     <button class="btn sec" id="quitBtn">QUIT TO MENU</button>
   </div>
@@ -465,9 +468,9 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 </div>
 <div id="layEd" class="hidden"><div class="zone l" id="layZL">MOVE</div><div class="zone r" id="layZR">AIM</div><div id="layBar"><b>DRAG THE BUTTONS</b><button class="btn sec" id="layReset">↺ RESET</button><button class="btn sec" id="layCancel">✕ CANCEL</button><button class="btn gold" id="laySave">✓ SAVE</button></div></div>
 <div id="saProbe"></div>
-<div id="subScreen" class="overlay hidden"><h1 id="subTitle" style="font-size:clamp(1.2rem,6vh,2.2rem)"></h1><div class="sub" id="subSub"></div><div id="subRow"></div><div class="btns"><button class="btn sec" id="subBack">◀ BACK</button></div></div>
+<div id="subScreen" class="overlay hidden"><h1 id="subTitle" style="font-size:clamp(1.2rem,6vh,2.2rem)"></h1><div class="sub" id="subSub"></div><div class="sub" style="margin-top:-2px">🍖 <b class="foodTxt">10/10</b> <small class="foodNext"></small> · new levels cost 2 🍖</div><div id="subRow"></div><div class="btns"><button class="btn sec" id="subBack">◀ BACK</button></div></div>
 <div id="cardScreen" class="overlay hidden"><div class="sub">⬆ <span id="cardLv"></span> · CHOOSE ONE</div><div id="cardRow"></div></div>
-<div id="sprWait" class="hidden"><div><b>LOADING THE HORDE…</b><i></i></div></div>
+<div id="foodBox" class="hidden"></div><div id="photoBar" class="hidden"><button class="btn gold" id="photoSnap">📸 SAVE PICTURE</button><button class="btn sec" id="photoBack">✕ BACK</button></div><div id="sprWait" class="hidden"><div><b>LOADING THE HORDE…</b><i></i></div></div>
 <div id="talk" class="hidden" onclick="talkNext()"><div id="talkBox"><div id="talkFace"></div><div class="tb"><b id="talkWho"></b><p id="talkTxt"></p></div><small>TAP ▶</small><button id="talkSkip" class="hidden" onclick="event.stopPropagation();SFX.click();talkNext();G.talkQ=null;$('talk').classList.add('hidden');if(G.state==='talk'){G.state='play';last=performance.now();}if(isTouch&&player)$('touch').classList.remove('hidden');endTutorial(true)">SKIP TUTORIAL</button></div></div>
 <div id="tut" class="hidden"><div id="tutRing"></div><div id="tutBox"><b id="tutStep"></b><span id="tutTxt"></span></div></div>
 <div id="dailyScreen" class="overlay solid hidden">
@@ -529,7 +532,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 
 <script>
 'use strict';
-const VERSION = 'v40'; // bump together with sw.js
+const VERSION = 'v42'; // bump together with sw.js
 const ERRLOG = []; const logErr = m => { ERRLOG.push(new Date().toISOString().slice(11, 19) + ' ' + String(m).slice(0, 240)); if (ERRLOG.length > 12) ERRLOG.shift(); };
 window.addEventListener('error', e => logErr((e.message || 'error') + (e.filename ? ' @' + e.filename.split('/').pop() + ':' + e.lineno + ':' + e.colno : '')));
 window.addEventListener('unhandledrejection', e => logErr('promise: ' + ((e.reason && (e.reason.message || e.reason)) || '?')));
@@ -789,8 +792,9 @@ const LAST = STAGES.length - 1, NST = STAGES.length;
 const subOf = () => G.mode === 'campaign' ? (G.sub === undefined ? LAST : G.sub) : -1;
 const kindOf = () => { const s = subOf(); return s < 0 ? -1 : STAGES[s].k; };
 const stg = () => G.mode === 'campaign' ? STAGES[subOf()] : null;
-const diffOn = () => G.mode === 'campaign' || G.mode === 'bonus';
-const DF = () => DIFFS[diffOn() ? (Save.diff || 0) : 0];
+const diffOn = () => G.mode === 'campaign' || G.mode === 'bonus' || G.mode === 'raid'; // v41: raids have their own difficulty (Save.defDiff)
+const DF = () => DIFFS[G.mode === 'raid' ? (Save.defDiff || 0) : diffOn() ? (Save.diff || 0) : 0];
+const raidWaves = () => Math.min(6, 3 + Math.floor((Save.raids || 0) / 5)); // v41: more waves as raids go on (3 → 6)
 /* v34: hero skins removed (Andrea may draw clothes later) */
 delete Save.skins; delete Save.skin;
 const GEAR = {
@@ -878,7 +882,13 @@ Save.bp = Save.bp || {}; // v35 boss points: +1 to the hero who kills a boss, sp
 const bpOf = id => (Save.bp[id] = Save.bp[id] || { pts: 0, hp: 0, dmg: 0, spd: 0, spc: 0 });
 const heroStat = (id, k) => (1 + (heroLv(id) - 1) * TUNE.hero.per[k]) * (1 + ((Save.bp[id] || {})[k] || 0) * TUNE.hero.pt[k]);
 const spInfo = id => lvCalc((Save.spx || {})[id], TUNE.special.need, TUNE.special.maxLv, 0);
-const spMul = id => 1 + spInfo(id).lv * TUNE.special.per;
+/* v41: Special and Ultimate can also be trained with blood, but each level needs a hero level first (Lv 10, 12, 14 … 28) */
+const BTR = { max: 10, lv0: 8, lvStep: 2, cost: n => Math.round(400 * Math.pow(1.35, n) / 10) * 10, spc: 0.04, ult: 0.03 };
+const btrLv = (k, id) => ((Save[k] || {})[id] || 0);
+const btrNeedLv = n => BTR.lv0 + BTR.lvStep * (n + 1);
+function btrBuy(k, id) { const n = btrLv(k, id); if (n >= BTR.max || heroLv(id) < btrNeedLv(n) || Save.blood < BTR.cost(n)) { SFX.buzz(); return; } Save.blood -= BTR.cost(n); Save[k] = Save[k] || {}; Save[k][id] = n + 1; saveGame(); SFX.heal(); banner(k === 'spB' ? '⚡ SPECIAL TRAINED' : '☠ ULTIMATE TRAINED', (k === 'spB' ? '+4% special power' : '3% faster ultimate') + ' · Lv ' + (n + 1) + '/' + BTR.max); refreshMenu(); }
+function btrRow(k, id) { const n = btrLv(k, id), need = btrNeedLv(n); if (n >= BTR.max) return `<span class="btr max">🩸 ${n}/${BTR.max} MAX</span>`; const ok = heroLv(id) >= need; return `<button class="btr${ok && Save.blood >= BTR.cost(n) ? ' ok' : ''}" data-btr="${k}" ${ok ? '' : 'disabled'}>🩸 ${n}/${BTR.max} · ${ok ? '+1 for ' + BTR.cost(n) + ' 🩸' : '🔒 hero Lv ' + need}</button>`; }
+const spMul = id => 1 + spInfo(id).lv * TUNE.special.per + btrLv('spB', id) * BTR.spc;
 const lvTxt = (I, max) => `Lv ${I.lv}/${max}` + (I.next ? ` · ${I.xp}/${I.next} XP` : ' · MAX');
 const LAB_RES = TUNE.lab.res;
 const labLv = id => { const v = Save.lab && Save.lab[id]; return v === true ? 1 : (v || 0); };
@@ -1061,7 +1071,30 @@ function explosion(x, y, r, dmgE, dmgP) {
 }
 
 // ----- run setup -----
+/* v41: 🍖 FOOD BAR - new story stages cost food; replays, defence, training, extra missions and endless are free */
+const FOOD = { max: 10, cost: 2, regenMs: 15 * 60000, extraMax: 15, meal: 3, ad: 4, adPerDay: 3 };
+function foodNow() { const now = Date.now(); if (Save.food === undefined) { Save.food = FOOD.max; Save.foodT = now; }
+  if (Save.food >= FOOD.max) { Save.foodT = now; return Save.food; }
+  const n = Math.floor((now - (Save.foodT || now)) / FOOD.regenMs); if (n > 0) { Save.food = Math.min(FOOD.max, Save.food + n); Save.foodT = Save.food >= FOOD.max ? now : Save.foodT + n * FOOD.regenMs; } return Save.food; }
+function foodAdd(n) { foodNow(); const was = Save.food; Save.food = Math.min(FOOD.extraMax, Save.food + n); if (was < FOOD.max && Save.food >= FOOD.max) Save.foodT = Date.now(); saveGame(); foodUI(); }
+function foodNextTxt() { foodNow(); if (Save.food >= FOOD.max) return 'full'; const ms = FOOD.regenMs - (Date.now() - Save.foodT), m = Math.max(0, Math.floor(ms / 60000)), sec = Math.max(0, Math.floor(ms / 1000) % 60); return '+1 in ' + m + ':' + String(sec).padStart(2, '0'); }
+function foodNeeded(mode, li, sub) { return mode === 'campaign' && !window.pendingDC && !Cfg.test && !!Save.tut2 && !Save.cleared[li] && sub >= (Save.subs[li] || 0) ? FOOD.cost : 0; }
+function foodUI() { try { foodNow(); document.querySelectorAll('.foodTxt').forEach(e => e.textContent = Save.food + '/' + FOOD.max); document.querySelectorAll('.foodNext').forEach(e => e.textContent = Save.food >= FOOD.max ? '' : '(' + foodNextTxt() + ')'); } catch (e) { } }
+setInterval(foodUI, 1000);
+function fBtn(txt, cls, fn) { const b = document.createElement('button'); b.className = 'btn ' + cls; b.style.cssText = 'font-size:.78rem;padding:7px 12px'; b.textContent = txt; b.onclick = e => { e.stopPropagation(); fn(); }; return b; }
+function openFoodBox(after) {
+  const b = $('foodBox'), today = new Date().toDateString(); if (Save.adFoodDay !== today) { Save.adFoodDay = today; Save.adFoodN = 0; }
+  const adLeft = FOOD.adPerDay - (Save.adFoodN || 0), canCook = Save.kitchen && Save.mealDay !== today && !Save.mealReady;
+  b.innerHTML = `<div class="fbx"><h3>🍖 NOT ENOUGH FOOD</h3><p>New levels cost <b>${FOOD.cost} 🍖</b>. You have <b class="foodTxt">${Save.food}/${FOOD.max}</b> <span class="foodNext"></span></p><p class="muted">Free without food: replay cleared levels, defence, training, extra missions, endless. Food comes back by itself (1 every 15 min), from Rocco's meals and from daily missions.</p><div class="bb"></div></div>`;
+  const bb = b.querySelector('.bb');
+  if (adLeft > 0) bb.appendChild(fBtn('📺 +' + FOOD.ad + ' 🍖 (' + adLeft + ' left today)', 'gold', () => { b.classList.add('hidden'); showRewardedAd(() => { Save.adFoodN = (Save.adFoodN || 0) + 1; foodAdd(FOOD.ad); showOnly(null); banner('🍖 +' + FOOD.ad + ' FOOD', 'Time to eat… and fight'); if (after) after(); }); }));
+  if (canCook) bb.appendChild(fBtn('🍲 COOK A MEAL (+' + FOOD.meal + ')', 'sec', () => { b.classList.add('hidden'); openBase(); setTimeout(() => openRoom('kitchen'), 250); }));
+  bb.appendChild(fBtn('✕ CLOSE', 'sec', () => { SFX.click(); b.classList.add('hidden'); }));
+  b.classList.remove('hidden'); foodUI();
+}
 function startRun(heroId, mode = 'campaign', levelIdx) { // v40: wait (max 10 s) for the sprites this run needs, then start
+  const fc = foodNeeded(mode, levelIdx, pendingSub); window.foodPaidRun = 0;
+  if (fc) { if (foodNow() < fc) { openFoodBox(() => startRun(heroId, mode, levelIdx)); return; } Save.food -= fc; if (Save.food < FOOD.max && Save.foodT + FOOD.regenMs < Date.now()) Save.foodT = Date.now(); window.foodPaidRun = fc; saveGame(); }
   const need = typeof runNeeds === 'function' && !Cfg.vecArt ? runNeeds(heroId).filter(k => SPR[k] && !SPR[k].img && sprSt[k] !== 'fail') : [];
   if (!need.length) return startRunNow(heroId, mode, levelIdx);
   const w = $('sprWait'); w.classList.remove('hidden'); sprBackground(); let done = false;
@@ -1069,12 +1102,13 @@ function startRun(heroId, mode = 'campaign', levelIdx) { // v40: wait (max 10 s)
   Promise.all(need.map(k => sprLoad(k))).then(go); setTimeout(go, 10000);
 }
 function startRunNow(heroId, mode = 'campaign', levelIdx) {
+  if (mode !== 'training' && Save.zodSeen !== DAY()) setTimeout(() => { if (G.state === 'play' && Save.zodSeen !== DAY()) { Save.zodSeen = DAY(); saveGame(); banner('🧟 ZOMBIE OF THE DAY', zodName(zodToday()) + 's drop double blood today'); } }, 4000);
   recReset();
   G.lv0 = { bp: HEROES[heroId] ? bpOf(heroId).pts : 0, h: heroLv(heroId), s: spInfo(heroId).lv, w: Object.fromEntries(Object.keys(WEAPONS).concat(Object.keys(HEROES)).map(k => [k, wInfo(k).lv])) };
   A.init(); Save.st.runs++;
   G.hero = heroId; G.mode = mode; G.levelIdx = levelIdx !== undefined ? levelIdx : (G.levelIdx || 0); G.bonus = mode === 'bonus' ? BONUS.find(b => b.id === pendingBonus) : null; if (G.bonus) G.levelIdx = G.bonus.endless ? randi(0, 3) : G.bonus.weekly ? WEEK() % 4 : G.bonus.lvl; G.L = mode === 'campaign' || mode === 'bonus' ? LEVELS[G.levelIdx] : BASE_LEVEL;
   const L0 = G.L;
-  Object.assign(G, { fxA: [], bwT: 0, banT: 1500, say: [], hbT: 0, cL: undefined, cR: undefined, slowmo: 0, zoomV: 1, focus: null, drops: [], pk: {}, xp: 0, plv: 0, cardQ: false, drone: null, zaps: [], bubT: 0, chainN: 0, benSw: 0, endPaid: 0, endWave: 1, safeTalk: null, speaker: null, cage: null, rescueP: 0, bloodMul: 1, timeUp: false, bonusT: 0, overrun: false, wave: 0, breakT: 300, waveTotal: 0, waveSpawned: 0, trainT: 45 * 60, score: 0, xpGain: {}, hxpGain: 0, darkRun: 0, actors: [], frostN: 0, frostB: [], cat: null, tutor: false, tutHold: false, tutSpc: 0, tutUlt: 0, core: null, relievedT: 0, time: 0, kills: 0, bloodRun: 0, banked: 0, combo: 0, comboT: 0, shake: 0, hitStop: 0, flash: 0, revived: false, arena: false, phase: mode === 'campaign' ? 'street' : mode === 'raid' ? 'raidBreak' : 'train', lockKills: 0, holdT: 0, doorOpen: 0, minX: 10, maxX: L0.W - 10, camL: 0, camR: L0.W, spawnMaxX: mode === 'campaign' && gatesOf(L0).length ? gatesOf(L0)[0] - 60 : 1e9, bolt: 0, nextBolt: 900, thunderT: 0, boss: null, bossDone: false, endT: 0, spawnT: 120, hordes: 0, rain: null, runStart: performance.now(), hintT: 420 });
+  Object.assign(G, { god: false, dc: mode === 'campaign' && !!window.pendingDC, fxA: [], mUlt: 0, mRoll: 0, mSpc: 0, bwT: 0, banT: 1500, say: [], hbT: 0, cL: undefined, cR: undefined, slowmo: 0, zoomV: 1, focus: null, drops: [], pk: {}, xp: 0, plv: 0, cardQ: false, drone: null, zaps: [], bubT: 0, chainN: 0, benSw: 0, endPaid: 0, endWave: 1, safeTalk: null, speaker: null, cage: null, rescueP: 0, bloodMul: 1, timeUp: false, bonusT: 0, overrun: false, wave: 0, breakT: 300, waveTotal: 0, waveSpawned: 0, trainT: 45 * 60, score: 0, xpGain: {}, hxpGain: 0, darkRun: 0, actors: [], frostN: 0, frostB: [], cat: null, tutor: false, tutHold: false, tutSpc: 0, tutUlt: 0, core: null, relievedT: 0, time: 0, kills: 0, bloodRun: 0, banked: 0, combo: 0, comboT: 0, shake: 0, hitStop: 0, flash: 0, revived: false, arena: false, phase: mode === 'campaign' ? 'street' : mode === 'raid' ? 'raidBreak' : 'train', lockKills: 0, holdT: 0, doorOpen: 0, minX: 10, maxX: L0.W - 10, camL: 0, camR: L0.W, spawnMaxX: mode === 'campaign' && gatesOf(L0).length ? gatesOf(L0)[0] - 60 : 1e9, bolt: 0, nextBolt: 900, thunderT: 0, boss: null, bossDone: false, endT: 0, spawnT: 120, hordes: 0, rain: null, runStart: performance.now(), hintT: 420 });
   enemies = []; allies = []; shots = []; eshots = []; parts = []; texts = []; pickups = []; fires = []; acids = []; rings = []; teles = []; decals = []; flashes = []; skybolts = []; corpses = [];
   buildLevel(); G.gates = mode === 'campaign' ? gatesOf(L0) : []; G.gate = 0; G.lockNeed = 0;
   G.sub = mode === 'campaign' ? (pendingSub === undefined ? LAST : pendingSub) : undefined; G.blackout = kindOf() === 1; G.evT = randi(1800, 3000); G.flickT = 0; G.domLv = 0; G.domT = 0; G.supplies = []; G.survivor = null;
@@ -1094,11 +1128,11 @@ function startRunNow(heroId, mode = 'campaign', levelIdx) {
   if (Save.relieved) { Save.relieved = false; Save.washed = false; saveGame(); G.relievedT = 3600; }
   if (Save.companion && Save.companion !== heroId && mode !== 'training') buddy = makeBuddy(Save.companion);
   if (Save.mealReady && mode !== 'training') { Save.mealReady = false; player.max = Math.round(player.max * 1.25); player.hp = player.max; saveGame(); setTimeout(() => player && addText('WELL FED +25% HP', player.x, player.y - 80, '#ffcc66', 18, 90), 400); }
-  G.diffIdx = diffOn() ? (Save.diff || 0) : 0; G.frostN = diffOn() ? DF().frost : mode === 'raid' ? 1 : 0; if (mode !== 'training' && (labLv('catlab') > 0 || (pendingCat && mode !== 'raid'))) spawnRunCat(); pendingCat = false; drawCatRow(); G.bloodMul = (G.bloodMul || 1) * DF().blood;
+  G.diffIdx = mode === 'raid' ? (Save.defDiff || 0) : diffOn() ? (Save.diff || 0) : 0; G.frostN = diffOn() ? DF().frost : 0; if (mode !== 'training' && (labLv('catlab') > 0 || (pendingCat && mode !== 'raid'))) spawnRunCat(); pendingCat = false; drawCatRow(); G.bloodMul = (G.bloodMul || 1) * DF().blood;
   if (mode === 'campaign' || mode === 'bonus') { const li = G.levelIdx; if (kmPerk(li, 'blood')) G.bloodMul *= 1.05; if (kmPerk(li, 'dmg')) player.dmgMul *= 1.1; if (kmPerk(li, 'card') && mode === 'campaign') setTimeout(() => { if (G.state === 'play' && !G.cardQ) { G.cardQ = true; openCards(); } }, 2500); }
   if (G.diffIdx > 0) { G.budStash = buddy ? Save.companion : null; buddy = null; G.budT = 0; G.budCd = 0; G.budUses = 0; player.spc = player.spcMax; player.spcLock = 0; }
   if (mode === 'campaign' && G.levelIdx === 0 && subOf() === 0 && !Save.tut2) { const comp = tutComp(heroId); G.budStash = comp; G.budT = 0; G.budCd = 0; if (G.diffIdx > 0) { buddy = makeBuddy(comp); G.budT = 1e9; } else buddy = null; }
-  G.wRule = mode === 'bonus' && G.bonus && G.bonus.weekly ? wRule()[0] : null; if (G.wRule === 'dark') G.blackout = true; if (G.wRule === 'speed') player.spdMul *= 1.15; if (G.wRule === 'glass') player.dmgMul *= 2;
+  G.wRule = mode === 'bonus' && G.bonus && G.bonus.weekly ? wRule()[0] : G.dc ? dcToday().rule[0] : null; window.pendingDC = false; if (G.wRule === 'dark') G.blackout = true; if (G.wRule === 'speed') player.spdMul *= 1.15; if (G.wRule === 'glass') player.dmgMul *= 2;
   if (mode === 'bonus') setupBonus();
   Save.comics = Save.comics || {}; if (mode === 'campaign' && !Save.comics[G.levelIdx]) { Save.comics[G.levelIdx] = true; saveGame(); G.comicPending = true; setTimeout(() => { G.comicPending = false; if (G.state !== 'play') return; G.state = 'comic'; resetInput(); playComic(G.levelIdx, () => { if (G.state === 'comic') { G.state = 'play'; last = performance.now(); Music.play(trackFor()); } }); }, 30); }
   G.cam.x = clamp(player.x - VW / 2, 0, L0.W - VW); G.cam.y = player.y - VIEW_H * 0.58;
@@ -1293,7 +1327,7 @@ function drawRoboExtras(z) {
   ctx.restore();
 }
 function makePlayer(id) {
-  const H = HEROES[id], gr = k => !!(Save.gear || {})[id + '_' + k], max = Math.round(H.hp * heroStat(id, 'hp') * (gr(1) ? 1.1 : 1)), ultMax = Math.round(DF().ult * 60 * (gr(3) ? 1 - TUNE.ult.gearCut : 1));
+  const H = HEROES[id], gr = k => !!(Save.gear || {})[id + '_' + k], max = Math.round(H.hp * heroStat(id, 'hp') * (gr(1) ? 1.1 : 1)), ultMax = Math.round(DF().ult * 60 * (gr(3) ? 1 - TUNE.ult.gearCut : 1) * (1 - btrLv('ulB', id) * BTR.ult));
   return { id, H, x: 150, y: (G.L.ROAD[0] + G.L.ROAD[1]) / 2, r: 12, z: 0, vx: 0, vy: 0, face: 1, aim: 0, hp: max, max, iframes: 0, rollT: 0, rollCd: 0, rollA: 0,
     atkCd: 0, atkAnim: 0, spc: 40, spcMax: 100, ultC: Math.round(ultMax * TUNE.ult.start), ultMax, ultRdy: false, shieldT: 0, dashT: 0, dashHits: null, regenT: 0, walk: 0, lastFire: 0, tick: 0, swing: null, muzzle: 0,
     wpn: 'sig', alt: Save.equip && Save.weapons[Save.equip] ? Save.equip : null, lastHurt: -999,
@@ -1302,6 +1336,7 @@ function makePlayer(id) {
 
 // ----- player -----
 function hurtPlayer(dmg, sx, sy, kb = 6) {
+  if (G.god) return false;
   const p = player; if (!p || G.state !== 'play') return false;
   if (p.iframes > 0 || p.rollT > 0 || p.dashT > 0) return false;
   if (p.bubble) { p.bubble = false; p.iframes = 30; ringFx(p.x, p.y, '#8cf', 60); SFX.block(); return false; }
@@ -1441,6 +1476,7 @@ function meleeSwing(p, a, dmg, range, half, kb) {
   if (any) { G.hitStop = Math.max(G.hitStop, 3); addShake(5); }
 }
 function useSpecial(p) {
+  if (p === player && !G.tut) G.mSpc = 1;
   if (p === player && G.diffIdx > 0 && G.tutSpc !== 1) p.spcLock = G.diffIdx === 1 ? 1800 : Infinity;
   p.spc = 0; SFX.special(); addShake(8); G.flash = 8; G.flashCol = '255,210,60';
   addText(p.H.spcName + '!', p.x, p.y - 70, '#ffcc33', 20, 60);
@@ -1464,6 +1500,7 @@ const frostLeft = () => (G.frostN || 0) + (Save.frost || 0);
 function updateFrostBtn() { const b = $('bFrost'); if (!b) return; const n = player ? frostLeft() : 0; b.classList.toggle('hidden', !n); $('bFrostTxt').textContent = n; }
 function throwFrost(p) {
   if (!frostLeft()) { SFX.buzz(); return; }
+  if (p === player && G.mode !== 'training') missionEvent('frost');
   if (G.frostN > 0) G.frostN--; else { Save.frost--; saveGame(); }
   const t = nearestTarget(p.x, p.y, 320), D = TUNE.frost.throwDist, x1 = t ? t.x : p.x + Math.cos(p.aim) * D, y1 = t ? t.y : p.y + Math.sin(p.aim) * D * 0.8;
   G.frostB.push({ x0: p.x, y0: p.y, x1, y1, t: 0, T: 26 }); SFX.swing(); updateFrostBtn(); if (G.tutFrost) G.tutFrost = 2;
@@ -1526,6 +1563,7 @@ function powerChord(p, dm) {
 }
 function useUlt(p) {
   if (p.ultC < p.ultMax) { SFX.buzz(); addText(`ULTIMATE IN ${Math.ceil((p.ultMax - p.ultC) / 60)}s`, p.x, p.y - 70, '#ff88bb', 14, 40); return; }
+  if (p === player) G.mUlt = 1;
   p.ultC = 0; p.ultRdy = false; p.ultN = (p.ultN || 0) + 1; if (G.tutUlt) G.tutUlt = 2; SFX.ult(); vibrate([60, 40, 90]); addShake(20); G.flash = 16; G.flashCol = '255,60,140'; G.hitStop = 8;
   banner(p.H.ultName, 'Ultimate'); const dm = p.dmgMul;
   if (p.id === 'maya') G.rain = { t: 0, n: 0, dm };
@@ -1558,7 +1596,7 @@ function updatePlayer() {
   else if (mm > 0.2 && G.time - p.lastFire > 30) p.aim = Math.atan2(my, mx);
   const fx = Math.cos(p.aim); if (Math.abs(fx) > 0.15) p.face = fx > 0 ? 1 : -1;
   // roll
-  if (In.rollQ) { In.rollQ = false; if (p.rollCd <= 0 && p.rollT <= 0 && p.dashT <= 0) { p.rollT = 16; p.rollCd = Math.round(42 * Math.pow(0.7, pk('roll'))); p.rollA = mm > 0.2 ? Math.atan2(my, mx) : p.aim; SFX.roll(); dust(p.x, p.y, 4); } }
+  if (In.rollQ) { In.rollQ = false; if (p.rollCd <= 0 && p.rollT <= 0 && p.dashT <= 0) { p.rollT = 16; G.mRoll = 1; p.rollCd = Math.round(42 * Math.pow(0.7, pk('roll'))); p.rollA = mm > 0.2 ? Math.atan2(my, mx) : p.aim; SFX.roll(); dust(p.x, p.y, 4); } }
   const onOil = oils.some(o => !o.burn && ((p.x - o.x) / o.rx) ** 2 + ((p.y - o.y) / o.ry) ** 2 < 1);
   if (p.slowT > 0) p.slowT--;
   const spd = H.speed * p.spdMul * (p.enraged ? 1.15 : 1) * (G.relievedT > 0 ? 1.12 : 1) * (p.slowT > 0 ? 0.55 : 1);
@@ -1618,7 +1656,7 @@ function playerDie() {
 
 // ----- enemies -----
 function spawnEnemy(type, x, y, opts = {}) {
-  const d = ZT[type], prog = clamp(player.x / G.L.ARENA, 0, 1), mul = (1 + prog * 0.35) * (G.mode === 'campaign' || G.mode === 'bonus' ? (G.L.diff || 1) * DF().hp * (stg() ? stg().hp : 1) : 1);
+  const d = ZT[type], prog = clamp(player.x / G.L.ARENA, 0, 1), mul = (1 + prog * 0.35) * (G.mode === 'campaign' || G.mode === 'bonus' ? (G.L.diff || 1) * DF().hp * (stg() ? stg().hp : 1) : G.mode === 'raid' ? DF().hp * (1 + (Save.raids || 0) * 0.02) : 1);
   const z = { type, d, x, y, r: d.r, vx: 0, vy: 0, hp: d.hp * mul, max: d.hp * mul, spd: d.spd * rand(0.88, 1.12), face: -1, flash: 0, stun: 0, burn: 0, walk: rand(0, 10), t: randi(0, 200),
     atkT: randi(20, 60), state: 'walk', st: 0, emerge: opts.emerge || 0, dead: false, minion: !!opts.minion, buffT: 0 };
   { const eb = (kindOf() === 2 ? (subOf() > 5 ? 0.3 : 0.22) : subOf() >= 0 || G.mode === 'bonus' ? 0.035 : 0) * (diffOn() ? DF().elite : 1) + (G.domLv || 0) * 0.04; if (!opts.minion && !d.dummy && G.mode !== 'training' && (opts.elite || G.wRule === 'elite' || Math.random() < eb)) { const ek = pick(Object.keys(ELITES)); z.elite = ek; z.nick = pick(ZNICKS); z.hp *= ek === 'giant' ? 4 : 2.2; z.max = z.hp; if (ek === 'fast') z.spd *= 1.6; if (ek === 'shield') z.eShield = 3; if (ek === 'giant') { z.sc = 1.4; z.r = d.r * 1.35; } } }
@@ -1654,7 +1692,7 @@ function killEnemy(z) {
   if (z.elite) { vibrate(25); gainXP(4); for (let k = 0; k < 4; k++) pickups.push({ type: 'blood', x: z.x, y: z.y, z: 20, vz: rand(4, 6), vx: rand(-2, 2), vy: rand(-2, 2), val: Math.max(1, Math.round(3 * (G.bloodMul || 1))), t: 0 });
     if (z.elite === 'explode') { ringFx(z.x, z.y, '#ff6622', 100); explosion(z.x, z.y, 95, 3, 0); fires.pop(); if (player && dist(player, z) < 95) hurtPlayer(14, z.x, z.y, 10); }
     if (z.elite === 'split') for (let k = 0; k < 2; k++) { const c2 = spawnEnemy(z.type === 'brute' ? 'shambler' : z.type, z.x + rand(-20, 20), z.y + rand(-15, 15), { minion: true }); c2.hp = c2.max = Math.max(1, z.max * 0.12); c2.sc = 0.75; c2.spd *= 1.2; } }
-  G.kills++; const cUp = G.comboF !== G.time; if (cUp) { G.combo++; G.comboF = G.time; } G.comboT = 90; if (!z.d.dummy) { Save.zk[z.type] = (Save.zk[z.type] || 0) + 1; Save.st.kills++; Save.st.heroK[G.hero] = (Save.st.heroK[G.hero] || 0) + 1; if (G.combo > Save.st.combo) Save.st.combo = G.combo; } { const k = player.wpn === 'sig' ? player.id : player.wpn, xp = G.mode === 'training' ? trainXp(z.type === 'dummy' ? 12 : 4) : 1; if (G.mode === 'training' && xp) addHeroXP(G.hero, Math.ceil(xp / 6) * TUNE.hero.xp.trainKill / 2); Save.wxp[k] = (Save.wxp[k] || 0) + xp; G.xpGain[k] = (G.xpGain[k] || 0) + xp; if (G.mode === 'training') { G.score += 10 + G.combo; } } if (G.phase === 'lockdown') { G.lockKills++; if (G.lockKills === G.lockNeed) addText('BREACHING!', player.x, player.y - 90, '#ffcc33', 22, 60); }
+  G.kills++; const cUp = G.comboF !== G.time; if (cUp) { G.combo++; G.comboF = G.time; } G.comboT = 90; if (cUp && G.combo === 20 && G.mode !== 'training') missionEvent('combo'); if (!z.d.dummy) { Save.zk[z.type] = (Save.zk[z.type] || 0) + 1; Save.st.kills++; Save.st.heroK[G.hero] = (Save.st.heroK[G.hero] || 0) + 1; if (G.combo > Save.st.combo) Save.st.combo = G.combo; } { const k = player.wpn === 'sig' ? player.id : player.wpn, xp = G.mode === 'training' ? trainXp(z.type === 'dummy' ? 12 : 4) : 1; if (G.mode === 'training' && xp) addHeroXP(G.hero, Math.ceil(xp / 6) * TUNE.hero.xp.trainKill / 2); Save.wxp[k] = (Save.wxp[k] || 0) + xp; G.xpGain[k] = (G.xpGain[k] || 0) + xp; if (G.mode === 'training') { G.score += 10 + G.combo; } } if (G.phase === 'lockdown') { G.lockKills++; if (G.lockKills === G.lockNeed) addText('BREACHING!', player.x, player.y - 90, '#ffcc33', 22, 60); }
   if (G.kills % 17 === 0 && G.mode !== 'training') addText(pick(KILL_QUIPS), z.x, z.y - 70, '#ffffff', 15, 45);
   if (player.ultC < player.ultMax) player.ultC = Math.min(player.ultMax, player.ultC + TUNE.ult.killSec * 60);
   if (!z.d.dummy && G.mode !== 'training') addHeroXP(G.hero, z.elite ? TUNE.hero.xp.elite : TUNE.hero.xp.kill);
@@ -1662,7 +1700,7 @@ function killEnemy(z) {
   if (z.elite && !G.cat && G.mode !== 'training' && Math.random() < TUNE.cat.drop) pickups.push({ type: 'cat', x: z.x, y: z.y, z: 24, vz: 5, vx: rand(-1, 1), vy: rand(-1, 1), t: 0 });
   if (z.elite && Math.random() < TUNE.frost.drop) pickups.push({ type: 'frost', x: z.x, y: z.y, z: 24, vz: 5, vx: rand(-1, 1), vy: rand(-1, 1), t: 0 });
   const frenzy = G.combo >= 10 ? 2 : 1;
-  pickups.push({ type: 'blood', x: z.x, y: z.y, z: 20, vz: 4, vx: rand(-1.5, 1.5), vy: rand(-1.5, 1.5), val: Math.max(1, Math.round(z.d.blood * frenzy * (G.bloodMul || 1))), t: 0 });
+  pickups.push({ type: 'blood', x: z.x, y: z.y, z: 20, vz: 4, vx: rand(-1.5, 1.5), vy: rand(-1.5, 1.5), val: Math.max(1, Math.round(z.d.blood * frenzy * (G.bloodMul || 1) * (z.type === zodToday() && G.mode !== 'training' ? 2 : 1))), t: 0 });
   if (z.type === 'bloater') { SFX.explode(); addShake(8); ringFx(z.x, z.y, '#aacc44', 120); gases.push({ x: z.x, y: z.y, r: 90, life: 300 }); for (let k = 0; k < 14; k++) part({ x: z.x, y: z.y, z: 20, vx: rand(-3, 3), vy: rand(-3, 3), vz: rand(1, 4), g: 0.1, life: 40, size: rand(4, 8), color: 'rgba(150,200,60,0.6)', kind: 'smoke' }); for (const o2 of enemies) if (o2 !== z && !o2.dead && dist(o2, z) < 100) damageEnemy(o2, 4, { aoe: true, ang: Math.atan2(o2.y - z.y, o2.x - z.x), kb: 6 }); if (dist(player, z) < 95) hurtPlayer(14, z.x, z.y, 8); }
   player.spc = Math.min(player.spcMax, player.spc + 5);
   const r = Math.random();
@@ -1763,10 +1801,10 @@ function baseSpawn() {
 function updateSpawns() {
   if (G.mode === 'raid') {
     if (G.phase !== 'wave' || --G.spawnT > 0) return;
-    G.spawnT = Math.max(10, 40 - G.wave * 7 - Save.raids * 2) * rand(0.7, 1.3) * TUNE.def.raid;
+    G.spawnT = Math.max(10, 40 - G.wave * 7 - Save.raids * 2) * rand(0.7, 1.3) * TUNE.def.raid / DF().spawn;
     if (G.waveSpawned >= G.waveTotal || enemies.length >= TUNE.def.raidCap) return;
     const mix = Object.assign({}, G.wave === 1 ? { shambler: 6, sprinter: 3 } : G.wave === 2 ? { shambler: 5, sprinter: 3, puker: 2, armored: 1 } : { shambler: 4, sprinter: 4, puker: 2, armored: 3, dog: 2 }, Save.raids >= 4 ? { scrambler: 2, bloater: 1, riot: 1 } : {}, Save.raids >= 6 ? { spiker: 1.5, ghoul: 1.5, brute: 0.6 } : {});
-    if (G.siege && G.wave === 3 && !G.siegeBrutes) { G.siegeBrutes = true; for (let k = 0; k < 2 + Math.floor(Save.raids / 10); k++) { const s2 = baseSpawn(); if (s2) spawnEnemy('brute', s2.x, s2.y, { emerge: s2.emerge }); } banner('SIEGE!', 'Brutes at the walls'); SFX.roar(); }
+    if (G.siege && G.wave === raidWaves() && !G.siegeBrutes) { G.siegeBrutes = true; for (let k = 0; k < 2 + Math.floor(Save.raids / 10); k++) { const s2 = baseSpawn(); if (s2) spawnEnemy('brute', s2.x, s2.y, { emerge: s2.emerge }); } banner('SIEGE!', 'Brutes at the walls'); SFX.roar(); }
     const s = baseSpawn(); if (s) { spawnEnemy(pickW(mix), s.x, s.y, { emerge: s.emerge }); G.waveSpawned++; }
     return;
   }
@@ -1798,8 +1836,8 @@ function updateSpawns() {
     for (let i = 0; i < 9 + G.hordes * 3; i++) { const s = spawnSpot(); if (s) spawnEnemy(pickW(L.mix), s.x, s.y, { emerge: s.emerge }); }
   }
   if (--G.spawnT > 0) return;
-  G.spawnT = lerp(L.rate[0], L.rate[1], prog) * rand(0.7, 1.3) / (diffOn() ? DF().spawn : 1) / (stg() ? stg().sp : 1) * (G.tutor ? 1.8 : 1) * (1 - (G.domLv || 0) * 0.12) * (G.blackout ? 0.9 : 1);
-  if (enemies.length >= 26) return;
+  G.spawnT = lerp(L.rate[0], L.rate[1], prog) * rand(0.7, 1.3) / (diffOn() ? DF().spawn : 1) / (stg() ? stg().sp : 1) * (G.tutor ? 1.8 : 1) * (1 - (G.domLv || 0) * 0.12) * (G.blackout ? 0.9 : 1) * (G.wRule === 'horde' || G.wRule === 'swarm' ? 0.5 : 1);
+  if (enemies.length >= 26 + (G.wRule === 'horde' || G.wRule === 'swarm' ? 14 : 0)) return;
   const n = Math.random() < 0.2 + prog * 0.35 ? 2 : 1;
   for (let k = 0; k < n; k++) { const s = spawnSpot(); if (s) spawnEnemy(pickW(L.mix), s.x, s.y, { emerge: s.emerge }); }
 }
@@ -1830,7 +1868,7 @@ function drawTags() {
     if (!g.got && G.time % 20 === 0) part({ x: g.x + rand(-40, 40), y: g.y, z: rand(4, 20), vz: 0.6, g: 0, life: 40, size: 2, color: '#aafff4', kind: 'spark' }); }
 }
 function checkTags() {
-  for (const g of G.tags || []) if (!g.got && Math.hypot(player.x - g.x, player.y - g.y) < 80) { g.got = true; Save.tags[g.k] = true; G.bloodRun += 25; const n = G.tags.filter(q => q.got).length; addText(`🎸 LEO TAG ${n}/3 · +25 🩸`, g.x, g.y - 40, '#30e0d0', 17, 90); SFX.pickup(); ringFx(g.x, g.y, '#30e0d0', 70); saveGame();
+  for (const g of G.tags || []) if (!g.got && Math.hypot(player.x - g.x, player.y - g.y) < 80) { g.got = true; Save.tags[g.k] = true; missionEvent('tag'); G.bloodRun += 25; const n = G.tags.filter(q => q.got).length; addText(`🎸 LEO TAG ${n}/3 · +25 🩸`, g.x, g.y - 40, '#30e0d0', 17, 90); SFX.pickup(); ringFx(g.x, g.y, '#30e0d0', 70); saveGame();
     if (G.tags.every(q => q.got) && !Save.tags['all_' + G.levelIdx]) { Save.tags['all_' + G.levelIdx] = true; G.bloodRun += 100; banner('ALL TAGS FOUND', '+100 🩸 · Leo was definitely here'); } }
 }
 function breakCrate(o) {
@@ -1989,8 +2027,8 @@ function updateCamera() {
 function checkProgress() {
   const L = G.L, p = player, P = L.plan;
   if (G.mode === 'raid') {
-    if (G.phase === 'raidBreak') { if (G.breakT % 60 === 0 && G.wave > 0) addText('NEXT WAVE IN ' + Math.ceil(G.breakT / 60), p.x, p.y - 90, '#ffcc33', 16, 40); if (--G.breakT <= 0) { G.wave++; G.phase = 'wave'; G.waveTotal = Math.round((9 + G.wave * 6 + Save.raids * 4) * TUNE.def.raidWave); G.waveSpawned = 0; banner(`WAVE ${G.wave} / 3`, G.wave === 3 ? 'The big one' : 'Here they come'); SFX.roar(); vibrate(40); } }
-    else if (G.phase === 'wave' && G.waveSpawned >= G.waveTotal && !enemies.some(z => !z.dead)) { G.slowmo = 50; G.focus = { x: player.x, y: player.y }; if (G.wave >= 3) raidWin(); else { G.phase = 'raidBreak'; G.breakT = 480; banner('WAVE CLEARED', 'Repair your walls'); SFX.heal(); } }
+    if (G.phase === 'raidBreak') { if (G.breakT % 60 === 0 && G.wave > 0) addText('NEXT WAVE IN ' + Math.ceil(G.breakT / 60), p.x, p.y - 90, '#ffcc33', 16, 40); if (--G.breakT <= 0) { G.wave++; G.phase = 'wave'; G.waveTotal = Math.round((9 + G.wave * 6 + Save.raids * 4) * TUNE.def.raidWave); G.waveSpawned = 0; banner(`WAVE ${G.wave} / ${raidWaves()}`, G.wave === raidWaves() ? 'The big one' : 'Here they come'); SFX.roar(); vibrate(40); } }
+    else if (G.phase === 'wave' && G.waveSpawned >= G.waveTotal && !enemies.some(z => !z.dead)) { G.slowmo = 50; G.focus = { x: player.x, y: player.y }; if (G.wave >= raidWaves()) raidWin(); else { G.phase = 'raidBreak'; G.breakT = 480; banner('WAVE CLEARED', 'Repair your walls'); SFX.heal(); } }
     if (G.core) $('bossFill').style.width = Math.max(0, G.core.hp / G.core.max * 100) + '%';
     return;
   }
@@ -2144,7 +2182,7 @@ function drawBuddy(b) {
 function drawBuddyTag() {
   const b = buddy; if (!b) return; const y = b.y - (b.down > 0 ? 40 : 66);
   ctx.textAlign = 'center'; ctx.font = '11px Bebas Neue, Impact, sans-serif'; ctx.strokeStyle = '#000'; ctx.lineWidth = 3; const label = b.down > 0 ? '🆘 ' + b.H.name.toUpperCase() : b.H.name.toUpperCase(); ctx.strokeText(label, b.x, y); ctx.fillStyle = b.down > 0 ? '#ff6666' : '#88ffaa'; ctx.fillText(label, b.x, y); ctx.textAlign = 'left';
-  if (b.down <= 0) { ctx.fillStyle = 'rgba(0,0,0,0.7)'; ctx.fillRect(b.x - 16, y + 3, 32, 4); ctx.fillStyle = '#55ff88'; ctx.fillRect(b.x - 16, y + 3, 32 * b.hp / b.max, 4); }
+  if (b.down <= 0) { ctx.fillStyle = 'rgba(0,0,0,0.7)'; ctx.fillRect(b.x - 16, y + 3, 32, 4); ctx.fillStyle = Cfg.cb ? '#3fa9ff' : '#55ff88'; ctx.fillRect(b.x - 16, y + 3, 32 * b.hp / b.max, 4); }
 }
 
 /* ---------- 7. BOSS: GENERAL IRONHIDE ---------- */
@@ -3384,7 +3422,7 @@ function drawPropSpr(o) {
     case 'tomb': return !!propImg(o.seed > 0.5 ? 'sarc' : ['tomb1', 'tomb2', 'tomb3'][Math.floor(o.seed * 6) % 3], cx, by + 4, o.seed > 0.5 ? o.w * 1.15 : 0, o.seed > 0.5 ? 0 : o.h + o.d + 26, fl);
     case 'brazier': return !!propImg('brazier', cx, by + 4, 0, (o.h + o.d) * 1.3, 1);
     case 'core': { const fl2 = o.flash > 0; if (fl2) o.flash--; const r = propImg('core', cx, by + 4, o.w * 1.6, 0, 1, { flash: fl2 }); if (!r) return false;
-      ctx.fillStyle = 'rgba(0,0,0,0.65)'; ctx.fillRect(cx - 30, by - r.h - 10, 60, 6); ctx.fillStyle = '#50ff78'; ctx.fillRect(cx - 29, by - r.h - 9, 58 * o.hp / o.max, 4); return true; }
+      ctx.fillStyle = 'rgba(0,0,0,0.65)'; ctx.fillRect(cx - 30, by - r.h - 10, 60, 6); ctx.fillStyle = Cfg.cb ? '#3fa9ff' : '#50ff78'; ctx.fillRect(cx - 29, by - r.h - 9, 58 * o.hp / o.max, 4); return true; }
     case 'turret': { const dir = Math.cos(o.ang) >= 0 ? 1 : -1, r = propImg(o.heavy ? 'mgnest' : 'sentry', o.heavy ? o.x + 16 : o.x + 12, by + 2, o.heavy ? 84 : 46, 0, dir); if (!r) return false;
       if (o.flash > 0) { ctx.fillStyle = 'rgba(255,220,90,0.9)'; circle((o.heavy ? o.x + 16 : o.x + 12) + dir * r.w * 0.48, by - r.h * (o.heavy ? 0.78 : 0.62), 5); } return true; }
     case 'speaker': { const f = o.life % 36 < 6 ? 1.06 : 1; return !!propImg('speaker', cx, by + 3, 0, (o.h + o.d) * 1.15 * f, 1); }
@@ -3610,7 +3648,7 @@ function drawAfterLight() {
   drawBuddyTag();
   if (player && player.repairing > 0) { ctx.font = 'bold 14px Barlow, sans-serif'; ctx.fillText('🔨', player.x + 10, player.y - 62 + Math.sin(G.time * 0.6) * 3); }
   // enemy hp bars
-  for (const z of enemies) if (z.hp < z.max && z.max > 3 && z.emerge <= 0) { ctx.fillStyle = 'rgba(0,0,0,0.7)'; ctx.fillRect(z.x - 14, z.y - 62, 28, 4); ctx.fillStyle = '#ff2222'; ctx.fillRect(z.x - 14, z.y - 62, 28 * Math.max(0, z.hp / z.max), 4); }
+  for (const z of enemies) if (z.hp < z.max && z.max > 3 && z.emerge <= 0) { ctx.fillStyle = 'rgba(0,0,0,0.7)'; ctx.fillRect(z.x - 14, z.y - 62, 28, 4); ctx.fillStyle = Cfg.cb ? '#ff9900' : '#ff2222'; ctx.fillRect(z.x - 14, z.y - 62, 28 * Math.max(0, z.hp / z.max), 4); }
 }
 function render() {
   ctx = mainCtx;
@@ -3769,6 +3807,9 @@ function openBase() {
 function refreshBaseTop() { $('baseBlood').textContent = Save.blood + (Save.dark ? ' · ☢️ ' + Save.dark : ''); $('baseRaids').textContent = Save.raids; }
 function closeRoom() { const was = roomOpen; roomOpen = null; $('roomPanel').classList.remove('wide', 'left'); $('roomPanel').classList.add('hidden'); $('baseHint').classList.remove('hidden');
   if (labRet && was === 'dig2' && G.state === 'base') { const r = labRet; labRet = null; pendingMode = 'campaign'; pendingLevel = r.level; pendingSub = r.sub; G.hero = r.hero; showOnly(null); startRun(r.hero, 'campaign', r.level); } }
+/* v41: Armory bubble - exact kills to the next weapon level (1 XP per kill in levels, Training 4 per kill / 12 per dummy) */
+function wNextTxt(k) { const I = wInfo(k); if (I.lv >= WMAX) return '⭐ Max level (' + WMAX + ')'; const left = Math.max(0, I.next - I.xp); return `Lv ${I.lv} → ${I.lv + 1}: kill ${left.toLocaleString()} more zombie${left === 1 ? '' : 's'} · Training is faster`; }
+function armBubble(c, txt) { document.querySelectorAll('.abub').forEach(b => b.remove()); const b = document.createElement('div'); b.className = 'abub'; b.textContent = txt; document.body.appendChild(b); const R = c.getBoundingClientRect(), W = b.offsetWidth; b.style.left = Math.max(6, Math.min(innerWidth - W - 6, R.left + R.width / 2 - W / 2)) + 'px'; b.style.top = Math.max(4, R.top - b.offsetHeight - 6) + 'px'; setTimeout(() => b.remove(), 2600); }
 function openRoom(id) {
   roomOpen = id; SFX.click(); $('baseHint').classList.add('hidden');
   const P = $('roomPanel'), T = $('roomTitle'), B = $('roomBody'); P.classList.remove('hidden'); P.classList.toggle('left', ['range', 'toilet', 'dig2'].includes(id)); B.innerHTML = ''; $('roomClose').style.display = '';
@@ -3782,8 +3823,8 @@ function openRoom(id) {
     } else {
       const today = new Date().toDateString(), can = Save.mealDay !== today && !Save.mealReady;
       const meal = MEALS[Math.floor(Date.now() / 86400000) % MEALS.length];
-      if (!can && !Save.mealReady && Save.adMealDay !== today) { const r2 = row(`<div><h3>Seconds?</h3><p>Watch a short ad and cook one more meal today.</p></div>`); const b2 = document.createElement('div'); b2.className = 'bb'; b2.appendChild(btn((Save.vip ? '⭐' : '📺') + ' COOK AGAIN', 'gold', () => showRewardedAd(() => { Save.adMealDay = today; Save.mealReady = true; G.cookT = 240; saveGame(); $('baseScreen').classList.remove('hidden'); showOnly(null); banner('WELL FED', 'Next run: +25% max health'); openRoom('kitchen'); }))); r2.appendChild(b2); }
-      const r = row(`<div><h3>${Save.rocco ? '👨‍🍳 Rocco cooks: ' : 'Today: '}${meal}</h3><p>${Save.mealReady ? '✅ Meal eaten! Your next run starts with +25% max health.' : can ? 'Cook a hot meal: your next run starts with +25% max health.' : 'Already cooked today. Come back tomorrow, chef.'}</p></div>`, 'special'); const bb = document.createElement('div'); bb.className = 'bb'; bb.appendChild(btn('🍲 COOK', 'gold', () => { Save.mealDay = today; Save.mealReady = true; Save.meals = (Save.meals || 0) + 1; G.cookT = 240; saveGame(); sfx('sizzle', () => A.noise(1.4, 0.12, 'highpass', 2500)); banner('WELL FED', 'Next run: +25% max health'); openRoom('kitchen'); }, !can)); r.appendChild(bb);
+      if (!can && !Save.mealReady && Save.adMealDay !== today) { const r2 = row(`<div><h3>Seconds?</h3><p>Watch a short ad and cook one more meal today.</p></div>`); const b2 = document.createElement('div'); b2.className = 'bb'; b2.appendChild(btn((Save.vip ? '⭐' : '📺') + ' COOK AGAIN', 'gold', () => showRewardedAd(() => { Save.adMealDay = today; Save.mealReady = true; G.cookT = 240; foodAdd(FOOD.meal); saveGame(); $('baseScreen').classList.remove('hidden'); showOnly(null); banner('WELL FED', 'Next run: +25% max health'); openRoom('kitchen'); }))); r2.appendChild(b2); }
+      const r = row(`<div><h3>${Save.rocco ? '👨‍🍳 Rocco cooks: ' : 'Today: '}${meal}</h3><p>${Save.mealReady ? '✅ Meal eaten! Your next run starts with +25% max health.' : can ? 'Cook a hot meal: +' + FOOD.meal + ' 🍖 food, and your next run starts with +25% max health.' : 'Already cooked today. Come back tomorrow, chef.'}</p></div>`, 'special'); const bb = document.createElement('div'); bb.className = 'bb'; bb.appendChild(btn('🍲 COOK · +' + FOOD.meal + ' 🍖', 'gold', () => { missionEvent('cook'); Save.mealDay = today; Save.mealReady = true; Save.meals = (Save.meals || 0) + 1; G.cookT = 240; foodAdd(FOOD.meal); saveGame(); sfx('sizzle', () => A.noise(1.4, 0.12, 'highpass', 2500)); banner('WELL FED', 'Next run: +25% max health'); openRoom('kitchen'); }, !can)); r.appendChild(bb);
     }
   } else if (id === 'dig2') {
     T.textContent = '🧪 LAB';
@@ -3795,15 +3836,16 @@ function openRoom(id) {
   } else if (id === 'armory') {
     T.textContent = '🗡️ ARMORY'; P.classList.add('wide'); $('roomClose').style.display = 'none';
     const g = document.createElement('div'); g.className = 'agrid'; B.appendChild(g);
-    const card = (key, icon, name, desc, how, lvl, act) => { const c = document.createElement('div'); c.className = 'acard' + (act && act.eq ? ' eq' : '') + (lvl === null ? ' lock' : ''); const src = wIconSrc(key);
+    const card = (key, icon, name, desc, how, lvl, act, xk) => { const c = document.createElement('div'); c.className = 'acard' + (act && act.eq ? ' eq' : '') + (lvl === null ? ' lock' : ''); const src = wIconSrc(key);
+      c.onclick = e => { if (e.target.closest('button')) return; SFX.click(); armBubble(c, lvl === null ? '🔒 ' + how : wNextTxt(xk)); };
       c.innerHTML = `<div class="ah">${src ? `<img src="${src}" alt="">` : `<span class="ai">${icon}</span>`}<div><h4>${name}</h4>${lvl !== null ? `<span class="lv">Lv ${lvl}/${WMAX}</span>` : '<span class="lv">🔒</span>'}</div></div><div>${desc}</div><div class="how">${how}</div>`;
       if (act) c.appendChild(btn(act.t, act.cls || 'sec', act.fn, act.dis)); g.appendChild(c); };
-    for (const h of ['maya', 'ben', 'aris', 'chloe', 'leo']) { const H = HEROES[h]; if (!H) continue; const [nm, ds] = H.atk.split(' · '), own = h !== 'leo' || !!Save.leo; card(SIG_ICON[h], '⚔', nm, ds || '', h === 'leo' ? 'Leo\'s own · rescue Leo' : `${H.name}'s own weapon`, own ? wLevel(h) : null, null); }
+    for (const h of ['maya', 'ben', 'aris', 'chloe', 'leo']) { const H = HEROES[h]; if (!H) continue; const [nm, ds] = H.atk.split(' · '), own = h !== 'leo' || !!Save.leo; card(SIG_ICON[h], '⚔', nm, ds || '', h === 'leo' ? 'Leo\'s own · rescue Leo' : `${H.name}'s own weapon`, own ? wLevel(h) : null, null, h); }
     for (const w of WPN_ORDER) { const W = WEAPONS[w], owned = Save.weapons[w], unlocked = Save.raids >= W.raid;
       card(w, W.icon, W.name, W.desc, owned ? '2nd weapon for any hero' : unlocked ? `Buy for ${W.cost} 🩸` : `Survive raid ${W.raid}, then ${W.cost} 🩸`, owned ? wLevel(w) : null,
         !unlocked ? null : !owned ? { t: W.cost + ' 🩸', cls: 'gold', dis: Save.blood < W.cost, fn: () => { if (Save.blood >= W.cost) { Save.blood -= W.cost; Save.weapons[w] = true; Save.equip = w; saveGame(); SFX.heal(); refreshBaseTop(); openRoom('armory'); } } }
-        : { t: Save.equip === w ? '✓ EQUIPPED' : 'EQUIP', cls: Save.equip === w ? 'green' : 'sec', eq: Save.equip === w, fn: () => { Save.equip = Save.equip === w ? null : w; saveGame(); openRoom('armory'); } }); }
-    const n = document.createElement('p'); n.className = 'muted'; n.style.cssText = 'margin-top:2px;font-size:.6rem;line-height:1'; n.textContent = 'Weapons level up by killing.'; B.appendChild(n);
+        : { t: Save.equip === w ? '✓ EQUIPPED' : 'EQUIP', cls: Save.equip === w ? 'green' : 'sec', eq: Save.equip === w, fn: () => { Save.equip = Save.equip === w ? null : w; saveGame(); openRoom('armory'); } }, w); }
+    const n = document.createElement('p'); n.className = 'muted'; n.style.cssText = 'margin-top:2px;font-size:.6rem;line-height:1'; n.textContent = 'Weapons level up by killing · tap one to see kills left.'; B.appendChild(n);
   } else if (id === 'lounge') {
     T.textContent = '📺 LOUNGE';
     const fresh = Save.movieDay !== new Date().toDateString();
@@ -3828,7 +3870,8 @@ function openRoom(id) {
   } else if (id === 'defense') {
     T.textContent = '🛡 DEFENSES';
     const next = WPN_ORDER.find(w => WEAPONS[w].raid === Save.raids + 1);
-    const sg = (Save.raids + 1) % 5 === 0; const r0 = row(`<div><h3>${sg ? '⚔️ SIEGE ' : ''}Raid ${Save.raids + 1}</h3><p>Three waves attack the Hideout. Protect the generator.${next ? ` Survive to unlock the <b style="color:#ffcc33">${WEAPONS[next].name}</b>.` : ` Reward: 🩸 ${(80 + (Save.raids + 1) * 40) * (sg ? 2 : 1)}${sg ? ' (double · brutes attack!)' : ''}.`}${Save.raids >= 3 && Save.raids < 6 ? ' New zombies join from raid 5.' : ''}</p></div>`, 'special'); const b0 = document.createElement('div'); b0.className = 'bb'; b0.appendChild(btn('🛡 DEFEND', 'gold', () => { pendingMode = 'raid'; $('baseScreen').classList.add('hidden'); openHeroes(); })); r0.appendChild(b0);
+    { const dr = document.createElement('div'); dr.className = 'defDiff'; dr.innerHTML = '<span>Raid difficulty:</span>' + ['EASY', 'MEDIUM', 'HARD'].map((n, i) => `<button class="${(Save.defDiff || 0) === i ? 'on' : ''}" data-d="${i}">${n}${i ? ' · 🩸×' + [1, 1.5, 2][i] : ''}</button>`).join(''); dr.querySelectorAll('button').forEach(b => b.onclick = () => { SFX.click(); Save.defDiff = +b.dataset.d; saveGame(); openRoom('defense'); }); B.appendChild(dr); }
+    const sg = (Save.raids + 1) % 5 === 0; const r0 = row(`<div><h3>${sg ? '⚔️ SIEGE ' : ''}Raid ${Save.raids + 1}</h3><p>${['Three', 'Four', 'Five', 'Six'][raidWaves() - 3]} waves attack the Hideout. Protect the generator.${next ? ` Survive to unlock the <b style="color:#ffcc33">${WEAPONS[next].name}</b>.` : ` Reward: 🩸 ${Math.round((80 + (Save.raids + 1) * 40) * (sg ? 2 : 1) * [1, 1.5, 2][Save.defDiff || 0])}${sg ? ' (double · brutes attack!)' : ''}.`}${Save.raids >= 3 && Save.raids < 6 ? ' New zombies join from raid 5.' : ''}</p></div>`, 'special'); const b0 = document.createElement('div'); b0.className = 'bb'; b0.appendChild(btn('🛡 DEFEND', 'gold', () => { pendingMode = 'raid'; $('baseScreen').classList.add('hidden'); openHeroes(); })); r0.appendChild(b0);
     for (const u of BASE_UP) {
       const lv = Save.base[u.id], maxed = lv >= u.max, cost = baseCost(u), r = row(`<div><h3>${u.icon} ${u.name} <span style="color:#888;font-size:.75rem">Lv ${lv}/${u.max}</span></h3><p>${u.desc}</p><div class="pips">${Array.from({ length: u.max }, (_, i) => `<i class="${i < lv ? 'on' : ''}"></i>`).join('')}</div></div>`);
       const bb = document.createElement('div'); bb.className = 'bb'; bb.appendChild(btn(maxed ? 'MAX' : cost + ' 🩸', '', () => { if (Save.blood >= cost && !maxed) { Save.blood -= cost; Save.base[u.id]++; saveGame(); SFX.heal(); refreshBaseTop(); openRoom('defense'); } }, maxed || Save.blood < cost)); r.appendChild(bb);
@@ -4332,7 +4375,7 @@ function updateHUD() {
   $('bloodTxt').textContent = Math.floor(G.bloodRun); $('killTxt').textContent = G.kills;
   $('lvlName').textContent = G.L.name.toUpperCase();
   const P = G.L.plan, ph = G.phase; let obj = '', prog = p.x / G.L.W;
-  if (G.mode === 'raid') { obj = ph === 'wave' ? `🛡 WAVE ${G.wave}/3 · ${G.waveTotal - G.waveSpawned + enemies.filter(z => !z.dead).length} LEFT` : G.wave === 0 ? `🛡 GET READY · ${Math.ceil(G.breakT / 60)}` : `🔨 REPAIR · NEXT WAVE ${Math.ceil(G.breakT / 60)}`; prog = ph === 'wave' ? G.waveSpawned / Math.max(1, G.waveTotal) : 1 - G.breakT / 480; }
+  if (G.mode === 'raid') { obj = ph === 'wave' ? `🛡 WAVE ${G.wave}/${raidWaves()} · ${G.waveTotal - G.waveSpawned + enemies.filter(z => !z.dead).length} LEFT` : G.wave === 0 ? `🛡 GET READY · ${Math.ceil(G.breakT / 60)}` : `🔨 REPAIR · NEXT WAVE ${Math.ceil(G.breakT / 60)}`; prog = ph === 'wave' ? G.waveSpawned / Math.max(1, G.waveTotal) : 1 - G.breakT / 480; }
   else if (G.mode === 'training') { obj = `🎯 SCORE ${G.score} · ${Math.ceil(G.trainT / 60)}s`; prog = 1 - G.trainT / 2700; }
   else if (ph === 'street') obj = P.roadblock ? '▶ PUSH THROUGH ' + ({ streets: 'DOWNTOWN', metro: 'THE TUNNELS', lab: 'THE LAB', crypt: 'THE CRYPT' }[G.L.theme] || 'DOWNTOWN') : '▶ REACH THE PLAZA';
   else if (ph === 'lockdown') { obj = `🚧 GATE ${G.gate + 1}/${G.gates.length} · KILL ${Math.min(G.lockKills, G.lockNeed)}/${G.lockNeed}`; prog = G.lockKills / G.lockNeed; }
@@ -4498,14 +4541,15 @@ function openSurvivors(id) {
     <div class="sgrid"><div>❤ HEALTH<b>${hp}</b></div><div>👟 SPEED<b>${(H.speed * heroStat(survSel, 'spd')).toFixed(1)}</b></div><div>🛡 ARMOR<b>${Math.round(H.armor * 100)}%</b></div><div>⚔ ATK/SEC<b>${(60 / H.atkCd).toFixed(1)}</b></div>
     <div>🔪 DAMAGE<b>+${dmg}%</b></div><div>⭐ LEVEL<b>${heroLv(survSel)}/${TUNE.hero.maxLv}</b></div><div>☠ KILLS<b>${Save.st.heroK[survSel] || 0}</b></div><div>⚡ CHARGE<b>+${Math.round((heroStat(survSel, 'spc') * (gq(2) ? 1.15 : 1) - 1) * 100)}%</b></div></div>
     <div class="skl a"><b>⚔ ${H.atk}</b> · ${HERO_TRAIT[survSel]} · <span style="color:#7cf">${lvTxt(wInfo(survSel), WMAX)}</span></div>
-    <div class="skl"><b>⚡ ${H.spcName}</b> · ${H.spc} · <span style="color:#7cf">${lvTxt(spInfo(survSel), TUNE.special.maxLv)}</span></div>
-    <div class="skl u"><b>☠ ${H.ultName}</b> · ${H.ult} (recharges in ${Math.round(DIFFS[Save.diff || 0].ult * (gq(3) ? 1 - TUNE.ult.gearCut : 1))}s)</div></div>
+    <div class="skl"><b>⚡ ${H.spcName}</b> · ${H.spc} · <span style="color:#7cf">${lvTxt(spInfo(survSel), TUNE.special.maxLv)}</span> ${btrRow('spB', survSel)}</div>
+    <div class="skl u"><b>☠ ${H.ultName}</b> · ${H.ult} (recharges in ${Math.round(DIFFS[Save.diff || 0].ult * (gq(3) ? 1 - TUNE.ult.gearCut : 1) * (1 - btrLv('ulB', survSel) * BTR.ult))}s) ${btrRow('ulB', survSel)}</div></div>
     <div class="svR"><div class="svH">🎒 GEAR</div><div class="gear2">${GEAR[survSel].map((g, i) => { const own = (Save.gear || {})[survSel + '_' + i]; return `<div class="${own ? 'on' : ''}" data-g="${i}"><span>${own ? g[0] : '🔒'}</span><i>${['+10% DMG', '+10% HP', '+15% ⚡', 'ULT -12%'][i]}</i></div>`; }).join('')}</div><div class="gnote" id="gNote">${(() => { const o = [0, 1, 2, 3].filter(i => (Save.gear || {})[survSel + '_' + i]); return o.length ? o.map(i => GEAR[survSel][i][1]).join(' · ') : 'Clear levels with ' + H.name + ' to earn gear'; })()}</div>
     ${(() => { const B = bpOf(survSel), lv = heroLv(survSel), pc = v => (v >= 0 ? '+' : '') + Math.round(v * 100) + '%'; return `<div class="svH">👑 BOSS POINTS <span style="color:${B.pts ? '#ffcc33' : '#888'}">${B.pts} to spend</span></div><div class="bpT">${[['hp', '❤ Health'], ['dmg', '🔪 Damage'], ['spd', '👟 Speed'], ['spc', '⚡ Special charge']].map(([k, n]) => `<div><span>${n}</span><i>Lv ${pc((lv - 1) * TUNE.hero.per[k])}</i><i>👑 ${B[k]} · ${pc(B[k] * TUNE.hero.pt[k])}</i><b>${pc(heroStat(survSel, k) - 1)}</b><button class="bpPlus" data-k="${k}" ${B.pts ? '' : 'disabled'}>+</button></div>`).join('')}</div><div class="gnote bpN">Boss killed with ${H.name} = +1 point · ❤ +${Math.round(TUNE.hero.pt.hp * 100)}% · 🔪 +${Math.round(TUNE.hero.pt.dmg * 100)}% · 👟 +${Math.round(TUNE.hero.pt.spd * 100)}% · ⚡ +${Math.round(TUNE.hero.pt.spc * 100)}%</div>`; })()}
     <button class="btn ${read ? 'sec' : 'gold'}" id="storyBtn">📜 ${read ? 'STORY' : 'STORY · +20 🩸'}</button></div>`;
   $('storyBtn').onclick = () => { SFX.click(); openStory(survSel); };
   $('survInfo').querySelectorAll('.bpPlus').forEach(b => b.onclick = () => { const B = bpOf(survSel); if (!B.pts) return; B.pts--; B[b.dataset.k]++; SFX.heal(); saveGame(); openSurvivors(survSel); });
   $('survInfo').querySelectorAll('.svSub button').forEach(b => b.onclick = () => { SFX.click(); survSub = +b.dataset.s; openSurvivors(survSel); });
+  $('survInfo').querySelectorAll('[data-btr]').forEach(b => b.onclick = e => { e.stopPropagation(); btrBuy(b.dataset.btr, survSel); openSurvivors(survSel); });
   $('survCv').onclick = () => { heroAct['s_' + survSel] = performance.now(); heroMoveSfx(survSel); };
   showOnly('survScreen');
 }
@@ -4758,28 +4802,61 @@ const W_RULES = [
   ['glass', '🗡️', 'Glass Cannon', 'You deal double damage. You take double damage.'], ['horde', '🧟', 'Twice the Horde', 'Twice as many zombies.'], ['swarm', '🐜', 'The Swarm', 'Tiny, weak, fast zombies. Thousands of them.']
 ];
 const wRule = () => W_RULES[WEEK() % W_RULES.length];
+/* v42: DAILY CHALLENGE - one cleared stage per day with a twist (W_RULES), free (no food), reward once a day */
+const DC_REW = { blood: 300, food: 2 };
+function dcToday() { const d = DAY(), open = LEVELS.map((L, i) => i).filter(i => LEVELS[i].ready && chapterOpen(i) && (Save.subs[i] || 0) > 0);
+  const li = open.length ? open[d % open.length] : 0, done = Math.min(LAST, Math.max(1, Save.subs[li] || 0)), sub = Math.min(LAST - 1, Math.floor(hash(d * 31 + 5) * done)), rule = W_RULES[(d * 5 + 2) % W_RULES.length];
+  return { li, sub, rule, done: Save.dcDay === d }; }
+/* v42: ZOMBIE OF THE DAY - one zombie type drops double blood today */
+const ZOD_TYPES = ['shambler', 'sprinter', 'puker', 'armored', 'bloater', 'scrambler', 'spiker', 'ghoul', 'riot', 'brute'];
+const zodToday = () => ZOD_TYPES[(DAY() * 7 + 3) % ZOD_TYPES.length];
+const zodName = t => ({ shambler: 'Shambler', sprinter: 'Sprinter', puker: 'Puker', armored: 'Armored', bloater: 'Bloater', scrambler: 'Scrambler', spiker: 'Spiker', ghoul: 'Ghoul', riot: 'Riot', brute: 'Brute' })[t] || t;
+/* v41: 10 daily missions. 'hero' (today's hero) and 'raid' are always in; 8 more from the pool. Some give food. Bonus for all 10. */
+const SUB_NM = k => STAGES.filter(S => S.k === k).map(S => S.icon + ' ' + S.name).join(' / ');
 const MTPL = [
   ['kill', d => { const n = [120, 200, 300][d % 3]; return { desc: `Kill ${n} zombies`, goal: n }; }],
   ['ktype', d => { const t = ['sprinter', 'shambler', 'puker', 'armored'][d % 4], n = { sprinter: 40, shambler: 80, puker: 15, armored: 15 }[t]; return { desc: `Kill ${n} ${t}s`, goal: n, t }; }],
   ['elite', d => ({ desc: `Kill ${5 + d % 6} elite zombies`, goal: 5 + d % 6 })],
-  ['clear', d => { const h = HERO_ORDER[d % HERO_ORDER.length]; return { desc: `Clear any level with ${HEROES[h].name}`, goal: 1, h }; }],
-  ['sub', d => { const k = d % 4; return { desc: `Clear a ${SUBS[k].icon} ${SUBS[k].name} level`, goal: 1, k }; }],
+  ['sub', d => { const k = d % 4; return { desc: `Clear a ${SUB_NM(k)} stage`, goal: 1, k, go: 'levels' }; }],
   ['blood', d => ({ desc: `Collect ${[300, 450, 600][d % 3]} blood`, goal: [300, 450, 600][d % 3] })],
-  ['rescue', () => ({ desc: 'Rescue a survivor from a rooftop', goal: 1 })],
-  ['boss', () => ({ desc: 'Defeat any boss', goal: 1 })],
-  ['cards', () => ({ desc: 'Pick 6 upgrade cards', goal: 6 })]
+  ['rescue', () => ({ desc: 'Rescue a survivor (📦 Supply stages)', goal: 1, go: 'levels' })],
+  ['boss', () => ({ desc: 'Defeat any boss', goal: 1, go: 'levels' })],
+  ['cards', () => ({ desc: 'Pick 6 upgrade cards', goal: 6 })],
+  ['noult', () => ({ desc: 'Clear a level without the ULTIMATE', goal: 1, food: 2, go: 'levels' })],
+  ['noroll', () => ({ desc: 'Clear a level without rolling', goal: 1, food: 2, go: 'levels' })],
+  ['nospc', () => ({ desc: 'Clear a level without the SPECIAL', goal: 1, food: 1, go: 'levels' })],
+  ['combo', () => ({ desc: 'Reach a x20 combo', goal: 1 })],
+  ['frost', () => ({ desc: 'Throw 3 frost bombs ❄', goal: 3 })],
+  ['train', () => ({ desc: 'Finish a Training session', goal: 1, go: 'train' })],
+  ['cook', () => ({ desc: 'Cook a meal in the kitchen', goal: 1, go: 'cook', need: () => !!Save.kitchen })],
+  ['tag', () => ({ desc: 'Find a hidden 🎸 Leo tag', goal: 1, need: () => Object.keys(Save.tags || {}).filter(k => !k.startsWith('all')).length < LEVELS.length * 3 })]
 ];
+const M_FIXED = {
+  hero: d => { const hs = [...HERO_ORDER, ...(Save.leo ? ['leo'] : [])], h = hs[d % hs.length]; return { type: 'clear', desc: `Today's hero: clear a level with ${HEROES[h].name}`, goal: 1, h, food: 1, go: 'hero' }; },
+  raid: () => ({ type: 'raid', desc: 'Survive a defence raid in the Hideout', goal: 1, food: 2, go: 'raid' })
+};
+const DM_N = 10, DM_ALL = { blood: 500, food: 3 };
 function dailyMissions() {
-  const d = DAY(); if (Save.dm && Save.dm.day === d) return Save.dm.list;
-  const used = new Set(), list = []; let k = 0; while (list.length < 3 && k < 40) { const idx = Math.floor(hash(d * 13 + k * 7) * MTPL.length); k++; if (used.has(idx)) continue; used.add(idx); const T = MTPL[idx], m = T[1](Math.floor(hash(d + k) * 1000)); list.push(Object.assign({ type: T[0], prog: 0, rew: 120 + list.length * 40, claimed: false }, m)); }
-  Save.dm = { day: d, list }; saveGame(); return list;
+  const d = DAY(); if (Save.dm && Save.dm.day === d && Save.dm.v === 2) return Save.dm.list;
+  const list = [Object.assign({ prog: 0, claimed: false }, M_FIXED.hero(d)), Object.assign({ prog: 0, claimed: false }, M_FIXED.raid(d))];
+  const used = new Set(); let k = 0;
+  while (list.length < DM_N && k < 200) { const idx = Math.floor(hash(d * 13 + k * 7) * MTPL.length); k++; if (used.has(idx)) continue; used.add(idx); const T = MTPL[idx], m = T[1](Math.floor(hash(d + k) * 1000)); if (m.need && !m.need()) continue; delete m.need; list.push(Object.assign({ type: T[0], prog: 0, claimed: false }, m)); }
+  list.forEach((m, i) => m.rew = 40 + i * 8);
+  Save.dm = { day: d, v: 2, list, all: false }; saveGame(); return list;
+}
+function missionGo(m) {
+  if (m.go === 'raid') { openBase(); setTimeout(() => { try { $('defBtn').click(); } catch (e) { } }, 250); return; }
+  if (m.go === 'train') { openBase(); setTimeout(() => { try { openRoom('range'); } catch (e) { } }, 250); return; }
+  if (m.go === 'cook') { openBase(); setTimeout(() => { try { openRoom('kitchen'); } catch (e) { } }, 250); return; }
+  if (m.go === 'hero') { Save.lastHero = m.h; G.hero = m.h; saveGame(); }
+  G.lvTab = 0; openLevels();
 }
 function missionEvent(type, data = {}) {
   if (!Save.dm || Save.dm.day !== DAY()) dailyMissions(); let changed = false;
   for (const m of Save.dm.list) { if (m.claimed || m.prog >= m.goal) continue; let inc = 0;
     if (type === 'kill') { if (m.type === 'kill') inc = 1; if (m.type === 'ktype' && data.t === m.t) inc = 1; if (m.type === 'elite' && data.elite) inc = 1; }
-    if (type === 'clear') { if (m.type === 'clear' && data.h === m.h) inc = 1; if (m.type === 'sub' && data.sub === m.k) inc = 1; }
-    if (type === m.type && ['blood', 'rescue', 'boss', 'cards'].includes(type)) inc = data.n || 1;
+    if (type === 'clear') { if (m.type === 'clear' && data.h === m.h) inc = 1; if (m.type === 'sub' && data.sub === m.k) inc = 1; if (m.type === 'noult' && !data.ult) inc = 1; if (m.type === 'noroll' && !data.roll) inc = 1; if (m.type === 'nospc' && !data.spc) inc = 1; }
+    if (type === m.type && ['blood', 'rescue', 'boss', 'cards', 'combo', 'frost', 'train', 'cook', 'tag', 'raid'].includes(type)) inc = data.n || 1;
     if (inc) { m.prog = Math.min(m.goal, m.prog + inc); changed = true; if (m.prog >= m.goal && player) addText('🎯 MISSION DONE!', player.x, player.y - 96, '#ffcc33', 16, 90); } }
   if (type === 'kill' || type === 'clear') { Save.sxp = (Save.sxp || 0) + (type === 'kill' ? 1 : 50); }
   return changed;
@@ -4795,10 +4872,13 @@ function openMissions(tab) {
   $('msTabs').querySelectorAll('button').forEach(b => b.onclick = () => { SFX.click(); openMissions(+b.dataset.i); });
   const B = $('msBody'); const online = navigator.onLine;
   if (msTab === 0) {
-    B.innerHTML = Save.dm.list.map((m, i) => { const done = m.prog >= m.goal; return `<div class="msr${m.claimed ? ' cl' : done ? ' ready' : ''}" data-i="${i}"><div><b>${m.desc}</b><i><u style="width:${m.prog / m.goal * 100}%"></u></i><small>${m.prog}/${m.goal}</small></div><span>${m.claimed ? '✓' : done ? 'CLAIM' : ''} 🩸${m.rew * (online ? 2 : 1)}</span></div>`; }).join('') +
+    const nDone = Save.dm.list.filter(m => m.claimed).length;
+    B.innerHTML = `<div class="msr${Save.dm.all ? ' cl' : nDone >= DM_N ? ' ready' : ''}" id="msBonus"><div><b>🏆 All ${DM_N} missions today</b><i><u style="width:${nDone / DM_N * 100}%"></u></i><small>${nDone}/${DM_N} claimed</small></div><span>${Save.dm.all ? '✓' : nDone >= DM_N ? 'CLAIM' : ''} 🩸${DM_ALL.blood} · 🍖${DM_ALL.food}</span></div>` + Save.dm.list.map((m, i) => { const done = m.prog >= m.goal; return `<div class="msr${m.claimed ? ' cl' : done ? ' ready' : ''}" data-i="${i}"><div><b>${m.desc}</b><i><u style="width:${m.prog / m.goal * 100}%"></u></i><small>${m.prog}/${m.goal}</small></div>${!done && !m.claimed && m.go ? `<button class="btn sec msGo" data-go="${i}">GO ▶</button>` : ''}<span>${m.claimed ? '✓' : done ? 'CLAIM' : ''} 🩸${m.rew * (online ? 2 : 1)}${m.food ? ' · 🍖' + m.food : ''}</span></div>`; }).join('') +
       `<div class="msr ${online && Save.onDay !== DAY() ? 'ready on2' : 'cl'}" id="onCrate"><div><b>📶 Online supply crate</b><small>${online ? 'You\'re online: daily crate + double mission rewards!' : 'Go online for a free daily crate and double mission rewards.'}</small></div><span>${Save.onDay === DAY() ? '✓' : online ? 'OPEN' : 'OFFLINE'} 🩸250</span></div>`;
-    { const rd = Save.dm.list.filter(m => !m.claimed && m.prog >= m.goal), cr = online && Save.onDay !== DAY(); if (rd.length + (cr ? 1 : 0) > 1) { const tot = rd.reduce((a, m) => a + m.rew * (online ? 2 : 1), 0) + (cr ? 250 : 0); B.insertAdjacentHTML('afterbegin', `<button class="btn gold" id="msAll" style="width:100%;margin-bottom:6px;font-size:.9rem">🎁 COLLECT ALL · +${tot} 🩸</button>`); $('msAll').onclick = () => { rd.forEach(m => { m.claimed = true; Save.sxp = (Save.sxp || 0) + 100; addHeroXP(Save.lastHero || 'maya', TUNE.hero.xp.mission); }); if (cr) { Save.onDay = DAY(); Save.sxp = (Save.sxp || 0) + 50; } Save.blood += tot; saveGame(); refreshMenu(); SFX.heal(); banner('ALL COLLECTED', `+${tot} 🩸`); openMissions(); }; } }
-    B.querySelectorAll('.msr.ready[data-i]').forEach(el => el.onclick = () => { const m = Save.dm.list[+el.dataset.i]; m.claimed = true; addHeroXP(Save.lastHero || 'maya', TUNE.hero.xp.mission); const r = m.rew * (navigator.onLine ? 2 : 1); Save.blood += r; Save.sxp = (Save.sxp || 0) + 100; saveGame(); refreshMenu(); SFX.heal(); banner('MISSION COMPLETE', `+${r} 🩸 · +100 season XP`); openMissions(); });
+    { const rd = Save.dm.list.filter(m => !m.claimed && m.prog >= m.goal), cr = online && Save.onDay !== DAY(); if (rd.length + (cr ? 1 : 0) > 1) { const tot = rd.reduce((a, m) => a + m.rew * (online ? 2 : 1), 0) + (cr ? 250 : 0); B.insertAdjacentHTML('afterbegin', `<button class="btn gold" id="msAll" style="width:100%;margin-bottom:6px;font-size:.9rem">🎁 COLLECT ALL · +${tot} 🩸</button>`); $('msAll').onclick = () => { let fd = 0; rd.forEach(m => { m.claimed = true; fd += m.food || 0; Save.sxp = (Save.sxp || 0) + 100; addHeroXP(Save.lastHero || 'maya', TUNE.hero.xp.mission); }); if (fd) foodAdd(fd); if (cr) { Save.onDay = DAY(); Save.sxp = (Save.sxp || 0) + 50; } Save.blood += tot; saveGame(); refreshMenu(); SFX.heal(); banner('ALL COLLECTED', `+${tot} 🩸`); openMissions(); }; } }
+    B.querySelectorAll('.msr.ready[data-i]').forEach(el => el.onclick = () => { const m = Save.dm.list[+el.dataset.i]; m.claimed = true; addHeroXP(Save.lastHero || 'maya', TUNE.hero.xp.mission); const r = m.rew * (navigator.onLine ? 2 : 1); Save.blood += r; if (m.food) foodAdd(m.food); Save.sxp = (Save.sxp || 0) + 100; saveGame(); refreshMenu(); SFX.heal(); banner('MISSION COMPLETE', `+${r} 🩸${m.food ? ' · +' + m.food + ' 🍖' : ''} · +100 season XP`); openMissions(); });
+    const mb = $('msBonus'); if (!Save.dm.all && Save.dm.list.every(m => m.claimed)) mb.onclick = () => { Save.dm.all = true; Save.blood += DM_ALL.blood; foodAdd(DM_ALL.food); saveGame(); refreshMenu(); SFX.heal(); banner('🏆 ALL MISSIONS DONE', `+${DM_ALL.blood} 🩸 · +${DM_ALL.food} 🍖`); openMissions(); };
+    B.querySelectorAll('.msGo').forEach(b => b.onclick = e => { e.stopPropagation(); SFX.click(); missionGo(Save.dm.list[+b.dataset.go]); });
     const oc = $('onCrate'); if (online && Save.onDay !== DAY()) oc.onclick = () => { Save.onDay = DAY(); Save.blood += 250; Save.sxp = (Save.sxp || 0) + 50; saveGame(); refreshMenu(); SFX.heal(); banner('📶 ONLINE CRATE', '+250 🩸'); openMissions(); };
   } else if (msTab === 1) {
     const R2 = wRule(), done = Save.weeklyDone === WEEK(), left = 7 - ((DAY() + 3) % 7);
@@ -4813,7 +4893,7 @@ function openMissions(tab) {
   }
   showOnly('msScreen');
 }
-const missionsReady = () => { try { dailyMissions(); return Save.dm.list.filter(m => !m.claimed && m.prog >= m.goal).length + (navigator.onLine && Save.onDay !== DAY() ? 1 : 0); } catch (e) { return 0; } };
+const missionsReady = () => { try { dailyMissions(); return Save.dm.list.filter(m => !m.claimed && m.prog >= m.goal).length + (!Save.dm.all && Save.dm.list.every(m => m.claimed) ? 1 : 0) + (navigator.onLine && Save.onDay !== DAY() ? 1 : 0); } catch (e) { return 0; } };
 const SIL = { skin: '#0a0608', shirt: '#0a0608', pants: '#0a0608', boots: '#0a0608', hair: '#0a0608', hairStyle: 'messy' };
 function cSky(c, a, b) { const g = c.createLinearGradient(0, 0, 0, 260); g.addColorStop(0, a); g.addColorStop(1, b); c.fillStyle = g; c.fillRect(0, 0, 400, 260); }
 function cSkyline(c, col, seed, y = 200) { c.fillStyle = col; for (let i = 0; i < 12; i++) { const w = 26 + hash(i + seed) * 40, h = 50 + hash(i * 3 + seed) * 110, x = i * 36 - 10; c.fillRect(x, y - h, w, h + 60); } }
@@ -4931,20 +5011,27 @@ function drawDiffRow() {
 }
 function openSubs(li) {
   const L = LEVELS[li], done = Save.subs[li] || 0; $('subTitle').textContent = (li + 1) + '. ' + L.name; $('subSub').textContent = DIFFS[Save.diff || 0].name + ' · ' + L.sub;
-  $('subRow').innerHTML = STAGES.map((S, k) => { const open = k <= done || Cfg.test, st = (Save.stars[li + '_' + k] || []).filter(Boolean).length; return `<div class="subc${open ? '' : ' locked'}${S.k === 4 ? ' boss' : ''}${S.k === 1 ? ' dark' : ''}" data-k="${k}"><small>${li + 1}-${k + 1}</small><span>${open ? S.icon : '🔒'}</span><b>${S.name}</b><p>${S.k === 4 ? 'Boss: ' + L.bossName.replace('THE ', '') : S.desc}</p><i>${open ? '★'.repeat(st) + '☆'.repeat(3 - st) : 'Clear ' + (li + 1) + '-' + k}</i></div>`; }).join('');
+  $('subRow').innerHTML = STAGES.map((S, k) => { const open = k <= done || Cfg.test, st = (Save.stars[li + '_' + k] || []).filter(Boolean).length; return `<div class="subc${open ? '' : ' locked'}${S.k === 4 ? ' boss' : ''}${S.k === 1 ? ' dark' : ''}" data-k="${k}"><small>${li + 1}-${k + 1}</small><span>${open ? S.icon : '🔒'}</span><b>${S.name}</b><p>${S.k === 4 ? 'Boss: ' + L.bossName.replace('THE ', '') : S.desc}</p><i>${open && foodNeeded('campaign', li, k) ? '🍖 ' + FOOD.cost + ' · ' : ''}${open ? '★'.repeat(st) + '☆'.repeat(3 - st) : 'Clear ' + (li + 1) + '-' + k}</i></div>`; }).join('');
   if (Cfg.test) $('subSub').textContent += ' · 🧪 TEST MODE';
   $('subRow').querySelectorAll('.subc').forEach(el => { const k = +el.dataset.k; if (k <= done || Cfg.test) el.onclick = () => { SFX.click(); pendingMode = 'campaign'; pendingLevel = li; pendingSub = k; openHeroes(); }; });
   G.subLi = li; showOnly('subScreen');
 }
+/* v41: chapter requirements - clear the previous chapter AND (a hero at level X OR enough stars in the previous chapter) */
+const CH_REQ = [null, { lv: 8, st: 18 }, { lv: 14, st: 20 }, { lv: 20, st: 22 }];
+const chStars = li => STAGES.reduce((a, _, k) => a + ((Save.stars || {})[li + '_' + k] || []).filter(Boolean).length, 0);
+const bestHeroLv = () => Math.max(...['maya', 'ben', 'aris', 'chloe', 'leo'].map(h => { try { return heroLv(h); } catch (e) { return 1; } }));
+function chReqMet(i) { const R = CH_REQ[i]; return !R || bestHeroLv() >= R.lv || chStars(i - 1) >= R.st; }
+function chapterOpen(i) { return Cfg.test || i === 0 || !!Save.cleared[i] || (Save.subs[i] || 0) > 0 || (!!Save.cleared[i - 1] && chReqMet(i)); }
 function openLevels() {
   drawDiffRow(); const g = $('levelGrid'); g.innerHTML = ''; const tab = G.lvTab || 0;
   document.querySelectorAll('#lvTabs button').forEach((b, i) => { b.classList.toggle('on', i === tab); b.onclick = () => { SFX.click(); G.lvTab = i; openLevels(); }; });
   if (tab === 0) LEVELS.forEach((L, i) => {
-    const open = L.ready && (i === 0 || Save.cleared[i - 1] || Cfg.test);
+    const open = L.ready && chapterOpen(i), R = CH_REQ[i], needReq = !open && i > 0 && !Cfg.test && Save.cleared[i - 1] && !chReqMet(i);
     const el = document.createElement('div'); el.className = 'lcard' + (open ? '' : ' locked'); const lvImg = ['streets', 'metro', 'lab', 'crypt'][i]; el.style.background = lvImg ? `linear-gradient(0deg,rgba(0,0,0,.82),rgba(0,0,0,.15) 65%),url(sprites/lv/${lvImg}.webp) 70% center/cover,${L.grad}` : L.grad;
     const stD = Math.min(NST, Save.subs[i] || 0), stS = Array.from({ length: NST }, (_, k) => ((Save.stars || {})[i + '_' + k] || []).filter(Boolean).length).reduce((a, b) => a + b, 0), stT = [0, 1, 2].filter(k => (Save.tags || {})[i + '_' + k]).length;
-    el.innerHTML = `${!open ? '<span class="tag">🔒 ' + TX('lockLv').replace('#', i) + '</span>' : Save.cleared[i] ? '<span class="tag">✓ ' + TX('cleared') + '</span>' : ''}<h3>${i + 1}. ${L.name}</h3>${open ? `<div class="linfo"><span>✓ ${stD}/${NST} levels</span><span>★ ${stS}/${NST * 3}</span><span>🎸 ${stT}/3</span></div>` : ''}`;
+    el.innerHTML = `${needReq ? `<span class="tag">🔒 NEED HERO LV ${R.lv} OR ${R.st} ★</span>` : !open ? '<span class="tag">🔒 ' + TX('lockLv').replace('#', i) + '</span>' : Save.cleared[i] ? '<span class="tag">✓ ' + TX('cleared') + '</span>' : ''}<h3>${i + 1}. ${L.name}</h3>${needReq ? `<div class="linfo"><span>⭐ Best hero Lv ${bestHeroLv()}/${R.lv}</span><span>or</span><span>★ ${chStars(i - 1)}/${R.st} in chapter ${i}</span></div>` : ''}${open ? `<div class="linfo"><span>✓ ${stD}/${NST} levels</span><span>★ ${stS}/${NST * 3}</span><span>🎸 ${stT}/3</span></div>` : ''}`;
     if (open) el.onclick = () => { SFX.click(); openSubs(i); };
+    else if (needReq) el.onclick = () => { SFX.click(); banner('🔒 ALMOST THERE', `Level a hero to ${R.lv} (Training, missions, replays) or earn ${R.st} ★ in chapter ${i}`); };
     g.appendChild(el);
   });
   // v34: 4 teaser chapters (not playable)
@@ -4953,6 +5040,10 @@ function openLevels() {
     el.innerHTML = `<span class="tag">🚧 COMING SOON</span><h3>${LEVELS.length + k + 1}. ???</h3>`;
     el.onclick = () => { SFX.buzz(); banner('🚧 COMING SOON', ['The zombies are not ready yet', 'Still rotting nicely', 'Come back later, survivor', 'Brains need time'][k]); }; g.appendChild(el);
   });
+  if (tab === 1 && Save.tut2) { const D = dcToday(), L = LEVELS[D.li], S = STAGES[D.sub]; const el = document.createElement('div'); el.className = 'lcard bcard dcard'; el.style.background = `linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.78)), url(sprites/lv/${['streets', 'metro', 'lab', 'crypt'][D.li]}.webp) center/cover, #2a0d12`;
+    el.innerHTML = `<span class="tag">${D.done ? '✓ DONE TODAY · come back tomorrow' : '📅 TODAY · 🩸 ' + DC_REW.blood + ' · 🍖 ' + DC_REW.food + ' · free'}</span><h3>📅 Daily challenge: ${D.rule[1]} ${D.rule[2]}</h3><p>${D.li + 1}-${D.sub + 1} ${S.icon} ${S.name} (${L.name}) · ${D.rule[3]}</p>`;
+    el.onclick = () => { SFX.click(); window.pendingDC = true; pendingMode = 'campaign'; pendingLevel = D.li; pendingSub = D.sub; openHeroes(); }; g.appendChild(el);
+    const z = document.createElement('div'); z.className = 'lcard bcard zcard'; z.style.background = 'linear-gradient(160deg,#0d1a06,#2f4a10)'; z.innerHTML = `<span class="tag">🧟 TODAY ONLY</span><h3>Zombie of the day: ${zodName(zodToday())}</h3><p>Every ${zodName(zodToday())} drops <b>double blood</b> today, in every mode.</p>`; g.appendChild(z); }
   if (tab === 1) BONUS.forEach(B => { if (B.weekly) return;
     const open = !!Save.cleared[B.need] || !!Cfg.test, done = Save.bonusDone[B.id];
     const el = document.createElement('div'); el.className = 'lcard bcard' + (open ? '' : ' locked'); el.style.background = `linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.72)), url(sprites/wall/${B.id}.webp) center/cover, ` + (B.id === 'rescue' ? 'linear-gradient(160deg,#061a18,#107a6a)' : 'linear-gradient(160deg,#1a1206,#6a4a10)');
@@ -5054,11 +5145,12 @@ function purchaseProduct(id, title, price, onSuccess) { $('buyTitle').textConten
 let shopReturn = 'startScreen';
 function refreshAutoBtn() { const b = $('autoBtn'), onNow = autoAimOn(), left = Save.aimCharges; b.classList.toggle('on', onNow); b.textContent = '🎯 AUTO ' + (onNow ? 'ON' : 'OFF') + (G.aimActive ? '' : ` · ${left} left`); $('pauseAuto').textContent = '🎯 AUTO-AIM: ' + (onNow ? 'ON' : 'OFF') + (G.aimActive ? ` · ${left} more level${left === 1 ? '' : 's'} after this` : ` · ${left} left`); }
 function toggleAuto() { if (!hasAim()) return; Cfg.autoAim = !Cfg.autoAim; if (Cfg.autoAim && !G.aimActive && player) useAimCharge(false); saveCfg(); refreshAutoBtn(); SFX.click(); }
-function goMenu() { labRet = null; if (Movie) { Movie = null; $('movieScreen').classList.add('hidden'); } Music.boss = false; Music.stop(); Amb.stop(); if (A.ctx) Music.play('menu'); G.state = 'menu'; player = null; $('hud').classList.add('hidden'); $('touch').classList.add('hidden'); $('hint').classList.add('hidden'); $('combo').classList.remove('show'); refreshMenu(); showOnly('startScreen');  setTimeout(checkDaily, 400); setTimeout(() => { if (G.state === 'menu') installNudge(); }, 2500); }
-function pauseGame() { if (G.state !== 'play') return; G.state = 'paused'; $('pauseQuip').textContent = pick(PAUSE_TIPS); Music.stop(); Amb.stop(); $('pauseSub').textContent = G.L.name; $('pauseAuto').classList.toggle('hidden', !hasAim()); $('pauseAim').textContent = 'AIM LINE: ' + (Cfg.aimLine ? 'ON' : 'OFF'); refreshAutoBtn(); showOnly('pauseScreen'); resetInput(); }
-function resumeGame() { if (G.state !== 'paused') return; showOnly(null); G.state = 'play'; Music.play(trackFor()); Amb.start(); last = performance.now(); }
+function goMenu() { labRet = null; document.documentElement.classList.remove('photo'); $('photoBar').classList.add('hidden'); if (Movie) { Movie = null; $('movieScreen').classList.add('hidden'); } Music.boss = false; Music.stop(); Amb.stop(); if (A.ctx) Music.play('menu'); G.state = 'menu'; player = null; $('hud').classList.add('hidden'); $('touch').classList.add('hidden'); $('hint').classList.add('hidden'); $('combo').classList.remove('show'); refreshMenu(); showOnly('startScreen');  setTimeout(checkDaily, 400); setTimeout(() => { if (G.state === 'menu') installNudge(); }, 2500); }
+function pauseGame() { if (G.state !== 'play') return; G.state = 'paused'; $('pauseCrowd').classList.toggle('hidden', !Cfg.test); $('pauseQuip').textContent = pick(PAUSE_TIPS); Music.stop(); Amb.stop(); $('pauseSub').textContent = G.L.name; $('pauseAuto').classList.toggle('hidden', !hasAim()); $('pauseAim').textContent = 'AIM LINE: ' + (Cfg.aimLine ? 'ON' : 'OFF'); refreshAutoBtn(); showOnly('pauseScreen'); resetInput(); }
+function resumeGame() { if (G.state !== 'paused') return; document.documentElement.classList.remove('photo'); $('photoBar').classList.add('hidden'); showOnly(null); G.state = 'play'; Music.play(trackFor()); Amb.start(); last = performance.now(); }
 function showGameOver() {
   G.state = 'over'; Music.stop(); Amb.stop(); bankBlood();
+  if (window.foodPaidRun) { foodAdd(1); window.foodPaidRun = 0; setTimeout(() => banner('🍖 +1 FOOD BACK', 'Lost the level? Half the food comes back.'), 600); }
   $('overKills').textContent = G.kills; $('overBlood').textContent = G.bloodRun; $('overSub').textContent = G.mode === 'raid' ? 'Raid ' + (Save.raids + 1) + ' · wave ' + G.wave : G.mode === 'bonus' ? G.bonus.name : G.L.name;
   $('overScreen').querySelector('h1').textContent = G.timeUp ? "TIME'S UP" : G.overrun ? 'BASE OVERRUN' : "YOU'RE DEAD";
   if (G.mode === 'bonus' && G.bonus.endless) { const el = Math.floor((G.bonus.time * 60 - G.bonusT) / 60), pb = Save.endlessBest || { t: 0, k: 0 }, nb = el > pb.t, mins = Math.floor(el / 60), extra = Math.max(0, mins - (G.endPaid || 0)) * 20; G.endPaid = Math.max(G.endPaid || 0, mins); if (nb) Save.endlessBest = { t: el, k: G.kills }; Save.blood += extra; saveGame();
@@ -5108,19 +5200,21 @@ function goToRow() {
   if (labOpen() && LAB_RES.some(q => labLv(q[0]) < q[4] && labCost(q) <= Save.blood)) add('🧪 LAB UPGRADE READY · GO TO LAB', () => { openBase(); $('downBtn').click(); setTimeout(() => G.state === 'base' && openRoom('dig2'), 650); });
 }
 function raidWin() {
-  const n = Save.raids + 1, reward = (80 + n * 40) * (G.siege ? 2 : 1); G.bloodRun += pickups.filter(k => k.type === 'blood').reduce((s, k) => s + k.val, 0); pickups = []; bankBlood(); Save.blood += reward; Save.raids = n;
+  missionEvent('raid');
+  const n = Save.raids + 1, reward = Math.round((80 + n * 40) * (G.siege ? 2 : 1) * [1, 1.5, 2][Save.defDiff || 0]); G.bloodRun += pickups.filter(k => k.type === 'blood').reduce((s, k) => s + k.val, 0); pickups = []; bankBlood(); Save.blood += reward; Save.raids = n;
   const unlocked = WPN_ORDER.find(w => WEAPONS[w].raid === n);
   showResults('BASE DEFENDED', '#33ff77', 'Raid ' + n, `<div class="statline">Zombies slain: <b>${G.kills}</b></div><div class="statline">Blood: 🩸 <b>${G.bloodRun}</b> · Raid bonus 🩸 <b>${reward}</b></div><div class="statline">Generator: <b>${Math.round(G.core.hp / G.core.max * 100)}%</b></div>`,
     (unlocked ? `🔓 <b style="color:#ffcc33">${WEAPONS[unlocked].name}</b> unlocked in the Armory!<br>` : '') + xpSummary());
 }
 function trainingDone() {
+  missionEvent('train');
   for (const z of enemies) z.dead = true; const bonus = Math.round(G.score / 20);
   G.bloodRun += bonus; bankBlood();
   showResults('TRAINING DONE', '#55ccff', 'Training Range', `<div class="statline">Score: <b>${G.score}</b></div><div class="statline">Blood earned: 🩸 <b>${G.bloodRun}</b></div>`, xpSummary() || 'Hit the targets to earn XP for the weapon in your hands.');
 }
 function levelComplete() {
   if (G.mode === 'campaign' && subOf() !== LAST) { subComplete(); return; }
-  Save.subs[G.levelIdx] = NST; missionEvent('clear', { h: G.hero, sub: 4 }); addHeroXP(G.hero, TUNE.hero.xp.chapter); const fw = firstWin(); if (!Save.labBuilt && labOpen()) Save.labBuilt = true;
+  Save.subs[G.levelIdx] = NST; missionEvent('clear', { h: G.hero, sub: 4, ult: G.mUlt, roll: G.mRoll, spc: G.mSpc }); addHeroXP(G.hero, TUNE.hero.xp.chapter); const fw = firstWin(); if (!Save.labBuilt && labOpen()) Save.labBuilt = true;
   const li = G.levelIdx, first = !Save.cleared[li], bonus = Math.round((80 + li * 40) * DF().blood); Save.clearedDiff = Save.clearedDiff || {}; Save.clearedDiff[li] = Math.max(Save.clearedDiff[li] || 0, G.diffIdx || 0); G.bloodRun += pickups.filter(k => k.type === 'blood').reduce((s, k) => s + k.val, 0); pickups = [];
   Save.gear = Save.gear || {}; const gKey = G.hero + '_' + li, newGear = !Save.gear[gKey]; Save.gear[gKey] = true; const gItem = GEAR[G.hero][li];
   const KG = 120 + li * 20, sk4 = li + '_' + LAST, st = Save.stars[sk4] || [false, false, false], got = [true, G.kills >= KG, !G.downs]; let newStars = 0; got.forEach((g, i) => { if (g && !st[i]) { st[i] = true; newStars++; } }); Save.stars[sk4] = st; const starBlood = newStars * 50;
@@ -5134,16 +5228,17 @@ function levelComplete() {
   if (last && first) { const fresh = !Save.beatGame; Save.beatGame = true; if (fresh) Save.blood += 1000; saveGame(); playComic('end', () => playComic('end2', () => rollCredits(fresh, () => showOnly('completeScreen')))); }
 }
 function subComplete() {
-  missionEvent('clear', { h: G.hero, sub: kindOf() });
+  missionEvent('clear', { h: G.hero, sub: kindOf(), ult: G.mUlt, roll: G.mRoll, spc: G.mSpc });
+  let dcB = 0; if (G.dc && Save.dcDay !== DAY()) { Save.dcDay = DAY(); Save.dcN = (Save.dcN || 0) + 1; dcB = DC_REW.blood; foodAdd(DC_REW.food); addHeroXP(G.hero, TUNE.hero.xp.mission); }
   const li = G.levelIdx, sb = subOf(), key = li + '_' + sb, SB = STAGES[sb], bonus = Math.round((40 + li * 20 + sb * 10) * DF().blood);
   G.bloodRun += pickups.filter(k => k.type === 'blood').reduce((a, k) => a + k.val, 0); pickups = [];
   const KG = 100 + li * 20, st = Save.stars[key] || [false, false, false], got = [true, G.kills >= KG, !G.downs]; let ns = 0; got.forEach((g, i) => { if (g && !st[i]) { st[i] = true; ns++; } }); Save.stars[key] = st;
   const sup = G.supplies.filter(q => q.got).length, supB = sb === 3 && sup === 3 ? 150 : 0, svB = G.survivor && G.survivor.saved ? 100 : 0, starB = ns * 50;
   Save.subs[li] = Math.max(Save.subs[li] || 0, sb + 1); if (Save.fails) delete Save.fails[key];
   addHeroXP(G.hero, TUNE.hero.xp.stage); const fw = firstWin(), labNew = !Save.labBuilt && labOpen(); if (labNew) Save.labBuilt = true;
-  bankBlood(); Save.blood += bonus + supB + starB; saveGame();
-  showResults(SB.icon + ' ' + SB.name.toUpperCase() + ' CLEARED', '#33ff77', G.L.name + ' · ' + (li + 1) + '-' + (sb + 1), `<div class="stars">${['Clear it', KG + '+ kills', 'Never go down'].map((n, i) => `<span class="${got[i] ? 'on' : ''}">${got[i] ? '★' : '☆'} ${n}</span>`).join('')}</div>${starB ? `<div class="statline" style="color:#ffcc33">New stars: 🩸 <b>+${starB}</b></div>` : ''}<div class="statline">Zombies slain: <b>${G.kills}</b> · Level ${G.plv + 1}</div><div class="statline">Blood: 🩸 <b>${G.bloodRun}</b> · Bonus 🩸 <b>${bonus}</b></div>${sb === 3 ? `<div class="statline">📦 Supplies: <b>${sup}/3</b>${supB ? ' · +150 🩸' : ''}</div>` : ''}${svB ? '<div class="statline">🙋 Survivor rescued · +100 🩸</div>' : ''}${fw}`,
-    (labNew ? '🧪 <b style="color:#7cf">The Lab is open!</b> Research upgrades in the Hideout basement.<br>' : '') + (sb < LAST ? `🔓 Next: <b style="color:#ffcc33">${STAGES[sb + 1].icon} ${STAGES[sb + 1].name}</b><br>` : '') + xpSummary());
+  bankBlood(); Save.blood += bonus + supB + starB + dcB; saveGame();
+  showResults((dcB ? '📅 ' : '') + SB.icon + ' ' + SB.name.toUpperCase() + ' CLEARED', '#33ff77', G.L.name + ' · ' + (li + 1) + '-' + (sb + 1), `<div class="stars">${['Clear it', KG + '+ kills', 'Never go down'].map((n, i) => `<span class="${got[i] ? 'on' : ''}">${got[i] ? '★' : '☆'} ${n}</span>`).join('')}</div>${starB ? `<div class="statline" style="color:#ffcc33">New stars: 🩸 <b>+${starB}</b></div>` : ''}<div class="statline">Zombies slain: <b>${G.kills}</b> · Level ${G.plv + 1}</div><div class="statline">Blood: 🩸 <b>${G.bloodRun}</b> · Bonus 🩸 <b>${bonus}</b></div>${sb === 3 ? `<div class="statline">📦 Supplies: <b>${sup}/3</b>${supB ? ' · +150 🩸' : ''}</div>` : ''}${svB ? '<div class="statline">🙋 Survivor rescued · +100 🩸</div>' : ''}${fw}`,
+    (labNew ? '🧪 <b style="color:#7cf">The Lab is open!</b> Research upgrades in the Hideout basement.<br>' : '') + (dcB ? `📅 <b style="color:#ffcc33">Daily challenge done!</b> +${DC_REW.blood} 🩸 · +${DC_REW.food} 🍖<br>` : '') + (sb < LAST ? `🔓 Next: <b style="color:#ffcc33">${STAGES[sb + 1].icon} ${STAGES[sb + 1].name}</b><br>` : '') + xpSummary());
   $('againBtn').textContent = 'NEXT ▶';
 }
 function sideTick() {
@@ -5283,9 +5378,20 @@ on('defBtn', () => openRoom('defense'));
 on('roomClose', closeRoom);
 on('movieSkip', endMovie); on('clipShare', clipShareNow); on('clipSave', clipSaveNow); on('clipClose', clipCloseNow);
 on('shopBtn', () => { shopReturn = 'startScreen'; openShop(); });
-on('settingsBtn', () => { $('cfgBig').checked = !!Cfg.bigText; $('cfgTest').checked = !!Cfg.test; $('cfgSfx').checked = Cfg.sfx; $('cfgMusic').checked = Cfg.music; $('cfgShake').checked = Cfg.shake; $('cfgGore').checked = Cfg.gore; $('cfgAuto').checked = Cfg.autoAim; $('cfgVib').checked = Cfg.vib; $('cfgAim').checked = Cfg.aimLine; $('cfgHQ').checked = Cfg.hq; $('autoRow').classList.toggle('hidden', !Save.aimCharges); $('resetBtn').textContent = T().resetB; delete $('resetBtn').dataset.armed; $('resetRow').classList.toggle('hidden', !!G.setFromPause); showOnly('settingsScreen'); });
+on('settingsBtn', () => { $('cfgBig').checked = !!Cfg.bigText; $('cfgCb').checked = !!Cfg.cb; $('cfgTest').checked = !!Cfg.test; $('cfgSfx').checked = Cfg.sfx; $('cfgMusic').checked = Cfg.music; $('cfgShake').checked = Cfg.shake; $('cfgGore').checked = Cfg.gore; $('cfgAuto').checked = Cfg.autoAim; $('cfgVib').checked = Cfg.vib; $('cfgAim').checked = Cfg.aimLine; $('cfgHQ').checked = Cfg.hq; $('autoRow').classList.toggle('hidden', !Save.aimCharges); $('resetBtn').textContent = T().resetB; delete $('resetBtn').dataset.armed; $('resetRow').classList.toggle('hidden', !!G.setFromPause); showOnly('settingsScreen'); });
 on('creditsBtn', () => { SFX.click(); rollCredits(false, () => { }); });
 on('cfgBig', () => { Cfg.bigText = $('cfgBig').checked; saveCfg(); document.documentElement.classList.toggle('bigtext', !!Cfg.bigText); });
+/* v42: PHOTO MODE - hide the HUD, save the picture (share on phones, download on PC) */
+on('pausePhoto', () => { if (G.state !== 'paused') return; SFX.click(); document.documentElement.classList.add('photo'); $('photoBar').classList.remove('hidden'); });
+on('photoBack', () => { document.documentElement.classList.remove('photo'); $('photoBar').classList.add('hidden'); showOnly('pauseScreen'); });
+on('photoSnap', () => { const cv = $('game'), c = document.createElement('canvas'); c.width = cv.width; c.height = cv.height; const x = c.getContext('2d'); x.drawImage(cv, 0, 0);
+  const fs = Math.round(c.height * 0.045); x.font = `${fs}px 'Bebas Neue', Impact, sans-serif`; x.textAlign = 'right'; x.fillStyle = 'rgba(0,0,0,.55)'; x.fillText('BELOW THE DEAD', c.width - fs * 0.55, c.height - fs * 0.45); x.fillStyle = '#ff3355'; x.fillText('BELOW THE DEAD', c.width - fs * 0.6, c.height - fs * 0.5);
+  SFX.click(); c.toBlob(b => { if (!b) return; const name = 'below-the-dead-' + Date.now() + '.png', f = new File([b], name, { type: 'image/png' });
+    try { if (navigator.canShare && navigator.canShare({ files: [f] })) { navigator.share({ files: [f], title: 'Below the Dead' }).catch(() => {}); return; } } catch (e) { }
+    const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000); banner('📸 PICTURE SAVED', 'Check your downloads'); }, 'image/png'); });
+/* v42: STORE SHOTS (test mode only): a crowd around the hero + god mode, then use photo mode */
+on('pauseCrowd', () => { if (!player || !Cfg.test) return; G.god = true; player.hp = player.max; for (let k = 0; k < 22; k++) { const a = k / 22 * Math.PI * 2, r = 130 + (k % 3) * 45; spawnEnemy(['shambler', 'sprinter', 'puker', 'armored', 'bloater'][k % 5], player.x + Math.cos(a) * r * 1.4, clamp(player.y + Math.sin(a) * r * 0.7, G.L.TOP + 20, G.L.BOT - 10), {}); } banner('🎬 STORE SHOT', 'Crowd ready · god mode on · resume, then pause → 📸'); });
+on('cfgCb', () => { Cfg.cb = $('cfgCb').checked; saveCfg(); document.documentElement.classList.toggle('cb', !!Cfg.cb); });
 on('settingsBack', () => { Cfg.sfx = $('cfgSfx').checked; Cfg.music = $('cfgMusic').checked; Cfg.shake = $('cfgShake').checked; Cfg.gore = $('cfgGore').checked; Cfg.autoAim = $('cfgAuto').checked; Cfg.vib = $('cfgVib').checked; Cfg.aimLine = $('cfgAim').checked; Cfg.test = $('cfgTest').checked; syncLeo(); if ($('cfgHQ').checked && !Cfg.hq) Cfg.dprCap = 2; Cfg.hq = $('cfgHQ').checked; saveCfg(); resize(); refreshMenu(); showOnly('startScreen'); });
 on('resetBtn', () => { const b = $('resetBtn'); if (!b.dataset.armed) { b.dataset.armed = '1'; b.textContent = TX('again'); return; } delete b.dataset.armed; Object.assign(Save, { blood: 0, up: { hp: 0, dmg: 0, spd: 0, spc: 0 }, cleared: {}, aimCharges: 0 }); saveGame(); b.textContent = 'DONE'; });
 on('levelBack', () => showOnly('startScreen')); on('pauseSet', () => { G.setFromPause = true; document.body.classList.add('fromPause'); $('settingsBtn').click(); }); $('settingsBack').addEventListener('click', () => { if (G.setFromPause) { G.setFromPause = false; document.body.classList.remove('fromPause'); Music.stop(); showOnly('pauseScreen'); } }); $('resetBtn').closest('.setRow').id = 'resetRow';
@@ -5316,7 +5422,7 @@ on('quitBtn', () => { bankBlood(); goMenu(); });
 on('reviveBtn', revive);
 on('retryBtn', () => startRun(G.hero, G.mode, G.levelIdx));
 on('overMenuBtn', goMenu);
-on('againBtn', () => { if (G.mode === 'campaign') { pendingMode = 'campaign'; if (subOf() < LAST) { pendingLevel = G.levelIdx; pendingSub = subOf() + 1; } else { pendingLevel = G.levelIdx >= LEVELS.length - 1 ? 0 : G.levelIdx + 1; pendingSub = Math.min(LAST, Save.subs[pendingLevel] || 0); } openHeroes(); } else { if (G.mode === 'bonus') pendingBonus = G.bonus.id; startRun(G.hero, G.mode, G.levelIdx); } });
+on('againBtn', () => { if (G.mode === 'campaign') { pendingMode = 'campaign'; if (subOf() < LAST) { pendingLevel = G.levelIdx; pendingSub = subOf() + 1; } else { pendingLevel = G.levelIdx >= LEVELS.length - 1 ? 0 : G.levelIdx + 1; if (!chapterOpen(pendingLevel)) { openLevels(); return; } pendingSub = Math.min(LAST, Save.subs[pendingLevel] || 0); } openHeroes(); } else { if (G.mode === 'bonus') pendingBonus = G.bonus.id; startRun(G.hero, G.mode, G.levelIdx); } });
 on('cBaseBtn', () => openBase());
 on('cMenuBtn', goMenu);
 $('pauseBtn').addEventListener('click', () => { SFX.click(); pauseGame(); });
@@ -5553,7 +5659,7 @@ refreshMenu();
 try { for (const f of ['20px Bebas Neue', '20px Creepster', '20px Barlow', 'bold 20px Barlow', '20px Special Elite']) document.fonts.load(f); } catch (e) {}
 applyControls();
 if (!Cfg.lang) { const n = (navigator.language || 'en').slice(0, 2).toLowerCase(); Cfg.lang = I18N[n] ? n : 'en'; }
-document.documentElement.classList.toggle('bigtext', !!Cfg.bigText);
+document.documentElement.classList.toggle('bigtext', !!Cfg.bigText); document.documentElement.classList.toggle('cb', !!Cfg.cb);
 try { applyLang(); refreshMenu(); } catch (e) { console.error(e); }
 try { trObs.observe(document.body, { subtree: true, childList: true, characterData: true }); } catch (e) { }
 if (V30_REFUND) setTimeout(() => banner('UPGRADES REWORKED', `Heroes now level up by playing · refunded ${V30_REFUND} 🩸`), 1500);
