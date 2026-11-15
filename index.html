@@ -8,9 +8,9 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Below the Dead">
-<link rel="manifest" href="manifest.json?v=2">
-<link rel="apple-touch-icon" href="icon-180.png?v=2">
-<link rel="icon" href="icon-192.png?v=2">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
 <title>Below the Dead</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Bebas+Neue&family=Creepster&family=Special+Elite&display=swap" rel="stylesheet">
@@ -410,6 +410,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
     <div class="setRow"><label for="cfgCb">Colour-blind HUD <span style="font-size:.7rem;color:#999">(blue instead of green, orange instead of red)</span></label><input type="checkbox" id="cfgCb"></div>
     <div class="setRow" id="autoRow"><label for="cfgAuto">Auto-aim</label><input type="checkbox" id="cfgAuto"></div>
     <div class="setRow" id="langRow"><span id="lgLabel">Language</span><span id="langBtns"></span></div>
+    <div class="setRow" id="rtRow"><span>🎓 Replay the tutorial <span style="font-size:.7rem;color:#999">(stage 1-1 with Maya, fewer zombies)</span></span><button class="btn sec" id="rtBtn" style="font-size:.75rem;padding:5px 12px">PLAY</button></div>
     <div class="setRow"><span>💾 Save code <span style="font-size:.7rem;color:#999">(move your progress to another phone)</span></span><span><button class="btn sec" id="expBtn" style="font-size:.75rem;padding:5px 10px">EXPORT</button> <button class="btn sec" id="impBtn" style="font-size:.75rem;padding:5px 10px">IMPORT</button></span></div>
     <div class="setRow"><span id="lgReset">Reset all progress</span><button class="btn sec" id="resetBtn" style="font-size:.75rem;padding:5px 12px">RESET</button></div>
   </div>
@@ -504,6 +505,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
   <h1>YOU'RE DEAD</h1>
   <div class="sub" id="overSub"></div>
   <div class="quip" id="overQuip"></div>
+  <div id="overTip" style="font:600 .78rem Barlow,sans-serif;color:#7cf;margin:2px 0 4px"></div><div id="overRec"></div>
   <div class="panel">
     <div class="statline">Zombies slain: <b id="overKills">0</b></div>
     <div class="statline">Blood harvested: 🩸 <b id="overBlood">0</b></div>
@@ -534,7 +536,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 
 <script>
 'use strict';
-const VERSION = 'v43.1'; // bump together with sw.js
+const VERSION = 'v44'; // bump together with sw.js
 const ERRLOG = []; const logErr = m => { ERRLOG.push(new Date().toISOString().slice(11, 19) + ' ' + String(m).slice(0, 240)); if (ERRLOG.length > 12) ERRLOG.shift(); };
 window.addEventListener('error', e => logErr((e.message || 'error') + (e.filename ? ' @' + e.filename.split('/').pop() + ':' + e.lineno + ':' + e.colno : '')));
 window.addEventListener('unhandledrejection', e => logErr('promise: ' + ((e.reason && (e.reason.message || e.reason)) || '?')));
@@ -1074,7 +1076,7 @@ function explosion(x, y, r, dmgE, dmgP) {
 
 // ----- run setup -----
 /* v41: 🍖 FOOD BAR - new story stages cost food; replays, defence, training, extra missions and endless are free */
-const FOOD = { max: 10, cost: 2, regenMs: 15 * 60000, extraMax: 15, meal: 3, ad: 4, adPerDay: 3 };
+const FOOD = { max: 10, cost: 2, regenMs: 20 * 60000, extraMax: 15, meal: 3, ad: 3, adPerDay: 2 }; // v44: slower (20 min, ad +3 twice a day)
 function foodNow() { const now = Date.now(); if (Save.food === undefined) { Save.food = FOOD.max; Save.foodT = now; }
   if (Save.food >= FOOD.max) { Save.foodT = now; return Save.food; }
   const n = Math.floor((now - (Save.foodT || now)) / FOOD.regenMs); if (n > 0) { Save.food = Math.min(FOOD.max, Save.food + n); Save.foodT = Save.food >= FOOD.max ? now : Save.foodT + n * FOOD.regenMs; } return Save.food; }
@@ -1087,7 +1089,7 @@ function fBtn(txt, cls, fn) { const b = document.createElement('button'); b.clas
 function openFoodBox(after) {
   const b = $('foodBox'), today = new Date().toDateString(); if (Save.adFoodDay !== today) { Save.adFoodDay = today; Save.adFoodN = 0; }
   const adLeft = FOOD.adPerDay - (Save.adFoodN || 0), canCook = Save.kitchen && Save.mealDay !== today && !Save.mealReady;
-  b.innerHTML = `<div class="fbx"><h3>🍖 NOT ENOUGH FOOD</h3><p>New levels cost <b>${FOOD.cost} 🍖</b>. You have <b class="foodTxt">${Save.food}/${FOOD.max}</b> <span class="foodNext"></span></p><p class="muted">Free without food: replay cleared levels, defence, training, extra missions, endless. Food comes back by itself (1 every 15 min), from Rocco's meals and from daily missions.</p><div class="bb"></div></div>`;
+  b.innerHTML = `<div class="fbx"><h3>🍖 NOT ENOUGH FOOD</h3><p>New levels cost <b>${FOOD.cost} 🍖</b>. You have <b class="foodTxt">${Save.food}/${FOOD.max}</b> <span class="foodNext"></span></p><p class="muted">Free without food: replay cleared levels, defence, training, extra missions, endless. Food comes back by itself (1 every 20 min), from Rocco's meals and from daily missions.</p><div class="bb"></div></div>`;
   const bb = b.querySelector('.bb');
   if (adLeft > 0) bb.appendChild(fBtn('📺 +' + FOOD.ad + ' 🍖 (' + adLeft + ' left today)', 'gold', () => { b.classList.add('hidden'); showRewardedAd(() => { Save.adFoodN = (Save.adFoodN || 0) + 1; foodAdd(FOOD.ad); showOnly(null); banner('🍖 +' + FOOD.ad + ' FOOD', 'Time to eat… and fight'); if (after) after(); }); }));
   if (canCook) bb.appendChild(fBtn('🍲 COOK A MEAL (+' + FOOD.meal + ')', 'sec', () => { b.classList.add('hidden'); openBase(); setTimeout(() => openRoom('kitchen'), 250); }));
@@ -1104,6 +1106,7 @@ function startRun(heroId, mode = 'campaign', levelIdx) { // v40: wait (max 10 s)
   Promise.all(need.map(k => sprLoad(k))).then(go); setTimeout(go, 10000);
 }
 function startRunNow(heroId, mode = 'campaign', levelIdx) {
+  G.uiMenu = false;
   $('winTip').classList.add('hidden');
   if (mode !== 'training' && Save.zodSeen !== DAY()) setTimeout(() => { if (G.state === 'play' && Save.zodSeen !== DAY()) { Save.zodSeen = DAY(); saveGame(); banner('🧟 ZOMBIE OF THE DAY', zodName(zodToday()) + 's drop double blood today'); } }, 4000);
   recReset();
@@ -1111,7 +1114,7 @@ function startRunNow(heroId, mode = 'campaign', levelIdx) {
   A.init(); Save.st.runs++;
   G.hero = heroId; G.mode = mode; G.levelIdx = levelIdx !== undefined ? levelIdx : (G.levelIdx || 0); G.bonus = mode === 'bonus' ? BONUS.find(b => b.id === pendingBonus) : null; if (G.bonus) G.levelIdx = G.bonus.endless ? randi(0, 3) : G.bonus.weekly ? WEEK() % 4 : G.bonus.lvl; G.L = mode === 'campaign' || mode === 'bonus' ? LEVELS[G.levelIdx] : BASE_LEVEL;
   const L0 = G.L;
-  Object.assign(G, { god: false, dc: mode === 'campaign' && !!window.pendingDC, fxA: [], mUlt: 0, mRoll: 0, mSpc: 0, bwT: 0, banT: 1500, say: [], hbT: 0, cL: undefined, cR: undefined, slowmo: 0, zoomV: 1, focus: null, drops: [], pk: {}, xp: 0, plv: 0, cardQ: false, drone: null, zaps: [], bubT: 0, chainN: 0, benSw: 0, endPaid: 0, endWave: 1, safeTalk: null, speaker: null, cage: null, rescueP: 0, bloodMul: 1, timeUp: false, bonusT: 0, overrun: false, wave: 0, breakT: 300, waveTotal: 0, waveSpawned: 0, trainT: 45 * 60, score: 0, xpGain: {}, hxpGain: 0, darkRun: 0, actors: [], frostN: 0, frostB: [], cat: null, tutor: false, tutHold: false, tutSpc: 0, tutUlt: 0, core: null, relievedT: 0, time: 0, kills: 0, bloodRun: 0, banked: 0, combo: 0, comboT: 0, shake: 0, hitStop: 0, flash: 0, revived: false, arena: false, phase: mode === 'campaign' ? 'street' : mode === 'raid' ? 'raidBreak' : 'train', lockKills: 0, holdT: 0, doorOpen: 0, minX: 10, maxX: L0.W - 10, camL: 0, camR: L0.W, spawnMaxX: mode === 'campaign' && gatesOf(L0).length ? gatesOf(L0)[0] - 60 : 1e9, bolt: 0, nextBolt: 900, thunderT: 0, boss: null, bossDone: false, endT: 0, spawnT: 120, hordes: 0, rain: null, runStart: performance.now(), hintT: 420 });
+  Object.assign(G, { maxCombo: 0, runT0: Date.now(), tutReplay: mode === 'campaign' && !!window.replayTut, god: false, dc: mode === 'campaign' && !!window.pendingDC, fxA: [], mUlt: 0, mRoll: 0, mSpc: 0, bwT: 0, banT: 1500, say: [], hbT: 0, cL: undefined, cR: undefined, slowmo: 0, zoomV: 1, focus: null, drops: [], pk: {}, xp: 0, plv: 0, cardQ: false, drone: null, zaps: [], bubT: 0, chainN: 0, benSw: 0, endPaid: 0, endWave: 1, safeTalk: null, speaker: null, cage: null, rescueP: 0, bloodMul: 1, timeUp: false, bonusT: 0, overrun: false, wave: 0, breakT: 300, waveTotal: 0, waveSpawned: 0, trainT: 45 * 60, score: 0, xpGain: {}, hxpGain: 0, darkRun: 0, actors: [], frostN: 0, frostB: [], cat: null, tutor: false, tutHold: false, tutSpc: 0, tutUlt: 0, core: null, relievedT: 0, time: 0, kills: 0, bloodRun: 0, banked: 0, combo: 0, comboT: 0, shake: 0, hitStop: 0, flash: 0, revived: false, arena: false, phase: mode === 'campaign' ? 'street' : mode === 'raid' ? 'raidBreak' : 'train', lockKills: 0, holdT: 0, doorOpen: 0, minX: 10, maxX: L0.W - 10, camL: 0, camR: L0.W, spawnMaxX: mode === 'campaign' && gatesOf(L0).length ? gatesOf(L0)[0] - 60 : 1e9, bolt: 0, nextBolt: 900, thunderT: 0, boss: null, bossDone: false, endT: 0, spawnT: 120, hordes: 0, rain: null, runStart: performance.now(), hintT: 420 });
   enemies = []; allies = []; shots = []; eshots = []; parts = []; texts = []; pickups = []; fires = []; acids = []; rings = []; teles = []; decals = []; flashes = []; skybolts = []; corpses = [];
   buildLevel(); G.gates = mode === 'campaign' ? gatesOf(L0) : []; G.gate = 0; G.lockNeed = 0;
   G.sub = mode === 'campaign' ? (pendingSub === undefined ? LAST : pendingSub) : undefined; G.blackout = kindOf() === 1; G.evT = randi(1800, 3000); G.flickT = 0; G.domLv = 0; G.domT = 0; G.supplies = []; G.survivor = null;
@@ -1131,11 +1134,11 @@ function startRunNow(heroId, mode = 'campaign', levelIdx) {
   if (Save.relieved) { Save.relieved = false; Save.washed = false; saveGame(); G.relievedT = 3600; }
   if (Save.companion && Save.companion !== heroId && mode !== 'training') buddy = makeBuddy(Save.companion);
   if (Save.mealReady && mode !== 'training') { Save.mealReady = false; player.max = Math.round(player.max * 1.25); player.hp = player.max; saveGame(); setTimeout(() => player && addText('WELL FED +25% HP', player.x, player.y - 80, '#ffcc66', 18, 90), 400); }
-  G.diffIdx = mode === 'raid' ? (Save.defDiff || 0) : diffOn() ? (Save.diff || 0) : 0; G.frostN = diffOn() ? DF().frost : 0; if (mode !== 'training' && (labLv('catlab') > 0 || (pendingCat && mode !== 'raid'))) spawnRunCat(); pendingCat = false; drawCatRow(); G.bloodMul = (G.bloodMul || 1) * DF().blood;
+  G.diffIdx = mode === 'raid' ? (Save.defDiff || 0) : diffOn() ? (Save.diff || 0) : 0; G.frostN = diffOn() ? DF().frost : 0; if (mode !== 'training' && ((labLv('catlab') > 0 && !Save.catHome) || (pendingCat && mode !== 'raid'))) spawnRunCat(); pendingCat = false; drawCatRow(); G.bloodMul = (G.bloodMul || 1) * DF().blood;
   if (mode === 'campaign' || mode === 'bonus') { const li = G.levelIdx; if (kmPerk(li, 'blood')) G.bloodMul *= 1.05; if (kmPerk(li, 'dmg')) player.dmgMul *= 1.1; if (kmPerk(li, 'card') && mode === 'campaign') setTimeout(() => { if (G.state === 'play' && !G.cardQ) { G.cardQ = true; openCards(); } }, 2500); }
   if (G.diffIdx > 0) { G.budStash = buddy ? Save.companion : null; buddy = null; G.budT = 0; G.budCd = 0; G.budUses = 0; player.spc = player.spcMax; player.spcLock = 0; }
-  if (mode === 'campaign' && G.levelIdx === 0 && subOf() === 0 && !Save.tut2) { const comp = tutComp(heroId); G.budStash = comp; G.budT = 0; G.budCd = 0; if (G.diffIdx > 0) { buddy = makeBuddy(comp); G.budT = 1e9; } else buddy = null; }
-  G.wRule = mode === 'bonus' && G.bonus && G.bonus.weekly ? wRule()[0] : G.dc ? dcToday().rule[0] : null; window.pendingDC = false; if (G.wRule === 'dark') G.blackout = true; if (G.wRule === 'speed') player.spdMul *= 1.15; if (G.wRule === 'glass') player.dmgMul *= 2;
+  if (mode === 'campaign' && G.levelIdx === 0 && subOf() === 0 && (!Save.tut2 || G.tutReplay)) { const comp = tutComp(heroId); G.budStash = comp; G.budT = 0; G.budCd = 0; if (G.diffIdx > 0) { buddy = makeBuddy(comp); G.budT = 1e9; } else buddy = null; }
+  G.wRule = mode === 'bonus' && G.bonus && G.bonus.weekly ? wRule()[0] : G.dc ? dcToday().rule[0] : null; window.pendingDC = false; window.replayTut = false; if (G.wRule === 'dark') G.blackout = true; if (G.wRule === 'speed') player.spdMul *= 1.15; if (G.wRule === 'glass') player.dmgMul *= 2;
   if (mode === 'bonus') setupBonus();
   Save.comics = Save.comics || {}; if (mode === 'campaign' && !Save.comics[G.levelIdx]) { Save.comics[G.levelIdx] = true; saveGame(); G.comicPending = true; setTimeout(() => { G.comicPending = false; if (G.state !== 'play') return; G.state = 'comic'; resetInput(); playComic(G.levelIdx, () => { if (G.state === 'comic') { G.state = 'play'; last = performance.now(); Music.play(trackFor()); } }); }, 30); }
   G.cam.x = clamp(player.x - VW / 2, 0, L0.W - VW); G.cam.y = player.y - VIEW_H * 0.58;
@@ -1217,12 +1220,13 @@ function tutScript() {
     say('maya', 'One shambling this way. Point, breathe, shoot.'),
     ['do', () => tz('shambler', 340, 0, 0.6)], hint('aim', tzDead),
     // v43: hold the fire thumb for 5 seconds, so the twin-stick idea sticks
-    say('maya', 'Left thumb walks. Right thumb aims AND shoots.'), say('maya', 'Don’t tap it. Push toward them and keep holding. Five seconds, go!'),
-    ['do', () => { G.fireHold = 0; G.holdN = 0; for (let k = 0; k < 3; k++) tz(['shambler', 'sprinter', 'shambler'][k], 300 + k * 60, (k - 1) * 70, 0.5); }],
-    hint('hold', () => { const on = In.fire || (In.mouse && In.mouse.down); G.fireHold = on ? G.fireHold + 1 : Math.max(0, G.fireHold - 2); const left = Math.ceil(Math.max(0, 300 - G.fireHold) / 60);
-      $('tutTxt').textContent = (isTouch ? 'RIGHT thumb: keep it pressed' : Pad.on ? 'Right stick: keep it pushed' : 'Keep the left mouse button down') + (left ? ' · ' + left + 's' : ' · ✓ nice!');
-      if (tzDead() && G.fireHold < 300 && G.holdN < 6) { G.holdN++; tz('shambler', 320, rand(-80, 80), 0.6); }
-      return G.fireHold >= 300; }),
+    say('maya', 'Left thumb walks. Right thumb aims AND shoots.'), say('maya', 'Push toward them and keep holding. Take down ten!'),
+    ['do', () => { G.holdK = 0; G.holdZ = []; G.holdS = 0; }],
+    hint('hold', () => { // v44: stays on until 10 zombies are down, always 2-3 weak ones coming
+      G.holdK = G.holdZ.filter(z => z.dead).length; const alive = G.holdZ.filter(z => !z.dead).length;
+      if (G.holdK + alive < 10 && alive < 3 && --G.holdS <= 0) { G.holdS = 40; const z = tz(['shambler', 'sprinter', 'shambler'][G.holdZ.length % 3], 300 + rand(0, 80), rand(-90, 90), 0.45); G.holdZ.push(z); }
+      $('tutTxt').textContent = (isTouch ? 'RIGHT thumb: push toward them and keep holding' : Pad.on ? 'Right stick: keep it pushed' : 'Keep the left mouse button down') + ' · ' + Math.min(10, G.holdK) + '/10';
+      return G.holdK >= 10; }),
     say('maya', 'That’s it. Walk with the left, shoot with the right. Everything else is buttons.'), done('maya'),
     // 2 · CHLOE: roll
     at(0.09), begin(), ['do', () => { const c = actorOf('chloe', 50, -56); if (c !== P()) { c.x = P().x + 260; c.y = P().y - 56; } }], ['wait', 30],
@@ -1294,7 +1298,7 @@ function roccoScript() {
 function storyStart(mode, heroId) {
   G.story = null; G.tut = 0; G.tutZ = []; G.rocco = null; G.robo = null; G.roccoFake = G.roccoArm = G.roccoNew = false; $('talk').classList.add('hidden'); hideHint();
   if (mode !== 'campaign' || G.levelIdx !== 0) return;
-  if (subOf() === 0 && !Save.tut2) { G.tutor = true; G.tutRun = true; G.tut = 1; G.tutHold = true; G.story = { i: 0, wait: 0, hint: null, list: tutScript(), tut: true, end: () => endTutorial(false) }; }
+  if (subOf() === 0 && (!Save.tut2 || G.tutReplay)) { G.tutor = true; G.tutRun = true; G.tut = 1; G.tutHold = true; G.story = { i: 0, wait: 0, hint: null, list: tutScript(), tut: true, end: () => endTutorial(false) }; }
   else if (subOf() === TUNE.kitchen.unlockStage - 1 && !Save.rocco) G.story = { i: 0, wait: 0, hint: null, list: roccoScript(), end: null };
 }
 function storyTick() {
@@ -1703,7 +1707,7 @@ function killEnemy(z) {
   if (z.elite) { vibrate(25); gainXP(4); for (let k = 0; k < 4; k++) pickups.push({ type: 'blood', x: z.x, y: z.y, z: 20, vz: rand(4, 6), vx: rand(-2, 2), vy: rand(-2, 2), val: Math.max(1, Math.round(3 * (G.bloodMul || 1))), t: 0 });
     if (z.elite === 'explode') { ringFx(z.x, z.y, '#ff6622', 100); explosion(z.x, z.y, 95, 3, 0); fires.pop(); if (player && dist(player, z) < 95) hurtPlayer(14, z.x, z.y, 10); }
     if (z.elite === 'split') for (let k = 0; k < 2; k++) { const c2 = spawnEnemy(z.type === 'brute' ? 'shambler' : z.type, z.x + rand(-20, 20), z.y + rand(-15, 15), { minion: true }); c2.hp = c2.max = Math.max(1, z.max * 0.12); c2.sc = 0.75; c2.spd *= 1.2; } }
-  G.kills++; const cUp = G.comboF !== G.time; if (cUp) { G.combo++; G.comboF = G.time; } G.comboT = 90; if (cUp && G.combo === 20 && G.mode !== 'training') missionEvent('combo'); if (!z.d.dummy) { Save.zk[z.type] = (Save.zk[z.type] || 0) + 1; Save.st.kills++; Save.st.heroK[G.hero] = (Save.st.heroK[G.hero] || 0) + 1; if (G.combo > Save.st.combo) Save.st.combo = G.combo; } { const k = player.wpn === 'sig' ? player.id : player.wpn, xp = G.mode === 'training' ? trainXp(z.type === 'dummy' ? 12 : 4) : 1; if (G.mode === 'training' && xp) addHeroXP(G.hero, Math.ceil(xp / 6) * TUNE.hero.xp.trainKill / 2); Save.wxp[k] = (Save.wxp[k] || 0) + xp; G.xpGain[k] = (G.xpGain[k] || 0) + xp; if (G.mode === 'training') { G.score += 10 + G.combo; } } if (G.phase === 'lockdown') { G.lockKills++; if (G.lockKills === G.lockNeed) addText('BREACHING!', player.x, player.y - 90, '#ffcc33', 22, 60); }
+  G.kills++; const cUp = G.comboF !== G.time; if (cUp) { G.combo++; G.comboF = G.time; if (G.combo > (G.maxCombo || 0)) G.maxCombo = G.combo; } G.comboT = 90; if (cUp && G.combo === 20 && G.mode !== 'training') missionEvent('combo'); if (!z.d.dummy) { Save.zk[z.type] = (Save.zk[z.type] || 0) + 1; Save.st.kills++; Save.st.heroK[G.hero] = (Save.st.heroK[G.hero] || 0) + 1; if (G.combo > Save.st.combo) Save.st.combo = G.combo; } { const k = player.wpn === 'sig' ? player.id : player.wpn, xp = G.mode === 'training' ? trainXp(z.type === 'dummy' ? 12 : 4) : 1; if (G.mode === 'training' && xp) addHeroXP(G.hero, Math.ceil(xp / 6) * TUNE.hero.xp.trainKill / 2); Save.wxp[k] = (Save.wxp[k] || 0) + xp; G.xpGain[k] = (G.xpGain[k] || 0) + xp; if (G.mode === 'training') { G.score += 10 + G.combo; } } if (G.phase === 'lockdown') { G.lockKills++; if (G.lockKills === G.lockNeed) addText('BREACHING!', player.x, player.y - 90, '#ffcc33', 22, 60); }
   if (G.kills % 17 === 0 && G.mode !== 'training') addText(pick(KILL_QUIPS), z.x, z.y - 70, '#ffffff', 15, 45);
   if (player.ultC < player.ultMax) player.ultC = Math.min(player.ultMax, player.ultC + TUNE.ult.killSec * 60);
   if (!z.d.dummy && G.mode !== 'training') addHeroXP(G.hero, z.elite ? TUNE.hero.xp.elite : TUNE.hero.xp.kill);
@@ -1847,7 +1851,7 @@ function updateSpawns() {
     for (let i = 0; i < 9 + G.hordes * 3; i++) { const s = spawnSpot(); if (s) spawnEnemy(pickW(L.mix), s.x, s.y, { emerge: s.emerge }); }
   }
   if (--G.spawnT > 0) return;
-  G.spawnT = lerp(L.rate[0], L.rate[1], prog) * rand(0.7, 1.3) / (diffOn() ? DF().spawn : 1) / (stg() ? stg().sp : 1) * (G.tutor ? 1.8 : 1) * (1 - (G.domLv || 0) * 0.12) * (G.blackout ? 0.9 : 1) * (G.wRule === 'horde' || G.wRule === 'swarm' ? 0.5 : 1);
+  G.spawnT = lerp(L.rate[0], L.rate[1], prog) * rand(0.7, 1.3) / (diffOn() ? DF().spawn : 1) / (stg() ? stg().sp : 1) * (G.tutor ? (G.tutReplay ? 2.6 : 1.8) : 1) * (1 - (G.domLv || 0) * 0.12) * (G.blackout ? 0.9 : 1) * (G.wRule === 'horde' || G.wRule === 'swarm' ? 0.5 : 1);
   if (enemies.length >= 26 + (G.wRule === 'horde' || G.wRule === 'swarm' ? 14 : 0)) return;
   const n = Math.random() < 0.2 + prog * 0.35 ? 2 : 1;
   for (let k = 0; k < n; k++) { const s = spawnSpot(); if (s) spawnEnemy(pickW(L.mix), s.x, s.y, { emerge: s.emerge }); }
@@ -3674,6 +3678,7 @@ function render() {
   OL = Cfg.hq ? '#0b0609' : null;
   const menuUp = !$('startScreen').classList.contains('hidden');
   if (G.state === 'base' && !menuUp) { renderHideout(); return; }
+  if (menuUp && !G.uiMenu) { G.uiMenu = true; hideGameUI(); }
   if (menuUp && G.state === 'base') { G.state = 'menu'; Amb.stop(); if (Music.on) { Music.stop(); Music.play('menu'); } }
   if (!player || G.state === 'menu' || !$('startScreen').classList.contains('hidden')) { if (player && G.state !== 'menu' && G.state !== 'play') { G.state = 'menu'; player = null; buddy = null; } renderMenuBg(); return; }
   for (const b of buildings) if (b.cv && (b.x + b.w < G.cam.x - 900 || b.x > G.cam.x + VW + 900)) b.cv = null;
@@ -3819,10 +3824,10 @@ function roomBadge(id) {
   return false;
 }
 /* v43: a funny tip when Hideout windows are open (until the player has tapped a window once) */
-const WIN_TIPS = { L: ['Mind the rain? Just close the window. 🌧️', 'Left window open. Tap it if the rain gets on your nerves.'], R: ['Don’t you start feeling chilly? Tap the window. 🥶', 'Right window open… the zombies can smell the soup.'], B: ['Fresh air AND a free shower! Tap a window to close it.', 'Both windows open? Bold. Tap them if you want some peace.'] };
+const WIN_TIPS = ['Hear the rain? Tap the window if it’s too much.', 'The wind’s getting in… tap the window to close it.']; // v44: rain line for the left window, wind line for the right; both open = alternate
 function winTip() { if (G.state !== 'base' || G.baseDown || Save.winTold || window._winTipN >= 2 || roomOpen) return; const oL = !Save.winL, oR = !Save.winR; if (!oL && !oR) return;
-  window._winTipN = (window._winTipN || 0) + 1; const L = WIN_TIPS[oL && oR ? 'B' : oL ? 'L' : 'R'], el = $('winTip'); el.textContent = L[Math.floor(Math.random() * L.length)];
-  const r = Object.values(G.winR || {}).find(w => (oL && oR) || (oL ? w[0] < VW / 2 : w[0] >= VW / 2)); el.style.left = r ? Math.max(8, Math.min(innerWidth - 230, (r[0] + r[2] / 2) * SCALE - 110)) + 'px' : '40%'; el.style.top = r ? ((r[1] + r[3]) * SCALE + 8 + (G.baseOff || 0) * SCALE) + 'px' : '30%';
+  window._winTipN = (window._winTipN || 0) + 1; const el = $('winTip'); Save.winAlt = (Save.winAlt || 0) + 1; el.textContent = WIN_TIPS[oL && oR ? Save.winAlt % 2 : oL ? 0 : 1];
+  const sideL = oL && oR ? Save.winAlt % 2 === 0 : oL, r = Object.values(G.winR || {}).find(w => sideL ? w[0] < VW / 2 : w[0] >= VW / 2); el.style.left = r ? Math.max(8, Math.min(innerWidth - 230, (r[0] + r[2] / 2) * SCALE - 110)) + 'px' : '40%'; el.style.top = r ? ((r[1] + r[3]) * SCALE + 8 + (G.baseOff || 0) * SCALE) + 'px' : '30%';
   el.classList.remove('hidden'); clearTimeout(window._winTipT); window._winTipT = setTimeout(() => el.classList.add('hidden'), 5500); }
 function openBase() {
   setTimeout(winTip, 1600);
@@ -4113,7 +4118,9 @@ function drawCatSpr(x, y, t) {
 function petCat() {
   G.petT = 120; G.petMsg = pick(['purrrr…', 'Mittens loves you ♥', 'mrrp?', '*slow blink*', '*headbutts your hand*', 'feed me. then the zombies.']);
   sfx('purr', () => { A.noise(0.9, 0.18, 'lowpass', 140); A.tone(55, 'sine', 0.9, 0.05, 50); }); vibrate([10, 30, 10, 30, 10]);
-  Save.pets = (Save.pets || 0) + 1; if (Save.pets === 10) { Save.blood += 25; G.petMsg = 'Best friends! 🩸 +25'; } saveGame();
+  Save.pets = (Save.pets || 0) + 1; if (Save.pets === 10) { Save.blood += 25; G.petMsg = 'Best friends! 🩸 +25'; }
+  const today = DAY(); if (Save.petDay !== today) { Save.petDay = today; Save.petN = 0; } Save.petN++; const goal = PET_GOALS.find(g => g[0] === Save.petN), next = PET_GOALS.find(g => g[0] > Save.petN);
+  if (goal) { Save.blood += goal[1]; G.petMsg = `${Save.petN} pets today! 🩸 +${goal[1]}`; refreshBaseTop(); SFX.heal(); } else if (next && Save.petN % 5 === 0) G.petMsg = `${Save.petN}/${next[0]} pets today`; else if (!next && Save.petN === 51) G.petMsg = 'Mittens is fully loved today ♥'; saveGame();
 }
 const KITCHEN_COST = 10000, MEALS = ['Canned Beans Deluxe 🫘', 'Mystery Stew 🍲', 'Spaghetti alla Apocalisse 🍝', 'Grilled Rat Kebab 🍢', 'Grandma\'s Survival Soup 🥣', 'Expired Pizza (still good) 🍕', 'Pancakes, no brains 🥞'];
 function renderHideout() {
@@ -4848,9 +4855,9 @@ const MTPL = [
   ['rescue', () => ({ desc: 'Rescue a survivor (📦 Supply stages)', goal: 1, go: 'levels' })],
   ['boss', () => ({ desc: 'Defeat any boss', goal: 1, go: 'levels' })],
   ['cards', () => ({ desc: 'Pick 6 upgrade cards', goal: 6 })],
-  ['noult', () => ({ desc: 'Clear a level without the ULTIMATE', goal: 1, food: 2, go: 'levels' })],
-  ['noroll', () => ({ desc: 'Clear a level without rolling', goal: 1, food: 2, go: 'levels' })],
-  ['nospc', () => ({ desc: 'Clear a level without the SPECIAL', goal: 1, food: 1, go: 'levels' })],
+  ['noult', () => ({ desc: 'Clear a level without the ULTIMATE', goal: 1, food: 1, go: 'levels' })],
+  ['noroll', () => ({ desc: 'Clear a level without rolling', goal: 1, food: 1, go: 'levels' })],
+  ['nospc', () => ({ desc: 'Clear a level without the SPECIAL', goal: 1, go: 'levels' })],
   ['combo', () => ({ desc: 'Reach a x20 combo', goal: 1 })],
   ['frost', () => ({ desc: 'Throw 3 frost bombs ❄', goal: 3 })],
   ['train', () => ({ desc: 'Finish a Training session', goal: 1, go: 'train' })],
@@ -4859,9 +4866,9 @@ const MTPL = [
 ];
 const M_FIXED = {
   hero: d => { const hs = [...HERO_ORDER, ...(Save.leo ? ['leo'] : [])], h = hs[d % hs.length]; return { type: 'clear', desc: `Today's hero: clear a level with ${HEROES[h].name}`, goal: 1, h, food: 1, go: 'hero' }; },
-  raid: () => ({ type: 'raid', desc: 'Survive a defence raid in the Hideout', goal: 1, food: 2, go: 'raid' })
+  raid: () => ({ type: 'raid', desc: 'Survive a defence raid in the Hideout', goal: 1, food: 1, go: 'raid' })
 };
-const DM_N = 10, DM_ALL = { blood: 500, food: 3 };
+const DM_N = 10, DM_ALL = { blood: 500, food: 2 };
 function dailyMissions() {
   const d = DAY(); if (Save.dm && Save.dm.day === d && Save.dm.v === 2) return Save.dm.list;
   const list = [Object.assign({ prog: 0, claimed: false }, M_FIXED.hero(d)), Object.assign({ prog: 0, claimed: false }, M_FIXED.raid(d))];
@@ -5129,7 +5136,7 @@ function drawCompRow() {
     b.onclick = e => { e.stopPropagation(); SFX.click(); Save.companion = id; saveGame(); drawCompRow(); }; r.appendChild(b);
   }
   // v34: hire a cat = cat button after the last name (this level only)
-  if ((pendingMode === 'campaign' || pendingMode === 'bonus' || pendingMode === 'raid') && labLv('catlab')) { const k = document.createElement('span'); k.className = 'cb cat on'; k.title = 'Lab Cat Training: a cat comes to every level'; k.innerHTML = `<span class="catIc"></span><small>✓ Lab</small>`; k.onclick = e => { e.stopPropagation(); banner('🐈 MITTENS IS COMING', 'Lab Cat Training: a cat joins every level for free'); }; r.appendChild(k); }
+  if ((pendingMode === 'campaign' || pendingMode === 'bonus' || pendingMode === 'raid') && labLv('catlab')) { const k = document.createElement('button'); k.className = 'cb cat' + (Save.catHome ? '' : ' on'); k.title = 'Lab Cat Training: a cat comes to every level (tap to leave her home)'; k.innerHTML = `<span class="catIc"></span><small>${Save.catHome ? 'home' : '✓ Lab'}</small>`; k.onclick = e => { e.stopPropagation(); SFX.click(); Save.catHome = !Save.catHome; saveGame(); drawCompRow(); }; r.appendChild(k); }
   else if (pendingMode === 'campaign' || pendingMode === 'bonus') { const c = TUNE.cat.levelCost, k = document.createElement('button'); k.className = 'cb cat' + (pendingCat ? ' on' : ''); k.title = 'Hire a cat for this level: it grabs blood you miss';
     k.innerHTML = `<span class="catIc"></span><small>${pendingCat ? '✓' : c + '🩸'}</small>`;
     k.onclick = e => { e.stopPropagation(); SFX.click(); if (pendingCat) { pendingCat = false; Save.blood += c; } else if (Save.blood >= c) { pendingCat = true; Save.blood -= c; banner('🐈 CAT HIRED', 'This level only · grabs blood you miss'); } else { SFX.buzz(); banner('🐈 NOT ENOUGH BLOOD', c + ' 🩸 to hire a cat'); return; } saveGame(); drawCompRow(); }; r.appendChild(k); }
@@ -5194,9 +5201,28 @@ function purchaseProduct(id, title, price, onSuccess) { $('buyTitle').textConten
 let shopReturn = 'startScreen';
 function refreshAutoBtn() { const b = $('autoBtn'), onNow = autoAimOn(), left = Save.aimCharges; b.classList.toggle('on', onNow); b.textContent = '🎯 AUTO ' + (onNow ? 'ON' : 'OFF') + (G.aimActive ? '' : ` · ${left} left`); $('pauseAuto').textContent = '🎯 AUTO-AIM: ' + (onNow ? 'ON' : 'OFF') + (G.aimActive ? ` · ${left} more level${left === 1 ? '' : 's'} after this` : ` · ${left} left`); }
 function toggleAuto() { if (!hasAim()) return; Cfg.autoAim = !Cfg.autoAim; if (Cfg.autoAim && !G.aimActive && player) useAimCharge(false); saveCfg(); refreshAutoBtn(); SFX.click(); }
-function goMenu() { labRet = null; $('winTip').classList.add('hidden'); document.documentElement.classList.remove('photo'); $('photoBar').classList.add('hidden'); if (Movie) { Movie = null; $('movieScreen').classList.add('hidden'); } Music.boss = false; Music.stop(); Amb.stop(); if (A.ctx) Music.play('menu'); G.state = 'menu'; player = null; $('hud').classList.add('hidden'); $('touch').classList.add('hidden'); $('hint').classList.add('hidden'); $('combo').classList.remove('show'); refreshMenu(); showOnly('startScreen');  setTimeout(checkDaily, 400); setTimeout(() => { if (G.state === 'menu') installNudge(); }, 2500); }
+/* v44: when the main menu shows, hide every in-game layer (some used to stay on screen) */
+function hideGameUI() { ['hud', 'touch', 'hint', 'tut', 'talk', 'bossHud', 'sprWait', 'foodBox', 'coach', 'photoBar', 'winTip', 'comic'].forEach(id => { const e = $(id); if (e) e.classList.add('hidden'); }); $('combo').classList.remove('show'); $('banner').classList.remove('show'); document.documentElement.classList.remove('photo'); G.talkQ = null; G.story = null; resetInput(); }
+function goMenu() { labRet = null; hideGameUI(); $('winTip').classList.add('hidden'); document.documentElement.classList.remove('photo'); $('photoBar').classList.add('hidden'); if (Movie) { Movie = null; $('movieScreen').classList.add('hidden'); } Music.boss = false; Music.stop(); Amb.stop(); if (A.ctx) Music.play('menu'); G.state = 'menu'; player = null; $('hud').classList.add('hidden'); $('touch').classList.add('hidden'); $('hint').classList.add('hidden'); $('combo').classList.remove('show'); refreshMenu(); showOnly('startScreen');  setTimeout(checkDaily, 400); setTimeout(() => { if ($('foodBox').classList.contains('hidden') && $('dailyScreen') && $('dailyScreen').classList.contains('hidden')) whatsNew(); }, 1200); setTimeout(() => { if (G.state === 'menu') installNudge(); }, 2500); }
 function pauseGame() { if (G.state !== 'play') return; G.state = 'paused'; $('pauseCrowd').classList.toggle('hidden', !Cfg.test); $('pauseQuip').textContent = pick(PAUSE_TIPS); Music.stop(); Amb.stop(); $('pauseSub').textContent = G.L.name; $('pauseAuto').classList.toggle('hidden', !hasAim()); $('pauseAim').textContent = 'AIM LINE: ' + (Cfg.aimLine ? 'ON' : 'OFF'); refreshAutoBtn(); showOnly('pauseScreen'); resetInput(); }
 function resumeGame() { if (G.state !== 'paused') return; document.documentElement.classList.remove('photo'); $('photoBar').classList.add('hidden'); showOnly(null); G.state = 'play'; Music.play(trackFor()); Amb.start(); last = performance.now(); }
+/* v44: DEATH TIPS, PERSONAL RECORDS, WHAT'S NEW, PET MITTENS */
+const DEATH_TIPS = ['Sprinters lunge: roll THROUGH them, not away.', 'Low on health? Dr. Aris heals the whole team with his special.', 'Keep moving. A standing target is a dead target.', 'Pukers leave acid on the floor. Don’t stand in it.', 'Armored zombies shrug off small hits: use the special or heavy weapons.', 'Frost bombs ❄ slow everything around you. Save one for bosses.', 'Your partner can revive you. Call them before it gets ugly.', 'The ultimate recharges faster when you keep killing.', 'Auto-aim (F / 🎯) lets you focus on dodging.', 'Upgrade the safe house in the Lab: tougher barricades, turrets, faster doors.', 'Hard mode: you only get ONE special per level. Choose the moment.', 'Ben’s shield blocks hits from the front. Face the horde.', 'Chloe is fast: hit, roll, hit again.', 'Bloaters explode. Shoot them from far away.', 'Medkits drop more on Easy. No shame in Easy.', 'Training levels up your weapon 4x faster.', 'Hire Mittens: she grabs the blood you miss while you fight.', 'Elites glow. They hit harder but drop more blood (and sometimes frost bombs).', 'Bosses have patterns. Watch one attack before you go all in.', 'Swap weapons: some zombies hate the second one more.'];
+const BOSS_TIPS = ['Bosses have patterns. Watch one attack before you go all in.', 'Keep the boss in front of you and roll sideways, not backwards.', 'Save your ultimate for the boss’s second half.', 'Frost bombs ❄ chill bosses: free damage time.'];
+const RAID_TIPS = ['Raids: stay near the generator, the zombies want it more than you.', 'Lab research makes raids much easier: walls, turrets, electric fence.', 'Pick EASY raids first: same fun, less pain.'];
+function deathTip() { return pick(G.mode === 'raid' ? RAID_TIPS : enemies.some(z => !z.dead && z.boss) ? BOSS_TIPS : DEATH_TIPS); }
+const REC_NM = { kills: 'Most kills in one run', combo: 'Longest combo', raid: 'Highest raid survived', fast: 'Fastest stage clear' };
+function recCheck(clear) { // returns html lines for new records
+  Save.rec = Save.rec || {}; const R = Save.rec, out = [], t = Math.round((Date.now() - (G.runT0 || Date.now())) / 1000);
+  const up = (k, v, better) => { if (v > 0 && (R[k] === undefined || better(v, R[k]))) { const had = R[k] !== undefined; R[k] = v; if (had) out.push(k); } };
+  if (G.mode !== 'training' && !G.tutRun) { up('kills', G.kills, (a, b) => a > b); up('combo', G.maxCombo || 0, (a, b) => a > b); if (clear && G.mode === 'campaign') up('fast', t, (a, b) => a < b); if (G.mode === 'raid' && clear) up('raid', Save.raids, (a, b) => a > b); }
+  saveGame(); const fmt = (k, v) => k === 'fast' ? Math.floor(v / 60) + ':' + String(v % 60).padStart(2, '0') : v;
+  return out.map(k => `<div class="statline" style="color:#ffcc33">🏆 NEW RECORD! ${REC_NM[k]}: <b>${fmt(k, R[k])}</b></div>`).join('');
+}
+const WHATS_NEW = { v: 'v44', lines: ['🐈 Pet Mittens in the Hideout: 20, 30, 40, 50 pets a day give blood.', '🏆 Personal records: beat your best kills, combo and fastest clear.', '🎓 Replay the tutorial any time from Settings.'] };
+function whatsNew() { if (!Save.tut2 || Save.seenNew === WHATS_NEW.v || G.state !== 'menu' || $('startScreen').classList.contains('hidden')) return; Save.seenNew = WHATS_NEW.v; saveGame();
+  const b = $('foodBox'); b.innerHTML = `<div class="fbx"><h3>WHAT'S NEW</h3>${WHATS_NEW.lines.map(l => `<p>${l}</p>`).join('')}<div class="bb"></div></div>`; b.querySelector('.bb').appendChild(fBtn('OK, LET ME PLAY', 'gold', () => { SFX.click(); b.classList.add('hidden'); })); b.classList.remove('hidden'); }
+const PET_GOALS = [[20, 50], [30, 80], [40, 120], [50, 200]];
 function showGameOver() {
   G.state = 'over'; Music.stop(); Amb.stop(); bankBlood();
   if (window.foodPaidRun) { foodAdd(1); window.foodPaidRun = 0; setTimeout(() => banner('🍖 +1 FOOD BACK', 'Lost the level? Half the food comes back.'), 600); }
@@ -5204,6 +5230,7 @@ function showGameOver() {
   $('overScreen').querySelector('h1').textContent = G.timeUp ? "TIME'S UP" : G.overrun ? 'BASE OVERRUN' : "YOU'RE DEAD";
   if (G.mode === 'bonus' && G.bonus.endless) { const el = Math.floor((G.bonus.time * 60 - G.bonusT) / 60), pb = Save.endlessBest || { t: 0, k: 0 }, nb = el > pb.t, mins = Math.floor(el / 60), extra = Math.max(0, mins - (G.endPaid || 0)) * 20; G.endPaid = Math.max(G.endPaid || 0, mins); if (nb) Save.endlessBest = { t: el, k: G.kills }; Save.blood += extra; saveGame();
     $('overScreen').querySelector('h1').textContent = nb ? 'NEW RECORD!' : 'THE HORDE WINS'; $('overSub').textContent = `Survived ${mins}:${String(el % 60).padStart(2, '0')} · wave ${G.endWave}${extra ? ` · +${extra} 🩸 survival bonus` : ''}${nb ? '' : ` · best ${Math.floor(pb.t / 60)}:${String(pb.t % 60).padStart(2, '0')}`}`; }
+  $('overTip').textContent = '💡 ' + deathTip(); $('overRec').innerHTML = recCheck(false);
   $('overQuip').textContent = G.timeUp ? pick(['The clock is the real boss.', 'So close. The zombies are celebrating.', 'Time flies when you\'re being eaten.']) : G.overrun ? 'They ate the generator. Then the couch. Then the popcorn.' : pick(DEATH_QUIPS);
   $('reviveBtn').classList.toggle('hidden', G.revived || !!G.overrun || (G.mode === 'bonus' && !G.bonus.endless)); $('touch').classList.add('hidden'); showOnly('overScreen');
 }
@@ -5223,6 +5250,7 @@ function xpSummary() { const hi = heroInfo(G.hero), hl = G.hxpGain ? `⭐ ${HERO
   return hl + Object.keys(G.xpGain).map(k => { const nm = HEROES[k] ? HEROES[k].name + "'s weapon" : WEAPONS[k].name; return `${nm} +${G.xpGain[k]} XP · ${lvTxt(wInfo(k), WMAX)}`; }).join('<br>') + (G.darkRun ? `<br>☢️ Green blood +${G.darkRun}` : ''); }
 function firstWin() { if (G.mode !== 'campaign' || Save.fwDay === DAY()) return ''; Save.fwDay = DAY(); Save.blood += TUNE.daily.firstWinBlood; addHeroXP(G.hero, TUNE.hero.xp.firstWin); return `<div class="statline" style="color:#ffcc33">☀ First win of the day: +${TUNE.daily.firstWinBlood} 🩸 · +${TUNE.hero.xp.firstWin} XP</div>`; }
 function showResults(title, color, sub, lines, note) {
+  lines = (lines || '') + recCheck(G.mode !== 'training');
   G.dblDone = false; const db = $('dblBtn'); db.classList.toggle('hidden', !(G.bloodRun > 0) || G.mode === 'training'); db.textContent = (Save.vip ? '⭐' : '📺') + ' DOUBLE BLOOD · +' + G.bloodRun + ' 🩸';
   $('againBtn').textContent = 'PLAY AGAIN';
   G.state = 'complete'; $('touch').classList.add('hidden'); Music.stop(); Amb.stop(); saveGame();
@@ -5279,14 +5307,14 @@ function levelComplete() {
 function subComplete() {
   missionEvent('clear', { h: G.hero, sub: kindOf(), ult: G.mUlt, roll: G.mRoll, spc: G.mSpc });
   let dcB = 0; if (G.dc && Save.dcDay !== DAY()) { Save.dcDay = DAY(); Save.dcN = (Save.dcN || 0) + 1; dcB = DC_REW.blood; foodAdd(DC_REW.food); addHeroXP(G.hero, TUNE.hero.xp.mission); }
-  const li = G.levelIdx, sb = subOf(), key = li + '_' + sb, SB = STAGES[sb], bonus = Math.round((40 + li * 20 + sb * 10) * DF().blood);
+  const li = G.levelIdx, sb = subOf(), key = li + '_' + sb, SB = STAGES[sb], replay = (Save.subs[li] || 0) > sb || !!Save.cleared[li], bonus = Math.round((40 + li * 20 + sb * 10) * DF().blood * (replay ? 0.5 : 1)); // v44: replays give half the stage bonus
   G.bloodRun += pickups.filter(k => k.type === 'blood').reduce((a, k) => a + k.val, 0); pickups = [];
   const KG = 100 + li * 20, st = Save.stars[key] || [false, false, false], got = [true, G.kills >= KG, !G.downs]; let ns = 0; got.forEach((g, i) => { if (g && !st[i]) { st[i] = true; ns++; } }); Save.stars[key] = st;
   const sup = G.supplies.filter(q => q.got).length, supB = sb === 3 && sup === 3 ? 150 : 0, svB = G.survivor && G.survivor.saved ? 100 : 0, starB = ns * 50;
   Save.subs[li] = Math.max(Save.subs[li] || 0, sb + 1); if (Save.fails) delete Save.fails[key];
   addHeroXP(G.hero, TUNE.hero.xp.stage); const fw = firstWin(), labNew = !Save.labBuilt && labOpen(); if (labNew) Save.labBuilt = true;
   bankBlood(); Save.blood += bonus + supB + starB + dcB; saveGame();
-  showResults((dcB ? '📅 ' : '') + SB.icon + ' ' + SB.name.toUpperCase() + ' CLEARED', '#33ff77', G.L.name + ' · ' + (li + 1) + '-' + (sb + 1), `<div class="stars">${['Clear it', KG + '+ kills', 'Never go down'].map((n, i) => `<span class="${got[i] ? 'on' : ''}">${got[i] ? '★' : '☆'} ${n}</span>`).join('')}</div>${starB ? `<div class="statline" style="color:#ffcc33">New stars: 🩸 <b>+${starB}</b></div>` : ''}<div class="statline">Zombies slain: <b>${G.kills}</b> · Level ${G.plv + 1}</div><div class="statline">Blood: 🩸 <b>${G.bloodRun}</b> · Bonus 🩸 <b>${bonus}</b></div>${sb === 3 ? `<div class="statline">📦 Supplies: <b>${sup}/3</b>${supB ? ' · +150 🩸' : ''}</div>` : ''}${svB ? '<div class="statline">🙋 Survivor rescued · +100 🩸</div>' : ''}${fw}`,
+  showResults((dcB ? '📅 ' : '') + SB.icon + ' ' + SB.name.toUpperCase() + ' CLEARED', '#33ff77', G.L.name + ' · ' + (li + 1) + '-' + (sb + 1), `<div class="stars">${['Clear it', KG + '+ kills', 'Never go down'].map((n, i) => `<span class="${got[i] ? 'on' : ''}">${got[i] ? '★' : '☆'} ${n}</span>`).join('')}</div>${starB ? `<div class="statline" style="color:#ffcc33">New stars: 🩸 <b>+${starB}</b></div>` : ''}<div class="statline">Zombies slain: <b>${G.kills}</b> · Level ${G.plv + 1}</div><div class="statline">Blood: 🩸 <b>${G.bloodRun}</b> · Bonus 🩸 <b>${bonus}</b>${replay ? ' <small style="color:#999">(replay ½)</small>' : ''}</div>${sb === 3 ? `<div class="statline">📦 Supplies: <b>${sup}/3</b>${supB ? ' · +150 🩸' : ''}</div>` : ''}${svB ? '<div class="statline">🙋 Survivor rescued · +100 🩸</div>' : ''}${fw}`,
     (labNew ? '🧪 <b style="color:#7cf">The Lab is open!</b> Research upgrades in the Hideout basement.<br>' : '') + (dcB ? `📅 <b style="color:#ffcc33">Daily challenge done!</b> +${DC_REW.blood} 🩸 · +${DC_REW.food} 🍖<br>` : '') + (sb < LAST ? `🔓 Next: <b style="color:#ffcc33">${STAGES[sb + 1].icon} ${STAGES[sb + 1].name}</b><br>` : '') + xpSummary());
   $('againBtn').textContent = 'NEXT ▶';
 }
@@ -5416,7 +5444,7 @@ on('dailyDbl', () => showRewardedAd(() => claimDaily(2)));
 on('appBtn', openApp);
 on('appBack', () => showOnly('startScreen'));
 on('installBtn', async () => { if (!installEvt) return; installEvt.prompt(); try { const r = await installEvt.userChoice; if (r.outcome === 'accepted') { $('appBody').innerHTML = '<h3 style="color:#33ff77">🧟 Installing...</h3><p>Look for the zombie on your home screen. Open it for your +200 🩸 bonus.</p>'; $('installBtn').classList.add('hidden'); } } catch (e) {} installEvt = null; });
-appWelcome(); refreshMenu(); setTimeout(checkDaily, 900);
+appWelcome(); refreshMenu(); setTimeout(checkDaily, 900); setTimeout(() => { if ($('foodBox').classList.contains('hidden') && $('dailyScreen').classList.contains('hidden')) whatsNew(); }, 2200);
 on('survBtn', () => openSurvivors());
 on('survBack', () => { $('storyBox').classList.add('hidden'); showOnly('startScreen'); });
 on('dexBack', () => showOnly('startScreen'));
@@ -5427,7 +5455,7 @@ on('defBtn', () => openRoom('defense'));
 on('roomClose', closeRoom);
 on('movieSkip', endMovie); on('clipShare', clipShareNow); on('clipSave', clipSaveNow); on('clipClose', clipCloseNow);
 on('shopBtn', () => { shopReturn = 'startScreen'; openShop(); });
-on('settingsBtn', () => { zoomBtns(); $('cfgFast').checked = !!Cfg.lite && (Cfg.dprCap || 2) <= 1; $('cfgBig').checked = !!Cfg.bigText; $('cfgCb').checked = !!Cfg.cb; $('cfgTest').checked = !!Cfg.test; $('cfgSfx').checked = Cfg.sfx; $('cfgMusic').checked = Cfg.music; $('cfgShake').checked = Cfg.shake; $('cfgGore').checked = Cfg.gore; $('cfgAuto').checked = Cfg.autoAim; $('cfgVib').checked = Cfg.vib; $('cfgAim').checked = Cfg.aimLine; $('cfgHQ').checked = Cfg.hq; $('autoRow').classList.toggle('hidden', !Save.aimCharges); $('resetBtn').textContent = T().resetB; delete $('resetBtn').dataset.armed; $('resetRow').classList.toggle('hidden', !!G.setFromPause); showOnly('settingsScreen'); });
+on('settingsBtn', () => { zoomBtns(); $('rtRow').classList.toggle('hidden', !Save.tut2 || !!G.setFromPause); $('cfgFast').checked = !!Cfg.lite && (Cfg.dprCap || 2) <= 1; $('cfgBig').checked = !!Cfg.bigText; $('cfgCb').checked = !!Cfg.cb; $('cfgTest').checked = !!Cfg.test; $('cfgSfx').checked = Cfg.sfx; $('cfgMusic').checked = Cfg.music; $('cfgShake').checked = Cfg.shake; $('cfgGore').checked = Cfg.gore; $('cfgAuto').checked = Cfg.autoAim; $('cfgVib').checked = Cfg.vib; $('cfgAim').checked = Cfg.aimLine; $('cfgHQ').checked = Cfg.hq; $('autoRow').classList.toggle('hidden', !Save.aimCharges); $('resetBtn').textContent = T().resetB; delete $('resetBtn').dataset.armed; $('resetRow').classList.toggle('hidden', !!G.setFromPause); showOnly('settingsScreen'); });
 on('creditsBtn', () => { SFX.click(); rollCredits(false, () => { }); });
 on('cfgBig', () => { Cfg.bigText = $('cfgBig').checked; saveCfg(); document.documentElement.classList.toggle('bigtext', !!Cfg.bigText); });
 /* v42: PHOTO MODE - hide the HUD, save the picture (share on phones, download on PC) */
@@ -5442,6 +5470,7 @@ on('photoSnap', () => { const cv = $('game'), c = document.createElement('canvas
 on('pauseCrowd', () => { if (!player || !Cfg.test) return; G.god = true; player.hp = player.max; for (let k = 0; k < 22; k++) { const a = k / 22 * Math.PI * 2, r = 130 + (k % 3) * 45; spawnEnemy(['shambler', 'sprinter', 'puker', 'armored', 'bloater'][k % 5], player.x + Math.cos(a) * r * 1.4, clamp(player.y + Math.sin(a) * r * 0.7, G.L.TOP + 20, G.L.BOT - 10), {}); } banner('🎬 STORE SHOT', 'Crowd ready · god mode on · resume, then pause → 📸'); });
 function zoomBtns() { const z = ZOOMS.indexOf(gZoom()); $('zoomBtns').innerHTML = ['NORMAL', 'CLOSE', 'CLOSER'].map((n, i) => `<button class="btn ${i === z ? 'gold' : 'sec'}" data-z="${i}" style="font-size:.7rem;padding:4px 9px;margin-left:3px">${n}</button>`).join(''); $('zoomBtns').querySelectorAll('button').forEach(b => b.onclick = () => { SFX.click(); Cfg.zoomI = +b.dataset.z; saveCfg(); zoomBtns(); }); }
 on('cfgFast', () => { const on = $('cfgFast').checked; Cfg.lite = on; G.lite = on; Cfg.dprCap = on ? 1 : 2; saveCfg(); resize(); });
+on('rtBtn', () => { if (G.setFromPause) return; SFX.click(); window.replayTut = true; pendingMode = 'campaign'; pendingLevel = 0; pendingSub = 0; G.hero = 'maya'; showOnly(null); startRun('maya', 'campaign', 0); });
 on('cfgCb', () => { Cfg.cb = $('cfgCb').checked; saveCfg(); document.documentElement.classList.toggle('cb', !!Cfg.cb); });
 on('settingsBack', () => { Cfg.sfx = $('cfgSfx').checked; Cfg.music = $('cfgMusic').checked; Cfg.shake = $('cfgShake').checked; Cfg.gore = $('cfgGore').checked; Cfg.autoAim = $('cfgAuto').checked; Cfg.vib = $('cfgVib').checked; Cfg.aimLine = $('cfgAim').checked; Cfg.test = $('cfgTest').checked; syncLeo(); if ($('cfgHQ').checked && !Cfg.hq) Cfg.dprCap = 2; Cfg.hq = $('cfgHQ').checked; saveCfg(); resize(); refreshMenu(); showOnly('startScreen'); });
 on('resetBtn', () => { const b = $('resetBtn'); if (!b.dataset.armed) { b.dataset.armed = '1'; b.textContent = TX('again'); return; } delete b.dataset.armed; Object.assign(Save, { blood: 0, up: { hp: 0, dmg: 0, spd: 0, spc: 0 }, cleared: {}, aimCharges: 0 }); saveGame(); b.textContent = 'DONE'; });
@@ -5713,6 +5742,8 @@ try { for (const f of ['20px Bebas Neue', '20px Creepster', '20px Barlow', 'bold
 applyControls();
 if (!Cfg.lang) { const n = (navigator.language || 'en').slice(0, 2).toLowerCase(); Cfg.lang = I18N[n] ? n : 'en'; }
 document.documentElement.classList.toggle('bigtext', !!Cfg.bigText); document.documentElement.classList.toggle('cb', !!Cfg.cb);
+// v44: a menu icon that fails to load (bad connection) tries again
+document.querySelectorAll('#startScreen img').forEach(im => { let n = 0; im.addEventListener('error', () => { if (n++ < 4) setTimeout(() => { im.src = im.src.split('?')[0] + '?r=' + Date.now(); }, 1500 * n); }); if (im.complete && !im.naturalWidth && im.src) im.src = im.src.split('?')[0] + '?r=' + Date.now(); });
 try { applyLang(); refreshMenu(); } catch (e) { console.error(e); }
 try { trObs.observe(document.body, { subtree: true, childList: true, characterData: true }); } catch (e) { }
 if (V30_REFUND) setTimeout(() => banner('UPGRADES REWORKED', `Heroes now level up by playing · refunded ${V30_REFUND} 🩸`), 1500);
