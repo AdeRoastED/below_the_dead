@@ -1,5 +1,5 @@
 // Below the Dead - offline support. Bump the version when you upload a new index.html.
-const CACHE = 'btd-v52';
+const CACHE = 'btd-v56';
 const FONTS = 'btd-fonts'; // kept across versions so the fonts stay offline after updates
 const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Bebas+Neue&family=Creepster&family=Special+Elite&display=swap';
 // v40: install caches only what the menu needs; everything else is cached as it loads, and the rest is fetched in the background ('prefetch')
