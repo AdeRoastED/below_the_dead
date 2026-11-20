@@ -549,7 +549,7 @@ html.speedrun #bSpc,html.speedrun #bUlt,html.speedrun #bSwap,html.speedrun #bBud
 
 <script>
 'use strict';
-const VERSION = 'v56'; // bump together with sw.js
+const VERSION = 'v57'; // bump together with sw.js
 const ERRLOG = []; const logErr = m => { ERRLOG.push(new Date().toISOString().slice(11, 19) + ' ' + String(m).slice(0, 240)); if (ERRLOG.length > 12) ERRLOG.shift(); };
 window.addEventListener('error', e => logErr((e.message || 'error') + (e.filename ? ' @' + e.filename.split('/').pop() + ':' + e.lineno + ':' + e.colno : '')));
 window.addEventListener('unhandledrejection', e => logErr('promise: ' + ((e.reason && (e.reason.message || e.reason)) || '?')));
@@ -885,10 +885,13 @@ const BONUS = [
 ];
 /* v56: SPEEDRUN · one per cleared chapter (Extra missions). No weapons, special, ultimate, swap or partner: run, roll and frost-bomb to the finish
    (the safe-house yard, or past the boss arena when the chapter has no safe house). Timer counts game time. Best time + medal per chapter in Save.speed[li]. */
-const SPEED = { dmg: 0.6, cap: 34, rate: [30, 14], cull: 900, medal: [0, 1.4, 1.1], reward: [150, 250, 400], heroSpd: 3.4 }; // medal = time limit x (straight run time) for 🥉 any finish / 🥈 / 🥇 · reward = blood the first time each medal is won
-const SPEEDRUNS = LEVELS.map((L, i) => ({ id: 'speed' + i, speed: true, lvl: i, need: i, time: 9999, reward: 0, icon: '🏃', name: 'SPEEDRUN · ' + L.name.toUpperCase(), desc: L.plan.safe ? 'No weapons. Run, roll and dodge to the safe house.' : 'No weapons. Run, roll and dodge to the finish line.' }));
+const SPEED = { dmg: 1, zspd: 1.2, sprint: 4, cap: 50, rate: [20, 8], crowd: [300, 170], cull: 900, medal: [0, 1.25, 1.0], reward: [150, 250, 400], heroSpd: 3.4 }; // v57: harder · zspd = zombie speed x · sprint = extra sprinter weight · crowd = frames between zombie walls ahead (start → end) // medal = time limit x (straight run time) for 🥉 any finish / 🥈 / 🥇 · reward = blood the first time each medal is won
+/* v57: chapters without a safe house (Lab, Crypt, Hive) get one at the end in speedruns: the level is 600 px longer */
+const speedLevel = L => L.plan.safe ? L : Object.assign({}, L, { W: L.W + 600, plan: Object.assign({}, L.plan, { safe: { x0: L.ARENA_R + 350, fx: L.ARENA_R + 500, fx2: L.ARENA_R + 820, fy: 300, door: L.ARENA_R + 660, hold: 45 } }) });
+const SPEEDRUNS = LEVELS.map((L, i) => ({ id: 'speed' + i, speed: true, lvl: i, need: i, time: 9999, reward: 0, icon: '🏃', name: 'SPEEDRUN · ' + L.name.toUpperCase(), desc: 'No weapons. Run, roll and dodge to the safe house.' }));
 const bonusDef = id => BONUS.find(b => b.id === id) || SPEEDRUNS.find(b => b.id === id);
-const speedFinish = L => L.plan.safe ? L.plan.safe.fx - 60 : L.ARENA_R + 120;
+const speedFinish = L => speedLevel(L).plan.safe.fx; // v57: the run ends inside the safe-house yard (through the gap in its front barricade)
+const inSafeYard = (L, x, y) => { const S = L.plan.safe; return x > S.fx + 22 && x < S.fx2 - 22 && y < L.TOP + S.fy; };
 const speedPar = L => (speedFinish(L) - 200) / SPEED.heroSpd / 60; // seconds for a perfect straight run with an average hero
 const speedLimits = L => SPEED.medal.map(m => m ? Math.round(speedPar(L) * m) : Infinity);
 const fmtT = t => Math.floor(t / 60) + ':' + (t % 60).toFixed(1).padStart(4, '0');
@@ -1163,7 +1166,8 @@ function startRun(heroId, mode = 'campaign', levelIdx) { // v40: wait (max 10 s)
   const launch = () => { window.runLaunching = false; const fc = foodNeeded(mode, levelIdx, pendingSub); window.foodPaidRun = 0;
     if (fc) { if (foodNow() < fc) { openFoodBox(() => startRun(heroId, mode, levelIdx)); return; } Save.food -= fc; if (Save.food < FOOD.max && Save.foodT + FOOD.regenMs < Date.now()) Save.foodT = Date.now(); window.foodPaidRun = fc; saveGame(); }
     startRunNow(heroId, mode, levelIdx); };
-  const need = typeof runNeeds === 'function' && !Cfg.vecArt ? runNeeds(heroId).filter(k => SPR[k] && !SPR[k].img && sprSt[k] !== 'fail') : [];
+  const li0 = mode === 'bonus' ? (bonusDef(pendingBonus) || {}).lvl : mode === 'campaign' ? levelIdx : -1; if (typeof sprTrim === 'function') sprTrim(li0);
+  const need = typeof runNeeds === 'function' && !Cfg.vecArt ? runNeeds(heroId, li0).filter(k => SPR[k] && !SPR[k].img && sprSt[k] !== 'fail') : [];
   if (!need.length) return launch();
   const w = $('sprWait'); w.classList.remove('hidden'); sprBackground(); let done = false;
   const go = () => { if (done) return; done = true; w.classList.add('hidden'); launch(); };
@@ -1176,7 +1180,7 @@ function startRunNow(heroId, mode = 'campaign', levelIdx) {
   recReset();
   G.lv0 = { bp: HEROES[heroId] ? bpOf(heroId).pts : 0, h: heroLv(heroId), s: spInfo(heroId).lv, w: Object.fromEntries(Object.keys(WEAPONS).concat(Object.keys(HEROES)).map(k => [k, wInfo(k).lv])) };
   A.init(); Save.st.runs++;
-  G.hero = heroId; G.mode = mode; G.levelIdx = levelIdx !== undefined ? levelIdx : (G.levelIdx || 0); G.bonus = mode === 'bonus' ? bonusDef(pendingBonus) : null; G.speedrun = !!(G.bonus && G.bonus.speed); document.documentElement.classList.toggle('speedrun', G.speedrun); if (G.bonus) G.levelIdx = G.bonus.endless ? randi(0, 3) : G.bonus.weekly ? WEEK() % 4 : G.bonus.lvl; G.L = mode === 'campaign' || mode === 'bonus' ? LEVELS[G.levelIdx] : BASE_LEVEL;
+  G.hero = heroId; G.mode = mode; G.levelIdx = levelIdx !== undefined ? levelIdx : (G.levelIdx || 0); G.bonus = mode === 'bonus' ? bonusDef(pendingBonus) : null; G.speedrun = !!(G.bonus && G.bonus.speed); document.documentElement.classList.toggle('speedrun', G.speedrun); if (G.bonus) G.levelIdx = G.bonus.endless ? randi(0, 3) : G.bonus.weekly ? WEEK() % 4 : G.bonus.lvl; G.L = mode === 'campaign' || mode === 'bonus' ? (G.speedrun ? speedLevel(LEVELS[G.levelIdx]) : LEVELS[G.levelIdx]) : BASE_LEVEL;
   const L0 = G.L;
   Object.assign(G, { magT: 0, maxCombo: 0, runT0: Date.now(), relaxUsed: !!Cfg.slow, sandMsg: false, tutReplay: mode === 'campaign' && !!window.replayTut, god: false, dc: mode === 'campaign' && !!window.pendingDC, fxA: [], mUlt: 0, mRoll: 0, mSpc: 0, bwT: 0, banT: 1500, say: [], hbT: 0, cL: undefined, cR: undefined, slowmo: 0, zoomV: 1, focus: null, drops: [], pk: {}, xp: 0, plv: 0, cardQ: false, drone: null, zaps: [], bubT: 0, chainN: 0, benSw: 0, endPaid: 0, endWave: 1, safeTalk: null, speaker: null, cage: null, rescueP: 0, bloodMul: 1, timeUp: false, bonusT: 0, overrun: false, wave: 0, breakT: 300, waveTotal: 0, waveSpawned: 0, trainT: 45 * 60, score: 0, xpGain: {}, hxpGain: 0, darkRun: 0, actors: [], frostN: 0, frostB: [], cat: null, tutor: false, tutHold: false, tutSpc: 0, tutUlt: 0, core: null, relievedT: 0, time: 0, kills: 0, bloodRun: 0, banked: 0, combo: 0, comboT: 0, shake: 0, hitStop: 0, flash: 0, revived: false, arena: false, phase: mode === 'campaign' ? 'street' : mode === 'raid' ? 'raidBreak' : 'train', lockKills: 0, holdT: 0, doorOpen: 0, minX: 10, maxX: L0.W - 10, camL: 0, camR: L0.W, spawnMaxX: mode === 'campaign' && gatesOf(L0).length ? gatesOf(L0)[0] - 60 : 1e9, bolt: 0, nextBolt: 900, thunderT: 0, boss: null, bossDone: false, endT: 0, spawnT: 120, hordes: 0, rain: null, runStart: performance.now(), hintT: 420 });
   enemies = []; allies = []; shots = []; eshots = []; parts = []; texts = []; pickups = []; fires = []; acids = []; rings = []; teles = []; decals = []; flashes = []; skybolts = []; corpses = [];
@@ -1807,6 +1811,7 @@ function spawnEnemy(type, x, y, opts = {}) {
   const d = ZT[type], prog = clamp(player.x / G.L.ARENA, 0, 1), mul = (1 + prog * 0.35) * (G.mode === 'campaign' || G.mode === 'bonus' ? (G.L.diff || 1) * DF().hp * (stg() ? stg().hp : 1) : G.mode === 'raid' ? DF().hp * (1 + (Save.raids || 0) * 0.02) : 1);
   const z = { type, d, x, y, r: d.r, vx: 0, vy: 0, hp: d.hp * mul, max: d.hp * mul, spd: d.spd * rand(0.88, 1.12), face: -1, flash: 0, stun: 0, burn: 0, walk: rand(0, 10), t: randi(0, 200),
     atkT: randi(20, 60), state: 'walk', st: 0, emerge: opts.emerge || 0, em0: opts.emerge || 1, dive: !!opts.dive, dead: false, minion: !!opts.minion, buffT: 0 };
+  if (G.speedrun) z.spd *= SPEED.zspd; // v57
   { const eb = (kindOf() === 2 ? (subOf() > 5 ? 0.3 : 0.22) : subOf() >= 0 || G.mode === 'bonus' ? 0.035 : 0) * (diffOn() ? DF().elite : 1) + (G.domLv || 0) * 0.04; if (!opts.minion && !d.dummy && G.mode !== 'training' && (opts.elite || G.wRule === 'elite' || Math.random() < eb)) { const ek = pick(Object.keys(ELITES)); z.elite = ek; z.nick = pick(ZNICKS); z.hp *= ek === 'giant' ? 4 : 2.2; z.max = z.hp; if (ek === 'fast') z.spd *= 1.6; if (ek === 'shield') z.eShield = 3; if (ek === 'giant') { z.sc = 1.4; z.r = d.r * 1.35; } } }
   if (G.assist) { z.hp *= 1 - 0.08 * G.assist; z.max = z.hp; }
   if (diffOn() && !d.dummy) z.spd *= DF().zspd;
@@ -1932,7 +1937,7 @@ function spawnSpot() {
     else if (r < 0.88 && c.x > 300) { x = c.x - rand(40, 100); y = rand(L.TOP + 30, L.BOT - 20); }
     else { x = c.x + rand(60, VW - 60); y = L.BOT - 8; emerge = 30; if (Math.abs(x - player.x) < 180) continue; }
     if (x > G.spawnMaxX || x < G.minX + 10 || x > G.maxX - 10) continue;
-    if (G.phase === 'hold' || G.phase === 'toSafe' || G.phase === 'enter') { const S = G.L.plan.safe; if (x > S.fx - 30 && x < S.fx2 + 30 && y < G.L.TOP + S.fy + 30) continue; }
+    if (G.phase === 'hold' || G.phase === 'toSafe' || G.phase === 'enter' || G.phase === 'speed') { const S = G.L.plan.safe; if (x > S.fx - 30 && x < S.fx2 + 30 && y < G.L.TOP + S.fy + 30) continue; }
     if (obstacles.some(o => !o.broken && pointInBox(x, y, { x: o.x - 14, y: o.y - 14, w: o.w + 28, d: o.d + 28 }))) continue;
     return { x, y, emerge };
   }
@@ -1975,10 +1980,15 @@ function updateSpawns() {
   if (G.phase === 'boss' || G.endT > 0 || (G.tut && G.tut < 4)) return;
   const L = G.L, prog = clamp(player.x / (ph0() === 'speed' ? G.speedFin : L.ARENA), 0, 1), ph = G.phase;
   if (ph === 'speed') { // v56: more zombies, mostly ahead; the ones left far behind are removed
-    if (G.time % 30 === 0) enemies = enemies.filter(z => z.dead || z.x > player.x - SPEED.cull);
+    if (G.time % 30 === 0) enemies = enemies.filter(z => z.dead || z.x > player.x - SPEED.cull); if (inSafeYard(L, player.x, player.y)) return;
     if (--G.spawnT > 0) return; G.spawnT = lerp(SPEED.rate[0], SPEED.rate[1], prog) * rand(0.7, 1.3) / (diffOn() ? DF().spawn : 1);
     if (enemies.filter(z => !z.dead).length >= SPEED.cap) return;
-    for (let k = 0; k < (Math.random() < 0.35 ? 2 : 1); k++) { const s = spawnSpot(); if (s) spawnEnemy(pickW(L.mix), s.x, s.y, { emerge: s.emerge }); }
+    const mix = Object.assign({}, L.mix); if (ZT.sprinter) mix.sprinter = (mix.sprinter || 0) + SPEED.sprint;
+    for (let k = 0; k < (Math.random() < 0.5 ? 2 : 1); k++) { const s = spawnSpot(); if (s) spawnEnemy(pickW(mix), s.x, s.y, { emerge: s.emerge }); }
+    if ((G.crowdT = (G.crowdT || 0) - 1) <= 0 && player.x < G.speedFin - 700) { // a wall of zombies across the street ahead: find the gap or roll through
+      G.crowdT = lerp(SPEED.crowd[0], SPEED.crowd[1], prog); const x = Math.min(G.cam.x + VW + 80, G.speedFin - 200), n = 5 + Math.round(prog * 3), gap = randi(0, n - 1);
+      for (let k = 0; k < n; k++) { if (k === gap) continue; const y = L.TOP + 40 + (L.BOT - L.TOP - 80) * (k + 0.5) / n; if (!obstacles.some(o => !o.broken && pointInBox(x, y, { x: o.x - 14, y: o.y - 14, w: o.w + 28, d: o.d + 28 }))) spawnEnemy(pickW(L.mix), x + rand(-20, 20), y, { emerge: 0 }); }
+    }
     return;
   }
   if (ph === 'lockdown' || ph === 'hold' || ph === 'enter' || ph === 'bonus') {
@@ -2770,16 +2780,20 @@ function sprLoad(id, boot) {
 const HERO_IDS = ['maya', 'ben', 'aris', 'chloe', 'leo'];
 const heroSet = h => Object.keys(SPR).filter(k => k === h || k.startsWith(h + '_') || k === 'w_' + h || k.startsWith('w_' + h + '_') || k === 'spc_' + h);
 const sprOther = () => Object.keys(SPR).filter(k => !HERO_IDS.some(h => heroSet(h).includes(k)));
-const runNeeds = h => [...heroSet(h), ...(Save.companion && Save.companion !== h ? heroSet(Save.companion) : []), ...sprOther()];
+/* v57: chapter-only sheets (bosses, chapter zombies, chapter props) are loaded only for the chapter being played and freed when another chapter starts (less memory on phones). Missing ones load on demand (sprOK). */
+const CH_ONLY = new Set([...LEVELS.map(L => L.boss), 'mannequin', 'diver', 'balloon', 'drone', 'p_mall', 'p_harbor', 'p_carn', 'p_hive']), BOSS_EXTRA = { mother: ['drone'], ringmaster: ['balloon'] };
+function chNeeds(li) { const L = LEVELS[li]; if (!L) return []; return [L.boss, ...Object.keys(L.mix), ...(BOSS_EXTRA[L.boss] || []), L.ch ? 'p_' + ({ carnival: 'carn' }[L.ch] || L.ch) : null].filter(Boolean); }
+function sprTrim(li) { const nd = chNeeds(li), ch = LEVELS[li] && LEVELS[li].ch; for (const k of CH_ONLY) { const S = SPR[k]; if (!S || nd.includes(k) || sprSt[k] === 'loading') continue; if (S.img) { S.img = null; S.white = null; S.tint = null; } delete sprP[k]; delete sprSt[k]; } if (typeof CHIMG !== 'undefined') for (const k in CHIMG) if (!ch || !k.startsWith(ch)) delete CHIMG[k]; }
+const runNeeds = (h, li) => [...heroSet(h), ...(Save.companion && Save.companion !== h ? heroSet(Save.companion) : []), ...sprOther().filter(k => !CH_ONLY.has(k) || chNeeds(li).includes(k))];
 let sprBgOn = false;
 function sprBackground() { // after the menu: the hero you play first, then zombies and props, then the other heroes, then the extra art (offline cache)
   if (sprBgOn) return; sprBgOn = true; const h = Save.lastHero || 'maya';
-  const q = [...new Set([...heroSet(h), ...(Save.companion ? heroSet(Save.companion) : []), ...sprOther(), ...HERO_IDS.flatMap(heroSet)])].filter(k => !sprP[k]);
+  const q = [...new Set([...heroSet(h), ...(Save.companion ? heroSet(Save.companion) : []), ...sprOther().filter(k => !CH_ONLY.has(k)), ...HERO_IDS.flatMap(heroSet)])].filter(k => !sprP[k]); // v57: chapter-only sheets load when their chapter starts
   let n = 0; const next = () => { if (!q.length) { if (--n === 0) try { if ('serviceWorker' in navigator) navigator.serviceWorker.ready.then(r => r.active && r.active.postMessage('prefetch')).catch(() => {}); } catch (e) { } return; } sprLoad(q.shift()).then(next); };
   for (let k = 0; k < 3; k++) { n++; next(); }
 }
 SPR_BOOT.forEach(id => sprLoad(id, true));
-function sprOK(id) { const S = SPR[id]; return !!(S && S.img && !Cfg.vecArt); }
+function sprOK(id) { const S = SPR[id]; if (S && !S.img && !sprP[id] && CH_ONLY.has(id) && !Cfg.vecArt) sprLoad(id); return !!(S && S.img && !Cfg.vecArt); }
 const SKIN_TINT = { streets: ['multiply', '#4a5070', 0.75], metro: ['color', '#c8a020', 0.5], lab: ['color', '#e0e030', 0.6], crypt: ['color', '#e8e0d0', 0.7], gold: ['color', '#f0c030', 0.7], reaper: ['multiply', '#5a4078', 0.8], neon: ['color', '#ff2aa0', 0.65], dawn: ['soft-light', '#ff8a30', 0.9] };
 function heroSkinId() { return null; }
 function sprWhite(S) { // v52: white silhouette for hit flashes, built on first hit
@@ -3199,9 +3213,9 @@ function chDecor() {
   if (ch === 'hive') { ctx.save(); ctx.globalCompositeOperation = 'lighter'; for (let i = Math.floor(c.x / 240) - 1; i < (c.x + VW) / 240 + 1; i++) { const h = hash(i * 7.3), x = i * 240 + h * 200, y = L.TOP + 60 + hash(i * 3.1) * (L.BOT - L.TOP - 120), pl = 0.5 + Math.sin(G.time * 0.05 + i) * 0.3, r = 50 + h * 40; ctx.globalAlpha = 0.16 * pl; ctx.drawImage(softDot('rgb(170,230,60)'), x - r, y - r, r * 2, r * 2); } ctx.restore(); } // v54: cached glow
 }
 function drawFinish() { // v56: speedrun finish line (checkered strip across the street)
-  if (!G.speedrun || !G.speedFin) return; const L = G.L, x = G.speedFin, c = G.cam.x; if (x < c - 60 || x > c + VW + 60) return; const sq = 14;
-  for (let y = L.TOP, r = 0; y < L.BOT + 20; y += sq, r++) for (let k = 0; k < 2; k++) { ctx.fillStyle = (r + k) % 2 ? '#111' : '#f4f4f4'; ctx.fillRect(x - sq + k * sq, y, sq, sq); }
-  ctx.save(); ctx.fillStyle = '#ffcc33'; ctx.font = 'bold 34px Bebas Neue, Impact, sans-serif'; ctx.textAlign = 'center'; ctx.fillText('FINISH', x, L.TOP - 16 + Math.sin(G.time * 0.08) * 3); ctx.restore(); }
+  if (!G.speedrun || !G.L.plan.safe) return; const L = G.L, S = L.plan.safe, c = G.cam.x; if (S.fx2 < c - 60 || S.fx > c + VW + 60) return; const sq = 11, segW = (S.fx2 - S.fx) / 4, gx = S.fx + segW, gy = L.TOP + S.fy; // v57: checkered finish across the gap in the safe-house barricade
+  for (let x = gx, r = 0; x < gx + segW - 1; x += sq, r++) for (let k = 0; k < 2; k++) { ctx.fillStyle = (r + k) % 2 ? '#111' : '#f4f4f4'; ctx.fillRect(x, gy + k * sq, Math.min(sq, gx + segW - x), sq); }
+  ctx.save(); ctx.fillStyle = '#ffcc33'; ctx.font = 'bold 30px Bebas Neue, Impact, sans-serif'; ctx.textAlign = 'center'; const b = Math.sin(G.time * 0.12) * 4; ctx.fillText('FINISH ▲', gx + segW / 2, gy + 62 + b); ctx.restore(); }
 function drawSafeDoor() {
   drawMart();
   const P = G.L.plan; if (!P.safe) return; const S = P.safe, T = G.L.TOP, x = S.door - 20;
@@ -5687,7 +5701,7 @@ function recCheck(clear) { // returns html lines for new records
   saveGame(); const fmt = (k, v) => k === 'fast' ? Math.floor(v / 60) + ':' + String(v % 60).padStart(2, '0') : v;
   return out.map(k => `<div class="statline" style="color:#ffcc33">🏆 NEW RECORD! ${REC_NM[k]}: <b>${fmt(k, R[k])}</b></div>`).join('');
 }
-const WHATS_NEW = { v: 'v56', lines: ['🏃 New: SPEEDRUN! No weapons, just run, roll and dodge to the finish. One per cleared chapter (Extra missions), 🥉🥈🥇 medals.', '🌍 Tutorial, Hideout tour and every Hideout room now in Italiano, Español and ไทย.', '🐢 New: Relaxed speed. The whole game runs at 80%, more time to react. Settings → GAME, or the pause menu.', '🎡 Chapters 5-8 run smoother (sea, carnival lights, hive glow).', '🥪 The sandwich message no longer covers the GATE banner.']};
+const WHATS_NEW = { v: 'v57', lines: ['🏃 SPEEDRUN: harder! Faster zombies, zombie walls across the street, and every chapter now ends at a safe house: get in through the gap.', '🎡 Chapters 5-8 use less memory: only the chapter you play is loaded.', '🆕 New app icon.', '🌍 Tutorial, Hideout tour and every Hideout room now in Italiano, Español and ไทย.', '🐢 New: Relaxed speed. The whole game runs at 80%, more time to react. Settings → GAME, or the pause menu.', '🎡 Chapters 5-8 run smoother (sea, carnival lights, hive glow).', '🥪 The sandwich message no longer covers the GATE banner.']};
 function whatsNew() { if (!Save.tut2 || Save.seenNew === WHATS_NEW.v || G.state !== 'menu' || $('startScreen').classList.contains('hidden')) return; Save.seenNew = WHATS_NEW.v; saveGame();
   const b = $('foodBox'); b.innerHTML = `<div class="fbx"><h3>WHAT'S NEW</h3>${WHATS_NEW.lines.map(l => `<p>${l}</p>`).join('')}<div class="bb"></div></div>`; b.querySelector('.bb').appendChild(fBtn('OK, LET ME PLAY', 'gold', () => { SFX.click(); b.classList.add('hidden'); })); b.classList.remove('hidden'); }
 const PET_GOALS = [[20, 50], [30, 80], [40, 120], [50, 200]];
@@ -5917,7 +5931,7 @@ function setupBonus() {
   const B = G.bonus, L = G.L, p = player; G.phase = 'bonus'; G.bonusT = B.time * 60; G.bonusBlood = 0; G.bonusKills0 = 0;
   for (const z of enemies) z.dead = true; enemies = [];
   if (B.speed) { // v56: open course from the start to the finish line
-    obstacles = obstacles.filter(o => !o.rb && !o.gateR); G.phase = 'speed'; G.speedT = 0; G.speedFin = speedFinish(L); G.arena = false; G.minX = 10; G.maxX = L.W - 10; G.camL = 0; G.camR = L.W; G.spawnMaxX = L.W - 20; G.spawnT = 90;
+    obstacles = obstacles.filter(o => !o.rb && !o.gateR); G.phase = 'speed'; G.speedT = 0; G.crowdT = 240; G.speedFin = speedFinish(L); G.arena = false; G.minX = 10; G.maxX = L.W - 10; G.camL = 0; G.camR = L.W; G.spawnMaxX = L.W - 20; G.spawnT = 90;
     p.x = 200; p.y = (L.TOP + L.BOT) / 2; buddy = null; G.budStash = null; G.cat = null; p.alt = null; updateSwapBtn();
     G.cam.x = 0; G.cam.y = p.y - VIEW_H * 0.58; G.cL = 0; G.cR = L.W;
     setTimeout(() => { banner('🏃 ' + LEVELS[G.levelIdx].name.toUpperCase(), 'Run! No weapons · roll and ❄ only'); hintMsg(B.desc); }, 50); return;
@@ -5982,7 +5996,7 @@ function drawBanter() {
 function bonusTick() {
   const B = G.bonus; if (G.endT > 0) return;
   if (G.bwT > 0) { if (--G.bwT <= 0) (B.speed ? speedWin : bonusWin)(); return; }
-  if (B.speed) { G.speedT++; if (player.x >= G.speedFin) { G.bwT = 70; G.slowmo = 70; G.focus = { x: player.x, y: player.y }; player.iframes = 200; vibrate([60, 30, 90]); addShake(6); SFX.heal(); } return; }
+  if (B.speed) { G.speedT++; if (inSafeYard(G.L, player.x, player.y)) { G.bwT = 70; G.slowmo = 70; G.focus = { x: player.x, y: player.y }; player.iframes = 200; vibrate([60, 30, 90]); addShake(6); SFX.heal(); } return; }
   if (--G.bonusT % 600 === 0 && G.bonusT > 0 && !B.endless) addText(Math.round(G.bonusT / 60) + ' SECONDS', player.x, player.y - 90, '#ffcc33', 20, 60);
   if (G.phase === 'hold') G.holdT = G.bonusT;
   if (B.id === 'rescue') { const c = G.cage, cx = c.x + c.w / 2, cy = c.y + c.d / 2, near = Math.hypot(player.x - cx, player.y - cy) < 170, blocked = enemies.some(z => !z.dead && Math.hypot(z.x - cx, z.y - cy) < 70);
