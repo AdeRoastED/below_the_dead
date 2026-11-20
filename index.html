@@ -437,7 +437,7 @@ html.speedrun #bSpc,html.speedrun #bUlt,html.speedrun #bSwap,html.speedrun #bBud
   <div class="pgrid">
     <button class="btn" id="resumeBtn">RESUME</button>
     <button class="btn sec" id="pauseAuto">🎯 AUTO-AIM: OFF</button>
-    <button class="btn sec" id="pauseAim">AIM LINE: ON</button><button class="btn sec" id="pauseSlow">🐢 RELAXED SPEED: OFF</button><button class="btn sec" id="pauseClean">🧹 CLEAN SCREEN: OFF</button>
+    <button class="btn sec" id="pauseAim">AIM LINE: ON</button><button class="btn sec" id="pauseSlow">🐢 RELAXED SPEED: OFF</button><button class="btn sec" id="pauseClean">🧹 CLEAN SCREEN: OFF</button><button class="btn sec hidden" id="pauseCk">🧱 TEST · BLOCKS: ON</button>
     <button class="btn sec" id="pauseSet">⚙ SETTINGS</button>
     <button class="btn sec" id="pausePhoto">📸 PHOTO MODE</button>
     <button class="btn sec hidden" id="pauseCrowd">🧟 STORE SHOT: CROWD + GOD MODE</button>
@@ -550,7 +550,7 @@ html.speedrun #bSpc,html.speedrun #bUlt,html.speedrun #bSwap,html.speedrun #bBud
 
 <script>
 'use strict';
-const VERSION = 'v61'; // bump together with sw.js
+const VERSION = 'v62'; // bump together with sw.js
 const ERRLOG = []; const logErr = m => { ERRLOG.push(new Date().toISOString().slice(11, 19) + ' ' + String(m).slice(0, 240)); if (ERRLOG.length > 12) ERRLOG.shift(); };
 window.addEventListener('error', e => logErr((e.message || 'error') + (e.filename ? ' @' + e.filename.split('/').pop() + ':' + e.lineno + ':' + e.colno : '')));
 window.addEventListener('unhandledrejection', e => logErr('promise: ' + ((e.reason && (e.reason.message || e.reason)) || '?')));
@@ -3113,14 +3113,44 @@ let chPat = null, chPatK = '';
 /* v54: soft round sprites drawn once and reused (gradients made every frame were slow in chapters 5-8) */
 const softSpr = {}; function softDot(c0) { let cv = softSpr[c0]; if (cv) return cv; cv = document.createElement('canvas'); cv.width = cv.height = 64; const x = cv.getContext('2d'), g = x.createRadialGradient(32, 32, 0, 32, 32, 32); g.addColorStop(0, c0); g.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = g; x.fillRect(0, 0, 64, 64); return softSpr[c0] = cv; }
 const liteNow = () => !!(G.lite || Cfg.lite || !Cfg.hq);
+function chFloorDark(x0, x1) { const L = G.L; ctx.fillStyle = '#050407'; ctx.fillRect(x0, -400, x1 - x0, L.TOP + 400); ctx.fillStyle = '#060508'; ctx.fillRect(x0, L.BOT + 20, x1 - x0, 300); }
+function chFloorStatic(x0, x1, pat, block) { // the parts of a chapter 5-8 floor that never change
+  const L = G.L; if (!block) chFloorDark(x0, x1);
+  ctx.fillStyle = pat; ctx.fillRect(x0, L.TOP, x1 - x0, L.BOT - L.TOP + 30);
+  ctx.fillStyle = 'rgba(0,0,0,0.45)'; ctx.fillRect(x0, L.TOP, x1 - x0, 16); if (!block) { ctx.fillStyle = '#060508'; ctx.fillRect(x0, L.BOT + 20, x1 - x0, 300); }
+  for (const l of litter) { if (l.x < x0 - 80 || l.x > x1 + 80 || l.t === 'skid' || l.t === 'tire' || l.t === 'weed') continue; drawLitter(l); }
+  { const pd = softDot('rgba(30,40,50,0.55)'); for (const p of puddles) { if (p.x < x0 - 100 || p.x > x1 + 100) continue; ctx.drawImage(pd, p.x - p.rx, p.y - p.ry, p.rx * 2, p.ry * 2); } } // v54: cached puddle
+}
+/* v62 TEST (chapter 5 only): the floor and the back wall are painted once into blocks (CK.W wide) just before they come on screen,
+   then only slid. Blocks far from the camera are thrown away (3-5 kept), so loading is the same and memory stays small. */
+const CHUNK_ON = { mall: 1 };
+const CK = { W: 480, map: new Map(), L: null, lit: null, k: 0 };
+const ckOn = () => !!(G.L && CHUNK_ON[G.L.ch] && G.state !== 'menu' && ctx === mainCtx);
+function ckBuild(kind, i) {
+  const L = G.L, W = CK.W, k = CK.k, pad = 2, xa = i * W - pad, xb = (i + 1) * W + pad;
+  const ya = kind === 'f' ? L.TOP - 1 : L.TOP + 8 - 300, yb = kind === 'f' ? L.BOT + 21 : L.TOP + 8;
+  const cv = document.createElement('canvas'); cv.width = Math.ceil((xb - xa) * k); cv.height = Math.ceil((yb - ya) * k);
+  const c2 = cv.getContext('2d'), sv = ctx; ctx = c2;
+  try { ctx.setTransform(k, 0, 0, k, -xa * k, -ya * k);
+    if (kind === 'f') { const im = chImg(L.ch); chFloorStatic(xa - 60, xb + 60, ctx.createPattern(im, 'repeat'), true); }
+    else for (const b of buildings) if (ckWallB(b) && b.x + b.w > xa && b.x < xb) chWall(b);
+  } finally { ctx = sv; }
+  return { cv, xa, ya, w: xb - xa, h: yb - ya };
+}
+const ckWallB = b => !b.safe && !b.hide && !!chImg(G.L.ch + '_wall');
+function ckDraw(kind) {
+  const k = Math.min(2, DPR * SCALE);
+  const wl = !!chImg(G.L.ch + '_wall'); if (CK.L !== G.L || CK.lit !== litter || CK.k !== k || CK.wl !== wl) { CK.map.clear(); CK.L = G.L; CK.lit = litter; CK.k = k; CK.wl = wl; }
+  const W = CK.W, i0 = Math.floor((G.cam.x - 20) / W), i1 = Math.floor((G.cam.x + VW + 20) / W);
+  for (let i = i0; i <= i1; i++) { const key = kind + i; let B = CK.map.get(key); if (!B) { B = ckBuild(kind, i); CK.map.set(key, B); } ctx.drawImage(B.cv, B.xa, B.ya, B.w, B.h); }
+  if (kind === 'f') { // one block ahead is prepared per frame, so a new block is ready before it shows; far blocks are dropped
+    for (const j of [i1 + 1, i0 - 1]) for (const kk of ['f', 'w']) if (!CK.map.has(kk + j) && j >= 0) { CK.map.set(kk + j, ckBuild(kk, j)); return; }
+    for (const key of [...CK.map.keys()]) { const j = +key.slice(1); if (j < i0 - 1 || j > i1 + 1) CK.map.delete(key); } }
+}
 function drawGroundCh() {
   const L = G.L, im = chImg(L.ch); if (!im) return false; if (chPatK !== L.ch) { chPat = ctx.createPattern(im, 'repeat'); chPatK = L.ch; }
   const x0 = Math.floor(G.cam.x / 60) * 60 - 60, x1 = G.cam.x + VW + 60;
-  ctx.fillStyle = '#050407'; ctx.fillRect(x0, -400, x1 - x0, L.TOP + 400);
-  ctx.fillStyle = chPat; ctx.fillRect(x0, L.TOP, x1 - x0, L.BOT - L.TOP + 30);
-  ctx.fillStyle = 'rgba(0,0,0,0.45)'; ctx.fillRect(x0, L.TOP, x1 - x0, 16); ctx.fillStyle = '#060508'; ctx.fillRect(x0, L.BOT + 20, x1 - x0, 300);
-  for (const l of litter) { if (l.x < x0 - 80 || l.x > x1 + 80 || l.t === 'skid' || l.t === 'tire' || l.t === 'weed') continue; drawLitter(l); }
-  { const pd = softDot('rgba(30,40,50,0.55)'); for (const p of puddles) { if (p.x < x0 - 100 || p.x > x1 + 100) continue; ctx.drawImage(pd, p.x - p.rx, p.y - p.ry, p.rx * 2, p.ry * 2); } } // v54: cached puddle
+  if (ckOn()) { chFloorDark(x0, x1); ckDraw('f'); } else chFloorStatic(x0, x1, chPat);
   for (const d of decals) { if (d.x < x0 - 50 || d.x > x1 + 50) continue; if (d.crack) { ctx.strokeStyle = d.c; ctx.lineWidth = 2; ctx.beginPath(); for (let k = 0; k < 4; k++) { const a = d.a + k * 1.6; ctx.moveTo(d.x, d.y); ctx.lineTo(d.x + Math.cos(a) * d.r * 2, d.y + Math.sin(a) * d.r); } ctx.stroke(); } else { ctx.fillStyle = d.c; ellipse(d.x, d.y, d.r, d.r * 0.55); } }
   for (const o of oils) { ctx.fillStyle = o.burn ? '#0a0606' : '#050507'; ellipse(o.x, o.y, o.rx, o.ry); }
   for (const t of traps) { if (t.x < x0 - 80 || t.x > x1 + 80) continue; drawTrap(t); }
@@ -4023,7 +4053,7 @@ function render() {
   zoomApply();
   if (G.zoomV > 1.002) { const fx = clamp(G.focus ? G.focus.x : G.cam.x + VW / 2, G.cam.x + VW * 0.3, G.cam.x + VW * 0.7), fy = clamp(G.focus ? G.focus.y - 40 : G.cam.y + VIEW_H / 2, G.cam.y + VIEW_H * 0.3, G.cam.y + VIEW_H * 0.7); ctx.translate(fx, fy); ctx.scale(G.zoomV, G.zoomV); ctx.translate(-fx, -fy); }
   drawGround(); drawShadows(); drawTags(); drawSide();
-  for (const b of buildings) if (b.x + b.w > G.cam.x - 10 && b.x < G.cam.x + VW + 10) drawBuilding(b);
+  { const ck = ckOn() && chImg(G.L.ch); if (ck) ckDraw('w'); for (const b of buildings) if (b.x + b.w > G.cam.x - 10 && b.x < G.cam.x + VW + 10 && !(ck && ckWallB(b))) drawBuilding(b); }
   drawSafeDoor(); chDecor(); drawFinish();
   const list = [], c = G.cam;
   for (const o of obstacles) if (o.x + o.w > c.x - 60 && o.x < c.x + VW + 60) list.push({ k: o.y + o.d, f: () => drawObstacle(o) });
@@ -5503,9 +5533,9 @@ function drawDiffRow() {
 }
 function openSubs(li) {
   const L = LEVELS[li], done = Save.subs[li] || 0; $('subTitle').textContent = (li + 1) + '. ' + L.name; $('subSub').textContent = DIFFS[Save.diff || 0].name + ' · ' + L.sub;
-  $('subRow').innerHTML = STAGES.map((S, k) => { const open = k <= done || Cfg.test, st = (Save.stars[li + '_' + k] || []).filter(Boolean).length; return `<div class="subc${open ? '' : ' locked'}${S.k === 4 ? ' boss' : ''}${k === done ? ' cur' : ''}${S.k === 1 ? ' dark' : ''}" data-k="${k}"><small>${li + 1}-${k + 1}</small><span>${open ? S.icon : '🔒'}</span><b>${S.name}</b><p>${S.k === 4 ? 'Boss: ' + L.bossName.replace('THE ', '') : S.desc}</p><i>${open && foodNeeded('campaign', li, k) ? '🍖 ' + foodNeeded('campaign', li, k) + ' · ' : ''}${open ? '★'.repeat(st) + '☆'.repeat(3 - st) : 'Clear ' + (li + 1) + '-' + k}</i></div>`; }).join('');
+  $('subRow').innerHTML = STAGES.map((S, k) => { const open = k <= done || Cfg.test || UNLOCK_ALL, st = (Save.stars[li + '_' + k] || []).filter(Boolean).length; return `<div class="subc${open ? '' : ' locked'}${S.k === 4 ? ' boss' : ''}${k === done ? ' cur' : ''}${S.k === 1 ? ' dark' : ''}" data-k="${k}"><small>${li + 1}-${k + 1}</small><span>${open ? S.icon : '🔒'}</span><b>${S.name}</b><p>${S.k === 4 ? 'Boss: ' + L.bossName.replace('THE ', '') : S.desc}</p><i>${open && foodNeeded('campaign', li, k) ? '🍖 ' + foodNeeded('campaign', li, k) + ' · ' : ''}${open ? '★'.repeat(st) + '☆'.repeat(3 - st) : 'Clear ' + (li + 1) + '-' + k}</i></div>`; }).join('');
   if (Cfg.test) $('subSub').textContent += ' · 🧪 TEST MODE';
-  $('subRow').querySelectorAll('.subc').forEach(el => { const k = +el.dataset.k; if (k <= done || Cfg.test) el.onclick = () => { SFX.click(); pendingMode = 'campaign'; pendingLevel = li; pendingSub = k; openHeroes(); }; });
+  $('subRow').querySelectorAll('.subc').forEach(el => { const k = +el.dataset.k; if (k <= done || Cfg.test || UNLOCK_ALL) el.onclick = () => { SFX.click(); pendingMode = 'campaign'; pendingLevel = li; pendingSub = k; openHeroes(); }; });
   G.subLi = li; showOnly('subScreen');
 }
 /* v41: chapter requirements - clear the previous chapter AND (a hero at level X OR enough stars in the previous chapter) */
@@ -5514,7 +5544,9 @@ const CH_REQ = [null, { lv: 8, st: 18 }, { lv: 14, st: 20 }, { lv: 20, st: 22 },
 const CH_DATES = { 4: '2026-12-01', 5: '2027-01-01', 6: '2027-02-01', 7: '2027-03-01' };
 let srvNow = 0, srvPerf = 0;
 function relNow() { return srvNow ? srvNow + (performance.now() - srvPerf) : Math.max(Save.srvMax || 0, 0); } // offline: the latest server date seen (device clock is not trusted)
-function relOpen(i) { const d = CH_DATES[i]; return !d || Cfg.test || !!Save.allCh || relNow() >= Date.parse(d + 'T00:00:00Z'); }
+/* v62 TEST BUILD: every chapter and stage open without Test mode. Set to false before the Play Store release. */
+const UNLOCK_ALL = true;
+function relOpen(i) { const d = CH_DATES[i]; return !d || Cfg.test || UNLOCK_ALL || !!Save.allCh || relNow() >= Date.parse(d + 'T00:00:00Z'); }
 function relDays(i) { const d = CH_DATES[i]; return d ? Math.max(1, Math.ceil((Date.parse(d + 'T00:00:00Z') - (relNow() || Date.now())) / 864e5)) : 0; }
 function relSync() { try { fetch('./?t=' + Date.now(), { method: 'HEAD', cache: 'no-store' }).then(r => { const t = Date.parse(r.headers.get('Date') || ''); if (!t) return; srvNow = t; srvPerf = performance.now(); if (t > (Save.srvMax || 0)) { Save.srvMax = t; saveGame(); } try { relNews(); if (G.state === 'menu') refreshMenu(); } catch (e) { } }).catch(() => { }); } catch (e) { } }
 function relNews() { Save.relSeen = Save.relSeen || {}; for (const i in CH_DATES) if (!Save.relSeen[i] && relOpen(+i) && !Cfg.test) { Save.relSeen[i] = 1; saveGame(); if (G.state === 'menu' && Save.tut2) setTimeout(() => banner('🆕 NEW CHAPTER!', (+i + 1) + '. ' + LEVELS[i].name + ' is open'), 900); break; } }
@@ -5522,12 +5554,12 @@ setTimeout(relSync, 1500); setInterval(relSync, 30 * 60000);
 const chStars = li => STAGES.reduce((a, _, k) => a + ((Save.stars || {})[li + '_' + k] || []).filter(Boolean).length, 0);
 const bestHeroLv = () => Math.max(...['maya', 'ben', 'aris', 'chloe', 'leo'].map(h => { try { return heroLv(h); } catch (e) { return 1; } }));
 function chReqMet(i) { const R = CH_REQ[i]; return !R || bestHeroLv() >= R.lv || chStars(i - 1) >= R.st; }
-function chapterOpen(i) { if (!relOpen(i)) return false; return Cfg.test || i === 0 || !!Save.cleared[i] || (Save.subs[i] || 0) > 0 || (!!Save.cleared[i - 1] && chReqMet(i)); }
+function chapterOpen(i) { if (!relOpen(i)) return false; return Cfg.test || UNLOCK_ALL || i === 0 || !!Save.cleared[i] || (Save.subs[i] || 0) > 0 || (!!Save.cleared[i - 1] && chReqMet(i)); }
 function openLevels() {
   drawDiffRow(); const g = $('levelGrid'); g.innerHTML = ''; const tab = G.lvTab || 0;
   document.querySelectorAll('#lvTabs button').forEach((b, i) => { b.classList.toggle('on', i === tab); b.onclick = () => { SFX.click(); G.lvTab = i; openLevels(); }; });
   if (tab === 0) LEVELS.forEach((L, i) => {
-    const open = L.ready && chapterOpen(i), R = CH_REQ[i], needReq = !open && i > 0 && !Cfg.test && Save.cleared[i - 1] && !chReqMet(i);
+    const open = L.ready && chapterOpen(i), R = CH_REQ[i], needReq = !open && i > 0 && !Cfg.test && !UNLOCK_ALL && Save.cleared[i - 1] && !chReqMet(i);
     const el = document.createElement('div'); el.className = 'lcard' + (open ? '' : ' locked'); const lvImg = L.lv || ['streets', 'metro', 'lab', 'crypt'][i], rel = relOpen(i); el.style.background = lvImg ? `linear-gradient(0deg,rgba(0,0,0,.82),rgba(0,0,0,.15) 65%),url(sprites/lv/${lvImg}.webp) 70% center/cover,${L.grad}` : L.grad;
     const stD = Math.min(NST, Save.subs[i] || 0), stS = Array.from({ length: NST }, (_, k) => ((Save.stars || {})[i + '_' + k] || []).filter(Boolean).length).reduce((a, b) => a + b, 0), stT = [0, 1, 2].filter(k => (Save.tags || {})[i + '_' + k]).length;
     if (!rel) { const D = new Date(CH_DATES[i] + 'T12:00:00Z'), dd = D.toLocaleDateString(undefined, { day: 'numeric', month: 'short' }), n = relDays(i);
@@ -5699,7 +5731,7 @@ function toggleAuto() { if (!hasAim()) { SFX.click(); aimBuyBox(); return; } Cfg
 function hideGameUI() {
   { const m = $('mart'); if (m) m.classList.add('hidden'); } ['hud', 'touch', 'hint', 'tut', 'talk', 'bossHud', 'sprWait', 'foodBox', 'coach', 'photoBar', 'winTip', 'comic'].forEach(id => { const e = $(id); if (e) e.classList.add('hidden'); }); $('combo').classList.remove('show'); $('banner').classList.remove('show'); document.documentElement.classList.remove('photo'); G.talkQ = null; G.story = null; resetInput(); }
 function goMenu() { labRet = null; hideGameUI(); $('winTip').classList.add('hidden'); document.documentElement.classList.remove('photo'); $('photoBar').classList.add('hidden'); if (Movie) { Movie = null; $('movieScreen').classList.add('hidden'); } Music.boss = false; Music.stop(); Amb.stop(); if (A.ctx) Music.play('menu'); G.state = 'menu'; player = null; $('hud').classList.add('hidden'); $('touch').classList.add('hidden'); $('hint').classList.add('hidden'); $('combo').classList.remove('show'); refreshMenu(); showOnly('startScreen');  setTimeout(checkDaily, 400); setTimeout(() => { if ($('foodBox').classList.contains('hidden') && $('dailyScreen') && $('dailyScreen').classList.contains('hidden')) whatsNew(); }, 1200); setTimeout(() => { if (G.state === 'menu') installNudge(); }, 2500); }
-function pauseGame() { if (G.state !== 'play') return; G.state = 'paused'; $('pauseCrowd').classList.toggle('hidden', !Cfg.test); $('pauseQuip').textContent = pick(PAUSE_TIPS); Music.stop(); Amb.stop(); $('pauseSub').textContent = G.L.name + (Cfg.test ? ' · ' + Math.round(G.fps || 0) + ' FPS' : ''); $('pauseAuto').classList.toggle('hidden', !hasAim()); $('pauseAim').textContent = 'AIM LINE: ' + (Cfg.aimLine ? 'ON' : 'OFF'); slowTxt(); refreshAutoBtn(); showOnly('pauseScreen'); resetInput(); }
+function pauseGame() { if (G.state !== 'play') return; G.state = 'paused'; $('pauseCrowd').classList.toggle('hidden', !Cfg.test); $('pauseQuip').textContent = pick(PAUSE_TIPS); Music.stop(); Amb.stop(); $('pauseSub').textContent = G.L.name + (Cfg.test || UNLOCK_ALL ? ' · ' + Math.round(G.fps || 0) + ' FPS' : ''); $('pauseAuto').classList.toggle('hidden', !hasAim()); $('pauseAim').textContent = 'AIM LINE: ' + (Cfg.aimLine ? 'ON' : 'OFF'); slowTxt(); refreshAutoBtn(); showOnly('pauseScreen'); resetInput(); }
 function resumeGame() { if (G.state !== 'paused') return; document.documentElement.classList.remove('photo'); $('photoBar').classList.add('hidden'); showOnly(null); G.state = 'play'; Music.play(trackFor()); Amb.start(); last = performance.now(); }
 /* v44: DEATH TIPS, PERSONAL RECORDS, WHAT'S NEW, PET MITTENS */
 const DEATH_TIPS = ['Sprinters lunge: roll THROUGH them, not away.', 'Low on health? Dr. Aris heals the whole team with his special.', 'Keep moving. A standing target is a dead target.', 'Pukers leave acid on the floor. Don’t stand in it.', 'Armored zombies shrug off small hits: use the special or heavy weapons.', 'Frost bombs ❄ slow everything around you. Save one for bosses.', 'Your partner can revive you. Call them before it gets ugly.', 'The ultimate recharges faster when you keep killing.', 'Auto-aim (F / 🎯) lets you focus on dodging.', 'Upgrade the safe house in the Lab: tougher barricades, turrets, faster doors.', 'Hard mode: you only get ONE special per level. Choose the moment.', 'Ben’s shield blocks hits from the front. Face the horde.', 'Chloe is fast: hit, roll, hit again.', 'Bloaters explode. Shoot them from far away.', 'Medkits drop more on Easy. No shame in Easy.', 'Training levels up your weapon 4x faster.', 'Hire Mittens: she grabs the blood you miss while you fight.', 'Elites glow. They hit harder but drop more blood (and sometimes frost bombs).', 'Bosses have patterns. Watch one attack before you go all in.', 'Swap weapons: some zombies hate the second one more.'];
@@ -5707,7 +5739,7 @@ const BOSS_TIPS = ['Bosses have patterns. Watch one attack before you go all in.
 const RAID_TIPS = ['Raids: stay near the generator, the zombies want it more than you.', 'Lab research makes raids much easier: walls, turrets, electric fence.', 'Pick EASY raids first: same fun, less pain.'];
 /* v54: Relaxed speed (Cfg.slow): the game clock runs at RELAX (80%). Rewards unchanged; the fastest-clear record skips runs that used it (G.relaxUsed). */
 const RELAX = 0.8;
-function slowTxt() { const b = $('pauseSlow'); if (b) b.textContent = '🐢 RELAXED SPEED: ' + (Cfg.slow ? 'ON' : 'OFF'); { const k = $('pauseClean'); if (k) k.textContent = '🧹 CLEAN SCREEN: ' + (Cfg.clean ? 'ON' : 'OFF'); } const c = $('cfgSlow'); if (c) c.checked = !!Cfg.slow; }
+function slowTxt() { const b = $('pauseSlow'); if (b) b.textContent = '🐢 RELAXED SPEED: ' + (Cfg.slow ? 'ON' : 'OFF'); { const k = $('pauseClean'); if (k) k.textContent = '🧹 CLEAN SCREEN: ' + (Cfg.clean ? 'ON' : 'OFF'); } { const k = $('pauseCk'); if (k) { k.textContent = '🧱 TEST · BLOCKS: ' + (CHUNK_ON.mall ? 'ON' : 'OFF'); k.classList.toggle('hidden', !(UNLOCK_ALL && G.L && G.L.ch === 'mall')); } } const c = $('cfgSlow'); if (c) c.checked = !!Cfg.slow; }
 /* v54: 3 losses in a row on the same campaign stage -> tip about Relaxed speed (Save.lossK / Save.lossN; reset on clear) */
 function lossCount() { if (G.mode !== 'campaign' || G.tutRun || G.dc) return 0; const k = G.levelIdx + '_' + subOf(); if (Save.lossK !== k) { Save.lossK = k; Save.lossN = 0; } Save.lossN = (Save.lossN || 0) + 1; saveGame(); return Save.lossN; }
 function deathTip() { if (G.speedrun) return pick(['Roll THROUGH the crowd. Stopping is dying.', 'Frost bombs freeze the crowd in front of you.', 'Cars and crates slow you down. Find the open road.']); return pick(G.mode === 'raid' ? RAID_TIPS : enemies.some(z => !z.dead && z.boss) ? BOSS_TIPS : DEATH_TIPS); }
@@ -6128,6 +6160,7 @@ on('buyCancel', () => openShop());
 on('resumeBtn', resumeGame);
 on('pauseAuto', toggleAuto);
 on('pauseSlow', () => { Cfg.slow = !Cfg.slow; saveCfg(); slowTxt(); });
+on('pauseCk', () => { CHUNK_ON.mall = CHUNK_ON.mall ? 0 : 1; CK.map.clear(); Perf.sum = Perf.n = 0; G.fps = 60; slowTxt(); }); // v62 test: compare the chapter 5 floor/wall blocks on and off
 on('pauseClean', () => { Cfg.clean = !Cfg.clean; saveCfg(); slowTxt(); if (Cfg.clean) { texts.length = 0; $('hint').classList.add('hidden'); $('combo').classList.remove('show'); } });
 on('cfgSlow', () => { Cfg.slow = $('cfgSlow').checked; saveCfg(); slowTxt(); });
 on('pauseAim', () => { Cfg.aimLine = !Cfg.aimLine; saveCfg(); $('pauseAim').textContent = 'AIM LINE: ' + (Cfg.aimLine ? 'ON' : 'OFF'); });
