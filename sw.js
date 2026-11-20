@@ -1,5 +1,5 @@
 // Below the Dead - offline support. Bump the version when you upload a new index.html.
-const CACHE = 'btd-v62';
+const CACHE = 'btd-v63';
 const IMG = 'btd-img'; // v59: pictures are kept across versions (a changed picture gets a new ?v= number), so an update no longer downloads all 23 MB of images again
 const FONTS = 'btd-fonts'; // kept across versions so the fonts stay offline after updates
 const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Bebas+Neue&family=Creepster&family=Special+Elite&display=swap';
