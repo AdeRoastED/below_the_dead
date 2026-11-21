@@ -219,7 +219,7 @@ html.bigtext .overlay p,html.bigtext .muted,html.bigtext .statline,html.bigtext 
 #combo.show{opacity:1}
 #combo.pop{animation:pop .18s}
 @keyframes pop{0%{transform:translateX(-50%) scale(1.35)}100%{transform:translateX(-50%) scale(1)}}
-html.speedrun #bSpc,html.speedrun #bUlt,html.speedrun #bSwap,html.speedrun #bBud,html.speedrun #autoBtn{display:none!important}
+html.speedrun #bUlt,html.speedrun #bSwap,html.speedrun #bBud,html.speedrun #autoBtn{display:none!important}
 #pauseScreen .pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:min(94vw,680px);margin:8px auto 0} #pauseScreen .pgrid .btn{width:100%;min-width:0;margin:0;min-height:48px;padding:8px 6px;font-size:clamp(.72rem,2.2vw,.95rem);line-height:1.15;white-space:normal;display:flex;align-items:center;justify-content:center;text-align:center} #pauseScreen .pgrid .btn.hidden{display:none} /* v60: pause menu in a grid, all buttons the same size */
 #banner{position:fixed;top:30%;left:0;right:0;z-index:9;text-align:center;pointer-events:none;opacity:0}
 #banner.show{animation:banner 3s ease forwards}
@@ -550,7 +550,7 @@ html.speedrun #bSpc,html.speedrun #bUlt,html.speedrun #bSwap,html.speedrun #bBud
 
 <script>
 'use strict';
-const VERSION = 'v63'; // bump together with sw.js
+const VERSION = 'v64'; // bump together with sw.js
 const ERRLOG = []; const logErr = m => { ERRLOG.push(new Date().toISOString().slice(11, 19) + ' ' + String(m).slice(0, 240)); if (ERRLOG.length > 12) ERRLOG.shift(); };
 window.addEventListener('error', e => logErr((e.message || 'error') + (e.filename ? ' @' + e.filename.split('/').pop() + ':' + e.lineno + ':' + e.colno : '')));
 window.addEventListener('unhandledrejection', e => logErr('promise: ' + ((e.reason && (e.reason.message || e.reason)) || '?')));
@@ -888,7 +888,7 @@ const BONUS = [
 for (const L of LEVELS) if (!L.plan.safe) { const R = L.ARENA_R; L.W = R + 1000; L.plan.safe = { x0: R + 350, fx: R + 500, fx2: R + 820, fy: 300, door: R + 660, hold: 50 + Math.round(L.diff * 3) }; }
 /* v56: SPEEDRUN · one per cleared chapter (Extra missions). No weapons, special, ultimate, swap or partner: run, roll and frost-bomb to the finish
    (the safe-house yard, or past the boss arena when the chapter has no safe house). Timer counts game time. Best time + medal per chapter in Save.speed[li]. */
-const SPEED = { dmg: 1, zspd: 1.2, sprint: 4, cap: 50, rate: [20, 8], crowd: [420, 260], cull: 450, roll: 330, side: 0.6, tackle: 1.25, medal: [0, 1.25, 1.0], reward: [150, 250, 400], heroSpd: 3.4 }; // v57: harder · zspd = zombie speed x · sprint = extra sprinter weight · crowd = frames between zombie walls ahead (start → end) · v59: roll = frames between rolls (5.5 s) · side = share of zombies that come from the top/bottom of the street (rugby tacklers, tackle = their extra speed) · cull = zombies this far behind you are removed // medal = time limit x (straight run time) for 🥉 any finish / 🥈 / 🥇 · reward = blood the first time each medal is won
+const SPEED = { dmg: 1, zspd: 1.1, sprint: 3, cap: 40, rate: [26, 12], crowd: [520, 340], cull: 450, roll: 330, side: 0.45, tackle: 1.15, cat: { cd: 300, life: 180, pull: 560, spd: 5.5 }, /* v64: easier (was zspd 1.2, sprint 4, cap 50, rate [20,8], crowd [420,260], side 0.6, tackle 1.25) + decoy cat */ medal: [0, 1.25, 1.0], reward: [150, 250, 400], heroSpd: 3.4 }; // v57: harder · zspd = zombie speed x · sprint = extra sprinter weight · crowd = frames between zombie walls ahead (start → end) · v59: roll = frames between rolls (5.5 s) · side = share of zombies that come from the top/bottom of the street (rugby tacklers, tackle = their extra speed) · cull = zombies this far behind you are removed // medal = time limit x (straight run time) for 🥉 any finish / 🥈 / 🥇 · reward = blood the first time each medal is won
 /* v57: chapters without a safe house (Lab, Crypt, Hive) get one at the end in speedruns: the level is 600 px longer */
 const speedLevel = L => L.plan.safe ? L : Object.assign({}, L, { W: L.W + 600, plan: Object.assign({}, L.plan, { safe: { x0: L.ARENA_R + 350, fx: L.ARENA_R + 500, fx2: L.ARENA_R + 820, fy: 300, door: L.ARENA_R + 660, hold: 45 } }) });
 const SPEED_SHORT = ['Streets', 'Metro', 'Lab', 'Crypt', 'Mall', 'Harbor', 'Carnival', 'Hive'], BONUS_CARD = { laststand: 'Defend the house!', rescue: "Guard Leo's cage!", onehit: "One hit and you're dead.", bloodrush: 'Grab the blood, fast!', endless: 'No timer. No mercy.', hordenight: 'Survive the night!' }; // v59: short texts for the Extra mission cards
@@ -1172,7 +1172,7 @@ function startRun(heroId, mode = 'campaign', levelIdx) { // v40: wait (max 10 s)
     if (fc) { if (foodNow() < fc) { openFoodBox(() => startRun(heroId, mode, levelIdx)); return; } Save.food -= fc; if (Save.food < FOOD.max && Save.foodT + FOOD.regenMs < Date.now()) Save.foodT = Date.now(); window.foodPaidRun = fc; saveGame(); }
     startRunNow(heroId, mode, levelIdx); };
   const li0 = mode === 'bonus' ? (bonusDef(pendingBonus) || {}).lvl : mode === 'campaign' ? levelIdx : -1; if (typeof sprTrim === 'function') sprTrim(li0, heroId); for (const k in SPR) { const S = SPR[k]; if (S) { S.white = null; S.tint = null; } } // v61: hit-flash copies are rebuilt when needed, so old ones never pile up in phone memory
-  const need = typeof runNeeds === 'function' && !Cfg.vecArt ? runNeeds(heroId, li0).filter(k => SPR[k] && !SPR[k].img && sprSt[k] !== 'fail') : [];
+  const need = typeof runNeeds === 'function' && !Cfg.vecArt ? runNeeds(heroId, li0).concat(['martdoor', 'gary']).filter(k => SPR[k] && !SPR[k].img && sprSt[k] !== 'fail') : []; // v64: Gary's shop door and Gary are ready before the stage starts
   const bossLater = () => { if (!Cfg.vecArt) setTimeout(() => bossSheets(li0).forEach(k => sprLoad(k)), 1500); };
   if (!need.length) { bossLater(); return launch(); }
   const w = $('sprWait'); w.classList.remove('hidden'); sprBackground(); let done = false;
@@ -1188,7 +1188,7 @@ function startRunNow(heroId, mode = 'campaign', levelIdx) {
   A.init(); Save.st.runs++;
   G.hero = heroId; G.mode = mode; G.levelIdx = levelIdx !== undefined ? levelIdx : (G.levelIdx || 0); G.bonus = mode === 'bonus' ? bonusDef(pendingBonus) : null; G.speedrun = !!(G.bonus && G.bonus.speed); document.documentElement.classList.toggle('speedrun', G.speedrun); if (G.bonus) G.levelIdx = G.bonus.endless ? randi(0, 3) : G.bonus.weekly ? WEEK() % 4 : G.bonus.lvl; G.L = mode === 'campaign' || mode === 'bonus' ? (G.speedrun ? speedLevel(LEVELS[G.levelIdx]) : LEVELS[G.levelIdx]) : BASE_LEVEL;
   const L0 = G.L;
-  Object.assign(G, { magT: 0, maxCombo: 0, runT0: Date.now(), relaxUsed: !!Cfg.slow, sandMsg: false, tutReplay: mode === 'campaign' && !!window.replayTut, god: false, dc: mode === 'campaign' && !!window.pendingDC, fxA: [], mUlt: 0, mRoll: 0, mSpc: 0, bwT: 0, banT: 1500, say: [], hbT: 0, cL: undefined, cR: undefined, slowmo: 0, zoomV: 1, focus: null, drops: [], pk: {}, xp: 0, plv: 0, cardQ: false, drone: null, zaps: [], bubT: 0, chainN: 0, benSw: 0, endPaid: 0, endWave: 1, safeTalk: null, speaker: null, cage: null, rescueP: 0, bloodMul: 1, timeUp: false, bonusT: 0, overrun: false, wave: 0, breakT: 300, waveTotal: 0, waveSpawned: 0, trainT: 45 * 60, score: 0, xpGain: {}, hxpGain: 0, darkRun: 0, actors: [], frostN: 0, frostB: [], cat: null, tutor: false, tutHold: false, tutSpc: 0, tutUlt: 0, core: null, relievedT: 0, time: 0, kills: 0, bloodRun: 0, banked: 0, combo: 0, comboT: 0, shake: 0, hitStop: 0, flash: 0, revived: false, arena: false, phase: mode === 'campaign' ? 'street' : mode === 'raid' ? 'raidBreak' : 'train', lockKills: 0, holdT: 0, doorOpen: 0, minX: 10, maxX: L0.W - 10, camL: 0, camR: L0.W, spawnMaxX: mode === 'campaign' && gatesOf(L0).length ? gatesOf(L0)[0] - 60 : 1e9, bolt: 0, nextBolt: 900, thunderT: 0, boss: null, bossDone: false, endT: 0, spawnT: 120, hordes: 0, rain: null, runStart: performance.now(), hintT: 420 });
+  Object.assign(G, { decoy: null, catCd: 0, magT: 0, maxCombo: 0, runT0: Date.now(), relaxUsed: !!Cfg.slow, sandMsg: false, tutReplay: mode === 'campaign' && !!window.replayTut, god: false, dc: mode === 'campaign' && !!window.pendingDC, fxA: [], mUlt: 0, mRoll: 0, mSpc: 0, bwT: 0, banT: 1500, say: [], hbT: 0, cL: undefined, cR: undefined, slowmo: 0, zoomV: 1, focus: null, drops: [], pk: {}, xp: 0, plv: 0, cardQ: false, drone: null, zaps: [], bubT: 0, chainN: 0, benSw: 0, endPaid: 0, endWave: 1, safeTalk: null, speaker: null, cage: null, rescueP: 0, bloodMul: 1, timeUp: false, bonusT: 0, overrun: false, wave: 0, breakT: 300, waveTotal: 0, waveSpawned: 0, trainT: 45 * 60, score: 0, xpGain: {}, hxpGain: 0, darkRun: 0, actors: [], frostN: 0, frostB: [], cat: null, tutor: false, tutHold: false, tutSpc: 0, tutUlt: 0, core: null, relievedT: 0, time: 0, kills: 0, bloodRun: 0, banked: 0, combo: 0, comboT: 0, shake: 0, hitStop: 0, flash: 0, revived: false, arena: false, phase: mode === 'campaign' ? 'street' : mode === 'raid' ? 'raidBreak' : 'train', lockKills: 0, holdT: 0, doorOpen: 0, minX: 10, maxX: L0.W - 10, camL: 0, camR: L0.W, spawnMaxX: mode === 'campaign' && gatesOf(L0).length ? gatesOf(L0)[0] - 60 : 1e9, bolt: 0, nextBolt: 900, thunderT: 0, boss: null, bossDone: false, endT: 0, spawnT: 120, hordes: 0, rain: null, runStart: performance.now(), hintT: 420 });
   enemies = []; allies = []; shots = []; eshots = []; parts = []; texts = []; pickups = []; fires = []; acids = []; rings = []; teles = []; decals = []; flashes = []; skybolts = []; corpses = [];
   buildLevel(); G.gates = mode === 'campaign' ? gatesOf(L0) : []; G.gate = 0; G.lockNeed = 0;
   G.sub = mode === 'campaign' ? (pendingSub === undefined ? LAST : pendingSub) : undefined; G.blackout = kindOf() === 1; G.evT = randi(1800, 3000); G.flickT = 0; G.domLv = 0; G.domT = 0; G.supplies = []; G.survivor = null;
@@ -1206,7 +1206,7 @@ function startRunNow(heroId, mode = 'campaign', levelIdx) {
   if (L0.base) { player.x = (L0.fort.x1 + L0.fort.x2) / 2; player.y = L0.TOP + 200; }
   G.washedRun = Save.relieved && Save.washed; G.dirtyRun = Save.relieved && !Save.washed;
   if (Save.relieved) { Save.relieved = false; Save.washed = false; saveGame(); G.relievedT = 3600; }
-  if (Save.companion && Save.companion !== heroId && mode !== 'training') buddy = makeBuddy(Save.companion);
+  if (Save.companion && Save.companion !== heroId && mode !== 'training' && !G.speedrun) buddy = makeBuddy(Save.companion); // v64: no companion in running missions
   if (mode === 'campaign' && Save.tut2 && !G.tutReplay && (Save.sandN || 0) >= TUNE.sandFind - 1) pickups.push({ type: 'sand', x: G.L.W * rand(0.3, 0.55), y: (G.L.TOP + G.L.BOT) / 2 + rand(-40, 40), z: 0, vz: 0, vx: 0, vy: 0, t: 0, keep: true }); // v53: a sandwich lies somewhere in every 5th stage
   if (Save.mealReady && mode !== 'training') { Save.mealReady = false; player.max = Math.round(player.max * 1.25); player.hp = player.max; saveGame(); setTimeout(() => player && addText('WELL FED +25% HP', player.x, player.y - 80, '#ffcc66', 18, 90), 400); }
   G.diffIdx = mode === 'raid' ? (Save.defDiff || 0) : diffOn() ? (Save.diff || 0) : 0; G.frostN = diffOn() ? DF().frost : 0; if (mode !== 'training' && ((labLv('catlab') > 0 && !Save.catHome) || (pendingCat && mode !== 'raid'))) spawnRunCat(); G.crab = Save.pinchy && !Save.crabHome && (mode === 'campaign' || mode === 'bonus' || mode === 'raid') && !G.tutor ? { x: player.x + 30, y: player.y + 30, t: 0, face: 1, walk: 0, cd: 60, st: 'walk', stT: 0 } : null; pendingCat = false; drawCatRow(); G.bloodMul = (G.bloodMul || 1) * DF().blood;
@@ -1264,6 +1264,7 @@ function tutFocus(k) {
   if (G.state !== 'play') return; const d = $('tutDim'); G.tutWait = { k, t: performance.now() }; G.state = 'tutwait'; resetInput(); document.body.classList.add('tutOn');
   const id = TF_EL[k], el = id && $(id); let mask = '';
   if (el && isTouch) { const b = el.getBoundingClientRect(), r = Math.max(b.width, b.height) * 0.7 + 8; mask = `radial-gradient(circle at ${b.left + b.width / 2}px ${b.top + b.height / 2}px, transparent ${r}px, #000 ${r + 2}px)`; el.classList.add('tutPulse'); G.tutWait.el = el; }
+  else if (el) { el.classList.add('tutPulse'); G.tutWait.el = el; } // v64: with a mouse, clicking the lit button works too (only its key did)
   else if ((k === 'move' || k === 'aim' || k === 'hold') && isTouch) { const leftSide = (k === 'move') !== !!Cfg.lefty; G.tutWait.side = leftSide ? 'L' : 'R'; mask = `linear-gradient(to ${leftSide ? 'right' : 'left'}, transparent 48%, #000 52%)`; }
   d.style.webkitMaskImage = d.style.maskImage = mask || 'none'; d.classList.remove('hidden');
 }
@@ -1297,7 +1298,8 @@ function actorsTick() {
     if (ft && (a.atkCd || 0) <= 0 && dist(ft, a) < (a.id === 'ben' ? 95 + (ft.r || 12) : 390)) buddyAttack(a, ft); if (Math.abs(Math.cos(a.aim)) > 0.15) a.face = Math.cos(a.aim) > 0 ? 1 : -1; }
   G.actors = G.actors.filter(a => !a.gone);
 }
-function tz(type, dx, dy, k = 0.5) { const p = player, z = spawnEnemy(type, p.x + dx, clamp(p.y + dy, G.L.TOP + 40, G.L.BOT - 40), { emerge: 24, minion: true }); z.hp = z.max = Math.max(1, z.max * k); z.tut = true; G.tutZ.push(z); return z; }
+function tz(type, dx, dy, k = 0.5) { const p = player, gx = G.gate < G.gates.length ? G.gates[G.gate] - 70 : Infinity; if (p.x + dx > gx) dx = -Math.abs(dx); // v64: never behind a closed roadblock (the player couldn't reach them: lesson stuck at 7/10)
+  const z = spawnEnemy(type, p.x + dx, clamp(p.y + dy, G.L.TOP + 40, G.L.BOT - 40), { emerge: 24, minion: true }); z.hp = z.max = Math.max(1, z.max * k); z.tut = true; G.tutZ.push(z); return z; }
 const tzDead = () => G.tutZ.every(z => z.dead);
 const tutComp = h => Save.companion && Save.companion !== h && HEROES[Save.companion] && Save.companion !== 'leo' ? Save.companion : ['chloe', 'maya', 'ben', 'aris'].find(x => x !== h);
 function benSlam(b) {
@@ -1329,6 +1331,7 @@ function tutScript() {
     say('maya', LT('tut.maya3', 'Left thumb walks. Right thumb aims AND shoots.')), say('maya', LT('tut.maya4', 'Push toward them and keep holding. Take down ten!')),
     ['do', () => { G.holdK = 0; G.holdZ = []; G.holdS = 0; }],
     hint('hold', () => { // v44: stays on until 10 zombies are down, always 2-3 weak ones coming
+      G.holdZ = G.holdZ.filter(z => z.dead || (enemies.includes(z) && dist(z, P()) < 750 && !(G.gate < G.gates.length && z.x > G.gates[G.gate] - 40))); // v64: a zombie left far behind (or removed) no longer blocks the lesson at 8/10 or 9/10
       G.holdK = G.holdZ.filter(z => z.dead).length; const alive = G.holdZ.filter(z => !z.dead).length;
       if (G.holdK + alive < 10 && alive < 3 && --G.holdS <= 0) { G.holdS = 40; const z = tz(['shambler', 'sprinter', 'shambler'][G.holdZ.length % 3], 300 + rand(0, 80), rand(-90, 90), 0.45); G.holdZ.push(z); }
       $('tutTxt').textContent = (isTouch ? LT('hint.holdTouch', 'RIGHT thumb: push toward them and keep holding') : Pad.on ? LT('hint.holdPad', 'Right stick: keep it pushed') : LT('hint.holdMouse', 'Keep the left mouse button down')) + ' · ' + Math.min(10, G.holdK) + '/10';
@@ -1425,7 +1428,11 @@ function storyTick() {
   else if (e[0] === 'until') { if (e[1]()) S.i++; }
   else if (e[0] === 'hint') { showHint(e[1]); S.hint = { done: e[2] }; if (S.tut) tutFocus(e[1]); }
 }
-function tutTick() { storyTick(); roboTick(); }
+function tutTick() { tutClean(); storyTick(); roboTick(); }
+function tutClean() { // v64: lesson zombies the player can't reach (far away, gone, or behind a closed roadblock) are removed, so no lesson waits for them forever
+  if (!G.tutRun || !player || !G.tutZ || G.time % 30) return; const gx = G.gate < G.gates.length ? G.gates[G.gate] - 40 : Infinity;
+  for (const z of G.tutZ) if (!z.dead && (!enemies.includes(z) || dist(z, player) > 900 || z.x > gx)) z.dead = true;
+}
 function roboTick() {
   const z = G.robo; if (!z || z.dead || !player) return;
   if (z.robo === 1) { z.hp = z.max; z.atkT = 60; if (z.flee) { z.x += 5.5; z.vx = 5.5; z.face = 1; if (z.x > player.x + 900) { z.dead = true; G.robo = null; } } else { z.vx = 0; z.vy = 0; z.face = player.x > z.x ? 1 : -1; } }
@@ -1661,6 +1668,13 @@ function drawCatRow() { const r = $('catRow'); if (r) r.classList.add('hidden');
   r.firstChild.onclick = () => { SFX.click(); if (pendingCat) { pendingCat = false; Save.blood += c; } else if (Save.blood >= c) { pendingCat = true; Save.blood -= c; } else { SFX.buzz(); return; } saveGame(); drawCatRow(); }; }
 const catBank = () => { const h = Math.min(TUNE.cat.capHours, (Date.now() - (Save.catT || Date.now())) / 3600000); return Math.floor(h * TUNE.cat.perHour * (Save.cats || 0)); };
 function collectCats() { const n = catBank(); if (n < 5) return 0; Save.blood += n; Save.catT = Date.now(); saveGame(); return n; }
+/* v64: SPEEDRUN DECOY CAT: the cat button sends a cat running off to the side; zombies near it chase the cat for 3 s instead of you. Every 5 s. */
+function runDecoy() { const p = player, L = G.L, up = p.y - L.TOP > L.BOT - p.y, C = SPEED.cat; G.catCd = C.cd;
+  G.decoy = { x: p.x + 20, y: p.y, vx: -C.spd * 0.3, vy: (up ? -1 : 1) * C.spd * 0.5, /* runs back and to the side: the zombies chasing it turn away from your path */ t: C.life, r: 14, life: 1e9, walk: 0, face: 1, isDecoy: true }; G.decoy.c = G.decoy;
+  ringFx(p.x, p.y, '#ffdd88', 50); sfx('meow', () => { A.tone(900, 'triangle', 0.08, 0.06, 1300); A.tone(1300, 'triangle', 0.1, 0.05, 700); }, 200); addText('🐈 MEOW!', p.x, p.y - 70, '#ffdd88', 15, 40); }
+function decoyTick() { if (G.catCd > 0) G.catCd--; const D = G.decoy; if (!D) return; const L = G.L;
+  D.x += D.vx; D.y += D.vy; if (D.y < L.TOP + 40 || D.y > L.BOT - 40) { D.vy = -D.vy * 0.6; D.y = clamp(D.y, L.TOP + 40, L.BOT - 40); } D.walk += 0.4; D.t--;
+  if (D.t <= 0) { ringFx(D.x, D.y, '#ffdd88', 30); dust(D.x, D.y, 6); G.decoy = null; } }
 function v30Tick() {
   if (G.fxA) for (let i = G.fxA.length - 1; i >= 0; i--) if (++G.fxA[i].t >= 30) G.fxA.splice(i, 1);
   for (let i = G.frostB.length - 1; i >= 0; i--) { const f = G.frostB[i], k = ++f.t / f.T, x = lerp(f.x0, f.x1, k), y = lerp(f.y0, f.y1, k);
@@ -1738,7 +1752,7 @@ function useUlt(p) {
   }
 }
 function updatePlayer() {
-  const p = player, H = p.H; if (G.speedrun) { In.spcQ = false; In.ultQ = false; In.swapQ = false; In.budQ = false; }
+  const p = player, H = p.H; if (G.speedrun) { if (In.spcQ && !(G.catCd > 0)) runDecoy(); In.spcQ = false; In.ultQ = false; In.swapQ = false; In.budQ = false; }
   // movement input
   let mx = In.mx, my = In.my;
   if (G.autoIn && G.phase === 'enter' && G.L.plan.safe) { mx = G.L.plan.safe.door - p.x; my = G.L.TOP + 20 - p.y; } // v52: auto-walk into the safe house
@@ -1880,6 +1894,7 @@ function killEnemy(z) {
   if (z.robo === 2) { G.robo = null; pickups.push({ type: 'arm', x: z.x, y: z.y, z: 20, vz: 6, vx: 0, vy: 0, t: 0, keep: true }); for (let i = 0; i < TUNE.dark.robodog; i++) pickups.push({ type: 'dark', x: z.x, y: z.y, z: 24, vz: rand(5, 8), vx: rand(-3, 3), vy: rand(-2, 2), val: 1, t: 0 }); addText('ROCCO\'S ARM!', z.x, z.y - 60, '#ffcc33', 20, 90); }
 }
 function chooseTarget(z) {
+  if (G.decoy && !z.boss && dist(z, G.decoy) < SPEED.cat.pull) return G.decoy; // v64: speedrun decoy cat
   let t = player, bd = dist(z, player);
   if (buddy && buddy.down <= 0) { const db = dist(z, buddy); if (db < bd - 20) { t = buddy; bd = db; } }
   if (G.core && G.core.hp > 0 && bd > 230) { const c = G.core; return { x: c.x + c.w / 2, y: c.y + c.d / 2, r: 30, isCore: true }; }
@@ -2076,6 +2091,10 @@ function updateObstacles() {
       else o.ang += 0.01;
       continue;
     }
+    if (o.type === 'barrel' && o.hp > 0 && !(o.fuse > 0) && player && G.state === 'play') { // v64: BARREL BOMBS: touching a barrel starts a 3-second countdown, touching it again starts it from 3
+      const pr = (player.r || 14) + 10, touch = player.x > o.x - pr && player.x < o.x + o.w + pr && player.y > o.y - pr && player.y < o.y + o.d + pr;
+      if (touch) { if (!(o.tf > 0)) { SFX.click && SFX.click(); } if (!(o.tf > 0) || o.tf < 170) o.tf = 180; }
+      else if (o.tf > 0) { if (o.tf % 60 === 0) sfx('tick', () => A.tone(1100, 'square', 0.04, 0.05, 900), 100); if (--o.tf <= 0) o.fuse = 1; } }
     if (o.fuse > 0) { if (G.time % 3 === 0) flame(o.x + o.w / 2, o.y + o.d / 2, o.h); if (--o.fuse === 0) { obstacles.splice(i, 1); G.noFireBoom = o.style === 'lab'; explosion(o.x + o.w / 2, o.y + o.d / 2, 115, 10 * player.dmgMul, 16); if (o.style === 'lab') { fires.pop(); acids.push({ x: o.x + o.w / 2, y: o.y + o.d / 2, r: 70, life: 500 }); } G.noFireBoom = false; } }
     else if (o.type === 'brazier' && G.time % 4 === 0 && o.x > G.cam.x - 60 && o.x < G.cam.x + VW + 60) flame(o.x + 12, o.y + o.d / 2, o.h - 6, 0.8);
     else if (o.burning && G.time % 4 === 0 && o.x > G.cam.x - 100 && o.x < G.cam.x + VW + 100) { flame(o.x + rand(20, o.w - 20), o.y + o.d / 2, o.h + 4, 1.4); if (G.time % 8 === 0) part({ x: o.x + rand(30, o.w - 30), y: o.y + o.d / 2, z: o.h + 20, vx: rand(-0.3, 0.6), vy: 0, vz: rand(0.8, 1.4), g: -0.005, life: 110, size: rand(8, 13), color: 'rgba(25,20,22,0.45)', kind: 'smoke' }); }
@@ -2437,7 +2456,7 @@ function damageBoss(b, dmg, src) {
 function bossDie(b) {
   G.slowmo = 150; G.focus = { x: b.x, y: b.y }; vibrate([80, 40, 120, 40, 200]);
   missionEvent('boss');
-  if (HEROES[G.hero]) { bpOf(G.hero).pts++; addText('👑 +1 BOSS POINT FOR ' + HEROES[G.hero].name.toUpperCase(), b.x, b.y - 120, '#ffcc33', 18, 150); }
+  if (HEROES[G.hero]) { bpOf(G.hero).pts++; const cl = Cfg.clean; Cfg.clean = false; addText('👑 +1 BOSS POINT FOR ' + HEROES[G.hero].name.toUpperCase(), b.x, b.y - 120, '#ffcc33', 18, 150); Cfg.clean = cl; } // v64: shown even with CLEAN SCREEN on (every boss kill gives 1 point to the hero who killed it)
   Save.st.bosses[b.type] = (Save.st.bosses[b.type] || 0) + 1;
   if (b.type === 'barnacle' && !Save.pinchy) { Save.pinchy = 1; setTimeout(() => banner('🦀 PINCHY JOINS YOU!', 'The crab from the captain\'s beard. He lives in the Hideout now and pinches zombies in your levels.'), 2600); }
   clipQueue('boss', 70, { boss: b.name }); if (SPR[b.type]) corpses.push({ x: b.x, y: b.y, face: b.face || 1, d: { s: 1 / 0.88 }, type: b.type, t: 0, life: 99999 });
@@ -2623,7 +2642,7 @@ function step() {
   funTick(); recTick();
   if (G.time % 30 === 0 && player) { let n = 0; for (const z of enemies) if (!z.dead && Math.abs(z.x - player.x) < 420 && Math.abs(z.y - player.y) < 300) n++; Music.int += (Math.min(1, n / 12) - Music.int) * 0.5; }
   feelTick();
-  updateAllies(); updateBuddy(); updateEnemies(); updateBoss(); updateObstacles(); updateShots(); updateEShots(); updateZones(); updateTraps(); updatePickups(); checkTags(); tutTick(); perkUpdate(); updateDrops(); labTick(); v30Tick(); budInside(); updateParticles(); updateWeather(); updateCamera(); updateSpawns(); checkProgress();
+  if (G.speedrun) decoyTick(); updateAllies(); updateBuddy(); updateEnemies(); updateBoss(); updateObstacles(); updateShots(); updateEShots(); updateZones(); updateTraps(); updatePickups(); checkTags(); tutTick(); perkUpdate(); updateDrops(); labTick(); v30Tick(); budInside(); updateParticles(); updateWeather(); updateCamera(); updateSpawns(); checkProgress();
   if (G.time % 3 === 0) updateHUD();
 }
 
@@ -2786,10 +2805,14 @@ for (const k of ['ironhide', 'manager', 'barnacle', 'ringmaster', 'mother']) if 
 function sprLoad(id, boot) {
   if (sprP[id]) return sprP[id]; const S = SPR[id]; if (!S) return Promise.resolve();
   return sprP[id] = new Promise(res => { const im = new Image(); sprSt[id] = 'loading';
-    im.onload = () => { const ok = () => { S.img = im; S.white = null; sprSt[id] = 'done'; if (boot) sprTick(); res(); }; if (im.decode) im.decode().then(ok, ok); else ok(); }; // v59: decoded before first use (no hiccup when it first appears) // v52: the white hit-flash copy is made the first time it's needed (sprWhite), not for every sheet at load
+    im.onload = () => { const ok = () => { S.img = boldOK(id) ? boldCopy(im) : im; S.white = null; sprSt[id] = 'done'; if (boot) sprTick(); res(); }; if (im.decode) im.decode().then(ok, ok); else ok(); }; // v59: decoded before first use (no hiccup when it first appears) // v52: the white hit-flash copy is made the first time it's needed (sprWhite), not for every sheet at load
     im.onerror = () => { S.img = null; sprSt[id] = 'fail'; if (boot) sprTick(); res(); }; im.src = 'sprites/' + id + '.webp?v=' + (S.v || SPR_V); });
 }
 const HERO_IDS = ['maya', 'ben', 'aris', 'chloe', 'leo'];
+/* v64: BOLD HEROES: the survivors' sheets (body and weapons) get deeper, more intense colours once at load, so they stand out in the dark streets. Free while playing. */
+const BOLD = 'saturate(1.45) contrast(1.18) brightness(1.12)';
+const boldOK = id => HERO_IDS.some(h => id === h || id.startsWith(h + '_') || id === 'w_' + h || id.startsWith('w_' + h + '_'));
+function boldCopy(im) { try { const c = document.createElement('canvas'); c.width = im.naturalWidth; c.height = im.naturalHeight; const x = c.getContext('2d'); if (!('filter' in x)) return im; x.filter = BOLD; x.drawImage(im, 0, 0); return c; } catch (e) { return im; } }
 const heroSet = h => Object.keys(SPR).filter(k => k === h || k.startsWith(h + '_') || k === 'w_' + h || k.startsWith('w_' + h + '_') || k === 'spc_' + h);
 const sprOther = () => Object.keys(SPR).filter(k => !HERO_IDS.some(h => heroSet(h).includes(k)));
 /* v57: chapter-only sheets (bosses, chapter zombies, chapter props) are loaded only for the chapter being played and freed when another chapter starts (less memory on phones). Missing ones load on demand (sprOK). */
@@ -4060,6 +4083,7 @@ function drawAfterLight() {
   for (const t of teles) if (t.kind === 'line') { const b = t.follow; const x = b ? b.x : t.x, y = b ? b.y : t.y, a = b ? b.ang : t.a; ctx.save(); ctx.translate(x, y); ctx.rotate(a); ctx.fillStyle = `rgba(255,30,30,${0.18 + (G.time % 10 < 5 ? 0.1 : 0)})`; ctx.fillRect(0, -t.w / 2, t.len, t.w); ctx.strokeStyle = 'rgba(255,60,60,0.7)'; ctx.lineWidth = 2; ctx.strokeRect(0, -t.w / 2, t.len, t.w); ctx.restore(); }
   for (const r of rings) { if (r.delay > 0) continue; ctx.strokeStyle = 'rgba(255,170,50,0.85)'; ctx.lineWidth = r.thick; ctx.beginPath(); ctx.ellipse(r.x, r.y, r.r, r.r * 0.7, 0, 0, Math.PI * 2); ctx.stroke(); ctx.strokeStyle = 'rgba(255,240,180,0.9)'; ctx.lineWidth = 3; ctx.stroke(); }
   for (const o of obstacles) if (o.type === 'barrel' && o.hp > 0 && player && dist(player, { x: o.x, y: o.y }) < 300) { ctx.fillStyle = 'rgba(255,200,40,0.8)'; ctx.font = 'bold 9px Barlow, sans-serif'; ctx.fillText('⚠', o.x + 8, o.y - o.h - 4); }
+  for (const o of obstacles) if (o.type === 'barrel' && o.tf > 0 && o.hp > 0 && !(o.fuse > 0)) { const n = Math.ceil(o.tf / 60), k = (o.tf % 60) / 60, cx = o.x + o.w / 2, cy = o.y - o.h - 18; ctx.save(); ctx.textAlign = 'center'; ctx.font = `900 ${22 + k * 8}px Barlow, sans-serif`; ctx.lineWidth = 4; ctx.strokeStyle = '#000'; ctx.strokeText(n, cx, cy); ctx.fillStyle = n === 1 ? '#ff3344' : '#ffcc33'; ctx.fillText(n, cx, cy); ctx.restore(); } // v64: bomb countdown
   // safe-house marker and barricade health
   const Sf = G.L.plan.safe;
   if (Sf && G.phase === 'toSafe' && G.endT <= 0) { const mx = (Sf.fx + Sf.fx2) / 2 - 40, my = G.L.TOP + Sf.fy + 12, b = Math.sin(G.time * 0.12) * 5; ctx.fillStyle = 'rgba(60,255,110,0.85)'; ctx.beginPath(); ctx.moveTo(mx, my - 26 + b); ctx.lineTo(mx - 14, my - 46 + b); ctx.lineTo(mx + 14, my - 46 + b); ctx.fill(); ctx.strokeStyle = 'rgba(60,255,110,0.6)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(mx, my - 8, 30, 12, 0, 0, Math.PI * 2); ctx.stroke();
@@ -4096,6 +4120,7 @@ function render() {
   if (buddy) list.push({ k: buddy.y, f: () => drawBuddy(buddy) });
   if (G.crab && G.state !== 'menu') list.push({ k: G.crab.y, f: () => drawCrab(G.crab) });
   if (G.cat && G.state !== 'menu') list.push({ k: G.cat.y, f: () => drawRunCat(G.cat) });
+  if (G.decoy && G.state !== 'menu') { const D = G.decoy; D.face = D.vx >= 0 ? 1 : -1; list.push({ k: D.y, f: () => drawRunCat(D) }); }
   for (const a of (G.actors || [])) if (!a.gone) list.push({ k: a.y, f: () => { drawHero(a); actorTag(a); } });
   for (const k of pickups) list.push({ k: k.y, f: () => drawPickup(k) });
   if (G.boss) list.push({ k: G.boss.y, f: () => drawBoss(G.boss) });
@@ -4865,6 +4890,8 @@ function updateHUD() {
   const ultR = p.ultC / p.ultMax, ultS = Math.ceil((p.ultMax - p.ultC) / 60); $('ultFill').style.width = ultR * 100 + '%';
   $('ultTxt').textContent = ultR >= 1 ? p.H.ultName + ' READY' : `${p.H.ultName} ${ultS}s`;
   $('bSpc').classList.toggle('ready', spR >= 1); $('bSpc').querySelector('.fill').style.height = spR * 100 + '%';
+  if (G.speedrun) { const B = $('bSpc'), cd = G.catCd > 0, tn = B.lastChild, tx = cd ? String(Math.ceil(G.catCd / 60)) : '🐈'; B.classList.toggle('ready', !cd); B.querySelector('.fill').style.height = cd ? (100 - G.catCd / SPEED.cat.cd * 100) + '%' : '100%'; B.style.opacity = cd ? 0.55 : 1; if (tn && tn.nodeType === 3 && tn.textContent !== tx) tn.textContent = tx; }
+  else if ($('bSpc').lastChild && $('bSpc').lastChild.nodeType === 3 && $('bSpc').lastChild.textContent !== '⚡' && /^(\d+|🐈)$/.test($('bSpc').lastChild.textContent)) { $('bSpc').lastChild.textContent = '⚡'; $('bSpc').style.opacity = 1; }
   const bu = $('bUlt'); bu.classList.toggle('ready', ultR >= 1); bu.classList.toggle('used', false); bu.querySelector('.fill').style.height = ultR * 100 + '%'; $('bUltTxt').textContent = ultR >= 1 ? 'GO' : ultS + 's';
   $('bRoll').style.opacity = p.rollCd > 0 ? 0.5 : 1; { const rt = G.speedrun && p.rollCd > 0 ? String(Math.ceil(p.rollCd / 60)) : '🌀'; if ($('bRoll').textContent !== rt) $('bRoll').textContent = rt; } // v59: speedrun roll countdown $('darkHud').classList.toggle('hidden', !G.darkRun); $('darkTxt').textContent = G.darkRun; if (G.time % 30 === 0) updateFrostBtn();
   $('bloodTxt').textContent = Math.floor(G.bloodRun); $('killTxt').textContent = G.kills;
@@ -5612,7 +5639,8 @@ function openLevels() {
   if (tab === 1 && Save.tut2) { const D = dcToday(), L = LEVELS[D.li], S = STAGES[D.sub]; const el = document.createElement('div'); el.className = 'lcard bcard dcard'; el.style.background = `linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.78)), url(sprites/lv/${L.lv || ['streets', 'metro', 'lab', 'crypt'][D.li]}.webp) center/cover, #2a0d12`;
     el.innerHTML = `<span class="tag">${D.done ? '✓ DONE TODAY · come back tomorrow' : '📅 TODAY · 🩸 ' + DC_REW.blood + ' · 🍖 ' + DC_REW.food + ' · free'}</span><h3>Daily challenge: <span>${D.rule[2]}</span></h3><p>${D.li + 1}-${D.sub + 1} · ${D.rule[3]}</p>`;
     el.onclick = () => { SFX.click(); window.pendingDC = true; pendingMode = 'campaign'; pendingLevel = D.li; pendingSub = D.sub; openHeroes(); }; g.appendChild(el);
-    const z = document.createElement('div'); z.className = 'lcard bcard zcard'; z.style.background = 'linear-gradient(rgba(10,30,4,.35),rgba(6,20,2,.82)), url(sprites/wall/mart.webp) center 30%/cover, linear-gradient(160deg,#0d1a06,#2f4a10)'; z.innerHTML = `<span class="tag">🧟 TODAY ONLY</span><h3>Zombie of the day: <span>${zodName(zodToday())}</span></h3><p>Double blood today!</p>`; g.appendChild(z); }
+    const z = document.createElement('div'); z.className = 'lcard bcard zcard'; z.style.background = 'linear-gradient(rgba(10,30,4,.35),rgba(6,20,2,.82)), url(sprites/wall/mart.webp) center 30%/cover, linear-gradient(160deg,#0d1a06,#2f4a10)'; z.innerHTML = `<span class="tag">🧟 TODAY ONLY</span><h3>Zombie of the day: <span>${zodName(zodToday())}</span></h3><p>Double blood today!</p>`; { const t = zodToday(), cv = document.createElement('canvas'); cv.width = 180; cv.height = 200; cv.style.cssText = 'position:absolute;right:4px;bottom:0;height:100%;max-height:110px;pointer-events:none;filter:drop-shadow(0 0 6px rgba(0,0,0,.8))'; z.style.position = 'relative'; z.style.overflow = 'hidden'; z.appendChild(cv); let n = 0; // v64: the zombie of the day stands in its banner
+      const paint = () => { if (!cv.isConnected || n++ > 40) return; if (!sprOK(t)) { setTimeout(paint, 400); return; } const S = SPR[t], Q = S.s, fi = (Q.walk || Q.idle || Q.run || [0])[0], f = S.f[fi], x = cv.getContext('2d'), k = Math.min(170 / f[2], 196 / f[3]); x.clearRect(0, 0, 180, 200); x.save(); x.translate(180, 0); x.scale(-1, 1); x.drawImage(S.img, f[0], f[1], f[2], f[3], (180 - f[2] * k) / 2, 200 - f[3] * k, f[2] * k, f[3] * k); x.restore(); }; setTimeout(paint, 50); } g.appendChild(z); }
   if (tab === 1) BONUS.forEach(B => { if (B.weekly) return;
     const open = !!Save.cleared[B.need] || !!Cfg.test, done = Save.bonusDone[B.id];
     const el = document.createElement('div'); el.className = 'lcard bcard' + (open ? '' : ' locked'); el.style.background = `linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.72)), url(sprites/wall/${B.id}.webp) center/cover, ` + (B.id === 'rescue' ? 'linear-gradient(160deg,#061a18,#107a6a)' : 'linear-gradient(160deg,#1a1206,#6a4a10)');
@@ -5673,6 +5701,7 @@ function heroCoach() {
 function drawCompRow() {
   const r = $('compRow'); r.innerHTML = '';
   if (pendingMode === 'training') { r.innerHTML = '<span>Training is solo.</span>'; return; }
+  if (pendingMode === 'bonus' && typeof bonusDef === 'function' && (bonusDef(pendingBonus) || {}).speed) return; // v64: running missions: no companion to pick (you run alone, the decoy cat is a button)
   const lab = document.createElement('span'); lab.textContent = '🤝 Companion:'; r.appendChild(lab);
   for (const id of [null, ...HERO_ORDER]) {
     const b = document.createElement('button'); b.className = 'cb' + (Save.companion === id ? ' on' : ''); b.textContent = id ? HEROES[id].name : 'Solo'; if (!id) b.classList.add('solo'); b.disabled = id === G.hero;
@@ -5798,6 +5827,8 @@ function showGameOver() {
     $('overScreen').querySelector('h1').textContent = nb ? 'NEW RECORD!' : 'THE HORDE WINS'; $('overSub').textContent = `Survived ${mins}:${String(el % 60).padStart(2, '0')} · wave ${G.endWave}${extra ? ` · +${extra} 🩸 survival bonus` : ''}${nb ? '' : ` · best ${Math.floor(pb.t / 60)}:${String(pb.t % 60).padStart(2, '0')}`}`; }
   $('overTip').textContent = lossCount() >= 3 && !Cfg.slow ? '💡 Too fast? Try 🐢 Relaxed speed in the pause menu.' : '💡 ' + deathTip(); $('overRec').innerHTML = recCheck(false);
   $('overQuip').textContent = G.timeUp ? pick(['The clock is the real boss.', 'So close. The zombies are celebrating.', 'Time flies when you\'re being eaten.']) : G.overrun ? 'They ate the generator. Then the couch. Then the popcorn.' : pick(DEATH_QUIPS);
+  { const sp = !!G.speedrun, O = $('overScreen'); for (const el of [$('overQuip'), $('overTip'), $('overRec'), O.querySelector('.panel')]) if (el) el.style.display = sp ? 'none' : ''; // v64: running missions: only the meters
+    if (sp) { const x0 = 200, m = Math.max(0, Math.round(((player ? player.x : x0) - x0) / 20)), tot = Math.max(1, Math.round(((G.speedFin || speedFinish(G.L)) - x0) / 20)); O.querySelector('h1').textContent = "YOU'RE DEAD"; $('overSub').innerHTML = `<span style="font-size:1.6em">🏃 <b>${Math.min(m, tot)} m</b></span> <span style="opacity:.7">/ ${tot} m</span>`; } }
   $('reviveBtn').classList.toggle('hidden', G.revived || !!G.overrun || (G.mode === 'bonus' && !G.bonus.endless)); $('touch').classList.add('hidden'); showOnly('overScreen');
 }
 // Rewarded-ad hook: replace with your ad SDK and call onReward() when the ad finishes.
@@ -5932,6 +5963,8 @@ function drawMart() {
       if (!M.used) { ctx.fillStyle = 'rgba(255,220,150,0.16)'; ctx.fillRect(x - 60, T + 4, 120, 24); }
       if (M.t > 0 && !M.used) { const q = M.t / TUNE.mart.enterT; ctx.strokeStyle = '#ffcc33'; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(x, T - 32, 26, -Math.PI / 2, -Math.PI / 2 + q * Math.PI * 2); ctx.stroke(); }
       return; } }
+  if (M.t > 0 && !M.used) { const q = M.t / TUNE.mart.enterT; ctx.strokeStyle = '#ffcc33'; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(x, T - 32, 26, -Math.PI / 2, -Math.PI / 2 + q * Math.PI * 2); ctx.stroke(); } // v64: no drawn stand-in shop (it had a little zombie): only Gary's real shop picture is used
+  if (false) {
   ctx.fillStyle = '#2a2430'; ctx.fillRect(x - 70, T - 96, 140, 96); ctx.fillStyle = '#3a3240'; ctx.fillRect(x - 70, T - 96, 140, 6);
   ctx.fillStyle = M.used ? '#1a1820' : '#ffe8b0'; ctx.fillRect(x - 60, T - 58, 34, 40); ctx.fillRect(x + 26, T - 58, 34, 40);
   if (!M.used) { ctx.fillStyle = 'rgba(255,220,150,0.18)'; ctx.fillRect(x - 70, T, 140, 26); }
@@ -5940,6 +5973,7 @@ function drawMart() {
   ctx.fillStyle = on ? '#ff5ab4' : '#552244'; if (on) { ctx.shadowColor = '#ff5ab4'; ctx.shadowBlur = 12; } ctx.fillText('MINI-MART', x, T - 76); ctx.shadowBlur = 0;
   ctx.font = 'bold 9px Bebas Neue, Impact, sans-serif'; ctx.fillStyle = on ? '#6ad8ff' : '#224455'; ctx.fillText(M.used ? 'CLOSED' : '24/7 · OPEN (SORT OF)', x, T - 66); ctx.textAlign = 'left';
   if (M.t > 0 && !M.used) { const k = M.t / TUNE.mart.enterT; ctx.strokeStyle = '#ffcc33'; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(x, T - 32, 26, -Math.PI / 2, -Math.PI / 2 + k * Math.PI * 2); ctx.stroke(); }
+  }
 }
 /* v47: first meeting with a new zombie: banner with its name and tip (once per save) */
 const NEWZ = ['hoarder', 'conductor', 'splitter', 'mourner', 'mannequin', 'diver', 'balloon', 'drone'];
