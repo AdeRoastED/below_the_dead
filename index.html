@@ -550,7 +550,7 @@ html.speedrun #bUlt,html.speedrun #bSwap,html.speedrun #bBud,html.speedrun #auto
 
 <script>
 'use strict';
-const VERSION = 'v65'; // bump together with sw.js
+const VERSION = 'v66'; // bump together with sw.js
 const ERRLOG = []; const logErr = m => { ERRLOG.push(new Date().toISOString().slice(11, 19) + ' ' + String(m).slice(0, 240)); if (ERRLOG.length > 12) ERRLOG.shift(); };
 window.addEventListener('error', e => logErr((e.message || 'error') + (e.filename ? ' @' + e.filename.split('/').pop() + ':' + e.lineno + ':' + e.colno : '')));
 window.addEventListener('unhandledrejection', e => logErr('promise: ' + ((e.reason && (e.reason.message || e.reason)) || '?')));
@@ -2093,9 +2093,9 @@ function updateObstacles() {
       else o.ang += 0.01;
       continue;
     }
-    if (o.type === 'barrel' && o.hp > 0 && !(o.fuse > 0) && player && G.state === 'play') { // v64: BARREL BOMBS: touching a barrel starts a 3-second countdown, touching it again starts it from 3
+    if (o.type === 'barrel' && o.hp > 0 && !(o.fuse > 0) && player && G.state === 'play' && G.speedrun) { // v64: BARREL BOMBS · v65: running missions only; the first touch starts 3-2-1, touching it again changes nothing
       const pr = (player.r || 14) + 10, touch = player.x > o.x - pr && player.x < o.x + o.w + pr && player.y > o.y - pr && player.y < o.y + o.d + pr;
-      if (touch) { if (!(o.tf > 0)) { SFX.click && SFX.click(); } if (!(o.tf > 0) || o.tf < 170) o.tf = 180; }
+      if (touch && !(o.tf > 0)) { SFX.click && SFX.click(); o.tf = 180; }
       else if (o.tf > 0) { if (o.tf % 60 === 0) sfx('tick', () => A.tone(1100, 'square', 0.04, 0.05, 900), 100); if (--o.tf <= 0) o.fuse = 1; } }
     if (o.fuse > 0) { if (G.time % 3 === 0) flame(o.x + o.w / 2, o.y + o.d / 2, o.h); if (--o.fuse === 0) { obstacles.splice(i, 1); G.noFireBoom = o.style === 'lab'; explosion(o.x + o.w / 2, o.y + o.d / 2, 115, 10 * player.dmgMul, 16); if (o.style === 'lab') { fires.pop(); acids.push({ x: o.x + o.w / 2, y: o.y + o.d / 2, r: 70, life: 500 }); } G.noFireBoom = false; } }
     else if (o.type === 'brazier' && G.time % 4 === 0 && o.x > G.cam.x - 60 && o.x < G.cam.x + VW + 60) flame(o.x + 12, o.y + o.d / 2, o.h - 6, 0.8);
